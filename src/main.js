@@ -34,6 +34,9 @@ const { player, disablePlayerMovement, enablePlayerMovement } = Player({
 	c: CONSTANTS,
 });
 
+// bag that stores the collected story items
+const collection = [];
+
 // disables player movement while the welcome message is being displayed
 disablePlayerMovement();
 
@@ -54,7 +57,7 @@ enablePlayerMovement();
 renderScene({
 	k,
 	c: CONSTANTS,
-	deps: { disablePlayerMovement, enablePlayerMovement },
+	deps: { disablePlayerMovement, enablePlayerMovement, collection },
 });
 
 // Todo: add await in renderScene() and after it finishes there should be option for playagain

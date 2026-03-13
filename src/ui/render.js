@@ -45,6 +45,7 @@ export default function renderScene({ k, c, deps }) {
 				c,
 				text: choiceMessage,
 				closeKey: ALPHABETS.slice(0, choices.length),
+				closeHint: "Choose an option to continue",
 			});
 			const choiceIndex = ALPHABETS.findIndex(
 				(item) => item.toLowerCase() === choiceOption.toLowerCase(),
@@ -52,7 +53,13 @@ export default function renderScene({ k, c, deps }) {
 			const choice = meta.choices[choiceIndex];
 
 			// handle the choice appropriately
-			handleChoices({ k, choice });
+			await handleChoices({
+				k,
+				c,
+				choice,
+				storyItem: item,
+				collection: deps.collection,
+			});
 
 			// choice has been made so disappear this item
 			await k.tween(k.vec2(1), k.vec2(0), 0.5, (s) => {
