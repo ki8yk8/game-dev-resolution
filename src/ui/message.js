@@ -3,6 +3,7 @@ export default function Message({
 	c,
 	text,
 	closeHint = "Press space key to continue",
+	closeKey = "space",
 }) {
 	const bbox = k.add([
 		k.rect(k.width() - 20, (k.height() * 1) / 3),
@@ -49,6 +50,9 @@ export default function Message({
 
 	// adjusting message bbox height based on the content occupied
 	bbox.height = message.height + closeHintMessage.height + 20 * 2 + 20;
+
+	// handle on press close key
+	k.onKeyPress(closeKey, () => k.destroy(bbox));
 
 	return bbox;
 }
