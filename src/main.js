@@ -1,6 +1,7 @@
 import kaplay from "kaplay";
 import Player from "./objects/player";
 import Message from "./ui/message";
+import { WELCOME_MESSAGE } from "./ui/scripts";
 
 const k = kaplay({
 	background: "#eeeeff",
@@ -29,10 +30,11 @@ const CONSTANTS = {
 
 const player = Player({ k, c: CONSTANTS });
 
-// for testing the close animation and open animation of message
-k.onKeyPress("h", () => {
-	const welcomeMessage =
-		"Welcome to the jungle world, here is something excting for you this is something you would love. this is a welcome message meant to overflow for testing purposes.";
+// extracts the welcome message lines by lines discarding empty strings
+const welcomeLines = WELCOME_MESSAGE.split("\n")
+	.filter((line) => line.trim() !== "")
+	.map((line) => line.trim());
 
-	const message = Message({ k, c: CONSTANTS, text: welcomeMessage });
-});
+for (const line of welcomeLines) {
+	await Message({ k, c: CONSTANTS, text: line });
+}
