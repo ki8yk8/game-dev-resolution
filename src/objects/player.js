@@ -4,6 +4,7 @@ export default function Player({ k, pos = [120, 80], c }) {
 		k.sprite("bean"),
 		k.scale(1),
 		k.animate(),
+		k.area(),
 		"player",
 	]);
 

@@ -65,13 +65,16 @@ export default async function Message({
 		bbox.height = message.height + closeHintMessage.height + 20 * 2 + 20;
 
 		// handle on press close key
-		k.onKeyPress(closeKey, async () => {
-			k.tween(bbox.pos, bbox.pos.add(0, bbox.height), 0.3, (pos) => {
-				bbox.pos = pos;
-			});
-			k.wait(0.3, () => {
-				(k.destroy(bbox), resolve());
-			});
+		k.onKeyPress(async (key) => {
+			// if closeKey is given then, it must be pressed else every key works
+			if (!closeKey || (closeKey && key === closeKey)) {
+				k.tween(bbox.pos, bbox.pos.add(0, bbox.height), 0.3, (pos) => {
+					bbox.pos = pos;
+				});
+				k.wait(0.3, () => {
+					(k.destroy(bbox), resolve(key));
+				});
+			}
 		});
 
 		return bbox;

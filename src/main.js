@@ -51,6 +51,10 @@ const welcomeLines = WELCOME_MESSAGE.split("\n")
 enablePlayerMovement();
 
 // render the scene that plays the game
-renderScene({ k, c: CONSTANTS });
+renderScene({
+	k,
+	c: CONSTANTS,
+	deps: { disablePlayerMovement, enablePlayerMovement },
+});
 
 // Todo: add await in renderScene() and after it finishes there should be option for playagain
