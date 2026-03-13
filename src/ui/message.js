@@ -3,7 +3,7 @@ export default async function Message({
 	c,
 	text,
 	closeHint = "Press space key to continue",
-	closeKey = "space",
+	closeKey = ["space"],
 }) {
 	return new Promise((resolve) => {
 		const bbox = k.add([
@@ -67,7 +67,11 @@ export default async function Message({
 		// handle on press close key
 		k.onKeyPress(async (key) => {
 			// if closeKey is given then, it must be pressed else every key works
-			if (!closeKey || (closeKey && key === closeKey)) {
+			if (
+				!closeKey ||
+				(closeKey &&
+					closeKey.find((item) => key.toLowerCase() === item.toLowerCase()))
+			) {
 				k.tween(bbox.pos, bbox.pos.add(0, bbox.height), 0.3, (pos) => {
 					bbox.pos = pos;
 				});

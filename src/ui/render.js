@@ -71,15 +71,13 @@ export default function renderScene({ k, c, deps }) {
 			await Message({ k, c, text: meta.text });
 
 			// present the choices
-			const choiceMessage = prepareChoiceMessage(
-				meta.choices.map((item) => item.text),
-			);
-			// TODO: choice options
+			const choices = meta.choices.map((item) => item.text);
+			const choiceMessage = prepareChoiceMessage(choices);
 			const choice = await Message({
 				k,
 				c,
 				text: choiceMessage,
-				closeKey: null,
+				closeKey: ALPHABETS.slice(0, choices.length),
 			});
 
 			// enable player movement
