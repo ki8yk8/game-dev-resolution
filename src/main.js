@@ -6,11 +6,24 @@ const k = kaplay({
 });
 
 k.loadRoot("./");
-k.loadSprite("bean", "/sprites/bean.png");
+
+const SPRITES = {
+	bean: "bean.png",
+	bridge: "bridge.png",
+	crystal: "crystal.png",
+	idol: "idol.png",
+	mushroom: "mushroom.png",
+	potion: "potion.png",
+	scroll: "scroll.png",
+	sword: "sword.png",
+};
+Object.entries(SPRITES).forEach(([key, value]) =>
+	k.loadSprite(key, `/sprites/${value}`),
+);
 
 // adds game constatns
 const CONSTANTS = {
 	PLAYER_SPEED: 200, // in pixels/second
 };
 
-Player({ k, c: CONSTANTS });
+const player = Player({ k, c: CONSTANTS });
