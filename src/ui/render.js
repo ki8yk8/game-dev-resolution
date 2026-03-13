@@ -1,41 +1,7 @@
 import Message from "./message";
 import { STORY } from "./scripts";
-
-const ALPHABETS = [
-	"A",
-	"B",
-	"C",
-	"D",
-	"E",
-	"F",
-	"G",
-	"H",
-	"I",
-	"J",
-	"K",
-	"L",
-	"M",
-	"N",
-	"O",
-	"P",
-	"Q",
-	"R",
-	"S",
-	"T",
-	"U",
-	"V",
-	"W",
-	"X",
-	"Y",
-	"Z",
-];
-
-function prepareChoiceMessage(choices) {
-	const choicesWithPrefix = choices.map(
-		(choice, i) => `(${ALPHABETS[i]}). ${choice}`,
-	);
-	return choicesWithPrefix.join("        ");
-}
+import { ALPHABETS, prepareChoiceMessage } from "../utils";
+import { handleChoices } from "./choice";
 
 export default function renderScene({ k, c, deps }) {
 	const storyItems = Object.entries(STORY);
@@ -74,14 +40,19 @@ export default function renderScene({ k, c, deps }) {
 			// present the choices
 			const choices = meta.choices.map((item) => item.text);
 			const choiceMessage = prepareChoiceMessage(choices);
-			const choice = await Message({
+			const choiceOption = await Message({
 				k,
 				c,
 				text: choiceMessage,
 				closeKey: ALPHABETS.slice(0, choices.length),
 			});
+			const choiceIndex = ALPHABETS.findIndex(
+				(item) => item.toLowerCase() === choiceOption.toLowerCase(),
+			);
+			const choice = meta.choices[choiceIndex];
 
-			console.log(choice);
+			// handle the choice appropriately
+			handleChoices({ k, choice });
 
 			// choice has been made so disappear this item
 			await k.tween(k.vec2(1), k.vec2(0), 0.5, (s) => {
