@@ -1,4 +1,3 @@
-import Death from "./death";
 import Message from "./message";
 
 export function handleChoices({ k, c, storyItem, choice, collection }) {
@@ -8,8 +7,7 @@ export function handleChoices({ k, c, storyItem, choice, collection }) {
 
 		switch (choice.outcome) {
 			case "death":
-				// flicker the screen
-				Death({k, c});
+				resolve("death");
 				break;
 
 			case "collect":
@@ -26,10 +24,11 @@ export function handleChoices({ k, c, storyItem, choice, collection }) {
 				break;
 
 			case "door_opens":
+				resolve("win");
 				break;
 		}
 
 		// resolves the promise
-		resolve();
+		resolve("alive");
 	});
 }

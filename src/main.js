@@ -3,6 +3,8 @@ import Player from "./objects/player";
 import Message from "./ui/message";
 import { WELCOME_MESSAGE } from "./ui/scripts";
 import renderScene from "./ui/render";
+import Winner from "./ui/winner";
+import Death from "./ui/death";
 
 const k = kaplay({
 	background: "#eeeeff",
@@ -60,10 +62,16 @@ if (!CONSTANTS.DISABLE_WELCOME_MESSAGE) {
 enablePlayerMovement();
 
 // render the scene that plays the game
-renderScene({
+const win = await renderScene({
 	k,
 	c: CONSTANTS,
 	deps: { disablePlayerMovement, enablePlayerMovement, collection },
 });
 
-// Todo: add await in renderScene() and after it finishes there should be option for playagain
+// depending on result perform the operation
+if (win) {
+	Winner({ k, c: CONSTANTS });
+} else {
+	Death({ k, c: CONSTANTS });
+}
+disablePlayerMovement();
