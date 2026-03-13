@@ -47,6 +47,7 @@ export default function renderScene({ k, c, deps }) {
 			k.color(0, 0, 0),
 			k.anchor("center"),
 			k.pos(k.vec2(meta.pos)),
+			k.scale(1.0),
 			k.area(),
 			["storyItem", item],
 		]);
@@ -79,6 +80,14 @@ export default function renderScene({ k, c, deps }) {
 				text: choiceMessage,
 				closeKey: ALPHABETS.slice(0, choices.length),
 			});
+
+			console.log(choice);
+
+			// choice has been made so disappear this item
+			await k.tween(k.vec2(1), k.vec2(0), 0.5, (s) => {
+				itemBoundary.scale = s;
+			});
+			k.destroy(itemBoundary);
 
 			// enable player movement
 			deps.enablePlayerMovement();
