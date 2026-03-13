@@ -13,18 +13,20 @@ const player = k.add([k.pos(120, 80), k.sprite("bean")]);
 player.onUpdate(() => {
 	let currrentPosition = player.pos;
 
-	if (k.isKeyPressed("left")) {
-		currrentPosition = currrentPosition.add(-PLAYER_SPEED*k.dt(),0)
+	if (k.isKeyDown("left")) {
+		currrentPosition = currrentPosition.add(-PLAYER_SPEED * k.dt(), 0);
 	}
-	if (k.isKeyPressed("right")) {
-		currrentPosition = currrentPosition.add(PLAYER_SPEED*k.dt(),0)
+	if (k.isKeyDown("right")) {
+		currrentPosition = currrentPosition.add(PLAYER_SPEED * k.dt(), 0);
 	}
-	if (k.isKeyPressed("up")) {
-		currrentPosition = currrentPosition.add(0, -PLAYER_SPEED*k.dt())
+	if (k.isKeyDown("up")) {
+		currrentPosition = currrentPosition.add(0, -PLAYER_SPEED * k.dt());
 	}
-	if (k.isKeyPressed("down")) {
-		currrentPosition = currrentPosition.add(0, PLAYER_SPEED*k.dt())
+	if (k.isKeyDown("down")) {
+		currrentPosition = currrentPosition.add(0, PLAYER_SPEED * k.dt());
 	}
 
-	player.pos = currrentPosition;
-})
+	// restricts the movement of player within the gameplay canvas
+	player.pos.x = k.clamp(currrentPosition.x, 0, k.width()-player.width);
+	player.pos.y = k.clamp(currrentPosition.y, 0, k.height()-player.height);
+});
