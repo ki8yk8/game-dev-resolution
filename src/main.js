@@ -2,6 +2,7 @@ import kaplay from "kaplay";
 import Player from "./objects/player";
 import Message from "./ui/message";
 import { WELCOME_MESSAGE } from "./ui/scripts";
+import renderScene from "./ui/render";
 
 const k = kaplay({
 	background: "#eeeeff",
@@ -41,9 +42,15 @@ const welcomeLines = WELCOME_MESSAGE.split("\n")
 	.filter((line) => line.trim() !== "")
 	.map((line) => line.trim());
 
-for (const line of welcomeLines) {
-	await Message({ k, c: CONSTANTS, text: line });
-}
+// disabling for now to debug
+// for (const line of welcomeLines) {
+// 	await Message({ k, c: CONSTANTS, text: line });
+// }
 
 // enable player movement after all welcome message finishes
 enablePlayerMovement();
+
+// render the scene that plays the game
+renderScene({ k, c: CONSTANTS });
+
+// Todo: add await in renderScene() and after it finishes there should be option for playagain
