@@ -1,3 +1,5 @@
+import BigMessage from "./big-message";
+
 export default function Death({ k, c }) {
 	const deathScreen = k.add([
 		k.rect(k.width(), k.height()),
@@ -23,12 +25,15 @@ export default function Death({ k, c }) {
 	// add dead version of the player
 	const zombie = k.add([
 		k.sprite("zombie"),
-		k.pos(playerPos),
+		k.pos(playerPos.add(0, 32)),
 		k.anchor("bot"),
 		k.animate(),
 		k.rotate(0),
 	]);
 	zombie.animate("angle", [0, -5, 0, 5, 0], { duration: 2 });
+
+	// add the death message on screen
+	BigMessage({ k, c, message: "You Died !!", color: [184, 24, 43] });
 
 	return deathScreen;
 }
