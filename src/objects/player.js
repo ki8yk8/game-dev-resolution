@@ -5,6 +5,7 @@ export default function Player({ k, pos = [120, 80], c }) {
 		k.scale(1),
 		k.animate(),
 		k.area(),
+		k.layer("player"),
 		"player",
 	]);
 

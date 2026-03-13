@@ -10,6 +10,9 @@ const k = kaplay({
 
 k.loadRoot("./");
 
+// set the layer for managing z-index object placement
+k.setLayers(["bg", "obj", "player", "ui"], "obj");
+
 const SPRITES = {
 	bean: "bean.png",
 	bridge: "bridge.png",
@@ -27,6 +30,7 @@ Object.entries(SPRITES).forEach(([key, value]) =>
 // adds game constatns
 const CONSTANTS = {
 	PLAYER_SPEED: 200, // in pixels/second
+	DISABLE_WELCOME_MESSAGE: true,
 };
 
 const { player, disablePlayerMovement, enablePlayerMovement } = Player({
@@ -45,10 +49,11 @@ const welcomeLines = WELCOME_MESSAGE.split("\n")
 	.filter((line) => line.trim() !== "")
 	.map((line) => line.trim());
 
-// disabling for now to debug
-// for (const line of welcomeLines) {
-// 	await Message({ k, c: CONSTANTS, text: line });
-// }
+if (!CONSTANTS.DISABLE_WELCOME_MESSAGE) {
+	for (const line of welcomeLines) {
+		await Message({ k, c: CONSTANTS, text: line });
+	}
+}
 
 // enable player movement after all welcome message finishes
 enablePlayerMovement();

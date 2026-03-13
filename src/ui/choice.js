@@ -1,3 +1,4 @@
+import Death from "./death";
 import Message from "./message";
 
 export function handleChoices({ k, c, storyItem, choice, collection }) {
@@ -7,15 +8,17 @@ export function handleChoices({ k, c, storyItem, choice, collection }) {
 
 		switch (choice.outcome) {
 			case "death":
-				// TODO: handles death of the user
+				// flicker the screen
+				Death({k, c});
 				break;
 
 			case "collect":
-				// TODO: stores the item in the collection
+				// store the item in the collection
+				collection.append(storyItem);
 				break;
 
 			case "skip":
-				// TODO: skips the item
+				// do nothing
 				break;
 
 			case "conditional":
