@@ -3,7 +3,7 @@ import Message from "./message";
 export function handleChoices({ k, c, storyItem, choice, collection }) {
 	return new Promise(async (resolve) => {
 		// display the message
-		await Message({ k, c, text: choice.message });
+		choice.message && (await Message({ k, c, text: choice.message }));
 
 		switch (choice.outcome) {
 			case "death":
@@ -12,23 +12,42 @@ export function handleChoices({ k, c, storyItem, choice, collection }) {
 
 			case "collect":
 				// store the item in the collection
-				collection.append(storyItem);
+				collection.push(storyItem);
+				resolve("alive");
 				break;
 
 			case "skip":
 				// do nothing
+				resolve("alive");
 				break;
 
 			case "conditional":
-				// TODO: evaluate if the item is in the collection and do action accordingly: choice.condition in collection => ifTrue else ifFalse
+				const conditionMet = collection.includes(choice.condition);
+
+				if (conditionMet) {
+					const result = await handleChoices({
+						k,
+						c,
+						storyItem,
+						choice: choice.ifTrue,
+						collection,
+					});
+					resolve(result);
+				} else {
+					const result = await handleChoices({
+						k,
+						c,
+						storyItem,
+						choice: choice.ifFalse,
+						collection,
+					});
+					resolve(result);
+				}
 				break;
 
 			case "door_opens":
 				resolve("win");
 				break;
 		}
-
-		// resolves the promise
-		resolve("alive");
 	});
 }
