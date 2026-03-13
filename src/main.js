@@ -22,6 +22,7 @@ const SPRITES = {
 	potion: "potion.png",
 	scroll: "scroll.png",
 	sword: "sword.png",
+	zombie: "zombie.png",
 };
 Object.entries(SPRITES).forEach(([key, value]) =>
 	k.loadSprite(key, `/sprites/${value}`),
