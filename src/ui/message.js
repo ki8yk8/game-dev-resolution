@@ -10,6 +10,8 @@ export default function Message({
 		k.pos(20, k.height()),
 		k.anchor("botleft"),
 		k.color(0, 0, 0),
+		k.animate(),
+		"message",
 	]);
 
 	const message = bbox.add([
@@ -45,6 +47,16 @@ export default function Message({
 		{ duration: 0.75, timing: [0, 0.2, 0.5, 0.8, 1] },
 	);
 
+	// animating the apperance of the message
+	bbox.animate(
+		"pos",
+		[
+			bbox.pos.add(0, bbox.height), // from the extreme right
+			bbox.pos,
+		],
+		{ duration: 0.3, loops: 1 },
+	);
+
 	// adjusting position of height based on position of close hint message
 	message.pos.y = closeHintMessage.pos.y - closeHintMessage.height - 20; // 20 distance between message and close hint
 
@@ -52,7 +64,12 @@ export default function Message({
 	bbox.height = message.height + closeHintMessage.height + 20 * 2 + 20;
 
 	// handle on press close key
-	k.onKeyPress(closeKey, () => k.destroy(bbox));
+	k.onKeyPress(closeKey, async () => {
+		k.tween(bbox.pos, bbox.pos.add(0, bbox.height), 0.3, (pos) => {
+			bbox.pos = pos;
+		});
+		k.wait(0.3, () => k.destroy(bbox));
+	});
 
 	return bbox;
 }

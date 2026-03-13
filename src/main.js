@@ -29,6 +29,10 @@ const CONSTANTS = {
 
 const player = Player({ k, c: CONSTANTS });
 
-const welcomeMessage = "Welcome to the jungle world, here is something excting for you this is something you would love. this is a welcome message meant to overflow for testing purposes."
+// for testing the close animation and open animation of message
+k.onKeyPress("h", () => {
+	const welcomeMessage =
+		"Welcome to the jungle world, here is something excting for you this is something you would love. this is a welcome message meant to overflow for testing purposes.";
 
-const message = Message({ k, c: CONSTANTS, text: welcomeMessage });
+	const message = Message({ k, c: CONSTANTS, text: welcomeMessage });
+});
