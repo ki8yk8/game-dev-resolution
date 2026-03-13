@@ -28,7 +28,13 @@ const CONSTANTS = {
 	PLAYER_SPEED: 200, // in pixels/second
 };
 
-const player = Player({ k, c: CONSTANTS });
+const { player, disablePlayerMovement, enablePlayerMovement } = Player({
+	k,
+	c: CONSTANTS,
+});
+
+// disables player movement while the welcome message is being displayed
+disablePlayerMovement();
 
 // extracts the welcome message lines by lines discarding empty strings
 const welcomeLines = WELCOME_MESSAGE.split("\n")
@@ -38,3 +44,6 @@ const welcomeLines = WELCOME_MESSAGE.split("\n")
 for (const line of welcomeLines) {
 	await Message({ k, c: CONSTANTS, text: line });
 }
+
+// enable player movement after all welcome message finishes
+enablePlayerMovement();

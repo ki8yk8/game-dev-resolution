@@ -16,17 +16,19 @@ export default function Player({ k, pos = [120, 80], c }) {
 		let currrentPosition = player.pos.clone();
 		let initialPosition = player.pos.clone();
 
-		if (k.isKeyDown("left")) {
-			currrentPosition = currrentPosition.add(-c.PLAYER_SPEED * k.dt(), 0);
-		}
-		if (k.isKeyDown("right")) {
-			currrentPosition = currrentPosition.add(c.PLAYER_SPEED * k.dt(), 0);
-		}
-		if (k.isKeyDown("up")) {
-			currrentPosition = currrentPosition.add(0, -c.PLAYER_SPEED * k.dt());
-		}
-		if (k.isKeyDown("down")) {
-			currrentPosition = currrentPosition.add(0, c.PLAYER_SPEED * k.dt());
+		if (!player.is("disabled")) {
+			if (k.isKeyDown("left")) {
+				currrentPosition = currrentPosition.add(-c.PLAYER_SPEED * k.dt(), 0);
+			}
+			if (k.isKeyDown("right")) {
+				currrentPosition = currrentPosition.add(c.PLAYER_SPEED * k.dt(), 0);
+			}
+			if (k.isKeyDown("up")) {
+				currrentPosition = currrentPosition.add(0, -c.PLAYER_SPEED * k.dt());
+			}
+			if (k.isKeyDown("down")) {
+				currrentPosition = currrentPosition.add(0, c.PLAYER_SPEED * k.dt());
+			}
 		}
 
 		// restricts the movement of player within the gameplay canvas
@@ -54,4 +56,14 @@ export default function Player({ k, pos = [120, 80], c }) {
 			isIdleAnimationRunning = true;
 		}
 	});
+
+	function disablePlayerMovement() {
+		player.tag("disabled");
+	}
+
+	function enablePlayerMovement() {
+		if (player.is("disabled")) player.untag("disabled");
+	}
+
+	return { player, disablePlayerMovement, enablePlayerMovement };
 }
