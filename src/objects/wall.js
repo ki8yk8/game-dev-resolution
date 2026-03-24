@@ -5,8 +5,10 @@ export function Wall({ k, c, pos, width = 100, isVertical = false }) {
 		k.anchor("topleft"),
 		k.rotate(0),
 		k.pos(pos),
+		k.layer("obj"),
 	]);
 
+	// rotate for vertical walls
 	if (isVertical) wall.angle = 90;
 
 	return wall;

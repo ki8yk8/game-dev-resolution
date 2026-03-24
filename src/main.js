@@ -32,6 +32,7 @@ const AUDIOS = {
 const CONSTANTS = {
 	PLAYER_SPEED: 200, // in pixels/second
 	DISABLE_WELCOME_MESSAGE: true,
+	DEVELOPMENT: true,
 	AUDIOS,
 	SPRITES,
 };

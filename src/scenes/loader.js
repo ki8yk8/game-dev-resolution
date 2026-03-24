@@ -47,11 +47,12 @@ function Loader({ k, c }) {
 	let loaded = 0;
 	const total_to_load =
 		Object.entries(c.AUDIOS).length + Object.entries(c.SPRITES).length;
+	const perItemWaitTime = c.DEVELOPMENT ? 0 : 0.5;
 
 	// loading all the sprites
 	Object.entries(c.SPRITES).forEach(async ([key, value]) => {
 		await k.loadSprite(key, `/sprites/${value}`);
-		k.wait(0.5, () => {
+		k.wait(perItemWaitTime, () => {
 			loaded = loaded + 1;
 			handleObjectLoaded();
 		});
@@ -60,7 +61,7 @@ function Loader({ k, c }) {
 	// loading all the audios
 	Object.entries(c.AUDIOS).forEach(async ([key, value]) => {
 		await k.loadSound(key, `/audios/${value}`);
-		k.wait(1, () => {
+		k.wait(perItemWaitTime, () => {
 			loaded = loaded + 1;
 			handleObjectLoaded();
 		});
@@ -75,6 +76,11 @@ function Loader({ k, c }) {
 			10,
 			progressWrapper.width - 10,
 		);
+
+		// goto the gameplay if everything is lodaded in development mode
+		if (c.DEVELOPMENT && loaded === total_to_load) {
+			k.go("gameplay");
+		}
 	}
 
 	k.onKeyPress(() => {
