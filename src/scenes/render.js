@@ -1,9 +1,8 @@
-import Message from "./message";
-import { STORY } from "./scripts";
+import { Message, handleChoices } from "../ui";
+import { STORY } from "../data/scripts";
 import { ALPHABETS, prepareChoiceMessage } from "../utils";
-import { handleChoices } from "./choice";
 
-export default function renderScene({ k, c, deps }) {
+export function renderScene({ k, c, deps }) {
 	return new Promise((resolve) => {
 		const storyItems = Object.entries(STORY);
 

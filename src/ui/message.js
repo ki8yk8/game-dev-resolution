@@ -1,4 +1,4 @@
-export default async function Message({
+export async function Message({
 	k,
 	c,
 	text,

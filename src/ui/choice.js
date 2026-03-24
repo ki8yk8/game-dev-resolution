@@ -1,4 +1,4 @@
-import Message from "./message";
+import { Message } from "./message";
 
 export function handleChoices({ k, c, storyItem, choice, collection }) {
 	return new Promise(async (resolve) => {

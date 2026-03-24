@@ -1,4 +1,4 @@
-export default function BigMessage({ k, c, message, color }) {
+export function BigMessage({ k, c, message, color }) {
 	const bbox = k.add([
 		k.rect(10, 10, {
 			radius: 20,

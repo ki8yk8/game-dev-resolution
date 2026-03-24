@@ -1,19 +1,14 @@
 import kaplay from "kaplay";
-import Player from "./objects/player";
-import Message from "./ui/message";
-import { WELCOME_MESSAGE } from "./ui/scripts";
-import renderScene from "./ui/render";
-import Winner from "./ui/winner";
-import Death from "./ui/death";
+import { WELCOME_MESSAGE } from "./data/scripts";
+import { Player } from "./objects";
+import { Loader, renderScene } from "./scenes";
+import { Death, Winner } from "./ui";
 
 const k = kaplay({
 	background: "#eeeeff",
 });
 
 k.loadRoot("./");
-
-// set the layer for managing z-index object placement
-k.setLayers(["bg", "obj", "player", "ui"], "obj");
 
 const SPRITES = {
 	bean: "bean.png",
@@ -26,9 +21,6 @@ const SPRITES = {
 	sword: "sword.png",
 	zombie: "zombie.png",
 };
-Object.entries(SPRITES).forEach(([key, value]) =>
-	k.loadSprite(key, `/sprites/${value}`),
-);
 
 const AUDIOS = {
 	bgm: "bgm.mp3",
@@ -37,15 +29,14 @@ const AUDIOS = {
 	step: "step.mp3",
 };
 
-Object.entries(AUDIOS).forEach(([key, value]) =>
-	k.loadSound(key, `/audios/${value}`),
-);
-
 // adds game constatns
 const CONSTANTS = {
 	PLAYER_SPEED: 200, // in pixels/second
 	DISABLE_WELCOME_MESSAGE: true,
 };
+
+// loads the loader scenes
+Loader({ k, c: CONSTANTS, sprites: SPRITES, audios: AUDIOS });
 
 const { player, disablePlayerMovement, enablePlayerMovement } = Player({
 	k,

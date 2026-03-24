@@ -1,6 +1,6 @@
-import BigMessage from "./big-message";
+import { BigMessage } from "./big-message";
 
-export default function Death({ k, c }) {
+export function Death({ k, c }) {
 	const deathScreen = k.add([
 		k.rect(k.width(), k.height()),
 		k.anchor("topleft"),
