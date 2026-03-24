@@ -30,7 +30,7 @@ const AUDIOS = {
 
 // adds game constatns
 const CONSTANTS = {
-	PLAYER_SPEED: 200, // in pixels/second
+	PLAYER_SPEED: 2000, // in pixels/second
 	DISABLE_WELCOME_MESSAGE: true,
 	DEVELOPMENT: true,
 	AUDIOS,
@@ -41,4 +41,5 @@ const CONSTANTS = {
 useLoader({ k, c: CONSTANTS });
 useGamePlay({ k, c: CONSTANTS });
 
+// go to the loading screen
 k.go("loader");
