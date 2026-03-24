@@ -1,9 +1,11 @@
 import { Player } from "../objects";
+import { WELCOME_MESSAGE } from "../data/scripts";
+import { renderScene } from "../ui";
 
 async function GamePlay({ k, c }) {
 	const { player, disablePlayerMovement, enablePlayerMovement } = Player({
 		k,
-		c: CONSTANTS,
+		c,
 	});
 
 	// bag that stores the collected story items
@@ -17,9 +19,9 @@ async function GamePlay({ k, c }) {
 		.filter((line) => line.trim() !== "")
 		.map((line) => line.trim());
 
-	if (!CONSTANTS.DISABLE_WELCOME_MESSAGE) {
+	if (!c.DISABLE_WELCOME_MESSAGE) {
 		for (const line of welcomeLines) {
-			await Message({ k, c: CONSTANTS, text: line });
+			await Message({ k, c, text: line });
 		}
 	}
 
@@ -29,15 +31,15 @@ async function GamePlay({ k, c }) {
 	// render the scene that plays the game
 	const win = await renderScene({
 		k,
-		c: CONSTANTS,
+		c,
 		deps: { disablePlayerMovement, enablePlayerMovement, collection },
 	});
 
 	// depending on result perform the operation
 	if (win) {
-		Winner({ k, c: CONSTANTS });
+		Winner({ k, c });
 	} else {
-		Death({ k, c: CONSTANTS });
+		Death({ k, c });
 	}
 	disablePlayerMovement();
 }
