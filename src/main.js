@@ -30,6 +30,17 @@ Object.entries(SPRITES).forEach(([key, value]) =>
 	k.loadSprite(key, `/sprites/${value}`),
 );
 
+const AUDIOS = {
+	bgm: "bgm.mp3",
+	capture: "capture.mp3",
+	death: "death.mp3",
+	step: "step.mp3",
+};
+
+Object.entries(AUDIOS).forEach(([key, value]) =>
+	k.loadSound(key, `/audios/${value}`),
+);
+
 // adds game constatns
 const CONSTANTS = {
 	PLAYER_SPEED: 200, // in pixels/second
