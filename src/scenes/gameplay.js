@@ -1,8 +1,8 @@
-import { Player } from "../objects";
+import { Player, Wall } from "../objects";
 import { WELCOME_MESSAGE } from "../data/scripts";
 import { renderScene } from "../ui";
 
-async function GamePlay({ k, c }) {
+async function GamePlayOld({ k, c }) {
 	const { player, disablePlayerMovement, enablePlayerMovement } = Player({
 		k,
 		c,
@@ -42,6 +42,16 @@ async function GamePlay({ k, c }) {
 		Death({ k, c });
 	}
 	disablePlayerMovement();
+}
+
+function GamePlay({ k, c }) {
+	const { player, disablePlayerMovement, enablePlayerMovement } = Player({
+		k,
+		c,
+	});
+
+	Wall({ k, c, pos: k.vec2(100, 100) });
+	Wall({ k, c, pos: k.vec2(100, 100), isVertical: true });
 }
 
 export function useGamePlay({ k, c }) {

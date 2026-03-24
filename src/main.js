@@ -17,6 +17,8 @@ const SPRITES = {
 	scroll: "scroll.png",
 	sword: "sword.png",
 	zombie: "zombie.png",
+	web: "web.png",
+	steel: "steel.png",
 };
 
 const AUDIOS = {
