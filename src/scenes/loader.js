@@ -28,6 +28,21 @@ function Loader({ k, c }) {
 		k.color(0, 0, 0),
 	]);
 
+	const hint = backdrop.add([
+		k.text("Press any key to start the game"),
+		k.pos(0, progressWrapper.pos.y + progressWrapper.height + 40),
+		k.rotate(0),
+		k.scale(0),
+		k.anchor("center"),
+		k.animate(),
+	]);
+	hint.animate("scale", [k.vec2(1.0), k.vec2(0.9), k.vec2(1.0)], {
+		duration: 1,
+	});
+	hint.animate("pos", [hint.pos, hint.pos.add(0, 20), hint.pos], {
+		duration: 1,
+	});
+
 	// loaded is number which value is between 0 and AUDIOS + SPRITES
 	let loaded = 0;
 	const total_to_load =
@@ -60,10 +75,13 @@ function Loader({ k, c }) {
 			10,
 			progressWrapper.width - 10,
 		);
+	}
+
+	k.onKeyPress(() => {
 		if (loaded === total_to_load) {
 			k.go("gameplay");
 		}
-	}
+	});
 }
 
 export function useLoader({ k, c }) {
