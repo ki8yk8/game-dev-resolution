@@ -1,10 +1,11 @@
-export function Player({ k, pos = [120, 80], c }) {
+export function Player({ k, pos = [200, 200], c }) {
 	const player = k.add([
 		k.pos(pos),
 		k.sprite("bean"),
 		k.scale(1),
 		k.animate(),
 		k.area(),
+		k.body(),
 		k.layer("player"),
 		"player",
 	]);
