@@ -31,7 +31,7 @@ const AUDIOS = {
 // adds game constatns
 const CONSTANTS = {
 	PLAYER_SPEED: 400, // in pixels/second
-	DISABLE_WELCOME_MESSAGE: true,
+	DISABLE_WELCOME_MESSAGE: false,
 	DEVELOPMENT: true,
 	AUDIOS,
 	SPRITES,
