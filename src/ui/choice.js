@@ -1,6 +1,13 @@
-import Message from "./message";
+import { Message } from "./message";
 
-export function handleChoices({ k, c, storyItem, choice, collection }) {
+export function handleChoices({
+	k,
+	c,
+	storyItem,
+	choice,
+	addToCollection,
+	collections,
+}) {
 	return new Promise(async (resolve) => {
 		// display the message
 		choice.message && (await Message({ k, c, text: choice.message }));
@@ -12,7 +19,7 @@ export function handleChoices({ k, c, storyItem, choice, collection }) {
 
 			case "collect":
 				// store the item in the collection
-				collection.push(storyItem);
+				addToCollection(storyItem);
 				resolve("alive");
 				break;
 
@@ -22,7 +29,7 @@ export function handleChoices({ k, c, storyItem, choice, collection }) {
 				break;
 
 			case "conditional":
-				const conditionMet = collection.includes(choice.condition);
+				const conditionMet = collections.includes(choice.condition);
 
 				if (conditionMet) {
 					const result = await handleChoices({
@@ -30,7 +37,8 @@ export function handleChoices({ k, c, storyItem, choice, collection }) {
 						c,
 						storyItem,
 						choice: choice.ifTrue,
-						collection,
+						addToCollection,
+						collections,
 					});
 					resolve(result);
 				} else {
@@ -39,14 +47,19 @@ export function handleChoices({ k, c, storyItem, choice, collection }) {
 						c,
 						storyItem,
 						choice: choice.ifFalse,
-						collection,
+						addToCollection,
+						collections,
 					});
 					resolve(result);
 				}
 				break;
 
 			case "door_opens":
-				resolve("win");
+				resolve("door_opens");
+				break;
+
+			case "emergency_door_opens":
+				resolve("emergency_door_opens");
 				break;
 		}
 	});

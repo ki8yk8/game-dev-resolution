@@ -1,0 +1,92 @@
+function Loader({ k, c }) {
+	// creating the scene with black background
+	const backdrop = k.add([
+		k.rect(k.width(), k.height()),
+		k.pos(k.width() / 2, k.height() / 2),
+		k.anchor("center"),
+		k.color(10, 10, 10),
+		k.layer("bg"),
+	]);
+
+	// adding a progress bar
+	const progressWrapper = backdrop.add([
+		k.rect((k.width() * 2) / 3, 40),
+		k.color(255, 255, 255),
+		k.anchor("topleft"),
+		k.pos(0, -20),
+	]);
+	progressWrapper.pos.x -= progressWrapper.width / 2;
+
+	// width = 10 to progressWrapper.width -10
+	const progress = progressWrapper.add([
+		k.rect(10, progressWrapper.height - 10),
+		k.pos(5, 5),
+		k.anchor("topleft"),
+		k.color(0, 0, 0),
+	]);
+
+	const hint = backdrop.add([
+		k.text("Press any key to start the game"),
+		k.pos(0, progressWrapper.pos.y + progressWrapper.height + 40),
+		k.rotate(0),
+		k.scale(0),
+		k.anchor("center"),
+		k.animate(),
+	]);
+	hint.animate("scale", [k.vec2(1.0), k.vec2(0.9), k.vec2(1.0)], {
+		duration: 1,
+	});
+	hint.animate("pos", [hint.pos, hint.pos.add(0, 20), hint.pos], {
+		duration: 1,
+	});
+
+	// loaded is number which value is between 0 and AUDIOS + SPRITES
+	let loaded = 0;
+	const total_to_load =
+		Object.entries(c.AUDIOS).length + Object.entries(c.SPRITES).length;
+	const perItemWaitTime = c.DEVELOPMENT ? 0 : 0.5;
+
+	// loading all the sprites
+	Object.entries(c.SPRITES).forEach(async ([key, value]) => {
+		await k.loadSprite(key, `/sprites/${value}`);
+		k.wait(perItemWaitTime, () => {
+			loaded = loaded + 1;
+			handleObjectLoaded();
+		});
+	});
+
+	// loading all the audios
+	Object.entries(c.AUDIOS).forEach(async ([key, value]) => {
+		await k.loadSound(key, `/audios/${value}`);
+		k.wait(perItemWaitTime, () => {
+			loaded = loaded + 1;
+			handleObjectLoaded();
+		});
+	});
+
+	// activates gameplay once loaded
+	function handleObjectLoaded() {
+		progress.width = k.map(
+			loaded,
+			0,
+			total_to_load,
+			10,
+			progressWrapper.width - 10,
+		);
+
+		// goto the gameplay if everything is lodaded in development mode
+		if (c.DEVELOPMENT && loaded === total_to_load) {
+			k.go("gameplay");
+		}
+	}
+
+	k.onKeyPress(() => {
+		if (loaded === total_to_load) {
+			k.go("gameplay");
+		}
+	});
+}
+
+export function useLoader({ k, c }) {
+	k.scene("loader", () => Loader({ k, c }));
+}

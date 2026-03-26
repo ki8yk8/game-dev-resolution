@@ -1,19 +1,11 @@
 import kaplay from "kaplay";
-import Player from "./objects/player";
-import Message from "./ui/message";
-import { WELCOME_MESSAGE } from "./ui/scripts";
-import renderScene from "./ui/render";
-import Winner from "./ui/winner";
-import Death from "./ui/death";
+import { useLoader, useGamePlay, useWinScene, useDeathScene } from "./scenes";
 
 const k = kaplay({
 	background: "#eeeeff",
 });
 
 k.loadRoot("./");
-
-// set the layer for managing z-index object placement
-k.setLayers(["bg", "obj", "player", "ui"], "obj");
 
 const SPRITES = {
 	bean: "bean.png",
@@ -25,53 +17,36 @@ const SPRITES = {
 	scroll: "scroll.png",
 	sword: "sword.png",
 	zombie: "zombie.png",
+	web: "web.png",
+	steel: "steel.png",
+	toolbox: "toolbox.png",
+	portal: "portal.png",
 };
-Object.entries(SPRITES).forEach(([key, value]) =>
-	k.loadSprite(key, `/sprites/${value}`),
-);
+
+const AUDIOS = {
+	bgm: "bgm.mp3",
+	capture: "capture.mp3",
+	death: "death.mp3",
+	step: "step.mp3",
+};
 
 // adds game constatns
 const CONSTANTS = {
-	PLAYER_SPEED: 200, // in pixels/second
+	PLAYER_SPEED: 400, // in pixels/second
 	DISABLE_WELCOME_MESSAGE: true,
+	DEVELOPMENT: true,
+	AUDIOS,
+	SPRITES,
 };
 
-const { player, disablePlayerMovement, enablePlayerMovement } = Player({
-	k,
-	c: CONSTANTS,
-});
+// set the layer for managing z-index object placement
+k.setLayers(["bg", "obj", "player", "ui"], "obj");
 
-// bag that stores the collected story items
-const collection = [];
+// registers the different scenes
+useLoader({ k, c: CONSTANTS });
+useGamePlay({ k, c: CONSTANTS });
+useWinScene({ k, c: CONSTANTS });
+useDeathScene({ k, c: CONSTANTS });
 
-// disables player movement while the welcome message is being displayed
-disablePlayerMovement();
-
-// extracts the welcome message lines by lines discarding empty strings
-const welcomeLines = WELCOME_MESSAGE.split("\n")
-	.filter((line) => line.trim() !== "")
-	.map((line) => line.trim());
-
-if (!CONSTANTS.DISABLE_WELCOME_MESSAGE) {
-	for (const line of welcomeLines) {
-		await Message({ k, c: CONSTANTS, text: line });
-	}
-}
-
-// enable player movement after all welcome message finishes
-enablePlayerMovement();
-
-// render the scene that plays the game
-const win = await renderScene({
-	k,
-	c: CONSTANTS,
-	deps: { disablePlayerMovement, enablePlayerMovement, collection },
-});
-
-// depending on result perform the operation
-if (win) {
-	Winner({ k, c: CONSTANTS });
-} else {
-	Death({ k, c: CONSTANTS });
-}
-disablePlayerMovement();
+// go to the loading screen
+k.go("loader");
