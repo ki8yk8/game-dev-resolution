@@ -19,6 +19,7 @@ const SPRITES = {
 	zombie: "zombie.png",
 	web: "web.png",
 	steel: "steel.png",
+	toolbox: "toolbox.png",
 };
 
 const AUDIOS = {
@@ -36,6 +37,9 @@ const CONSTANTS = {
 	AUDIOS,
 	SPRITES,
 };
+
+// set the layer for managing z-index object placement
+k.setLayers(["bg", "obj", "player", "ui"], "obj");
 
 // registers the different scenes
 useLoader({ k, c: CONSTANTS });

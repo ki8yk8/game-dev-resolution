@@ -56,7 +56,7 @@ export function Objects({ k, c, deps }) {
 				c,
 				choice,
 				storyItem: item,
-				collection: deps.collection,
+				addToCollection: deps.addToCollection,
 			});
 
 			// choice has been made so disappear this item

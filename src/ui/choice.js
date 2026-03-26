@@ -1,6 +1,6 @@
 import { Message } from "./message";
 
-export function handleChoices({ k, c, storyItem, choice, collection }) {
+export function handleChoices({ k, c, storyItem, choice, addToCollection }) {
 	return new Promise(async (resolve) => {
 		// display the message
 		choice.message && (await Message({ k, c, text: choice.message }));
@@ -12,7 +12,7 @@ export function handleChoices({ k, c, storyItem, choice, collection }) {
 
 			case "collect":
 				// store the item in the collection
-				collection.push(storyItem);
+				addToCollection(storyItem);
 				resolve("alive");
 				break;
 

@@ -1,4 +1,4 @@
-import { Player, Map, Objects } from "../objects";
+import { Player, Map, Objects, Toolbox } from "../objects";
 import { WELCOME_MESSAGE } from "../data/scripts";
 import { Message } from "../ui";
 
@@ -8,9 +8,7 @@ async function GamePlay({ k, c }) {
 		c,
 	});
 	Map({ k, c });
-
-	// collection holds all the items stored
-	const collection = [];
+	const { collections, addToCollection } = Toolbox({ k, c });
 
 	// disables player movement while the welcome message is being displayed
 	disablePlayerMovement();
@@ -33,7 +31,7 @@ async function GamePlay({ k, c }) {
 	Objects({
 		k,
 		c,
-		deps: { disablePlayerMovement, enablePlayerMovement, collection },
+		deps: { disablePlayerMovement, enablePlayerMovement, addToCollection },
 	});
 }
 

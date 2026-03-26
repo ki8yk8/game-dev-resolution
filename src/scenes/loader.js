@@ -1,7 +1,4 @@
 function Loader({ k, c }) {
-	// set the layer for managing z-index object placement
-	k.setLayers(["bg", "obj", "player", "ui"], "obj");
-
 	// creating the scene with black background
 	const backdrop = k.add([
 		k.rect(k.width(), k.height()),
