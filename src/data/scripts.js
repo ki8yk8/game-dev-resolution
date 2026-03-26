@@ -5,7 +5,7 @@ export const STORY = {
 	usb: {
 		label: "USB Drive",
 		text: "A USB drive on the floor. No label. No markings. Someone was here before you.",
-		pos: [100, 200],
+		pos: [200, 600],
 		choices: [
 			{
 				text: "Plug it in",
@@ -24,7 +24,7 @@ export const STORY = {
 	keycard: {
 		label: "Keycard",
 		text: "A red card sitting face-down on the desk. Like someone set it there in a hurry. Or wanted it to be found.",
-		pos: [600, 250],
+		pos: [2100, 200],
 		choices: [
 			{
 				text: "Pick it up",
@@ -43,7 +43,7 @@ export const STORY = {
 	flask: {
 		label: "Flask",
 		text: "Something bubbling on the bench. Green. Warm. The cabinte beside it has a rusted lock - the kind that looks like it hasn't been opened in yeats.",
-		pos: [1000, 300],
+		pos: [1400, 0],
 		choices: [
 			{
 				text: "Drink it",
@@ -68,7 +68,7 @@ export const STORY = {
 	laptop: {
 		label: "Open Laptop",
 		text: "The screen is still on. A single line waits for you, cursor blinking. Whoever was sitting here left in a hurry.",
-		pos: [400, 400],
+		pos: [700, 1100],
 		choices: [
 			{
 				text: "Run it",
