@@ -12,6 +12,7 @@ export async function Message({
 			k.anchor("botleft"),
 			k.color(0, 0, 0),
 			k.animate(),
+			k.fixed(),
 			"message",
 		]);
 

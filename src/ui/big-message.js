@@ -8,6 +8,7 @@ export function BigMessage({ k, c, message, color }) {
 		k.anchor("center"),
 		k.rotate(),
 		k.animate(),
+		k.fixed(),
 		k.layer("ui"),
 	]);
 

@@ -1,5 +1,5 @@
 import kaplay from "kaplay";
-import { useLoader, useGamePlay } from "./scenes";
+import { useLoader, useGamePlay, useWinScene, useDeathScene } from "./scenes";
 
 const k = kaplay({
 	background: "#eeeeff",
@@ -40,6 +40,8 @@ const CONSTANTS = {
 // registers the different scenes
 useLoader({ k, c: CONSTANTS });
 useGamePlay({ k, c: CONSTANTS });
+useWinScene({ k, c: CONSTANTS });
+useDeathScene({ k, c: CONSTANTS });
 
 // go to the loading screen
 k.go("loader");
