@@ -3,6 +3,12 @@ import { WELCOME_MESSAGE } from "../data/scripts";
 import { Message } from "../ui";
 
 async function GamePlay({ k, c }) {
+	// play the audio in loop
+	k.play("bgm", {
+		loop: true,
+		volume: 0.3,
+	})
+
 	const { player, disablePlayerMovement, enablePlayerMovement } = Player({
 		k,
 		c,

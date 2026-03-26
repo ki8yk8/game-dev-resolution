@@ -29,6 +29,8 @@ export function Objects({ k, c, deps }) {
 		itemBoundary.height = label.height + 20;
 
 		itemBoundary.onCollide("player", async (player) => {
+			k.play("capture");
+			
 			// on collision first disable player movement
 			deps.disablePlayerMovement();
 

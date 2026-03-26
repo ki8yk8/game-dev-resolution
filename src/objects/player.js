@@ -1,4 +1,4 @@
-export function Player({ k, pos = [1800, 1000], c }) {
+export function Player({ k, pos = [200, 200], c }) {
 	const player = k.add([
 		k.pos(pos),
 		k.sprite("bean"),

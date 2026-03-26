@@ -6,6 +6,8 @@ function DeathScene({ k, c }) {
 		k.anchor("center"),
 		k.layer("ui"),
 	]);
+
+	k.play("death");
 }
 
 export function useDeathScene({ k, c }) {
