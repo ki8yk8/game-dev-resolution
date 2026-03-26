@@ -1,8 +1,10 @@
 function DeathScene({ k, c }) {
-	const deathMessage = k.add([
-		k.text("You died", {
-			color: k.rgb(0, 0, 0),
-		}),
+	k.add([
+		k.text("You lost the game"),
+		k.color(0, 0, 0),
+		k.pos(k.width()/2, k.height()/2),
+		k.anchor("center"),
+		k.layer("ui"),
 	]);
 }
 

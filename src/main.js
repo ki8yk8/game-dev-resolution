@@ -20,6 +20,7 @@ const SPRITES = {
 	web: "web.png",
 	steel: "steel.png",
 	toolbox: "toolbox.png",
+	portal: "portal.png",
 };
 
 const AUDIOS = {

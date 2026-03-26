@@ -1,4 +1,4 @@
-import { Player, Map, Objects, Toolbox } from "../objects";
+import { Player, Map, Objects, Toolbox, Portal } from "../objects";
 import { WELCOME_MESSAGE } from "../data/scripts";
 import { Message } from "../ui";
 
@@ -12,6 +12,7 @@ async function GamePlay({ k, c }) {
 		c,
 	});
 	const { collections, addToCollection } = Toolbox({ k, c });
+	Portal({ k, c });
 
 	// disables player movement while the welcome message is being displayed
 	disablePlayerMovement();
