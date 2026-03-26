@@ -35,8 +35,6 @@ export function Player({ k, pos = [200, 200], c }) {
 		}
 
 		// restricts the movement of player within the gameplay canvas
-		// player.pos.x = k.clamp(currrentPosition.x, 0, k.width() - player.width);
-		// player.pos.y = k.clamp(currrentPosition.y, 0, k.height() - player.height);
 		player.pos.x = currrentPosition.x;
 		player.pos.y = currrentPosition.y;
 

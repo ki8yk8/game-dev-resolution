@@ -48,20 +48,35 @@ export function Map({ k, c }) {
 	});
 
 	// emergency exit door
-	Wall({
+	const { enablePassThrough: enablePassThroughForEmergency } = Wall({
 		k,
 		c,
 		width: 100,
 		pos: k.vec2(1400, 600),
 		isVertical: true,
-		isPassThrough: true,
+		isPassThrough: c.DEVELOPMENT,
 	});
+
 	// emergency exit
 	Wall({ k, c, width: 520, pos: k.vec2(1300, 600) });
-	Wall({ k, c, width: 400, pos: k.vec2(1300 + 520, 600), isVertical: true });
+	Wall({
+		k,
+		c,
+		width: 400,
+		pos: k.vec2(1300 + 520, 600),
+		isVertical: true,
+	});
 
 	// blocks the exit; exit can be entered either through a emergency exit or  through a steel door
 	Wall({ k, c, width: 100, pos: k.vec2(1800, 950) });
-	Wall({ k, c, width: 150, pos: k.vec2(1800 + 100, 950), isPassThrough: true });
+	const { enablePassThrough: enablePassThroughForExit } = Wall({
+		k,
+		c,
+		width: 150,
+		pos: k.vec2(1800 + 100, 950),
+		isPassThrough: c.DEVELOPMENT,
+	});
 	Wall({ k, c, width: 100, pos: k.vec2(1800 + 100 + 150, 950) });
+
+	return { enablePassThroughForEmergency, enablePassThroughForExit };
 }

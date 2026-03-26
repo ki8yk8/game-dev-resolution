@@ -112,7 +112,7 @@ export const STORY = {
 				outcome: "conditional",
 				condition: "flask",
 				ifTrue: {
-					outcome: "door_opens",
+					outcome: "emergency_door_opens",
 					message:
 						"It responds. The door opens. Cold air. Dark Sky. You walk out carrying things you were never meant to find and answers nobody wanted you to have.",
 				},
@@ -127,7 +127,7 @@ export const STORY = {
 				outcome: "conditional",
 				condition: "keycard",
 				ifTrue: {
-					outcome: "door_opens",
+					outcome: "emergency_door_opens",
 					message:
 						"A beep. A pause that feels too long. Then the door moves. You don't look back.",
 				},

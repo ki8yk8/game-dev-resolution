@@ -7,7 +7,10 @@ async function GamePlay({ k, c }) {
 		k,
 		c,
 	});
-	Map({ k, c });
+	const { enablePassThroughForEmergency, enablePassThroughForExit } = Map({
+		k,
+		c,
+	});
 	const { collections, addToCollection } = Toolbox({ k, c });
 
 	// disables player movement while the welcome message is being displayed
@@ -31,7 +34,14 @@ async function GamePlay({ k, c }) {
 	Objects({
 		k,
 		c,
-		deps: { disablePlayerMovement, enablePlayerMovement, addToCollection },
+		deps: {
+			disablePlayerMovement,
+			enablePlayerMovement,
+			addToCollection,
+			enablePassThroughForEmergency,
+			enablePassThroughForExit,
+			collections,
+		},
 	});
 }
 

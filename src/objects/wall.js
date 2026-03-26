@@ -26,8 +26,13 @@ export function Wall({
 		wall.unuse("body");
 	}
 
+	function enablePassThrough() {
+		wall.opacity = 0.9;
+		wall.unuse("body");
+	}
+
 	// rotate for vertical walls
 	if (isVertical) wall.angle = 90;
 
-	return wall;
+	return { wall, enablePassThrough };
 }

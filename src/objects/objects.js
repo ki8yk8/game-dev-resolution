@@ -57,6 +57,7 @@ export function Objects({ k, c, deps }) {
 				choice,
 				storyItem: item,
 				addToCollection: deps.addToCollection,
+				collections: deps.collections,
 			});
 
 			// choice has been made so disappear this item
@@ -68,10 +69,10 @@ export function Objects({ k, c, deps }) {
 			// enable player movement
 			deps.enablePlayerMovement();
 
-			// if result is win then do the win animation and go to win scene
-			if (result === "win") {
-				// TODO: win animation
-				k.go("win");
+			if (result === "emergency_door_opens") {
+				deps.enablePassThroughForEmergency();
+			} else if (result === "door_opens") {
+				deps.enablePassThroughForExit();
 			}
 
 			// if result is death then do the death animation and go to death scene
