@@ -4,11 +4,12 @@ export function Wall({
 	pos,
 	width = 100,
 	isVertical = false,
-	isRetractable = false,
+	isPassThrough = false,
 }) {
 	const wall = k.add([
 		k.rect(width, 32),
 		k.color(0, 0, 0),
+		k.opacity(1),
 		k.anchor("topleft"),
 		k.rotate(0),
 		k.pos(pos),
@@ -17,11 +18,12 @@ export function Wall({
 		k.body({
 			isStatic: true,
 		}),
-		["body", isRetractable ? "body--door" : null],
+		["body", isPassThrough ? "body--door" : null],
 	]);
 
-	if (isRetractable && c.DEVELOPMENT) {
-		wall.color = k.rgb(255, 200, 0);
+	if (isPassThrough) {
+		wall.opacity = 0.9;
+		wall.unuse("body");
 	}
 
 	// rotate for vertical walls

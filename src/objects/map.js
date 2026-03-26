@@ -2,13 +2,13 @@ import { Wall } from "./wall";
 
 export function Map({ k, c }) {
 	Wall({ k, c, width: 1200, pos: k.vec2(100, 100) });
-	const retractableWall = Wall({
+	Wall({
 		k,
 		c,
 		width: 200,
 		pos: k.vec2(100 + 1200, 100),
-		isRetractable: true,
-	}); // door
+		isPassThrough: true,
+	});
 	Wall({
 		k,
 		c,
@@ -37,8 +37,7 @@ export function Map({ k, c }) {
 	Wall({ k, c, width: 500, pos: k.vec2(1218, 700), isVertical: true });
 	Wall({ k, c, width: 500, pos: k.vec2(1218, 700) });
 	Wall({ k, c, width: 500, pos: k.vec2(1718, 700), isVertical: true });
-	Wall({ k, c, width: 600, pos: k.vec2(1686, 1200) });
-	Wall({ k, c, width: 200, pos: k.vec2(2300, 1032), isVertical: true });
+	Wall({ k, c, width: 616, pos: k.vec2(1686, 1200) });
 	Wall({ k, c, width: 150, pos: k.vec2(2300 - 150, 1032) });
 	Wall({
 		k,
@@ -47,4 +46,22 @@ export function Map({ k, c }) {
 		pos: k.vec2(2300 - 150, 1032 - 966 + 32),
 		isVertical: true,
 	});
+
+	// emergency exit door
+	Wall({
+		k,
+		c,
+		width: 100,
+		pos: k.vec2(1400, 600),
+		isVertical: true,
+		isPassThrough: true,
+	});
+	// emergency exit
+	Wall({ k, c, width: 520, pos: k.vec2(1300, 600) });
+	Wall({ k, c, width: 400, pos: k.vec2(1300 + 520, 600), isVertical: true });
+
+	// blocks the exit; exit can be entered either through a emergency exit or  through a steel door
+	Wall({ k, c, width: 100, pos: k.vec2(1800, 950) });
+	Wall({ k, c, width: 150, pos: k.vec2(1800 + 100, 950), isPassThrough: true });
+	Wall({ k, c, width: 100, pos: k.vec2(1800 + 100 + 150, 950) });
 }

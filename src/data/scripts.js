@@ -105,7 +105,7 @@ export const STORY = {
 	exit: {
 		label: "Emergency Exit",
 		text: "The door at the end of it all. Steel. Heavy. Two ways to open it - or maybe neither works. You won't know until you try.",
-		pos: [500, 600],
+		pos: [1300, 660],
 		choices: [
 			{
 				text: "Override button",
