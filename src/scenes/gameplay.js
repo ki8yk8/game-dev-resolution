@@ -1,6 +1,6 @@
-import { Player, Wall } from "../objects";
+import { Player, Wall, Objects } from "../objects";
 import { WELCOME_MESSAGE } from "../data/scripts";
-import { Objects, Message } from "../ui";
+import { Message } from "../ui";
 
 async function GamePlay({ k, c }) {
 	const { player, disablePlayerMovement, enablePlayerMovement } = Player({
