@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var raycast_right = $"RayCast2D Right"
 @onready var raycast_left = $"RayCast2D Left"
-
+@onready var animated_sprite = $AnimatedSprite2D
 const SPEED = 70
 var direction = 1
 
@@ -14,8 +14,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if raycast_right.is_colliding():
 		direction = -1
+		animated_sprite.flip_h = true
+		
 		
 	if raycast_left.is_colliding():
 		direction = 1
+		animated_sprite.flip_h = false
 	
 	position.x += SPEED * direction * delta
