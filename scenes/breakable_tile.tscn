@@ -1,50 +1,39 @@
 [gd_scene format=3 uid="uid://dvd84igqjh3a6"]
 
 [ext_resource type="Texture2D" uid="uid://cst25terc0lc2" path="res://assets/sprites/world_tileset.png" id="1_2qbxc"]
+[ext_resource type="Script" uid="uid://d1x1mfqs3crrn" path="res://scripts/breakable_tile.gd" id="1_3tu1s"]
 
-[sub_resource type="GDScript" id="GDScript_g2863"]
-script/source = "extends Node2D
-
-@onready var timer = $Timer
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	timer.start()
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	timer.stop()
-
-func _on_timer_timeout() -> void:
-	queue_free()
-"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qbxc"]
+size = Vector2(16, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3tu1s"]
 size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qbxc"]
-size = Vector2(16, 16)
+[node name="Breakable Tile" type="Node2D" unique_id=125142229]
+script = ExtResource("1_3tu1s")
 
-[node name="Breakable Tile" type="Node" unique_id=995402154]
-script = SubResource("GDScript_g2863")
+[node name="Area2D" type="Area2D" parent="." unique_id=1617214198]
+collision_mask = 2
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=503697311]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=341490995]
+position = Vector2(8, -8.5)
+shape = SubResource("RectangleShape2D_2qbxc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1416398299]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1409107505]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=449132450]
+visible = false
 position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_3tu1s")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=690240472]
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=319850895]
 position = Vector2(8, -8)
 texture = ExtResource("1_2qbxc")
 region_enabled = true
 region_rect = Rect2(16.048147, 0.20899773, 16.03927, 16.039272)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1168981476]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1554853113]
-position = Vector2(8, -8)
-shape = SubResource("RectangleShape2D_2qbxc")
-
-[node name="Timer" type="Timer" parent="." unique_id=156955951]
+[node name="Timer" type="Timer" parent="." unique_id=82934558]
+wait_time = 0.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
