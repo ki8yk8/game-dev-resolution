@@ -48,3 +48,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+	# applying impulse to the rocks
+	for i in get_slide_collision_count():
+		var col = get_slide_collision(i)
+		var body = col.get_collider()
+		
+		if col.get_collider() is RigidBody2D and body.is_in_group("rock"):
+			var normal = col.get_normal()
+			body.apply_central_impulse(-normal*5.0)
