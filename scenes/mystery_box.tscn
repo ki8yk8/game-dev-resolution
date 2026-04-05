@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cjams21plqtml"]
+
+[ext_resource type="Script" uid="uid://mr786450rq4i" path="res://scripts/mystery_box.gd" id="1_71yyq"]
+[ext_resource type="Texture2D" uid="uid://cst25terc0lc2" path="res://assets/sprites/world_tileset.png" id="2_1r3pp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7qx1"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aup8u"]
+size = Vector2(16, 6)
+
+[node name="MysteryBox" type="StaticBody2D" unique_id=756012643]
+script = ExtResource("1_71yyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1072037318]
+shape = SubResource("RectangleShape2D_e7qx1")
+
+[node name="MysterySprite" type="Sprite2D" parent="." unique_id=433446650]
+texture = ExtResource("2_1r3pp")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 16)
+
+[node name="NonMysterySprite" type="Sprite2D" parent="." unique_id=2038628828]
+visible = false
+texture = ExtResource("2_1r3pp")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1176318096]
+collision_mask = 2
+
+[node name="UnderHitCollisionShape" type="CollisionShape2D" parent="Area2D" unique_id=1518419522]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_aup8u")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
