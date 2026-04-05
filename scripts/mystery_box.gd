@@ -1,10 +1,21 @@
 extends StaticBody2D
 
+@export var coin_scene: PackedScene
+var coin_used = false
+
+func spawn_coin():
+	if coin_used:
+		return
+	coin_used = true
+	var coin = coin_scene.instantiate()
+	
+	get_tree().current_scene.add_child(coin)
+	coin.global_position = global_position + Vector2(0, 0)
+
 func _ready() -> void:
 	$NonMysterySprite.hide()
 	$MysterySprite.show()
-	#$StackableCoins.hide()
-	
+
 # under hit area
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("extra coin")
@@ -18,4 +29,4 @@ func play_hit_animation() -> void:
 	
 	$MysterySprite.hide()
 	$NonMysterySprite.show()
-	
+	spawn_coin()

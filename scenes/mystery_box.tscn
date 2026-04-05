@@ -12,6 +12,7 @@ size = Vector2(16, 6)
 
 [node name="MysteryBox" type="StaticBody2D" unique_id=756012643]
 script = ExtResource("1_71yyq")
+coin_scene = ExtResource("3_1r3pp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1072037318]
 shape = SubResource("RectangleShape2D_e7qx1")
@@ -33,8 +34,5 @@ collision_mask = 2
 [node name="UnderHitCollisionShape" type="CollisionShape2D" parent="Area2D" unique_id=1518419522]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_aup8u")
-
-[node name="StackableCoins" parent="." unique_id=231435064 instance=ExtResource("3_1r3pp")]
-position = Vector2(-1, -14)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
