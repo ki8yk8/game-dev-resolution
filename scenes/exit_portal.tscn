@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cjaua1ocrkt7q"]
+
+[ext_resource type="Script" uid="uid://c3sm0ik5ap1n8" path="res://scripts/exit_portal.gd" id="1_7ro5c"]
+[ext_resource type="Texture2D" uid="uid://cst25terc0lc2" path="res://assets/sprites/world_tileset.png" id="1_8vqmj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw7rh"]
+size = Vector2(14, 14)
+
+[node name="ExitPortal" type="Area2D" unique_id=1036702826]
+collision_mask = 2
+script = ExtResource("1_7ro5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877879198]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_rw7rh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1637264796]
+texture = ExtResource("1_8vqmj")
+region_enabled = true
+region_rect = Rect2(128, 64, 16, 16)
+
+[node name="Timer" type="Timer" parent="." unique_id=2136957511]
+wait_time = 0.6
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

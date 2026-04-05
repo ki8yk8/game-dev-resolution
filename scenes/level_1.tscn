@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cst25terc0lc2" path="res://assets/sprites/world_tileset.png" id="1_014kd"]
 [ext_resource type="Script" uid="uid://kxc2evcb4cm2" path="res://scripts/level_1.gd" id="1_rus8k"]
 [ext_resource type="PackedScene" uid="uid://cjams21plqtml" path="res://scenes/mystery_box.tscn" id="3_rus8k"]
+[ext_resource type="PackedScene" uid="uid://bauxi1bad8ek" path="res://scenes/killzone.tscn" id="4_5xbjy"]
+[ext_resource type="PackedScene" uid="uid://cjaua1ocrkt7q" path="res://scenes/exit_portal.tscn" id="5_4nkto"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("1_014kd")
@@ -292,6 +294,9 @@ texture = ExtResource("1_014kd")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bswci")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4nkto"]
+distance = -47.0
+
 [node name="Level1Root" type="Node2D" unique_id=781923473]
 script = ExtResource("1_rus8k")
 
@@ -326,3 +331,14 @@ position = Vector2(709, 91)
 
 [node name="MysteryBox5" parent="." unique_id=1012064522 instance=ExtResource("3_rus8k")]
 position = Vector2(311, 85)
+
+[node name="Killzone" parent="." unique_id=1504984906 instance=ExtResource("4_5xbjy")]
+visible = false
+position = Vector2(747, 295)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=681361943]
+position = Vector2(1, 0)
+shape = SubResource("WorldBoundaryShape2D_4nkto")
+
+[node name="ExitPortal" parent="." unique_id=1036702826 instance=ExtResource("5_4nkto")]
+position = Vector2(1349, 168)
