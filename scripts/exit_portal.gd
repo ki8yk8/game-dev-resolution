@@ -8,5 +8,5 @@ func _on_body_exited(body: Node2D) -> void:
 	tween.tween_property(body, "position:x", 100, 0.8).as_relative()
 
 func _on_timer_timeout() -> void:
-	print("Level Completed")
 	timer.stop()
+	GameManager.restart()

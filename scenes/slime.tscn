@@ -93,9 +93,9 @@ shape = SubResource("RectangleShape2D_n6pvg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1076298538]
 sprite_frames = SubResource("SpriteFrames_v5wyi")
-animation = &"death"
 autoplay = "default"
-frame_progress = 0.055975985
+frame = 3
+frame_progress = 0.7394658
 
 [node name="Killzone" parent="." unique_id=1504984906 instance=ExtResource("3_n6pvg")]
 collision_layer = 4
