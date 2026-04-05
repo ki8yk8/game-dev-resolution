@@ -1,8 +1,9 @@
-extends Node2D
+extends Node
 
-@onready var score_label = $ScoreLabel
-var score = 0
+var coins = 0
 
-func add_coin():
-	score += 1;
-	score_label.text = "Congratulations! You have collected " + str(score) + " coins"  
+signal coins_changed
+
+func add_coin(value := 1):
+	coins += 1
+	coins_changed.emit(coins)
