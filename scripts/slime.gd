@@ -16,3 +16,11 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direction * SPEED
 	velocity.y += 500 * delta
 	move_and_slide()
+
+func _on_head_collision_detect_body_entered(body: Node2D) -> void:
+	$Timer.start()
+	animated_sprite.play("death")
+
+func _on_timer_timeout() -> void:
+	$Timer.stop()
+	queue_free()

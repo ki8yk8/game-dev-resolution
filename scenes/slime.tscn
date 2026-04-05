@@ -7,6 +7,22 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6pvg"]
 size = Vector2(14, 12)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6pvg"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5wyi"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l8pv"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnioy"]
+atlas = ExtResource("2_n6pvg")
+region = Rect2(0, 0, 24, 24)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjw23"]
 atlas = ExtResource("2_n6pvg")
 region = Rect2(0, 24, 24, 24)
@@ -25,6 +41,23 @@ region = Rect2(72, 24, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v5wyi"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6pvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5wyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l8pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnioy")
+}],
+"loop": true,
+"name": &"death",
+"speed": 4.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pjw23")
@@ -46,6 +79,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjw23"]
 size = Vector2(16, 11)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2npkn"]
+size = Vector2(10, 3)
+
 [node name="Slime" type="CharacterBody2D" unique_id=270155801]
 collision_layer = 4
 collision_mask = 3
@@ -57,8 +93,9 @@ shape = SubResource("RectangleShape2D_n6pvg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1076298538]
 sprite_frames = SubResource("SpriteFrames_v5wyi")
+animation = &"death"
 autoplay = "default"
-frame_progress = 0.6559644
+frame_progress = 0.055975985
 
 [node name="Killzone" parent="." unique_id=1504984906 instance=ExtResource("3_n6pvg")]
 collision_layer = 4
@@ -67,3 +104,16 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=54814745]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_pjw23")
+
+[node name="HeadCollisionDetect" type="Area2D" parent="." unique_id=1007521639]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadCollisionDetect" unique_id=1236158094]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_2npkn")
+
+[node name="Timer" type="Timer" parent="." unique_id=1790747016]
+
+[connection signal="body_entered" from="HeadCollisionDetect" to="." method="_on_head_collision_detect_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
