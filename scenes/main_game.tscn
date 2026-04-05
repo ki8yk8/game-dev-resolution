@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dc51c44ujqjao" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_d2op2"]
 [ext_resource type="Script" uid="uid://bptdmceciabc6" path="res://scripts/game_hud.gd" id="3_ipu61"]
 [ext_resource type="PackedScene" uid="uid://vewbr0gpbed7" path="res://scenes/coin.tscn" id="6_ygxny"]
+[ext_resource type="PackedScene" uid="uid://brxw4ofpi3c13" path="res://scenes/stackable_coins.tscn" id="7_wi4c7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipu61"]
 atlas = ExtResource("3_0rdsr")
@@ -68,3 +69,12 @@ text = "x0"
 
 [node name="Coin" parent="." unique_id=1923248190 instance=ExtResource("6_ygxny")]
 position = Vector2(370, 278)
+
+[node name="StackableCoins" parent="." unique_id=231435064 instance=ExtResource("7_wi4c7")]
+position = Vector2(399, 268)
+
+[node name="StackableCoins2" parent="." unique_id=138847475 instance=ExtResource("7_wi4c7")]
+position = Vector2(421, 234)
+
+[node name="StackableCoins3" parent="." unique_id=132113295 instance=ExtResource("7_wi4c7")]
+position = Vector2(403, 254)

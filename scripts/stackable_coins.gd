@@ -1,6 +1,7 @@
 extends RigidBody2D
+@onready var GameHUD = %GameHUD
 
-@onready var gameManager = %GameManager
-
-func _on_body_entered(body: Node) -> void:
-	print("collision with a body" )
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	# remove the coin
+	queue_free()
+	GameHUD.update_coins()	
