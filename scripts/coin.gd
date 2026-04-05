@@ -1,7 +1,7 @@
 extends Area2D
 
-@onready var gameManager = %GameManager
+@onready var GameHUD = %GameHUD
 
 func _on_body_entered(body: Node2D) -> void:
 	queue_free()
-	gameManager.add_coin()
+	GameHUD.update_coins()

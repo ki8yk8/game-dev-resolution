@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c3l6rt13dspt0" path="res://scenes/player.tscn" id="2_72e8q"]
 [ext_resource type="Texture2D" uid="uid://dkaew6h75g01w" path="res://assets/sprites/coin.png" id="3_0rdsr"]
 [ext_resource type="FontFile" uid="uid://dc51c44ujqjao" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_d2op2"]
+[ext_resource type="Script" uid="uid://bptdmceciabc6" path="res://scripts/game_hud.gd" id="3_ipu61"]
+[ext_resource type="PackedScene" uid="uid://vewbr0gpbed7" path="res://scenes/coin.tscn" id="6_ygxny"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipu61"]
 atlas = ExtResource("3_0rdsr")
@@ -14,10 +16,11 @@ region = Rect2(0, 0, 16, 16)
 [node name="Level1Root" parent="." unique_id=781923473 instance=ExtResource("1_s3esy")]
 position = Vector2(225, 105)
 
-[node name="CharacterBody2D" parent="." unique_id=1932747612 instance=ExtResource("2_72e8q")]
+[node name="Player" parent="." unique_id=1932747612 instance=ExtResource("2_72e8q")]
+unique_name_in_owner = true
 position = Vector2(359, 227)
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1620635915]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1620635915]
 position = Vector2(1, 0)
 zoom = Vector2(4, 4)
 limit_left = 0
@@ -25,35 +28,42 @@ limit_top = 0
 limit_right = 100000
 limit_bottom = 10000
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=916725695]
+[node name="GameHUD" type="Node" parent="." unique_id=1594256605]
+unique_name_in_owner = true
+script = ExtResource("3_ipu61")
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=330135122]
+[node name="CanvasLayer" type="CanvasLayer" parent="GameHUD" unique_id=916725695]
+
+[node name="Control" type="Control" parent="GameHUD/CanvasLayer" unique_id=330135122]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 110.0
 offset_bottom = 40.0
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=581633555]
+[node name="MarginContainer" type="MarginContainer" parent="GameHUD/CanvasLayer/Control" unique_id=581633555]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 80.0
 offset_bottom = 52.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer" unique_id=632529053]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameHUD/CanvasLayer/Control/MarginContainer" unique_id=632529053]
 layout_mode = 2
 
-[node name="CoinHbox" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/HBoxContainer" unique_id=1976212026]
+[node name="CoinHbox" type="HBoxContainer" parent="GameHUD/CanvasLayer/Control/MarginContainer/HBoxContainer" unique_id=1976212026]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/MarginContainer/HBoxContainer/CoinHbox" unique_id=726669575]
+[node name="TextureRect" type="TextureRect" parent="GameHUD/CanvasLayer/Control/MarginContainer/HBoxContainer/CoinHbox" unique_id=726669575]
 layout_mode = 2
 texture = SubResource("AtlasTexture_ipu61")
 expand_mode = 3
 
-[node name="Value" type="Label" parent="CanvasLayer/Control/MarginContainer/HBoxContainer/CoinHbox" unique_id=1706869500]
+[node name="Value" type="Label" parent="GameHUD/CanvasLayer/Control/MarginContainer/HBoxContainer/CoinHbox" unique_id=1706869500]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_d2op2")
 theme_override_font_sizes/font_size = 24
-text = "0"
+text = "x0"
+
+[node name="Coin" parent="." unique_id=1923248190 instance=ExtResource("6_ygxny")]
+position = Vector2(370, 278)
