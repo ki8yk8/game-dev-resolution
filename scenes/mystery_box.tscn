@@ -11,6 +11,7 @@ size = Vector2(16, 16)
 size = Vector2(16, 6)
 
 [node name="MysteryBox" type="StaticBody2D" unique_id=756012643]
+collision_mask = 2
 script = ExtResource("1_71yyq")
 coin_scene = ExtResource("3_1r3pp")
 

@@ -1,24 +1,18 @@
-extends Node2D
+extends CharacterBody2D
 
-@onready var raycast_right = $"RayCast2D Right"
-@onready var raycast_left = $"RayCast2D Left"
 @onready var animated_sprite = $AnimatedSprite2D
 const SPEED = 70
 var direction = 1
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _physics_process(delta: float) -> void:
+	if is_on_wall():
+		direction *= -1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if raycast_right.is_colliding():
-		direction = -1
+	if direction == 1:
+		animated_sprite.flip_h = false
+	else:
 		animated_sprite.flip_h = true
 		
-		
-	if raycast_left.is_colliding():
-		direction = 1
-		animated_sprite.flip_h = false
-	
-	position.x += SPEED * direction * delta
+	velocity.x = direction * SPEED
+	velocity.y += 500 * delta
+	move_and_slide()

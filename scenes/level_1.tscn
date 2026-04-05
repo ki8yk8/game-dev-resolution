@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cjaua1ocrkt7q" path="res://scenes/exit_portal.tscn" id="5_4nkto"]
 [ext_resource type="PackedScene" uid="uid://brxw4ofpi3c13" path="res://scenes/stackable_coins.tscn" id="6_fcfvj"]
 [ext_resource type="PackedScene" uid="uid://vewbr0gpbed7" path="res://scenes/coin.tscn" id="7_pa8r4"]
+[ext_resource type="PackedScene" uid="uid://c75dor88vfq6d" path="res://scenes/slime.tscn" id="8_15mv3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("1_014kd")
@@ -385,3 +386,6 @@ position = Vector2(1079, 147)
 
 [node name="StackableCoins8" parent="Coins" unique_id=1330789425 instance=ExtResource("6_fcfvj")]
 position = Vector2(1241, 166)
+
+[node name="Slime" parent="." unique_id=270155801 instance=ExtResource("8_15mv3")]
+position = Vector2(146, 160)
