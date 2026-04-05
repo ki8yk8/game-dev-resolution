@@ -7,10 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dxg0wwem6blrm" path="res://scenes/platform.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://vewbr0gpbed7" path="res://scenes/coin.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bauxi1bad8ek" path="res://scenes/killzone.tscn" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://brxw4ofpi3c13" path="res://scenes/stackable_coins.tscn" id="5_vtaks"]
 [ext_resource type="PackedScene" uid="uid://dvd84igqjh3a6" path="res://scenes/breakable_tile.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://c75dor88vfq6d" path="res://scenes/slime.tscn" id="7_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://bgrj77bqy6y4" path="res://scenes/rock.tscn" id="11_kvpfn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
 texture = ExtResource("2_yqjtg")
@@ -500,15 +498,9 @@ position = Vector2(-148, -103)
 [node name="Coin2" parent="Coins" unique_id=556115774 instance=ExtResource("4_lbhrr")]
 position = Vector2(258, 32)
 
-[node name="StackableCoins" parent="Coins" unique_id=231435064 instance=ExtResource("5_vtaks")]
-position = Vector2(-12, 8)
-
-[node name="StackableCoins2" parent="Coins" unique_id=1291787465 instance=ExtResource("5_vtaks")]
-position = Vector2(-9, -6)
-
 [node name="player" parent="Coins" unique_id=1932747612 instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
-position = Vector2(588, 0)
+position = Vector2(-25, -23)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="Coins/player" unique_id=500130500]
@@ -552,6 +544,3 @@ position = Vector2(32, 65)
 
 [node name="Slime" parent="." unique_id=1709607015 instance=ExtResource("7_u5sy4")]
 position = Vector2(-185, -93)
-
-[node name="Rock" parent="." unique_id=318852265 instance=ExtResource("11_kvpfn")]
-position = Vector2(600, 15)
