@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://cx3aod216d00s" path="res://scenes/level_1.tscn" id="1_s3esy"]
 [ext_resource type="PackedScene" uid="uid://c3l6rt13dspt0" path="res://scenes/player.tscn" id="2_72e8q"]
+[ext_resource type="Texture2D" uid="uid://dkaew6h75g01w" path="res://assets/sprites/coin.png" id="3_0rdsr"]
+[ext_resource type="FontFile" uid="uid://dc51c44ujqjao" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_d2op2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipu61"]
+atlas = ExtResource("3_0rdsr")
+region = Rect2(0, 0, 16, 16)
 
 [node name="MainGame" type="Node2D" unique_id=1050702291]
 
@@ -12,6 +18,7 @@ position = Vector2(225, 105)
 position = Vector2(359, 227)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1620635915]
+position = Vector2(1, 0)
 zoom = Vector2(4, 4)
 limit_left = 0
 limit_top = 0
@@ -26,17 +33,27 @@ anchors_preset = 0
 offset_right = 110.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1113181612]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=581633555]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 80.0
+offset_bottom = 52.0
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=1209644472]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer" unique_id=632529053]
 layout_mode = 2
-text = "Item
-"
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=2123448266]
+[node name="CoinHbox" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/HBoxContainer" unique_id=1976212026]
 layout_mode = 2
-text = "Item
-"
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/MarginContainer/HBoxContainer/CoinHbox" unique_id=726669575]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ipu61")
+expand_mode = 3
+
+[node name="Value" type="Label" parent="CanvasLayer/Control/MarginContainer/HBoxContainer/CoinHbox" unique_id=1706869500]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_d2op2")
+theme_override_font_sizes/font_size = 24
+text = "0"
