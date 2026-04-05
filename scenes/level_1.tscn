@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cjams21plqtml" path="res://scenes/mystery_box.tscn" id="3_rus8k"]
 [ext_resource type="PackedScene" uid="uid://bauxi1bad8ek" path="res://scenes/killzone.tscn" id="4_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://cjaua1ocrkt7q" path="res://scenes/exit_portal.tscn" id="5_4nkto"]
+[ext_resource type="PackedScene" uid="uid://brxw4ofpi3c13" path="res://scenes/stackable_coins.tscn" id="6_fcfvj"]
+[ext_resource type="PackedScene" uid="uid://vewbr0gpbed7" path="res://scenes/coin.tscn" id="7_pa8r4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
 texture = ExtResource("1_014kd")
@@ -342,3 +344,44 @@ shape = SubResource("WorldBoundaryShape2D_4nkto")
 
 [node name="ExitPortal" parent="." unique_id=1036702826 instance=ExtResource("5_4nkto")]
 position = Vector2(1349, 168)
+
+[node name="Coins" type="Node2D" parent="." unique_id=1327117306]
+
+[node name="StackableCoins9" parent="Coins" unique_id=1717673600 instance=ExtResource("6_fcfvj")]
+position = Vector2(597, 166)
+
+[node name="StackableCoins5" parent="Coins" unique_id=1334586820 instance=ExtResource("6_fcfvj")]
+position = Vector2(136, 109)
+
+[node name="StackableCoins" parent="Coins" unique_id=231435064 instance=ExtResource("6_fcfvj")]
+position = Vector2(151, 92)
+
+[node name="StackableCoins2" parent="Coins" unique_id=2026725373 instance=ExtResource("6_fcfvj")]
+position = Vector2(168, 73)
+
+[node name="StackableCoins3" parent="Coins" unique_id=54776148 instance=ExtResource("6_fcfvj")]
+position = Vector2(185, 53)
+
+[node name="StackableCoins4" parent="Coins" unique_id=1365428801 instance=ExtResource("6_fcfvj")]
+position = Vector2(201, 31)
+
+[node name="StackableCoins6" parent="Coins" unique_id=988890749 instance=ExtResource("6_fcfvj")]
+position = Vector2(457, 166)
+
+[node name="StackableCoins7" parent="Coins" unique_id=637328567 instance=ExtResource("6_fcfvj")]
+position = Vector2(805, 87)
+
+[node name="Coin" parent="Coins" unique_id=1923248190 instance=ExtResource("7_pa8r4")]
+position = Vector2(991, 107)
+
+[node name="Coin2" parent="Coins" unique_id=908481235 instance=ExtResource("7_pa8r4")]
+position = Vector2(1090, 135)
+
+[node name="Coin3" parent="Coins" unique_id=1546682825 instance=ExtResource("7_pa8r4")]
+position = Vector2(1101, 121)
+
+[node name="Coin4" parent="Coins" unique_id=1884912135 instance=ExtResource("7_pa8r4")]
+position = Vector2(1079, 147)
+
+[node name="StackableCoins8" parent="Coins" unique_id=1330789425 instance=ExtResource("6_fcfvj")]
+position = Vector2(1241, 166)
