@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -250.0
 var alive = true
 
 func death():
-	GameManager.coins = 0
+	GameManager._add_coin(-GameManager._state.coins)
 	alive = false
 	animated_sprite.play("death")
 

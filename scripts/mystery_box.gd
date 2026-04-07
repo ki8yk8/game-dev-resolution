@@ -18,7 +18,6 @@ func _ready() -> void:
 
 # under hit area
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("extra coin")
 	play_hit_animation()
 
 func play_hit_animation() -> void:
