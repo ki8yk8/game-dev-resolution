@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://citorwo4a65xv"]
+
+[ext_resource type="Script" uid="uid://dq656sghygedn" path="res://scripts/checkpoint.gd" id="1_vsimk"]
+[ext_resource type="Texture2D" uid="uid://bue5fhjrpo6lk" path="res://assets/sprites/fruit.png" id="2_yqsag"]
+[ext_resource type="Texture2D" uid="uid://cst25terc0lc2" path="res://assets/sprites/world_tileset.png" id="3_c45tw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55jpe"]
+size = Vector2(11, 13)
+
+[node name="Checkpoint" type="Area2D" unique_id=934750682]
+collision_mask = 2
+script = ExtResource("1_vsimk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=903637829]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_55jpe")
+
+[node name="GrapesSprite" type="Sprite2D" parent="." unique_id=313293046]
+texture = ExtResource("2_yqsag")
+region_enabled = true
+region_rect = Rect2(0, 48, 16, 16)
+
+[node name="FlagSprite" type="Sprite2D" parent="." unique_id=1681708168]
+texture = ExtResource("3_c45tw")
+region_enabled = true
+region_rect = Rect2(128, 64, 16, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

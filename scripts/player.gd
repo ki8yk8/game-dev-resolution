@@ -6,6 +6,23 @@ const SPEED = 100.0
 const JUMP_VELOCITY = -250.0
 var alive = true
 
+func _ready() -> void:
+	Controller._subscribe("game-manager", handle_player_checkpoint)
+	
+func _exit_tree() -> void:
+	Controller._unsubscribe("game-manager", handle_player_checkpoint)
+
+# FIX: use something like publisher key in controller
+var last_checkpoint = null
+func handle_player_checkpoint(state):
+	var new_checkpoint: Vector2 = state.get("checkpoint")
+	#if last_checkpoint and last_checkpoint == new_checkpoint:
+		#return
+	print(position)
+	position = new_checkpoint
+	last_checkpoint = new_checkpoint
+	print("reloading")
+
 func death():
 	if alive:
 		animated_sprite.play("death")
