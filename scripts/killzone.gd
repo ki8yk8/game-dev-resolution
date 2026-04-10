@@ -1,6 +1,10 @@
 extends Area2D
 
 @onready var timer = $Timer
+var publisher_callback
+
+func _ready() -> void:
+	publisher_callback = Controller._register_publisher("killzone")
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
@@ -8,4 +12,4 @@ func _on_body_entered(body: Node2D) -> void:
 		timer.start()
 
 func _on_timer_timeout() -> void:
-	GameManager._change_level(GameManager.LevelUpdateTypes.RELOAD)
+	publisher_callback.call(true)

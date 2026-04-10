@@ -8,6 +8,7 @@ func _ready() -> void:
 	
 	# defining the subscriptions to game entities
 	Controller._subscribe("coin", update_coin)
+	Controller._subscribe("killzone", handle_killzone)
 
 # game state
 var _state = {
@@ -20,3 +21,9 @@ var _state = {
 func update_coin(increment):
 	_state["coins"] += increment
 	publisher_callback.call(_state)
+
+# TODO: create a level manager that handles the level maangement health will be decreased by 1 
+func handle_killzone(ignore):
+	_state["coins"] = 0
+	publisher_callback.call(_state)
+	get_tree().reload_current_scene()
