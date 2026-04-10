@@ -10,6 +10,10 @@ func _ready() -> void:
 	Controller._subscribe("coin", update_coin)
 	Controller._subscribe("killzone", handle_killzone)
 
+func _exit_tree() -> void:
+	Controller._unsubscribe("coin", update_coin)
+	Controller._unsubscribe("killzone", handle_killzone)
+
 # game state
 var _state = {
 	"coins": 0,

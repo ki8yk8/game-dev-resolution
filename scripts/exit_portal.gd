@@ -9,4 +9,4 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	timer.stop()
-	GameManager._change_level(GameManager.LevelUpdateTypes.INCREMENT, 1)
+	#GameManager._change_level(GameManager.LevelUpdateTypes.INCREMENT, 1)

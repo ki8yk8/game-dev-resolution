@@ -7,3 +7,6 @@ func _ready():
 
 func update_coins(value)->void:
 	coin_label.text = "x" + str(value["coins"])
+
+func _exit_tree() -> void:
+	Controller._unsubscribe("game-manager", update_coins)
