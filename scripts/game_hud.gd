@@ -3,7 +3,7 @@ extends Node
 @onready var coin_label = $CanvasLayer/Control/MarginContainer/HBoxContainer/CoinHbox/Value
 
 func _ready():
-	GameManager._coin_update.connect(update_coins)
+	Controller._subscribe("game-manager", update_coins)
 
 func update_coins(value)->void:
-	coin_label.text = "x" + str(value)
+	coin_label.text = "x" + str(value["coins"])
