@@ -7,8 +7,9 @@ const JUMP_VELOCITY = -250.0
 var alive = true
 
 func death():
+	if alive:
+		animated_sprite.play("death")
 	alive = false
-	animated_sprite.play("death")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

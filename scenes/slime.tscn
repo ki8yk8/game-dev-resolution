@@ -56,7 +56,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"death",
-"speed": 4.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -77,10 +77,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjw23"]
-size = Vector2(16, 11)
+size = Vector2(18, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2npkn"]
-size = Vector2(10, 3)
+size = Vector2(13, 4)
 
 [node name="Slime" type="CharacterBody2D" unique_id=270155801]
 collision_layer = 4
@@ -93,9 +93,8 @@ shape = SubResource("RectangleShape2D_n6pvg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1076298538]
 sprite_frames = SubResource("SpriteFrames_v5wyi")
+animation = &"death"
 autoplay = "default"
-frame = 3
-frame_progress = 0.7394658
 
 [node name="Killzone" parent="." unique_id=1504984906 instance=ExtResource("3_n6pvg")]
 collision_layer = 4
@@ -110,10 +109,11 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeadCollisionDetect" unique_id=1236158094]
-position = Vector2(0, 0.5)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_2npkn")
 
 [node name="Timer" type="Timer" parent="." unique_id=1790747016]
+wait_time = 0.5
 
 [connection signal="body_entered" from="HeadCollisionDetect" to="." method="_on_head_collision_detect_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
