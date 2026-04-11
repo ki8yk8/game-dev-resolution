@@ -388,8 +388,18 @@ position = Vector2(1079, 147)
 [node name="StackableCoins8" parent="Coins" unique_id=1330789425 instance=ExtResource("6_fcfvj")]
 position = Vector2(1241, 166)
 
-[node name="Slime" parent="." unique_id=270155801 instance=ExtResource("8_15mv3")]
+[node name="Slimes" type="Node2D" parent="." unique_id=1457592662]
+
+[node name="Slime" parent="Slimes" unique_id=270155801 instance=ExtResource("8_15mv3")]
 position = Vector2(146, 160)
 
-[node name="Checkpoint" parent="." unique_id=934750682 instance=ExtResource("9_e3sih")]
-position = Vector2(140, 168)
+[node name="Checkpoints" type="Node2D" parent="." unique_id=1368753272]
+
+[node name="Checkpoint" parent="Checkpoints" unique_id=934750682 instance=ExtResource("9_e3sih")]
+position = Vector2(117, 168)
+
+[node name="Checkpoint2" parent="Checkpoints" unique_id=745869357 instance=ExtResource("9_e3sih")]
+position = Vector2(1208, 169)
+
+[node name="Checkpoint3" parent="Checkpoints" unique_id=117390035 instance=ExtResource("9_e3sih")]
+position = Vector2(758, 120)

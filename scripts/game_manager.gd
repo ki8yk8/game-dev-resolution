@@ -5,7 +5,7 @@ var _state = {
 	"coins": 0,
 	"health": 0,
 	"level": 1,
-	"checkpoint": Vector2(349.0, 211.0),
+	"checkpoint": Vector2(117.0, 168.0),
 }
 
 # publisher callback

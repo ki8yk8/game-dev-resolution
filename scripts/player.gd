@@ -13,15 +13,14 @@ func _exit_tree() -> void:
 	Controller._unsubscribe("game-manager", handle_player_checkpoint)
 
 # FIX: use something like publisher key in controller
-var last_checkpoint = null
+var occured = false
 func handle_player_checkpoint(state):
-	var new_checkpoint: Vector2 = state.get("checkpoint")
-	#if last_checkpoint and last_checkpoint == new_checkpoint:
-		#return
-	print(position)
+	if occured:
+		return
+		
+	var new_checkpoint: Vector2 = state.get("checkpoint") + Vector2(0, -50)
 	position = new_checkpoint
-	last_checkpoint = new_checkpoint
-	print("reloading")
+	occured = true
 
 func death():
 	if alive:
