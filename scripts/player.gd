@@ -7,20 +7,13 @@ const JUMP_VELOCITY = -250.0
 var alive = true
 
 func _ready() -> void:
-	Controller._subscribe("game-manager", handle_player_checkpoint)
+	Controller._subscribe("game-manager.checkpoint", handle_player_checkpoint)
 	
 func _exit_tree() -> void:
-	Controller._unsubscribe("game-manager", handle_player_checkpoint)
+	Controller._unsubscribe("game-manager.checkpoint", handle_player_checkpoint)
 
-# FIX: use something like publisher key in controller
-var occured = false
-func handle_player_checkpoint(state):
-	if occured:
-		return
-		
-	var new_checkpoint: Vector2 = state.get("checkpoint") + Vector2(0, -50)
-	position = new_checkpoint
-	occured = true
+func handle_player_checkpoint(pos):
+	position = pos + Vector2(0, -50)
 
 func death():
 	if alive:
