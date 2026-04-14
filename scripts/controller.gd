@@ -25,30 +25,27 @@ func _publish(data: Variant, publisher: String) -> void:
 	var cache = _cache.get(publisher)
 	var changed = {}
 	
-	if publisher == "game-manager":
-		print("in first", data, cache)
 	if data is Dictionary:
 		if cache is Dictionary:
 			# only have new things in the changed
 			for key in data.keys():
-				if key in cache and cache[key] != data[key]:
+				if key not in cache or cache[key] != data[key]:
 					changed[key] = data[key]
 					
 			# if nothing is new then do nothing
 			if len(changed.keys()) == 0:
 				return
 		else:
-			changed = data
+			changed = data.duplicate()
 			
 	_cache[publisher] = data.duplicate() if data is Dictionary else data
 	
-	if publisher == "game-manager":
-		print("in second", changed)
 	var subscribers = _subscribers.filter(func (s): return s.get("publisher").split(".")[0] == publisher)
 	for subscriber in subscribers:
 		var publisher_info = subscriber.get("publisher").split(".")
-		if len(publisher_info) > 1 and publisher_info[1] in changed.keys():
-			subscriber.get("callback").call(changed.get(publisher_info[1]))
+		if len(publisher_info) > 1:
+			if publisher_info[1] in changed.keys():
+				subscriber.get("callback").call(changed.get(publisher_info[1]))
 		else:
 			subscriber.get("callback").call(data)
 		

@@ -15,13 +15,15 @@ func _ready() -> void:
 	_state.merge(Controller._memory, true)
 	publisher_callback = Controller._register_publisher("game-manager")
 	
-	# registering the last coin
-	publisher_callback.call(_state)
-	
 	# defining the subscriptions to game entities
 	Controller._subscribe("coin", update_coin)
 	Controller._subscribe("killzone", handle_killzone)
 	Controller._subscribe("checkpoint", handle_checkpoint)
+	
+	# registering the last coin
+	publisher_callback.call.call_deferred(_state.duplicate())
+	_state.erase("checkpoint")
+	
 
 func _exit_tree() -> void:
 	Controller._unsubscribe("coin", update_coin)
@@ -39,5 +41,4 @@ func handle_killzone(ignore):
 	Controller._memorize("health", _state.get("health", _state.get("health")-1))
 	
 func handle_checkpoint(pos: Vector2):
-	_state["checkpoint"] = pos
 	Controller._memorize("checkpoint", pos)

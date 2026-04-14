@@ -63,9 +63,6 @@ theme_override_fonts/font = ExtResource("3_d2op2")
 theme_override_font_sizes/font_size = 24
 text = "x0"
 
-[node name="GameManager" type="Node" parent="." unique_id=1620675042]
-script = ExtResource("1_wi4c7")
-
 [node name="Level1Root" parent="." unique_id=781923473 instance=ExtResource("1_s3esy")]
 
 [node name="Slime" parent="." unique_id=270155801 instance=ExtResource("6_ygxny")]
@@ -73,3 +70,6 @@ position = Vector2(793, 265)
 
 [node name="Slime2" parent="." unique_id=384978178 instance=ExtResource("6_ygxny")]
 position = Vector2(959, 266)
+
+[node name="GameManager" type="Node" parent="." unique_id=1620675042]
+script = ExtResource("1_wi4c7")

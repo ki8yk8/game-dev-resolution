@@ -13,6 +13,7 @@ func _exit_tree() -> void:
 	Controller._unsubscribe("game-manager.checkpoint", handle_player_checkpoint)
 
 func handle_player_checkpoint(pos):
+	print(pos)
 	position = pos + Vector2(0, -50)
 
 func death():
