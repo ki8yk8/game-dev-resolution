@@ -31,7 +31,7 @@ func _exit_tree() -> void:
 # callback functions to handle the game state updates
 func update_coin(increment):
 	_state["coins"] += increment
-	publisher_callback.call(_state.duplicate())
+	publisher_callback.call(_state)
 
 # TODO: create a level manager that handles the level maangement health will be decreased by 1 
 func handle_killzone(ignore):

@@ -39,6 +39,8 @@ func _publish(data: Variant, publisher: String) -> void:
 				return
 		else:
 			changed = data
+			
+	_cache[publisher] = data.duplicate() if data is Dictionary else data
 	
 	if publisher == "game-manager":
 		print("in second", changed)
@@ -49,8 +51,6 @@ func _publish(data: Variant, publisher: String) -> void:
 			subscriber.get("callback").call(changed.get(publisher_info[1]))
 		else:
 			subscriber.get("callback").call(data)
-
-	_cache[publisher] = data
 		
 func _memorize(item: String, value: Variant):
 	_memory[item] = value
