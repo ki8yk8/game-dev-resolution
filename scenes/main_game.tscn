@@ -6,11 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://dkaew6h75g01w" path="res://assets/sprites/coin.png" id="3_0rdsr"]
 [ext_resource type="FontFile" uid="uid://dc51c44ujqjao" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_d2op2"]
 [ext_resource type="Script" uid="uid://bptdmceciabc6" path="res://scripts/game_hud.gd" id="3_ipu61"]
+[ext_resource type="Texture2D" uid="uid://c6cfi0rxe1u4t" path="res://assets/sprites/hearts.png" id="5_70vka"]
 [ext_resource type="PackedScene" uid="uid://c75dor88vfq6d" path="res://scenes/slime.tscn" id="6_ygxny"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipu61"]
 atlas = ExtResource("3_0rdsr")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l77h"]
+atlas = ExtResource("5_70vka")
+region = Rect2(0, 0, 18, 17)
 
 [node name="MainGame" type="Node2D" unique_id=1050702291]
 
@@ -45,7 +50,7 @@ offset_top = 12.0
 offset_right = 80.0
 offset_bottom = 52.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameHUD/CanvasLayer/Control/MarginContainer" unique_id=632529053]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameHUD/CanvasLayer/Control/MarginContainer" unique_id=449381555]
 layout_mode = 2
 
 [node name="CoinHbox" type="HBoxContainer" parent="GameHUD/CanvasLayer/Control/MarginContainer/HBoxContainer" unique_id=1976212026]
@@ -58,6 +63,27 @@ texture = SubResource("AtlasTexture_ipu61")
 expand_mode = 3
 
 [node name="Value" type="Label" parent="GameHUD/CanvasLayer/Control/MarginContainer/HBoxContainer/CoinHbox" unique_id=1706869500]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_d2op2")
+theme_override_font_sizes/font_size = 24
+text = "x0"
+
+[node name="MarginContainer" type="MarginContainer" parent="GameHUD/CanvasLayer/Control/MarginContainer/HBoxContainer" unique_id=1456280040]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+
+[node name="HeartHbox" type="HBoxContainer" parent="GameHUD/CanvasLayer/Control/MarginContainer/HBoxContainer" unique_id=1480033219]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GameHUD/CanvasLayer/Control/MarginContainer/HBoxContainer/HeartHbox" unique_id=477204355]
+layout_mode = 2
+texture = SubResource("AtlasTexture_2l77h")
+expand_mode = 2
+stretch_mode = 3
+flip_h = true
+
+[node name="Value" type="Label" parent="GameHUD/CanvasLayer/Control/MarginContainer/HBoxContainer/HeartHbox" unique_id=1006505758]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_d2op2")
 theme_override_font_sizes/font_size = 24

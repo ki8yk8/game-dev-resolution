@@ -1,11 +1,18 @@
 extends Node
 
+const INITIAL_HEART = 3
+const LEVEL_START_CHECKPOINTS = {
+	1: Vector2(117.0, 168.0),
+}
+
+const level = 1
+
 # state of the gameplay
 var _state = {
 	"coins": 0,
-	"health": 0,
-	"level": 1,
-	"checkpoint": Vector2(117.0, 168.0),
+	"hearts": INITIAL_HEART,
+	"level": level,
+	"checkpoint": LEVEL_START_CHECKPOINTS.get(1),
 }
 
 # publisher callback
@@ -19,12 +26,12 @@ func _ready() -> void:
 	Controller._subscribe("coin", update_coin)
 	Controller._subscribe("killzone", handle_killzone)
 	Controller._subscribe("checkpoint", handle_checkpoint)
+	Controller._subscribe("heart", update_heart)
 	
 	# registering the last coin
 	publisher_callback.call.call_deferred(_state.duplicate())
 	_state.erase("checkpoint")
 	
-
 func _exit_tree() -> void:
 	Controller._unsubscribe("coin", update_coin)
 	Controller._unsubscribe("killzone", handle_killzone)
@@ -35,10 +42,20 @@ func update_coin(increment):
 	_state["coins"] += increment
 	publisher_callback.call(_state)
 
+func update_heart(increment):
+	_state["hearts"] += increment
+	publisher_callback.call(_state)
+
 # TODO: create a level manager that handles the level maangement health will be decreased by 1 
 func handle_killzone(ignore):
 	get_tree().reload_current_scene()
-	Controller._memorize("health", _state.get("health", _state.get("health")-1))
+	if _state.get("hearts") > 1:
+		# TODO: memorize the coins as well
+		Controller._memorize("hearts", _state.get("hearts")-1)
+	else:
+		Controller._memorize("hearts", INITIAL_HEART)
+		Controller._memorize("checkpoint", LEVEL_START_CHECKPOINTS.get(level))
+		print("You died")
 	
 func handle_checkpoint(pos: Vector2):
 	Controller._memorize("checkpoint", pos)
