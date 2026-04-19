@@ -20,5 +20,5 @@ debug_color = Color(0, 0.5950001, 0.7, 1)
 
 [node name="DeathTimer" type="Timer" parent="." unique_id=1652146141]
 
-[connection signal="body_entered" from="." to="CollisionShape2D" method="_on_killer_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
