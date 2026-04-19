@@ -287,13 +287,18 @@ animations = [{
 size = Vector2(12, 12)
 
 [node name="Player" type="CharacterBody2D" unique_id=786413570]
+collision_layer = 2
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=163781369]
 sprite_frames = SubResource("SpriteFrames_t4otl")
+animation = &"roll"
 autoplay = "default"
-frame_progress = 0.63502914
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1638419821]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_j2b1d")
+
+[node name="Timer" type="Timer" parent="." unique_id=1968931869]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

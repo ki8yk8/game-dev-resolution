@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b1iy0p345x85d"]
+
+[ext_resource type="Script" uid="uid://ffjx0jriuk8r" path="res://scripts/killer.gd" id="1_jc8e8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wu7s6"]
+
+[node name="Killer" type="Area2D" unique_id=1363646084]
+collision_mask = 2
+script = ExtResource("1_jc8e8")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=2048676096]
+color = Color(0.91466665, 0.2875926, 0.17344636, 1)
+polygon = PackedVector2Array(0, 0, 8, 0, 8, 192, 0, 192, 0, 59.43428)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=565435836]
+position = Vector2(3, 93)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_wu7s6")
+debug_color = Color(0, 0.5950001, 0.7, 1)
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=1652146141]
+
+[connection signal="body_entered" from="." to="CollisionShape2D" method="_on_killer_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

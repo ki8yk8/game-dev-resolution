@@ -3,9 +3,12 @@ extends CharacterBody2D
 @onready var TopLeftMarker = %CameraMarkers/TopLeft
 @onready var BottomRightMarker = %CameraMarkers/BottomRight
 @onready var Camera = $Camera2D
+@onready var AnimatedSprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var StartTimer: Timer = $Timer
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -225.0
+var player_start = false
 
 func _ready() -> void:
 	# utilizing the camera markers fix the camera boundaries
@@ -17,6 +20,8 @@ func _ready() -> void:
 	Camera.limit_left = topLeftPos[0]
 	Camera.limit_bottom = bottomRightPos[1]
 	Camera.limit_right = bottomRightPos[0]
+	StartTimer.start()
+	change_animation("default")
 
 func _physics_process(delta: float) -> void:
 	# creating the gravity 
@@ -26,8 +31,20 @@ func _physics_process(delta: float) -> void:
 	# handling the jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():    
 		velocity.y = JUMP_VELOCITY
-
-	# constant forward movement of the player
-	velocity.x = SPEED
+	
+	# constant forward movement of the player if the timer has exhausted
+	if player_start:
+		velocity.x = SPEED
 
 	move_and_slide()
+
+
+
+func change_animation(anim_name: String):
+	AnimatedSprite.play(anim_name)
+
+
+func _on_timer_timeout() -> void:
+	StartTimer.stop()
+	player_start = true
+	change_animation("run")
