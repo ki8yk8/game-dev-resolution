@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cuamkpak23iol" path="res://assets/sprites/world_tileset.png" id="1_6it1n"]
 [ext_resource type="PackedScene" uid="uid://c8xwit7h3sda4" path="res://scenes/player.tscn" id="2_swo0f"]
-[ext_resource type="Script" uid="uid://ctgl4j850slyv" path="res://scripts/player.gd" id="3_c7ik0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6it1n"]
 texture = ExtResource("1_6it1n")
@@ -286,7 +285,6 @@ tile_set = SubResource("TileSet_c7ik0")
 [node name="Player" parent="." unique_id=786413570 instance=ExtResource("2_swo0f")]
 unique_name_in_owner = true
 position = Vector2(20, 80)
-script = ExtResource("3_c7ik0")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1202680399]
 zoom = Vector2(5, 5)
