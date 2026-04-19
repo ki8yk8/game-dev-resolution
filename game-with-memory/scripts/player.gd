@@ -45,7 +45,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-
 func change_animation(anim_name: String):
 	AnimatedSprite.play(anim_name)
 
