@@ -33,8 +33,14 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	
 	# constant forward movement of the player if the timer has exhausted
-	if player_start:
+	if Input.is_action_pressed("right"):
 		velocity.x = SPEED
+		AnimatedSprite.flip_h = false
+	elif Input.is_action_pressed("left"):
+		velocity.x = -SPEED
+		AnimatedSprite.flip_h = true
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
 
