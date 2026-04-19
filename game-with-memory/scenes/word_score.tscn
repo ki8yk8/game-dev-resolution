@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dcoaxwgm1h1y3"]
+
+[ext_resource type="Script" uid="uid://c8mlmtgwjdx3o" path="res://scripts/word_score.gd" id="1_iu7wx"]
+
+[node name="WordScore" type="Node2D" unique_id=247533739]
+script = ExtResource("1_iu7wx")
+
+[node name="Word" type="Label" parent="." unique_id=1076483598]
+offset_right = 40.0
+offset_bottom = 23.0

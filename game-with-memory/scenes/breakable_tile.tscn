@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://oc7vun54tj0v"]
+
+[ext_resource type="Texture2D" uid="uid://cuamkpak23iol" path="res://assets/sprites/world_tileset.png" id="1_2qbxc"]
+[ext_resource type="Script" uid="uid://dju60h7mplbvk" path="res://scripts/breakable_tile.gd" id="1_3tu1s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qbxc"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tu1s"]
+size = Vector2(16, 7)
+
+[node name="BreakableTile" type="StaticBody2D" unique_id=1768268856]
+collision_mask = 3
+script = ExtResource("1_3tu1s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=617648985]
+texture = ExtResource("1_2qbxc")
+region_enabled = true
+region_rect = Rect2(128, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1901517320]
+shape = SubResource("RectangleShape2D_2qbxc")
+
+[node name="TileHead" type="Area2D" parent="." unique_id=770025371]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileHead" unique_id=526316802]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_3tu1s")
+
+[node name="Timer" type="Timer" parent="." unique_id=794503829]
+wait_time = 0.1
+
+[connection signal="body_entered" from="TileHead" to="." method="_on_tile_head_body_entered"]
+[connection signal="body_exited" from="TileHead" to="." method="_on_tile_head_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
