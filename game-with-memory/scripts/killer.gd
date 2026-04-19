@@ -12,8 +12,6 @@ func _process(delta: float) -> void:
 	if started:
 		position.x += SPEED*delta
 
-
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		body.change_animation("death")

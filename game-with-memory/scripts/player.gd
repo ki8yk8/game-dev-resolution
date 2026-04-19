@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var TopLeftMarker = %CameraMarkers/TopLeft
-@onready var BottomRightMarker = %CameraMarkers/BottomRight
+@onready var BottomLeftMarker = %CameraMarkers/BottomLeft
 @onready var Camera = $Camera2D
 @onready var AnimatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var StartTimer: Timer = $Timer
@@ -13,13 +13,12 @@ var player_start = false
 func _ready() -> void:
 	# utilizing the camera markers fix the camera boundaries
 	var topLeftPos = TopLeftMarker.position
-	var bottomRightPos = BottomRightMarker.position
+	var bottomLeftPos = BottomLeftMarker.position
 	
 	# limiting the camera position based on the marker position
 	Camera.limit_top = topLeftPos[1]
 	Camera.limit_left = topLeftPos[0]
-	Camera.limit_bottom = bottomRightPos[1]
-	Camera.limit_right = bottomRightPos[0]
+	Camera.limit_bottom = bottomLeftPos[1]
 	StartTimer.start()
 	change_animation("default")
 

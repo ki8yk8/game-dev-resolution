@@ -164,7 +164,7 @@ unique_name_in_owner = true
 [node name="TopLeft" type="Marker2D" parent="CameraMarkers" unique_id=1804327976]
 position = Vector2(-32, -32)
 
-[node name="BottomRight" type="Marker2D" parent="CameraMarkers" unique_id=2103917065]
+[node name="BottomLeft" type="Marker2D" parent="CameraMarkers" unique_id=2103917065]
 position = Vector2(1695, 143)
 
 [node name="Killer" parent="." unique_id=1363646084 instance=ExtResource("3_c7ik0")]

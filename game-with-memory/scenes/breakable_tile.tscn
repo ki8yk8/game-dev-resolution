@@ -29,7 +29,7 @@ position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_3tu1s")
 
 [node name="Timer" type="Timer" parent="." unique_id=794503829]
-wait_time = 0.1
+wait_time = 0.5
 
 [connection signal="body_entered" from="TileHead" to="." method="_on_tile_head_body_entered"]
 [connection signal="body_exited" from="TileHead" to="." method="_on_tile_head_body_exited"]
