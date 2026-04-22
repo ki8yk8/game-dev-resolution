@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://6rp8objiwcjp"]
 
+[ext_resource type="Script" uid="uid://dbw02ix6micfi" path="res://scripts/game_play.gd" id="1_0daha"]
 [ext_resource type="Texture2D" uid="uid://cuamkpak23iol" path="res://assets/sprites/world_tileset.png" id="1_6it1n"]
+[ext_resource type="FontFile" uid="uid://c2qq5vc5hb8v6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_coaa0"]
 [ext_resource type="PackedScene" uid="uid://c8xwit7h3sda4" path="res://scenes/player.tscn" id="2_swo0f"]
 [ext_resource type="PackedScene" uid="uid://b1iy0p345x85d" path="res://scenes/killer.tscn" id="3_c7ik0"]
 [ext_resource type="Script" uid="uid://dn81owlx0y2py" path="res://scripts/game_manager.gd" id="4_8ik6i"]
@@ -149,6 +151,24 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_0daha")
 
 [node name="GamePlay" type="Node2D" unique_id=1215204079]
+script = ExtResource("1_0daha")
+
+[node name="StartTimer" type="Node2D" parent="." unique_id=1701508068]
+z_index = 10
+
+[node name="Timer" type="Timer" parent="StartTimer" unique_id=892009945]
+
+[node name="Label" type="Label" parent="StartTimer" unique_id=523527434]
+offset_left = 67.0
+offset_top = 54.0
+offset_right = 107.0
+offset_bottom = 78.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_coaa0")
+theme_override_font_sizes/font_size = 16
+text = "3"
+horizontal_alignment = 1
 
 [node name="Player" parent="." unique_id=786413570 instance=ExtResource("2_swo0f")]
 unique_name_in_owner = true
@@ -210,3 +230,5 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="GameHUD/Control/MarginContainer/HBoxContainer/MarginContainer/ScoreHbox" unique_id=397089010]
 layout_mode = 2
+
+[connection signal="timeout" from="StartTimer/Timer" to="." method="_on_timer_timeout"]
