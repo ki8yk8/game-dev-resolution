@@ -6,6 +6,12 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4h3mk"]
 bg_color = Color(0.5512103, 0.5736553, 0.8399922, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjb58"]
+bg_color = Color(0.82671815, 0.50085485, 0.42677882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_con2f"]
+bg_color = Color(0.827451, 0.5019608, 0.42745098, 1)
+
 [node name="Menu" type="Control" unique_id=1603996030]
 layout_mode = 3
 anchors_preset = 15
@@ -92,6 +98,7 @@ theme_override_colors/font_color = Color(1, 0.22316664, 0.20999998, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vjb58")
 text = "Play
 "
 
@@ -103,6 +110,7 @@ theme_override_colors/font_color = Color(1, 0.22316664, 0.20999998, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_con2f")
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Buttons/Play" to="." method="_on_play_pressed"]

@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 	if GlobalScript.gameplay_started:
 		score += 1
 		score_label.text = "Score: "+str(score)
+		GlobalScript.last_score = score
 
 func _on_timer_timeout() -> void:
 	if start_timer_state == len(START_TIMER_STATES)-1:

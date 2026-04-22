@@ -16,5 +16,4 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_death_timer_timeout() -> void:
 	DeathTimer.stop()
-	# TODO: the next scene should be displayed here
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")

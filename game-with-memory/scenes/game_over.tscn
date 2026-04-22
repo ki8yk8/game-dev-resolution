@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://c5yn45yes0qsc"]
+
+[ext_resource type="Script" uid="uid://dgg4lmfy8tytw" path="res://scripts/game_over.gd" id="1_tbwuq"]
+[ext_resource type="FontFile" uid="uid://c2qq5vc5hb8v6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_xeevv"]
+[ext_resource type="FontFile" uid="uid://cint4lq7x12bf" path="res://assets/fonts/PixelOperator8.ttf" id="2_wqhvx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nqlu"]
+bg_color = Color(0.5529412, 0.57254905, 0.8392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xeevv"]
+bg_color = Color(0.827451, 0.5019608, 0.42745098, 1)
+
+[node name="GameOver" type="Control" unique_id=788919126]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tbwuq")
+
+[node name="Panel" type="Panel" parent="." unique_id=673838737]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0nqlu")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=848949763]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -29.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1031362897]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=921092105]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1902931898]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.48235294, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_xeevv")
+theme_override_font_sizes/font_size = 48
+text = "Score: 10000"
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1063791391]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.66265845, 0.2230297, 0.3027511, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wqhvx")
+theme_override_font_sizes/font_size = 32
+text = "Yay!! this is your new high score"
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/VBoxContainer" unique_id=901816827]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/BoxContainer" unique_id=863425323]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.22352941, 0.21176471, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_xeevv")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_xeevv")
+text = "Main Menu"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BoxContainer/Button" to="." method="_on_button_pressed"]

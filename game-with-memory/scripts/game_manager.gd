@@ -6,7 +6,7 @@ extends Node
 const CHUNK_WIDTH = 18
 const CHUNK_PIXELS = CHUNK_WIDTH*16
 const CHUNK_AHEAD = 3
-const CHUNK_BEHIND = 1
+const CHUNK_BEHIND = 2
 
 const CHUNKS = {
 	"straight": {
