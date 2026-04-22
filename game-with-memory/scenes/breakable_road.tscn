@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cuamkpak23iol" path="res://assets/sprites/world_tileset.png" id="1_s7w0o"]
 [ext_resource type="PackedScene" uid="uid://oc7vun54tj0v" path="res://scenes/breakable_tile.tscn" id="2_ak8uq"]
+[ext_resource type="PackedScene" uid="uid://chkdudqc1yfqg" path="res://scenes/coin.tscn" id="3_ak8uq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lv0wn"]
 texture = ExtResource("1_s7w0o")
@@ -298,3 +299,18 @@ position = Vector2(216, 104)
 
 [node name="BreakableTile6" parent="BreakablePath" unique_id=1776287836 instance=ExtResource("2_ak8uq")]
 position = Vector2(184, 104)
+
+[node name="Coin" parent="." unique_id=552729955 instance=ExtResource("3_ak8uq")]
+position = Vector2(88, 88)
+
+[node name="Coin2" parent="." unique_id=158888707 instance=ExtResource("3_ak8uq")]
+position = Vector2(120, 88)
+
+[node name="Coin3" parent="." unique_id=1287568953 instance=ExtResource("3_ak8uq")]
+position = Vector2(152, 88)
+
+[node name="Coin4" parent="." unique_id=376992227 instance=ExtResource("3_ak8uq")]
+position = Vector2(184, 88)
+
+[node name="Coin5" parent="." unique_id=445640196 instance=ExtResource("3_ak8uq")]
+position = Vector2(216, 88)

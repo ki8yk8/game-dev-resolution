@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://db2qpmufn8htj"]
 
 [ext_resource type="Texture2D" uid="uid://cuamkpak23iol" path="res://assets/sprites/world_tileset.png" id="1_84kbh"]
+[ext_resource type="PackedScene" uid="uid://chkdudqc1yfqg" path="res://scenes/coin.tscn" id="2_sl3sg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_84kbh"]
 texture = ExtResource("1_84kbh")
@@ -280,3 +281,45 @@ tile_set = SubResource("TileSet_sl3sg")
 position = Vector2(0, -1)
 tile_map_data = PackedByteArray("AAAAAAcAAAAGAAIAAAABAAcAAAAGAAIAAAACAAcAAAAGAAIAAAADAAcAAAAGAAIAAAAAAAYAAAAHAAAAAAAAAAgAAAAGAAIAAAABAAgAAAAGAAIAAAACAAgAAAAGAAIAAAADAAgAAAAGAAIAAAAEAAgAAAAGAAIAAAAFAAgAAAAGAAIAAAAGAAgAAAAGAAIAAAAHAAgAAAAGAAIAAAAIAAgAAAAGAAIAAAAJAAgAAAAGAAIAAAAKAAgAAAAGAAIAAAALAAgAAAAGAAIAAAAMAAgAAAAGAAIAAAANAAgAAAAGAAIAAAAOAAgAAAAGAAIAAAABAAYAAAAHAAAAAAACAAYAAAAHAAAAAAAPAAcAAAAGAAIAAAAPAAgAAAAGAAIAAAAQAAcAAAAGAAIAAAAQAAgAAAAGAAIAAAARAAcAAAAGAAIAAAARAAgAAAAGAAIAAAAPAAYAAAAGAAIAAAAQAAYAAAAHAAAAAAARAAYAAAAHAAAAAAADAAYAAAAGAAIAAAADAAUAAAAHAAAAAAAPAAUAAAAHAAAAAAAFAAQAAAAGAAAAAAAGAAQAAAAGAAAAAAAIAAMAAAAGAAAAAAAJAAMAAAAGAAAAAAALAAQAAAAGAAAAAAAMAAQAAAAGAAAAAAA=")
 tile_set = SubResource("TileSet_nsbiq")
+
+[node name="Coin" parent="." unique_id=552729955 instance=ExtResource("2_sl3sg")]
+position = Vector2(57, 71)
+
+[node name="Coin2" parent="." unique_id=2006350129 instance=ExtResource("2_sl3sg")]
+position = Vector2(103, 56)
+
+[node name="Coin3" parent="." unique_id=823094423 instance=ExtResource("2_sl3sg")]
+position = Vector2(144, 41)
+
+[node name="Coin4" parent="." unique_id=1674509696 instance=ExtResource("2_sl3sg")]
+position = Vector2(193, 56)
+
+[node name="Coin5" parent="." unique_id=253529724 instance=ExtResource("2_sl3sg")]
+position = Vector2(270, 88)
+
+[node name="Coin6" parent="." unique_id=1518140139 instance=ExtResource("2_sl3sg")]
+position = Vector2(85, 119)
+
+[node name="Coin7" parent="." unique_id=1187872763 instance=ExtResource("2_sl3sg")]
+position = Vector2(100, 119)
+
+[node name="Coin8" parent="." unique_id=1553362554 instance=ExtResource("2_sl3sg")]
+position = Vector2(115, 119)
+
+[node name="Coin9" parent="." unique_id=313404049 instance=ExtResource("2_sl3sg")]
+position = Vector2(129, 119)
+
+[node name="Coin10" parent="." unique_id=617027489 instance=ExtResource("2_sl3sg")]
+position = Vector2(143, 118)
+
+[node name="Coin11" parent="." unique_id=1802786437 instance=ExtResource("2_sl3sg")]
+position = Vector2(156, 118)
+
+[node name="Coin12" parent="." unique_id=228050866 instance=ExtResource("2_sl3sg")]
+position = Vector2(169, 118)
+
+[node name="Coin13" parent="." unique_id=833919006 instance=ExtResource("2_sl3sg")]
+position = Vector2(183, 118)
+
+[node name="Coin14" parent="." unique_id=322880534 instance=ExtResource("2_sl3sg")]
+position = Vector2(196, 119)

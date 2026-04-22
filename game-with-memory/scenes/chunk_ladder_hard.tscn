@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://tqw82yhcqu0q"]
 
 [ext_resource type="Texture2D" uid="uid://cuamkpak23iol" path="res://assets/sprites/world_tileset.png" id="1_lv0wn"]
+[ext_resource type="PackedScene" uid="uid://chkdudqc1yfqg" path="res://scenes/coin.tscn" id="2_3mcyg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lv0wn"]
 texture = ExtResource("1_lv0wn")
@@ -280,3 +281,24 @@ tile_set = SubResource("TileSet_3mcyg")
 position = Vector2(0, -1)
 tile_map_data = PackedByteArray("AAAAAAcAAAAGAAIAAAABAAcAAAAGAAIAAAACAAcAAAAGAAIAAAADAAcAAAAGAAIAAAAAAAgAAAAGAAIAAAABAAgAAAAGAAIAAAACAAgAAAAGAAIAAAADAAgAAAAGAAIAAAAEAAgAAAAGAAIAAAAFAAgAAAAGAAIAAAAGAAgAAAAGAAIAAAAHAAgAAAAGAAIAAAAIAAgAAAAGAAIAAAAJAAgAAAAGAAIAAAAKAAgAAAAGAAIAAAALAAgAAAAGAAIAAAAMAAgAAAAGAAIAAAANAAgAAAAGAAIAAAAOAAgAAAAGAAIAAAAPAAcAAAAGAAIAAAAPAAgAAAAGAAIAAAAQAAcAAAAGAAIAAAAQAAgAAAAGAAIAAAARAAcAAAAGAAIAAAARAAgAAAAGAAIAAAADAAYAAAAHAAAAAAAFAAUAAAAGAAAAAAAHAAQAAAAGAAAAAAAJAAMAAAAGAAAAAAALAAQAAAAGAAAAAAANAAUAAAAGAAAAAAAPAAYAAAAHAAAAAAACAAYAAAAHAAAAAAABAAYAAAAHAAAAAAAAAAYAAAAHAAAAAAAQAAYAAAAHAAAAAAARAAYAAAAHAAAAAAA=")
 tile_set = SubResource("TileSet_m3pua")
+
+[node name="Coin" parent="." unique_id=552729955 instance=ExtResource("2_3mcyg")]
+position = Vector2(89, 71)
+
+[node name="Coin2" parent="." unique_id=1684079445 instance=ExtResource("2_3mcyg")]
+position = Vector2(119, 56)
+
+[node name="Coin3" parent="." unique_id=1360742536 instance=ExtResource("2_3mcyg")]
+position = Vector2(150, 38)
+
+[node name="Coin4" parent="." unique_id=1878280803 instance=ExtResource("2_3mcyg")]
+position = Vector2(182, 56)
+
+[node name="Coin5" parent="." unique_id=1603406844 instance=ExtResource("2_3mcyg")]
+position = Vector2(216, 72)
+
+[node name="Coin6" parent="." unique_id=875273104 instance=ExtResource("2_3mcyg")]
+position = Vector2(250, 88)
+
+[node name="Coin7" parent="." unique_id=1836727683 instance=ExtResource("2_3mcyg")]
+position = Vector2(264, 88)
