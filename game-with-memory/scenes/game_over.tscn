@@ -48,7 +48,17 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 32
 
-[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1902931898]
+[node name="CoinsLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1902931898]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8862745, 0.48235294, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_xeevv")
+theme_override_font_sizes/font_size = 48
+text = "Coins: 0"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=2143079060]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.12941177, 0.48235294, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

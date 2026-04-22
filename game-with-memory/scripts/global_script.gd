@@ -5,6 +5,7 @@ var total_score = 0
 var highest_score = 0
 
 var last_score = 0
+var last_coin = 0
 
 var gameplay_started = false
 

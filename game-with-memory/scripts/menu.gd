@@ -10,6 +10,7 @@ func _ready() -> void:
 	coins_label.text = "Coins: " + str(GlobalScript.total_coin)
 	total_score_label.text = "Total Score: " + str(GlobalScript.total_score)
 	GlobalScript.last_score = 0
+	GlobalScript.last_coin = 0
 
 
 func _on_play_pressed() -> void:
