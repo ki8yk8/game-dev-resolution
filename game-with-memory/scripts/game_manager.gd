@@ -84,7 +84,10 @@ func pick_chunk_key():
 	if next_chunk_index == 0:
 		return "straight"
 	
-	return CHUNKS.keys()[randi() % CHUNKS.size()]
+	var random_index = randi() % CHUNKS.size()
+	
+	
+	return CHUNKS.keys()[random_index]
 	
 func get_player_chunk_index()->int:
 	var posX = Player.position.x

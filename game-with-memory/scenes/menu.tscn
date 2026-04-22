@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bmc4fs1pl2rxk" path="res://scripts/menu.gd" id="1_vjb58"]
 [ext_resource type="FontFile" uid="uid://c2qq5vc5hb8v6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_yqeox"]
+[ext_resource type="FontFile" uid="uid://cint4lq7x12bf" path="res://assets/fonts/PixelOperator8.ttf" id="2_con2f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4h3mk"]
 bg_color = Color(0.5512103, 0.5736553, 0.8399922, 1)
@@ -45,52 +46,63 @@ theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 48
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=770438057]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1409652261]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="Score" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=436864237]
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1193928037]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 32
+text = "Hey Player!!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=770438057]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Score" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=436864237]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/separation = 32
 
-[node name="Coins" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Score" unique_id=1645700229]
+[node name="Coins" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Score" unique_id=1645700229]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Score/Coins" unique_id=736075001]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Score/Coins" unique_id=736075001]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 32
 text = "Coins: 0"
 
-[node name="TotalScore" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Score" unique_id=1276210708]
+[node name="TotalScore" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Score" unique_id=1276210708]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Score/TotalScore" unique_id=998293015]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Score/TotalScore" unique_id=998293015]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 32
 text = "Total Score: 0"
 
-[node name="HighestScore" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Score" unique_id=904386920]
+[node name="HighestScore" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Score" unique_id=904386920]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Score/HighestScore" unique_id=629811592]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Score/HighestScore" unique_id=629811592]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_yqeox")
 theme_override_font_sizes/font_size = 32
 text = "Top Score: 0"
 
-[node name="Buttons" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=700411371]
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=700411371]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/separation = 32
 
-[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/Buttons" unique_id=1260965020]
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" unique_id=1260965020]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 tooltip_text = "Play"
@@ -102,7 +114,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_vjb58")
 text = "Play
 "
 
-[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/Buttons" unique_id=168655582]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" unique_id=168655582]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 tooltip_text = "Play"
@@ -113,5 +125,8 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_con2f")
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Buttons/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Buttons/Quit" to="." method="_on_quit_pressed"]
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=2088886735]
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

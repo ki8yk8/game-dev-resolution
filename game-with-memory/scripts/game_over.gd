@@ -10,7 +10,7 @@ func _ready() -> void:
 	var coins = GlobalScript.last_coin
 	
 	score_label.text = "Score: "+str(score)
-	coins_label.text = "Score: "+str(coins)
+	coins_label.text = "Coins: "+str(coins)
 	
 	if score > GlobalScript.highest_score:
 		high_score_message.visible = true
