@@ -205,7 +205,6 @@ tile_map_data = PackedByteArray("AAD+/wAAAAAGAAEAAAD+/wEAAAAGAAEAAAD+/wIAAAAGAAE
 tile_set = SubResource("TileSet_x4ub6")
 
 [node name="GameHUD" type="CanvasLayer" parent="." unique_id=323655757]
-visible = false
 
 [node name="Control" type="Control" parent="GameHUD" unique_id=388758566]
 layout_mode = 3
@@ -216,6 +215,8 @@ offset_bottom = 40.0
 [node name="MarginContainer" type="MarginContainer" parent="GameHUD/Control" unique_id=295156435]
 layout_mode = 0
 offset_bottom = 40.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameHUD/Control/MarginContainer" unique_id=1845167202]
 layout_mode = 2
@@ -226,9 +227,13 @@ layout_mode = 2
 [node name="ScoreHbox" type="HBoxContainer" parent="GameHUD/Control/MarginContainer/HBoxContainer/MarginContainer" unique_id=90413209]
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="GameHUD/Control/MarginContainer/HBoxContainer/MarginContainer/ScoreHbox" unique_id=861844653]
-
 [node name="Label" type="Label" parent="GameHUD/Control/MarginContainer/HBoxContainer/MarginContainer/ScoreHbox" unique_id=397089010]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.88279, 0.4117947, 0.5592843, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("1_coaa0")
+theme_override_font_sizes/font_size = 32
+text = "Score: 0"
 
 [connection signal="timeout" from="StartTimer/Timer" to="." method="_on_timer_timeout"]
