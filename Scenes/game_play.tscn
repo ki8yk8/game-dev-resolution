@@ -1,27 +1,19 @@
 [gd_scene format=4 uid="uid://m3ldjq1okhld"]
 
+[ext_resource type="PackedScene" uid="uid://ikylhihmdb21" path="res://Scenes/tank.tscn" id="1_363iw"]
 [ext_resource type="Texture2D" uid="uid://b20id2ts01vi3" path="res://assets/Tilesheet/terrainTiles_default.png" id="1_ckfrc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_363iw"]
 texture = ExtResource("1_ckfrc")
 texture_region_size = Vector2i(64, 64)
-36:12/size_in_atlas = Vector2i(4, 4)
 36:12/0 = 0
-32:12/size_in_atlas = Vector2i(4, 4)
 32:12/0 = 0
-28:12/size_in_atlas = Vector2i(4, 4)
 28:12/0 = 0
-36:4/size_in_atlas = Vector2i(4, 4)
 36:4/0 = 0
-36:0/size_in_atlas = Vector2i(4, 4)
 36:0/0 = 0
-36:8/size_in_atlas = Vector2i(4, 4)
 36:8/0 = 0
-32:8/size_in_atlas = Vector2i(4, 4)
 32:8/0 = 0
-28:8/size_in_atlas = Vector2i(4, 4)
 28:8/0 = 0
-32:4/size_in_atlas = Vector2i(4, 4)
 32:4/0 = 0
 0:0/0 = 0
 1:0/0 = 0
@@ -67,6 +59,8 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_tiviu"]
 sources/0 = SubResource("TileSetAtlasSource_363iw")
 
+[sub_resource type="TileSet" id="TileSet_yovil"]
+
 [node name="GamePlay" type="Node2D" unique_id=1255298611]
 
 [node name="TrackMap" type="TileMapLayer" parent="." unique_id=130269268]
@@ -75,10 +69,14 @@ tile_set = SubResource("TileSet_tiviu")
 rendering_quadrant_size = 64
 physics_quadrant_size = 64
 
-[node name="Markers" type="Node2D" parent="." unique_id=845344400]
+[node name="ObjectsMap" type="TileMapLayer" parent="." unique_id=1610849970]
+tile_set = SubResource("TileSet_yovil")
 
-[node name="TopLeft" type="Marker2D" parent="Markers" unique_id=1982091368]
-position = Vector2(-342, -487)
+[node name="Tank" parent="." unique_id=26339276 instance=ExtResource("1_363iw")]
+position = Vector2(216, 95)
 
-[node name="BottomRight" type="Marker2D" parent="Markers" unique_id=825197107]
-position = Vector2(935, 407)
+[node name="Camera2D" type="Camera2D" parent="Tank" unique_id=1725141710]
+limit_left = -330
+limit_top = -490
+limit_right = 940
+limit_bottom = 400

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ikylhihmdb21"]
+
+[ext_resource type="Texture2D" uid="uid://6h18qobqtkfr" path="res://assets/PNGs/tank_blue.png" id="1_0ys04"]
+[ext_resource type="Script" uid="uid://ba25afq5wadxy" path="res://Scripts/tank.gd" id="1_r30pj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r30pj"]
+size = Vector2(42, 43)
+
+[node name="Tank" type="CharacterBody2D" unique_id=26339276]
+script = ExtResource("1_r30pj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1196941013]
+texture = ExtResource("1_0ys04")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1880779821]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_r30pj")
