@@ -6,11 +6,22 @@ const FRICTION = 0.85    # between 0 and 1 where, 0 is complete stop and 1 is sl
 const LATERAL_FRICTION = 0.05
 const MAX_VELOCITY = 100.0
 
+const BULLET_SCENE = preload("res://Scenes/bullet.tscn")
+
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_axis("down", "up")
 	var rotate_dir := Input.get_axis("left", "right")
 	
 	rotation += rotate_dir * ROTATION_SPEED * delta
+	# manage the bullets
+	if Input.is_action_just_pressed("shoot"):
+		var bullet = BULLET_SCENE.instantiate()
+		bullet.position = position
+		bullet.rotation = rotation
+		
+		get_parent().add_child(bullet)
+	
+	# manage the motion
 	var forward = Vector2.UP.rotated(rotation)
 	var right = forward.orthogonal()
 	
