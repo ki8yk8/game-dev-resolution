@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d2bcbufy5o1xq"]
+
+[ext_resource type="Texture2D" uid="uid://bnqmjacnkyonw" path="res://assets/PNGs/barricadeWood.png" id="1_d155t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjehn"]
+size = Vector2(29, 28)
+
+[node name="Wall" type="StaticBody2D" unique_id=1602814409]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1461223011]
+texture = ExtResource("1_d155t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1414499884]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_yjehn")
