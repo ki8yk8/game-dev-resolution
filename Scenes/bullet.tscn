@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://g2fib3igcvat" path="res://assets/PNGs/explosion3.png" id="5_qiu8q"]
 [ext_resource type="Texture2D" uid="uid://dr88lfcueo0op" path="res://assets/PNGs/explosion4.png" id="6_0kq1l"]
 [ext_resource type="Texture2D" uid="uid://dwm1mhvpwu8tb" path="res://assets/PNGs/explosion5.png" id="7_lv37c"]
+[ext_resource type="Texture2D" uid="uid://cpnre4rgctiw2" path="res://assets/PNGs/explosionSmoke1.png" id="8_1l14f"]
+[ext_resource type="Texture2D" uid="uid://d1h8mey6seupr" path="res://assets/PNGs/explosionSmoke2.png" id="9_tvxb2"]
+[ext_resource type="Texture2D" uid="uid://chvt21taw7dn6" path="res://assets/PNGs/explosionSmoke3.png" id="10_3pnf4"]
+[ext_resource type="Texture2D" uid="uid://bbg0q3yprjnel" path="res://assets/PNGs/explosionSmoke4.png" id="11_o7ppg"]
+[ext_resource type="Texture2D" uid="uid://bh4qnnyc15sau" path="res://assets/PNGs/explosionSmoke5.png" id="12_58ygq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oduel"]
 size = Vector2(4, 10)
@@ -32,6 +37,26 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_1l14f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tvxb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3pnf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_o7ppg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_58ygq")
+}],
+"loop": false,
+"name": &"variant",
+"speed": 10.0
 }]
 
 [node name="Bullet" type="Area2D" unique_id=175636962]
@@ -47,6 +72,7 @@ shape = SubResource("RectangleShape2D_oduel")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=748176821]
 sprite_frames = SubResource("SpriteFrames_1l14f")
+animation = &"variant"
 frame = 4
 frame_progress = 1.0
 

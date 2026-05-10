@@ -20,6 +20,11 @@ func _on_timer_timeout() -> void:
 	timer.stop()
 	queue_free()
 
+func get_random_animation() -> String:
+	if randf() > 0.5:
+		return "variant"
+	return "default"
+
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Tank":
 		return
@@ -28,7 +33,7 @@ func _on_body_entered(body: Node2D) -> void:
 	bullet_sprite.visible = false
 	velocity = Vector2.ZERO
 	
-	animated_sprite.play("default")
+	animated_sprite.play(get_random_animation( ))
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	animated_sprite.visible = false
