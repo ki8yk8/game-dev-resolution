@@ -2,9 +2,37 @@
 
 [ext_resource type="Script" uid="uid://c6y0ofjtmalm3" path="res://Scripts/bullet.gd" id="1_oduel"]
 [ext_resource type="Texture2D" uid="uid://do06fm7oukew1" path="res://assets/PNGs/bullet.png" id="1_xjght"]
+[ext_resource type="Texture2D" uid="uid://dq2gu0iscxagf" path="res://assets/PNGs/explosion1.png" id="3_qttmj"]
+[ext_resource type="Texture2D" uid="uid://dt6hb3gwi03uk" path="res://assets/PNGs/explosion2.png" id="4_tkcvl"]
+[ext_resource type="Texture2D" uid="uid://g2fib3igcvat" path="res://assets/PNGs/explosion3.png" id="5_qiu8q"]
+[ext_resource type="Texture2D" uid="uid://dr88lfcueo0op" path="res://assets/PNGs/explosion4.png" id="6_0kq1l"]
+[ext_resource type="Texture2D" uid="uid://dwm1mhvpwu8tb" path="res://assets/PNGs/explosion5.png" id="7_lv37c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oduel"]
 size = Vector2(4, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1l14f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qttmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tkcvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qiu8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0kq1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lv37c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Bullet" type="Area2D" unique_id=175636962]
 script = ExtResource("1_oduel")
@@ -17,4 +45,11 @@ shape = SubResource("RectangleShape2D_oduel")
 
 [node name="Timer" type="Timer" parent="." unique_id=1218552490]
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=748176821]
+sprite_frames = SubResource("SpriteFrames_1l14f")
+frame = 4
+frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
