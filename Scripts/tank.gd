@@ -1,25 +1,32 @@
 extends CharacterBody2D
 
-const SPEED = 150.0
 const ROTATION_SPEED = 2.0
-const ACCELERATION = 100.0
-const FRICTION = 0.6    # between 0 and 1 where, 0 is complete stop and 1 is slippery
-const MAX_VELOCITY = Vector2(100.0, 100.0)
+const ACCELERATION = 300.0
+const FRICTION = 0.85    # between 0 and 1 where, 0 is complete stop and 1 is slippery
+const LATERAL_FRICTION = 0.05
+const MAX_VELOCITY = 100.0
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_axis("down", "up")
 	var rotate_dir := Input.get_axis("left", "right")
 	
 	rotation += rotate_dir * ROTATION_SPEED * delta
-	var direction = Vector2.UP.rotated(rotation)
+	var forward = Vector2.UP.rotated(rotation)
+	var right = forward.orthogonal()
+	
+	var forward_vel = forward * velocity.dot(forward)
+	var lateral_vel = right * velocity.dot(right)
+	lateral_vel *= LATERAL_FRICTION
 	
 	if input_dir != 0.0:
-		velocity += direction * ACCELERATION * delta * input_dir
+		forward_vel += forward * ACCELERATION * delta * input_dir
 	else:
-		velocity *= FRICTION
+		forward_vel *= FRICTION
 		# prevent micro sliding
-		if velocity.length() < 5.0:
-			velocity = Vector2.ZERO
-	velocity = velocity.clamp(-MAX_VELOCITY, MAX_VELOCITY)
+		if forward_vel.length() < 5.0:
+			forward_vel = Vector2.ZERO
+	
+	velocity = forward_vel + lateral_vel
+	velocity = velocity.limit_length(MAX_VELOCITY)
 	
 	move_and_slide()
