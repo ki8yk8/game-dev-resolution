@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://mennb783118i"]
 
+[ext_resource type="Script" uid="uid://bgmcv17gba3d5" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="FontFile" uid="uid://1rtaa8c2t3r6" path="res://assets/fonts/KnightWarrior-w16n8.otf" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://2nlnpd3ik203" path="res://assets/fonts/OrizonRegular-6RJG6.otf" id="2_48xlc"]
 
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1ehe0")
 
 [node name="Panel" type="Panel" parent="." unique_id=501438407]
 layout_mode = 1
@@ -96,12 +98,13 @@ size_flags_vertical = 8
 theme_override_constants/separation = 80
 alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=378359408]
+[node name="StartTheGame" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=378359408]
 layout_mode = 2
 size_flags_horizontal = 4
 accessibility_name = "Play"
 accessibility_description = "Start the new game"
 theme_override_colors/font_color = Color(0.74509805, 0.09411765, 0.8392157, 1)
+theme_override_colors/font_hover_color = Color(0.4318534, 0.053900007, 0.49, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_28flt")
@@ -110,12 +113,13 @@ action_mode = 0
 text = "Start The GAME"
 flat = true
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1886842833]
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1886842833]
 layout_mode = 2
 size_flags_horizontal = 4
 accessibility_name = "Play"
 accessibility_description = "Start the new game"
 theme_override_colors/font_color = Color(0.74509805, 0.09411765, 0.8392157, 1)
+theme_override_colors/font_hover_color = Color(0.43137255, 0.05490196, 0.49019608, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_28flt")
@@ -123,3 +127,6 @@ theme_override_font_sizes/font_size = 48
 action_mode = 0
 text = "Quit"
 flat = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/StartTheGame" to="." method="_on_start_the_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Quit" to="." method="_on_quit_pressed"]
