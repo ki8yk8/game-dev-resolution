@@ -16,3 +16,7 @@ flip_v = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1880779821]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_r30pj")
+
+[node name="Timer" type="Timer" parent="." unique_id=1289366645]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
