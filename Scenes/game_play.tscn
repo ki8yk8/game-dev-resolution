@@ -173,26 +173,27 @@ limit_top = -569
 limit_right = 771
 limit_bottom = 516
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=820671019]
+[node name="HUDCanvas" type="CanvasLayer" parent="." unique_id=820671019]
+unique_name_in_owner = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1261304365]
+[node name="MarginContainer" type="MarginContainer" parent="HUDCanvas" unique_id=1261304365]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1301094651]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUDCanvas/MarginContainer" unique_id=1301094651]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=512902165]
+[node name="TextureRect" type="TextureRect" parent="HUDCanvas/MarginContainer/HBoxContainer" unique_id=512902165]
 layout_mode = 2
 texture = ExtResource("11_dhf3t")
 expand_mode = 3
 stretch_mode = 3
 
-[node name="BulletLabel" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=289123200]
+[node name="BulletLabel" type="Label" parent="HUDCanvas/MarginContainer/HBoxContainer" unique_id=289123200]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.90507853, 0.30930373, 0.3999095, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)

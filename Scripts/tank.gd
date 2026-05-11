@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var oilspill_tilemap = $"../ObjectsMap/28x28 Tiles"
 @onready var timer = $Timer
+@onready var bullet_label = $"../HUDCanvas/MarginContainer/HBoxContainer/BulletLabel"
 
 const ROTATION_SPEED = 2.0
 const ACCELERATION = 300.0
@@ -9,11 +10,16 @@ const FRICTION = 0.85    # between 0 and 1 where, 0 is complete stop and 1 is sl
 const LATERAL_FRICTION = 0.05
 const MAX_VELOCITY = 100.0
 const SLIPPERY_TIME = 4
+const INITIAL_BULLETS = 100
 
 const BULLET_SCENE = preload("res://Scenes/bullet.tscn")
 
 var slippery = false
+var bullets = INITIAL_BULLETS
 
+func _process(delta: float) -> void:
+	bullet_label.text = "Bullets = "+str(bullets)
+ 
 func _physics_process(delta: float) -> void:
 	var cell = oilspill_tilemap.local_to_map(oilspill_tilemap.to_local(global_position))
 	var tile_data = oilspill_tilemap.get_cell_tile_data(cell)
@@ -37,11 +43,15 @@ func _physics_process(delta: float) -> void:
 	rotation += rotate_dir * rotation_speed * delta
 	# manage the bullets
 	if Input.is_action_just_pressed("shoot"):
-		var bullet = BULLET_SCENE.instantiate()
-		bullet.position = position
-		bullet.rotation = rotation
-		
-		get_parent().add_child(bullet)
+		if bullets > 0:
+			bullets -= 1
+			var bullet = BULLET_SCENE.instantiate()
+			bullet.position = position
+			bullet.rotation = rotation
+			get_parent().add_child(bullet)
+		else:
+			pass
+			#TODO: play the audio khach khach
 	
 	# manage the motion
 	var forward = Vector2.UP.rotated(rotation)
