@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://g81aki58b5y3" path="res://assets/PNGs/barrelGreen_top.png" id="7_4xq5o"]
 [ext_resource type="Texture2D" uid="uid://fggcfqpfcvph" path="res://assets/PNGs/barrelRed_top.png" id="8_6m4bm"]
 [ext_resource type="Texture2D" uid="uid://kr4hffb2sct1" path="res://assets/PNGs/barrelRust_top.png" id="9_kpbyh"]
+[ext_resource type="Texture2D" uid="uid://dfoct7nm78efn" path="res://assets/PNGs/bullet_cell.png" id="11_dhf3t"]
+[ext_resource type="FontFile" uid="uid://2nlnpd3ik203" path="res://assets/fonts/OrizonRegular-6RJG6.otf" id="12_ejlfm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_363iw"]
 texture = ExtResource("1_ckfrc")
@@ -170,3 +172,31 @@ limit_left = -320
 limit_top = -569
 limit_right = 771
 limit_bottom = 516
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=820671019]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1261304365]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1301094651]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=512902165]
+layout_mode = 2
+texture = ExtResource("11_dhf3t")
+expand_mode = 3
+stretch_mode = 3
+
+[node name="BulletLabel" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=289123200]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.90507853, 0.30930373, 0.3999095, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("12_ejlfm")
+theme_override_font_sizes/font_size = 24
+text = "Bullets = 100"
