@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://mennb783118i"]
+
+[ext_resource type="FontFile" uid="uid://1rtaa8c2t3r6" path="res://assets/fonts/KnightWarrior-w16n8.otf" id="1_28flt"]
+[ext_resource type="FontFile" uid="uid://2nlnpd3ik203" path="res://assets/fonts/OrizonRegular-6RJG6.otf" id="2_48xlc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
+bg_color = Color(0.23921569, 0.64705884, 0.25882354, 1)
+
+[node name="MainMenu" type="Control" unique_id=425496792]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=501438407]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_erv1k")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=152545769]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2061829182]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1916329713]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1039184603]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("1_28flt")
+theme_override_font_sizes/font_size = 60
+text = "Multi Tank"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1589421795]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 34
+text = "Survive the Battle"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=257742548]
+layout_mode = 2
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1167432158]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=889009311]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 34
+text = "Top Kills = 0"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=885848887]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 34
+text = "Highest Survived = 1m 12s"
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2046263734]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 34
+text = "Lifetime Deaths = 100"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1589746161]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=378359408]
+layout_mode = 2
+size_flags_horizontal = 4
+accessibility_name = "Play"
+accessibility_description = "Start the new game"
+theme_override_colors/font_color = Color(0.74509805, 0.09411765, 0.8392157, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_28flt")
+theme_override_font_sizes/font_size = 48
+action_mode = 0
+text = "Start The GAME"
+flat = true
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1886842833]
+layout_mode = 2
+size_flags_horizontal = 4
+accessibility_name = "Play"
+accessibility_description = "Start the new game"
+theme_override_colors/font_color = Color(0.74509805, 0.09411765, 0.8392157, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_28flt")
+theme_override_font_sizes/font_size = 48
+action_mode = 0
+text = "Quit"
+flat = true
