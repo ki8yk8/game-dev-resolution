@@ -32,7 +32,8 @@ func _ready() -> void:
 	add_to_group("tanks")
 	
 	if is_local_player():
-		camera_2d.current = true
+		camera_2d.enabled = true
+		camera_2d.make_current()
 	else:
 		camera_2d.enabled = false
 

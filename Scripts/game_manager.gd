@@ -42,10 +42,37 @@ func join_game(ip_address: String) -> bool:
 
 func register_game_scene(scene: Node) -> void:
 	game_scene = scene
+	print("Game scene registered. Is server: ", multiplayer.is_server(), " unique id: ", multiplayer.get_unique_id())
 	
 	if multiplayer.is_server():
+		print("Server spawning host tank.")
 		game_scene.add_tank(1)
 	else:
+		print("Client waiting until connected...")
+		await _wait_until_connected_to_server()
+		
+		if multiplayer.multiplayer_peer == null:
+			print("No multiplayer peer")
+			return
+			
+		if multiplayer.multiplayer_peer.get_connection_status() != MultiplayerPeer.CONNECTION_CONNECTED:
+			print("Not connected")
+			return
+		
+		request_spawn.rpc_id(1)
+
+func _wait_until_connected_to_server() -> void:
+	while multiplayer.multiplayer_peer != null:
+		var status = multiplayer.multiplayer_peer.get_connection_status()
+		
+		if status == MultiplayerPeer.CONNECTION_CONNECTED:
+			print("Connection status: connected")
+			return
+		
+		if status == MultiplayerPeer.CONNECTION_DISCONNECTED:
+			print("Connection status: disconnected")
+			return
+		
 		await get_tree().process_frame
 
 func unregister_game_scene(scene: Node) -> void:

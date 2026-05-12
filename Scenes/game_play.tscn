@@ -158,16 +158,24 @@ spawn_path = NodePath("../Bullets")
 [node name="SpawnMarkers" type="Node2D" parent="." unique_id=1077491541]
 
 [node name="SpawnPoint1" type="Marker2D" parent="SpawnMarkers" unique_id=860927149]
+visible = false
+position = Vector2(-233, 432)
 
 [node name="SpawnPoint2" type="Marker2D" parent="SpawnMarkers" unique_id=1476998930]
+visible = false
+position = Vector2(-226, -485)
 
 [node name="SpawnPoint3" type="Marker2D" parent="SpawnMarkers" unique_id=906166196]
+position = Vector2(601, 288)
 
 [node name="SpawnPoint4" type="Marker2D" parent="SpawnMarkers" unique_id=327035423]
+position = Vector2(633, -292)
 
 [node name="Tanks" type="Node2D" parent="." unique_id=752195283]
+visible = false
 
 [node name="Bullets" type="Node2D" parent="." unique_id=1887965867]
+visible = false
 
 [node name="Maps" type="Node2D" parent="." unique_id=1536210033]
 
@@ -199,6 +207,7 @@ position = Vector2(-260, -146)
 
 [node name="HUDCanvas" type="CanvasLayer" parent="." unique_id=820671019]
 unique_name_in_owner = true
+visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="HUDCanvas" unique_id=1261304365]
 offset_right = 40.0
