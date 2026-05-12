@@ -6,6 +6,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r30pj"]
 size = Vector2(42, 43)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_r30pj"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:alive")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:bullets")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7f80w"]
 size = Vector2(31, 37)
 
@@ -19,6 +33,19 @@ flip_v = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1880779821]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_r30pj")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=816597303]
+zoom = Vector2(1.2, 1.2)
+limit_left = -320
+limit_top = -569
+limit_right = 771
+limit_bottom = 516
+
+[node name="MuzzleMarker" type="Marker2D" parent="." unique_id=1465962540]
+position = Vector2(0, -25)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=325320148]
+replication_config = SubResource("SceneReplicationConfig_r30pj")
 
 [node name="Timer" type="Timer" parent="." unique_id=1289366645]
 

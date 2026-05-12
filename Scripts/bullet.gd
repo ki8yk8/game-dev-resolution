@@ -1,6 +1,8 @@
 extends Area2D
 
 const SPEED = 400
+const LIFE_TIME = 2.0
+
 var velocity = Vector2.ZERO
 
 @onready var timer = $Timer
