@@ -1,8 +1,5 @@
 extends Node2D
 
-const PORT = 8911
-const MAX_TANKS = 4
-
 const tank_scene: PackedScene = preload("res://Scenes/tank.tscn")
 const bullet_scene: PackedScene = preload("res://Scenes/bullet.tscn")
 
@@ -10,39 +7,14 @@ const bullet_scene: PackedScene = preload("res://Scenes/bullet.tscn")
 @onready var bullets: Node2D = $Bullets
 @onready var spawn_markers: Node2D = $SpawnMarkers
 
-var peer: ENetMultiplayerPeer
 var bullet_counter = 0
 
 func _ready() -> void:
-	multiplayer.peer_connected.connect(_on_peer_connected)
-	multiplayer.peer_disconnected.disconnect(_on_peer_disconnected)
-	
-func host_game() -> void:
-	peer = ENetMultiplayerPeer.new()
-	var error = peer.create_server(PORT, MAX_TANKS)
-	if error != OK:
-		print("Failed to connect")
-		return
-		
-	multiplayer.multiplayer_peer = peer
-	print("Game Hosting Started", PORT)
-	add_tank(1)
+	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+	GameManager.register_game_scene(self)
 
-func join_game(ip_address: String) -> void:
-	peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(ip_address, PORT)
-	
-	if error != OK:
-		print("Failed to join server")
-		return
-		
-	multiplayer.multiplayer_peer = peer
-	print("Joining the server")
-	
-func _on_peer_connected(peer_id: int) -> void:
-	if not multiplayer.is_server():
-		return
-	add_tank(peer_id)
+func _exit_tree() -> void:
+	GameManager.unregister_game_scene(self)
 
 func _on_peer_disconnected(peer_id: int) -> void:
 	if not multiplayer.is_server():

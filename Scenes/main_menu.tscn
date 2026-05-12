@@ -169,5 +169,6 @@ action_mode = 0
 text = "Quit"
 flat = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/ClientJoin" to="." method="_on_start_the_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/HostJoin" to="." method="_on_host_join_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/ClientJoin" to="." method="_on_client_join_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Quit" to="." method="_on_quit_pressed"]
