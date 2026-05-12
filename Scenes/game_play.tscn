@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://m3ldjq1okhld"]
 
 [ext_resource type="Texture2D" uid="uid://b20id2ts01vi3" path="res://assets/Tilesheet/terrainTiles_default.png" id="1_ckfrc"]
+[ext_resource type="Script" uid="uid://dpl40gsef5ft3" path="res://Scripts/game_play.gd" id="1_jfhaq"]
 [ext_resource type="Texture2D" uid="uid://cafnv12woae7e" path="res://assets/PNGs/oilSpill_small.png" id="2_jum18"]
 [ext_resource type="Texture2D" uid="uid://bnqmjacnkyonw" path="res://assets/PNGs/barricadeWood.png" id="2_yovil"]
 [ext_resource type="Texture2D" uid="uid://uy0shuyewdof" path="res://assets/PNGs/crateMetal.png" id="4_dhf3t"]
@@ -144,6 +145,7 @@ sources/2 = SubResource("TileSetAtlasSource_36v51")
 sources/3 = SubResource("TileSetAtlasSource_fb1sc")
 
 [node name="GamePlay" type="Node2D" unique_id=1255298611]
+script = ExtResource("1_jfhaq")
 
 [node name="TankSpawner" type="MultiplayerSpawner" parent="." unique_id=2129371673]
 _spawnable_scenes = PackedStringArray("uid://ikylhihmdb21")

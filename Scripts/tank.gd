@@ -29,7 +29,7 @@ var server_input_dir = 0.0
 var server_rotate_dir = 0.0
 
 func _ready() -> void:
-	add_to_group("players")
+	add_to_group("tanks")
 	
 	if is_local_player():
 		camera_2d.current = true
