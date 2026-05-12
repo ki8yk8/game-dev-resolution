@@ -62,8 +62,8 @@ text = "Survive the Battle"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=257742548]
 layout_mode = 2
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_bottom = 80
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1167432158]
 layout_mode = 2
@@ -92,13 +92,16 @@ theme_override_fonts/font = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 34
 text = "Lifetime Deaths = 100"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1589746161]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1924832588]
 layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 80
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2" unique_id=686018092]
+layout_mode = 2
+theme_override_constants/separation = 32
 alignment = 1
 
-[node name="StartTheGame" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=378359408]
+[node name="HostJoin" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1995548737]
 layout_mode = 2
 size_flags_horizontal = 4
 accessibility_name = "Play"
@@ -110,8 +113,46 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_28flt")
 theme_override_font_sizes/font_size = 48
 action_mode = 0
-text = "Start The GAME"
+text = "Host The Game"
 flat = true
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1978990516]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 34
+placeholder_text = "192.168.1.1"
+max_length = 16
+expand_to_text_length = true
+emoji_menu_enabled = false
+clear_button_enabled = true
+flat = true
+select_all_on_focus = true
+caret_blink = true
+
+[node name="ClientJoin" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=378359408]
+layout_mode = 2
+size_flags_horizontal = 4
+accessibility_name = "Play"
+accessibility_description = "Start the new game"
+theme_override_colors/font_color = Color(0.74509805, 0.09411765, 0.8392157, 1)
+theme_override_colors/font_hover_color = Color(0.4318534, 0.053900007, 0.49, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_28flt")
+theme_override_font_sizes/font_size = 48
+action_mode = 0
+text = "Join the Game"
+flat = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1589746161]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 80
+alignment = 1
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1886842833]
 layout_mode = 2
@@ -128,5 +169,5 @@ action_mode = 0
 text = "Quit"
 flat = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/StartTheGame" to="." method="_on_start_the_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/ClientJoin" to="." method="_on_start_the_game_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Quit" to="." method="_on_quit_pressed"]

@@ -210,3 +210,17 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("12_ejlfm")
 theme_override_font_sizes/font_size = 24
 text = "Bullets = 100"
+
+[node name="TankSpawner" type="MultiplayerSpawner" parent="." unique_id=2129371673]
+
+[node name="BulletsSpawner" type="MultiplayerSpawner" parent="." unique_id=1420996085]
+
+[node name="SpawnMarkers" type="Node2D" parent="." unique_id=1077491541]
+
+[node name="SpawnPoint1" type="Marker2D" parent="SpawnMarkers" unique_id=860927149]
+
+[node name="SpawnPoint2" type="Marker2D" parent="SpawnMarkers" unique_id=1476998930]
+
+[node name="SpawnPoint3" type="Marker2D" parent="SpawnMarkers" unique_id=906166196]
+
+[node name="SpawnPoint4" type="Marker2D" parent="SpawnMarkers" unique_id=327035423]
