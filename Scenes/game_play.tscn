@@ -147,36 +147,6 @@ sources/3 = SubResource("TileSetAtlasSource_fb1sc")
 [node name="GamePlay" type="Node2D" unique_id=1255298611]
 script = ExtResource("1_jfhaq")
 
-[node name="TankSpawner" type="MultiplayerSpawner" parent="." unique_id=2129371673]
-_spawnable_scenes = PackedStringArray("uid://ikylhihmdb21")
-spawn_path = NodePath("../Tanks")
-
-[node name="BulletsSpawner" type="MultiplayerSpawner" parent="." unique_id=1420996085]
-_spawnable_scenes = PackedStringArray("uid://bk75tvsprid3l")
-spawn_path = NodePath("../Bullets")
-
-[node name="SpawnMarkers" type="Node2D" parent="." unique_id=1077491541]
-
-[node name="SpawnPoint1" type="Marker2D" parent="SpawnMarkers" unique_id=860927149]
-visible = false
-position = Vector2(-233, 432)
-
-[node name="SpawnPoint2" type="Marker2D" parent="SpawnMarkers" unique_id=1476998930]
-visible = false
-position = Vector2(-226, -485)
-
-[node name="SpawnPoint3" type="Marker2D" parent="SpawnMarkers" unique_id=906166196]
-position = Vector2(601, 288)
-
-[node name="SpawnPoint4" type="Marker2D" parent="SpawnMarkers" unique_id=327035423]
-position = Vector2(633, -292)
-
-[node name="Tanks" type="Node2D" parent="." unique_id=752195283]
-visible = false
-
-[node name="Bullets" type="Node2D" parent="." unique_id=1887965867]
-visible = false
-
 [node name="Maps" type="Node2D" parent="." unique_id=1536210033]
 
 [node name="TrackMap" type="TileMapLayer" parent="Maps" unique_id=130269268]
@@ -205,9 +175,34 @@ position = Vector2(583, -176)
 [node name="BulletSpawnArea2" parent="Maps/BulletsArea" unique_id=425622881 instance=ExtResource("13_jfhaq")]
 position = Vector2(-260, -146)
 
+[node name="TankSpawner" type="MultiplayerSpawner" parent="." unique_id=2129371673]
+_spawnable_scenes = PackedStringArray("uid://ikylhihmdb21")
+spawn_path = NodePath("../Tanks")
+
+[node name="BulletsSpawner" type="MultiplayerSpawner" parent="." unique_id=1420996085]
+_spawnable_scenes = PackedStringArray("uid://bk75tvsprid3l")
+spawn_path = NodePath("../Bullets")
+
+[node name="SpawnMarkers" type="Node2D" parent="." unique_id=1077491541]
+
+[node name="SpawnPoint1" type="Marker2D" parent="SpawnMarkers" unique_id=860927149]
+position = Vector2(-233, 432)
+
+[node name="SpawnPoint2" type="Marker2D" parent="SpawnMarkers" unique_id=1476998930]
+position = Vector2(-226, -485)
+
+[node name="SpawnPoint3" type="Marker2D" parent="SpawnMarkers" unique_id=906166196]
+position = Vector2(601, 288)
+
+[node name="SpawnPoint4" type="Marker2D" parent="SpawnMarkers" unique_id=327035423]
+position = Vector2(633, -292)
+
+[node name="Tanks" type="Node2D" parent="." unique_id=752195283]
+
+[node name="Bullets" type="Node2D" parent="." unique_id=1887965867]
+
 [node name="HUDCanvas" type="CanvasLayer" parent="." unique_id=820671019]
 unique_name_in_owner = true
-visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="HUDCanvas" unique_id=1261304365]
 offset_right = 40.0
