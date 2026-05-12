@@ -21,7 +21,7 @@ var slippery = false
 var bullets = INITIAL_BULLETS
 
 func _process(delta: float) -> void:
-	bullet_label.text = "Bullets = "+str(bullets)+" / "+str(MAX_BULLETS)
+	bullet_label.text = "Bullets = "+str(bullets)+"/"+str(MAX_BULLETS)
  
 func _physics_process(delta: float) -> void:
 	var cell = oilspill_tilemap.local_to_map(oilspill_tilemap.to_local(global_position))
@@ -79,7 +79,7 @@ func _on_timer_timeout() -> void:
 	slippery = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.name == "Bullets":
+	if area.is_in_group("bullet_pickup"):
 		area.queue_free()
 		bullets += BULLETS_RECEIVED
 		bullets = clamp(bullets, 0, MAX_BULLETS)

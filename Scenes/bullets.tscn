@@ -6,7 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umb5x"]
 size = Vector2(30, 20)
 
-[node name="Bullets" type="Area2D" unique_id=1298340470]
+[node name="Bullets" type="Area2D" unique_id=1298340470 groups=["bullet_pickup"]]
+collision_layer = 2
 script = ExtResource("1_r4o4n")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=612705347]

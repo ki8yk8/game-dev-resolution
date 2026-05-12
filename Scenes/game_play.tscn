@@ -164,6 +164,14 @@ tile_set = SubResource("TileSet_yovil")
 tile_map_data = PackedByteArray("AAAEAPT/AAAAAAAAAAAJAO//AAAAAAAAAAAbAP7/AAAAAAAAAAASAO//AQAAAAAAAAD4/wcAAwAAAAAAAAAIAAsAAQAAAAAAAAACAOz/AQAAAAAAAAD6//z/AQAAAAAAAAD//w0AAwAAAAAAAAAVABIAAgAAAAAAAAAWABIAAgAAAAAAAAAUABIAAgAAAAAAAAAIAAwAAgAAAAAAAAAIAAoAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_lm0or")
 
+[node name="BulletsArea" type="Node2D" parent="." unique_id=1033075403]
+
+[node name="BulletSpawnArea" parent="BulletsArea" unique_id=1865692180 instance=ExtResource("13_jfhaq")]
+position = Vector2(583, -176)
+
+[node name="BulletSpawnArea2" parent="BulletsArea" unique_id=425622881 instance=ExtResource("13_jfhaq")]
+position = Vector2(-260, -146)
+
 [node name="Tank" parent="." unique_id=26339276 instance=ExtResource("1_363iw")]
 position = Vector2(216, 95)
 
@@ -202,6 +210,3 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("12_ejlfm")
 theme_override_font_sizes/font_size = 24
 text = "Bullets = 100"
-
-[node name="BulletSpawnArea" parent="." unique_id=1865692180 instance=ExtResource("13_jfhaq")]
-position = Vector2(75, 67)

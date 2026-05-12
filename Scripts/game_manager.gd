@@ -1,6 +1,6 @@
 extends Node
 
-const BULLETS_SPAWN_DELAY = 1    # in seconds
+const BULLETS_SPAWN_DELAY = 10    # in seconds
 
 var GAME_STATE = {
 	"top_kills": 0,
