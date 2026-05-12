@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r30pj"]
 size = Vector2(42, 43)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7f80w"]
+size = Vector2(31, 37)
+
 [node name="Tank" type="CharacterBody2D" unique_id=26339276]
 script = ExtResource("1_r30pj")
 
@@ -19,4 +22,12 @@ shape = SubResource("RectangleShape2D_r30pj")
 
 [node name="Timer" type="Timer" parent="." unique_id=1289366645]
 
+[node name="Area2D" type="Area2D" parent="." unique_id=530195694]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1394436272]
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_7f80w")
+debug_color = Color(0.8244298, 0.2707664, 0.73681295, 0.41960785)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

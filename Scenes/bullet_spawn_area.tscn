@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bw7enshogpx6h"]
+
+[ext_resource type="Script" uid="uid://clflxueo0lwfo" path="res://Scripts/bullet_spawn_area.gd" id="1_ej54k"]
+[ext_resource type="FontFile" uid="uid://1rtaa8c2t3r6" path="res://assets/fonts/KnightWarrior-w16n8.otf" id="1_u2dio"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ej54k"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="BulletSpawnArea" type="Node2D" unique_id=1865692180]
+script = ExtResource("1_ej54k")
+
+[node name="Panel" type="Panel" parent="." unique_id=1478409627]
+offset_right = 100.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_ej54k")
+
+[node name="Label" type="Label" parent="." unique_id=19592979]
+offset_left = 21.0
+offset_top = 6.0
+offset_right = 78.0
+offset_bottom = 27.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_u2dio")
+theme_override_font_sizes/font_size = 18
+text = "Bullets"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1447259173]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=588699196]
+position = Vector2(48, 52)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

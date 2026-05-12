@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://kr4hffb2sct1" path="res://assets/PNGs/barrelRust_top.png" id="9_kpbyh"]
 [ext_resource type="Texture2D" uid="uid://dfoct7nm78efn" path="res://assets/PNGs/bullet_cell.png" id="11_dhf3t"]
 [ext_resource type="FontFile" uid="uid://2nlnpd3ik203" path="res://assets/fonts/OrizonRegular-6RJG6.otf" id="12_ejlfm"]
+[ext_resource type="PackedScene" uid="uid://bw7enshogpx6h" path="res://Scenes/bullet_spawn_area.tscn" id="13_jfhaq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_363iw"]
 texture = ExtResource("1_ckfrc")
@@ -201,3 +202,6 @@ theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("12_ejlfm")
 theme_override_font_sizes/font_size = 24
 text = "Bullets = 100"
+
+[node name="BulletSpawnArea" parent="." unique_id=1865692180 instance=ExtResource("13_jfhaq")]
+position = Vector2(75, 67)

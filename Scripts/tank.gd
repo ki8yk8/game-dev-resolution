@@ -10,7 +10,10 @@ const FRICTION = 0.85    # between 0 and 1 where, 0 is complete stop and 1 is sl
 const LATERAL_FRICTION = 0.05
 const MAX_VELOCITY = 100.0
 const SLIPPERY_TIME = 4
+
 const INITIAL_BULLETS = 100
+const BULLETS_RECEIVED = 100
+const MAX_BULLETS = 200
 
 const BULLET_SCENE = preload("res://Scenes/bullet.tscn")
 
@@ -18,7 +21,7 @@ var slippery = false
 var bullets = INITIAL_BULLETS
 
 func _process(delta: float) -> void:
-	bullet_label.text = "Bullets = "+str(bullets)
+	bullet_label.text = "Bullets = "+str(bullets)+" / "+str(MAX_BULLETS)
  
 func _physics_process(delta: float) -> void:
 	var cell = oilspill_tilemap.local_to_map(oilspill_tilemap.to_local(global_position))
@@ -27,9 +30,6 @@ func _physics_process(delta: float) -> void:
 	if tile_data:
 		slippery = tile_data.get_custom_data("is_oil")
 		timer.start(SLIPPERY_TIME)
-		
-	if slippery:
-		print("Slippery")
 	
 	var acceleration = ACCELERATION if not slippery else ACCELERATION * 2
 	var friction = FRICTION if not slippery else FRICTION * 0.5
@@ -77,3 +77,9 @@ func _physics_process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	timer.stop()
 	slippery = false
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.name == "Bullets":
+		area.queue_free()
+		bullets += BULLETS_RECEIVED
+		bullets = clamp(bullets, 0, MAX_BULLETS)

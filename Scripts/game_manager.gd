@@ -1,5 +1,7 @@
 extends Node
 
+const BULLETS_SPAWN_DELAY = 1    # in seconds
+
 var GAME_STATE = {
 	"top_kills": 0,
 	"highest_survived": 0,    # in seconds

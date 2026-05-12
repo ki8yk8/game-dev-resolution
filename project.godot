@@ -23,6 +23,10 @@ GameManager="*uid://y8jp84qcvrk6"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[gui]
+
+fonts/dynamic_fonts/use_oversampling=false
+
 [input]
 
 up={
