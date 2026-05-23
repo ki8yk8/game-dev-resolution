@@ -1,3 +1,3 @@
 import Clock from "./components/clock";
 
-clock = Clock()
+const clock = new Clock();
