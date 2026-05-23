@@ -1,3 +1,5 @@
+import "./style.css";
+
 import Clock from "./components/clock";
 import Canvas from "./ui/canvas";
 
@@ -24,7 +26,7 @@ const canvas = new Canvas({
 });
 
 // synchronize UI with the clock ticks
-clock.subscribe(canvas.onChange)
+clock.subscribe(canvas.onChange);
 
 // start the game
-clock.start()
+// clock.start()

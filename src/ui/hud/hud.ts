@@ -12,19 +12,26 @@ export interface HUDProps {
 
 export default function HUD(props: HUDProps): HTMLElement {
 	const nav = document.createElement("nav");
+	nav.className = "hud";
 
 	// logo
 	const logoDiv = document.createElement("div");
+	logoDiv.className = "hud__logo_div";
+
 	const logoMain = document.createElement("p");
 	logoMain.textContent = "Probablia";
+	logoMain.className = "hud__logo_div__main";
+
 	const logoSubtitle = document.createElement("p");
 	logoSubtitle.textContent = "The Outbreak";
+	logoSubtitle.classList = "hud__logo_div__subtitle";
 
 	logoDiv.appendChild(logoMain);
 	logoDiv.appendChild(logoSubtitle);
 
 	// game items
 	const itemsDiv = document.createElement("div");
+	itemsDiv.className = "hud__mini_items"
 	itemsDiv.appendChild(
 		MiniItem({ title: "day", content: `${props.day}/${props.maxDay}` }),
 	);
@@ -39,7 +46,7 @@ export default function HUD(props: HUDProps): HTMLElement {
 	);
 	itemsDiv.appendChild(
 		MiniItem({
-			title: "city entropy",
+			title: "entropy",
 			content: `${props.cityEntropy.toFixed(2)} bits`,
 		}),
 	);
