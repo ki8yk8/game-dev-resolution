@@ -1,5 +1,7 @@
 import MiniItem from "./mini-item";
 
+import "./style.css";
+
 export interface HUDProps {
 	day: number;
 	maxDay: number;
@@ -43,6 +45,7 @@ export default function HUD(props: HUDProps): HTMLElement {
 	);
 
 	// appending the componets to nav
+	nav.appendChild(logoDiv);
 	nav.appendChild(itemsDiv);
 
 	return nav;
