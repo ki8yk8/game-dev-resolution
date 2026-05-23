@@ -20,7 +20,7 @@ export default class Canvas {
 		this.render();
 	}
 
-	private render() {
+	private render = () => {
 		// clear all the elements inside root
 		this.root.innerHTML = "";
 
@@ -30,10 +30,10 @@ export default class Canvas {
 		main.appendChild(HUD(this.hudProps));
 
 		this.root.appendChild(main);
-	}
+	};
 
-	public onChange(gameState: GameState) {
+	public onChange = (gameState: GameState) => {
 		this.hudProps.day = gameState.tick;
 		this.render();
-	}
+	};
 }

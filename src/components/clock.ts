@@ -36,11 +36,7 @@ export default class Clock {
 		this.tickChangeInterval = null;
 	}
 
-	get ticks() {
-		return this.tick;
-	}
-
-	start(): void {
+	public start = (): void => {
 		if (this.state !== "MENU") {
 			console.error(
 				`The game has already started and is in the state ${this.state}.`,
@@ -54,9 +50,9 @@ export default class Clock {
 			this.updateTick,
 			this.tickDuration * this.speedFactor,
 		);
-	}
+	};
 
-	play(): void {
+	public play = (): void => {
 		this.state = "PLAYING";
 
 		if (this.tickChangeInterval) {
@@ -68,9 +64,9 @@ export default class Clock {
 			this.updateTick,
 			this.tickDuration * this.speedFactor,
 		);
-	}
+	};
 
-	pause(): void {
+	public pause = (): void => {
 		this.state = "PAUSED";
 		if (!this.tickChangeInterval) {
 			console.error(
@@ -81,9 +77,9 @@ export default class Clock {
 
 		clearInterval(this.tickChangeInterval);
 		this.tickChangeInterval = null;
-	}
+	};
 
-	changeSpeed(speed: number = 1.0): void {
+	public changeSpeed = (speed: number = 1.0): void => {
 		// speed cannot be negeative
 		if (speed < 0.0) {
 			console.error(`Spee factor cannot be negative, ${speed} < 0.0`);
@@ -101,9 +97,9 @@ export default class Clock {
 			this.updateTick,
 			this.tickDuration / this.speedFactor,
 		);
-	}
+	};
 
-	updateTick(increment = 1) {
+	public updateTick = (increment = 1) => {
 		this.tick += increment;
 
 		// if the game has finished
@@ -118,7 +114,6 @@ export default class Clock {
 		}
 
 		// call all the subscribers
-		console.log(this.onChangeCallbacks);
 		this.onChangeCallbacks.forEach((callback) => {
 			callback({
 				tick: this.tick,
@@ -126,9 +121,9 @@ export default class Clock {
 				maxTick: this.maxTick,
 			});
 		});
-	}
+	};
 
-	subscribe(callback: SubscriberCallback) {
+	public subscribe = (callback: SubscriberCallback) => {
 		this.onChangeCallbacks.push(callback);
-	}
+	};
 }
