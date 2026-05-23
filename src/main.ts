@@ -1,6 +1,10 @@
 import Clock from "./components/clock";
 import Canvas from "./ui/canvas";
 
+// global time management
+const clock = new Clock();
+
+// render the UI
 const root = document.getElementById("app");
 if (!root) {
 	throw new Error(
@@ -8,11 +12,9 @@ if (!root) {
 	);
 }
 
-const clock = new Clock();
-
-Canvas({
+const canvas = new Canvas({
 	root,
-	hudprops: {
+	hudProps: {
 		day: clock.tick,
 		maxDay: clock.maxTick,
 		budget: 0,
@@ -20,3 +22,9 @@ Canvas({
 		cityEntropy: 0,
 	},
 });
+
+// synchronize UI with the clock ticks
+clock.subscribe(canvas.onChange)
+
+// start the game
+clock.start()

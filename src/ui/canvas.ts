@@ -1,17 +1,39 @@
+import { type GameState } from "../components/clock";
 import HUD, { type HUDProps } from "./hud/hud";
 
 interface CanvasProps {
 	root: HTMLElement;
-	hudprops: HUDProps;
+	hudProps: HUDProps;
 }
 
 /**
  * Renders the web ui of the game
  */
-export default function Canvas(props: CanvasProps) {
-	const main = document.createElement("main");
+export default class Canvas {
+	private root: HTMLElement;
+	private hudProps: HUDProps;
 
-	main.appendChild(HUD(props.hudprops));
+	constructor(props: CanvasProps) {
+		this.root = props.root;
+		this.hudProps = props.hudProps;
 
-	props.root.appendChild(main);
+		this.render();
+	}
+
+	private render() {
+		// clear all the elements inside root
+		this.root.innerHTML = "";
+
+		// render the component
+		const main = document.createElement("main");
+
+		main.appendChild(HUD(this.hudProps));
+
+		this.root.appendChild(main);
+	}
+
+	public onChange(gameState: GameState) {
+		this.hudProps.day = gameState.tick;
+		this.render();
+	}
 }

@@ -5,7 +5,7 @@ Ticks is the time of the system, where 1 tick spent is considered as 1 day. It a
 type GAME_STATES = "MENU" | "PLAYING" | "PAUSED" | "GAMEOVER";
 type SubscriberCallback = (gameState: GameState) => void;
 
-interface GameState {
+export interface GameState {
 	state: GAME_STATES;
 	tick: number;
 	maxTick: number;
@@ -16,14 +16,14 @@ export default class Clock {
 	public maxTick: number;
 	public speedFactor: number;
 	public state: GAME_STATES;
-	
+
 	private tickDuration: number;
 	private onChangeCallbacks: SubscriberCallback[];
 	private tickChangeInterval: null | ReturnType<typeof setInterval>;
 
 	constructor(
 		tick: number = 0,
-		tickDuration: number = 10,
+		tickDuration: number = 1 * 1000,
 		maxTick: number = 30,
 	) {
 		this.tick = tick;
@@ -118,6 +118,7 @@ export default class Clock {
 		}
 
 		// call all the subscribers
+		console.log(this.onChangeCallbacks);
 		this.onChangeCallbacks.forEach((callback) => {
 			callback({
 				tick: this.tick,
