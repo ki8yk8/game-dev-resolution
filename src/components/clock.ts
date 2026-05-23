@@ -12,13 +12,14 @@ interface GameState {
 }
 
 export default class Clock {
-	tick: number;
-	tickDuration: number;
-	speedFactor: number;
-	maxTick: number;
-	state: GAME_STATES;
-	onChangeCallbacks: SubscriberCallback[];
-	tickChangeInterval: null | ReturnType<typeof setInterval>;
+	public tick: number;
+	public maxTick: number;
+	public speedFactor: number;
+	public state: GAME_STATES;
+	
+	private tickDuration: number;
+	private onChangeCallbacks: SubscriberCallback[];
+	private tickChangeInterval: null | ReturnType<typeof setInterval>;
 
 	constructor(
 		tick: number = 0,
