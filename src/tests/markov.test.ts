@@ -5,8 +5,8 @@ import { MarkovEngine } from "../engines/markov/engine";
 describe("Markov engine should handle all the state transitions", () => {
 	const dummystats: DistrictStats = {
 		infectionRate: 0.2,
-		crimeIndex: 0.4,
-		infraHealth: 0.1,
+		crimeIndex: 0.1,
+		infraHealth: 0.6,
 		socialTension: 0.1,
 	};
 
@@ -14,7 +14,6 @@ describe("Markov engine should handle all the state transitions", () => {
 
 	test("Next state should be able to be determined from transition matrix", () => {
 		const nextState = engine.nextState("Recovery");
-
 		console.log(nextState);
 		expect(nextState).toBeOneOf(["Recovery", "Riot", "Stable", "Tense"]);
 	});
@@ -23,11 +22,11 @@ describe("Markov engine should handle all the state transitions", () => {
 		const steadyState = engine.steadyState();
 
 		console.log(steadyState);
-		expect(Object.keys(steadyState)).toStrictEqual([
-			"Recovery",
-			"Riot",
+		expect(Object.keys(steadyState)).toEqual([
 			"Stable",
 			"Tense",
+			"Riot",
+			"Recovery",
 		]);
 	});
 });

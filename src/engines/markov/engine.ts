@@ -15,13 +15,74 @@ export class MarkovEngine {
 	}
 
 	calculateTransitionMatrix(stat: DistrictStats): TransitionMatrix {
-		/* TODO: compute the transition matrix based on the probabilities */
-		return {
-			Recovery: { Recovery: 0.25, Riot: 0.25, Stable: 0.25, Tense: 0.25 },
-			Riot: { Recovery: 0.25, Riot: 0.25, Stable: 0.25, Tense: 0.25 },
-			Stable: { Recovery: 0.25, Riot: 0.25, Stable: 0.25, Tense: 0.25 },
-			Tense: { Recovery: 0.25, Riot: 0.25, Stable: 0.25, Tense: 0.25 },
+		// compute based on P(A to B) = base probability * weighted contribution of hidden variable
+		// -ve weight means it decrease probability of transition while, +ve indicates an increase
+
+		// probabilty from stable to other state
+		const stableToOther: Record<DistrictState, number> = {
+			Stable:
+				0.8 -
+				stat.infectionRate * 0.3 -
+				stat.crimeIndex * 0.15 -
+				0.1 * stat.socialTension,
+			Tense:
+				0.12 +
+				stat.infectionRate * 0.35 +
+				stat.crimeIndex * 0.2 +
+				stat.socialTension * 0.1,
+			Riot: 0.0,
+			Recovery: 0.08 - stat.socialTension * 0.05 + stat.infraHealth * 0.05,
 		};
+
+		// probability from tense to other state
+		const tenseToOther: Record<DistrictState, number> = {
+			Stable: 0.25 - stat.crimeIndex * 0.2 - stat.socialTension * 0.15,
+			Tense: 0.4 - stat.infraHealth * 0.05 + stat.socialTension * 0.1,
+			Riot: 0.2 + stat.crimeIndex * 0.45 + stat.socialTension * 0.3,
+			Recovery: 0.15 + stat.infraHealth * 0.1 - stat.crimeIndex * 0.05,
+		};
+
+		// probability from riot to other
+		const riotToOther: Record<DistrictState, number> = {
+			Stable: 0.0,
+			Tense: 0.15 + stat.infraHealth * 0.15 - stat.crimeIndex * 0.1,
+			Riot:
+				0.55 +
+				stat.socialTension * 0.2 +
+				stat.crimeIndex * 0.15 -
+				stat.infraHealth * 0.25,
+			Recovery: 0.3 + stat.infraHealth * 0.2 - stat.socialTension * 0.15,
+		};
+
+		// probability from recover to other
+		const recoveryToOther: Record<DistrictState, number> = {
+			Stable: 0.45 + stat.infraHealth * 0.25 - stat.infectionRate * 0.15,
+			Tense: 0.12 + stat.infectionRate * 0.15 + stat.crimeIndex * 0.1,
+			Riot: 0.0,
+			Recovery: 0.43 - stat.infraHealth * 0.1 + stat.crimeIndex * 0.05,
+		};
+
+		return {
+			Stable: this.normalizeTransition(stableToOther),
+			Tense: this.normalizeTransition(tenseToOther),
+			Riot: this.normalizeTransition(riotToOther),
+			Recovery: this.normalizeTransition(recoveryToOther),
+		};
+	}
+
+	normalizeTransition(
+		transition: Record<DistrictState, number>,
+	): Record<DistrictState, number> {
+		const values = Object.values(transition);
+		const keys = Object.keys(transition);
+
+		const z = values.map((v) => Math.exp(v));
+		const sum_z = z.reduce((prev, cur) => prev + cur);
+		const p = z.map((v) => v / sum_z);
+
+		const entries = p.map((item, index) => [keys[index], item]);
+
+		return Object.fromEntries(entries);
 	}
 
 	nextState(currentState: DistrictState): DistrictState {
@@ -55,10 +116,10 @@ export class MarkovEngine {
 
 	array2TransitionMatrix(a: number[][]): TransitionMatrix {
 		const stateOrder: DistrictState[] = [
-			"Recovery",
-			"Riot",
 			"Stable",
 			"Tense",
+			"Riot",
+			"Recovery",
 		] as const;
 
 		return Object.fromEntries(
