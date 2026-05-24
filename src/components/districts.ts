@@ -38,25 +38,20 @@ export class District {
 	// engines; responsible to implement different probability and mathematical concept that determines the next state of system
 	private markovEngine: MarkovEngine;
 
-	constructor(
-		id: number,
-		name: string,
-		state: DistrictState = "Stable",
-	) {
+	constructor(id: number, name: string) {
 		this.id = id;
 		this.name = name;
-		this.state = state;
 
-		/* TODO: use a random number generator to decide on the stats */
 		this.stats = {
-			infectionRate: 0.2,
-			crimeIndex: 0.1,
-			infraHealth: 0.6,
-			socialTension: 0.2,
+			infectionRate: Math.random(),
+			crimeIndex: Math.random(),
+			infraHealth: Math.random(),
+			socialTension: Math.random(),
 		};
 
 		this.eventRate = this.calculateEventRate();
 		this.markovEngine = new MarkovEngine(this.stats);
+		this.state = this.markovEngine.nextState("Stable");
 	}
 
 	get(): DistrictForUser {

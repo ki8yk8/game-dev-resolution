@@ -38,6 +38,7 @@ const canvas = new Canvas({
 
 // synchronize UI with the clock ticks
 clock.subscribe(canvas.handleClockChange);
+districts.forEach((district) => clock.subscribe(district.handleClockTick));
 
 // start the game
 clock.start();
