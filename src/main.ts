@@ -32,7 +32,7 @@ const canvas = new Canvas({
 });
 
 // synchronize UI with the clock ticks
-clock.subscribe(canvas.onChange);
+clock.subscribe(canvas.handleClockChange);
 
 // start the game
 clock.start();

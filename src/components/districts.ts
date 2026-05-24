@@ -1,4 +1,7 @@
-type DistrictState = "Stable" | "Tense" | "Riot" | "Recovery";
+import { MarkovEngine } from "../engines/markov";
+import { GameState } from "./clock";
+
+export type DistrictState = "Stable" | "Tense" | "Riot" | "Recovery";
 
 /**
  * DistricStats are the hidden variables about a district that decides the transition or the evolution of the distict to chaos. Each hidden variable signfies different concpets;
@@ -7,7 +10,7 @@ type DistrictState = "Stable" | "Tense" | "Riot" | "Recovery";
  * - infraHealth: how degraded the infrastructures are
  * - socialTension: public unrest or inequality pressure
  */
-interface DistrictStats {
+export interface DistrictStats {
 	infectionRate: number;
 	crimeIndex: number;
 	infraHealth: number;
@@ -21,12 +24,7 @@ interface DistrictForUser {
 	state: DistrictState;
 }
 
-/**
- * transition probability from one district state to another that controls the markov chain. This is depended on the stats of each district. If stats are worse the, probability of district being in worse state increases.
- */
-type TransitionMatrix = Record<DistrictState, Record<DistrictState, number>>;
-
-class District {
+export class District {
 	// identity variables (public to user)
 	public id: number;
 	public name: string;
@@ -37,8 +35,10 @@ class District {
 	private stats: DistrictStats;
 
 	// dependednt variables; not visible to user and is depended on the district stats
-	private transitionMatrix: TransitionMatrix;
 	private eventRate: number; // poisson's event rate that determines probability of event being fired on each tick
+
+	// engines; responsible to implement different probability and mathematical concept that determines the next state of system
+	private markovEngine: MarkovEngine;
 
 	constructor() {
 		this.id = 0;
@@ -54,8 +54,8 @@ class District {
 			socialTension: 0.2,
 		};
 
-		this.transitionMatrix = this.calculateTransitionMatrix();
 		this.eventRate = this.calculateEventRate();
+		this.markovEngine = new MarkovEngine(this.stats);
 	}
 
 	get(): DistrictForUser {
@@ -67,15 +67,13 @@ class District {
 		};
 	}
 
-	calculateTransitionMatrix(): TransitionMatrix {
-		/* TODO: compute the transition matrix based on the probabilities */
-		return {
-			Recovery: { Recovery: 0.25, Riot: 0.25, Stable: 0.25, Tense: 0.25 },
-			Riot: { Recovery: 0.25, Riot: 0.25, Stable: 0.25, Tense: 0.25 },
-			Stable: { Recovery: 0.25, Riot: 0.25, Stable: 0.25, Tense: 0.25 },
-			Tense: { Recovery: 0.25, Riot: 0.25, Stable: 0.25, Tense: 0.25 },
-		};
-	}
+	public handleClockTick = (gameState: GameState) => {
+		// TODO: stats will be affected
+		this.markovEngine.calculateTransitionMatrix(this.stats);
+
+		// update the state of the system
+		this.state = this.markovEngine.nextState(this.state);
+	};
 
 	calculateEventRate(): number {
 		/**

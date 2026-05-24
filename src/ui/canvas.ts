@@ -32,10 +32,9 @@ export default class Canvas {
 		this.root.appendChild(main);
 	};
 
-	public onChange = (gameState: GameState) => {
+	public handleClockChange = (gameState: GameState) => {
 		this.hudProps.day = gameState.tick;
 		this.hudProps.state = gameState.state;
-		this.hudProps.speedFactor = gameState.speedFactor,
-		this.render();
+		((this.hudProps.speedFactor = gameState.speedFactor), this.render());
 	};
 }
