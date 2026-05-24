@@ -1,13 +1,16 @@
+.app {
+	border: 1px solid var(--dark-torquise);
+}
+
 .dashboard {
 	display: flex;
-	height: 100%;
 }
 
 .dashboard__districts {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
-	max-width: 300px;
-	padding: 1rem 1rem 0 0;
+	max-width: 350px;
+	padding: 1rem 2rem;
 	border-right: 1px solid var(--dark-torquise);
 }

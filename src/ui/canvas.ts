@@ -33,6 +33,7 @@ export default class Canvas {
 
 		// render the component
 		const main = document.createElement("main");
+		main.className = "app"
 		const dashboard = Dashboard({ districts: this.districts });
 
 		main.appendChild(HUD(this.hudProps));
