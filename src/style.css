@@ -56,3 +56,35 @@ button {
 #app {
 	padding: 1rem 2rem;
 }
+
+.button--control {
+	background-color: transparent;
+	outline: None;
+	padding: 0.5rem;
+	border: 1px solid var(--torquise);
+	color: var(--light-torquise);
+	font-size: 1rem;
+	font-weight: 300;
+	cursor: pointer;
+	transform: scale(1);
+	transition: transform 100ms ease-in;
+}
+
+.button--control.button--control--active {
+	background-color: var(--dark-torquise);
+}
+
+.button--control:disabled {
+	color: var(--dark-torquise);
+	border-color: var(--dark-torquise);
+	cursor: not-allowed;
+}
+
+.button--control:hover {
+	transform: scale(1.1);
+	transition: transform 100ms ease-out;
+}
+
+.button--control span {
+	margin-left: 0.5rem;
+}

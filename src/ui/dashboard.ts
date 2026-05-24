@@ -1,14 +1,26 @@
 import { DistrictForUser } from "../components/districts";
+import InterventionCanvas from "../engines/interventions/canvas";
 import MarkovCanvas from "../engines/markov/canvas";
 import District from "./districts/district";
 import ControlButton from "./generic/control-btn";
+
+type Canvas = "markov" | "intervention";
+
+const CANVAS_MAP: Record<Canvas, () => HTMLElement> = {
+	markov: MarkovCanvas,
+	intervention: InterventionCanvas,
+};
 
 interface DashboardProps {
 	districts: DistrictForUser[];
 }
 
-const CANVAS_MAP: Record<string, () => HTMLElement> = {
-	engine: MarkovCanvas,
+interface DashboardState {
+	openCanvas: Canvas;
+}
+
+const dashboardState: DashboardState = {
+	openCanvas: "markov",
 };
 
 export default function Dashboard(props: DashboardProps) {
@@ -43,13 +55,16 @@ export default function Dashboard(props: DashboardProps) {
 	toolsNav.appendChild(
 		ControlButton({
 			icon: "swap-2-line",
-			onClick: () => {},
+			onClick: () => renderToolsCanvas("markov"),
+			active: dashboardState["openCanvas"] === "markov",
 		}),
 	);
+
 	toolsNav.appendChild(
 		ControlButton({
 			icon: "chat-poll-line",
-			onClick: () => {},
+			onClick: () => renderToolsCanvas("intervention"),
+			active: dashboardState["openCanvas"] === "intervention",
 		}),
 	);
 
@@ -58,7 +73,13 @@ export default function Dashboard(props: DashboardProps) {
 	// tools viewer
 	const toolsCanvasSection = document.createElement("section");
 	toolsCanvasSection.className = "tools_canvas";
-	toolsCanvasSection.appendChild(CANVAS_MAP["engine"]());
+	renderToolsCanvas(dashboardState.openCanvas);
+
+	function renderToolsCanvas(canvas: Canvas) {
+		toolsCanvasSection.innerHTML = "";
+		dashboardState.openCanvas = canvas;
+		toolsCanvasSection.appendChild(CANVAS_MAP[dashboardState.openCanvas]());
+	}
 
 	// adding all the elements to dashboard
 	dashboardMain.appendChild(districtSection);
