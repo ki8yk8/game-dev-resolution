@@ -6,11 +6,42 @@
 	margin-top: 1rem;
 }
 
-.markov__steady__title {
+.markov__steady__title, .markov__table__title {
 	font-size: 0.8rem;
-	color: var(--torquise)
+	color: var(--torquise);
 }
 
 .markov__steady__content {
 	margin-top: 0.25rem;
+}
+
+.markov__table {
+	margin-top: 1.5rem;
+}
+
+.markov_table {
+	margin-top: 0.25rem;
+	border-collapse: collapse;
+}
+
+.markov_table tr:not(:last-child) {
+	border-bottom: 1px solid var(--dark-torquise);
+}
+
+.markov_table th,
+td {
+	padding: 0.5rem 1rem;
+}
+
+.markov_table th {
+	font-weight: 100;
+}
+
+.markov_table th:first-child {
+	text-align: left;
+	border-right: 1px solid var(--dark-torquise);
+}
+
+.markov_table td {
+	text-align: center;
 }

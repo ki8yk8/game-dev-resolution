@@ -4,7 +4,7 @@ import { matMul, transpose } from "../../utils/numpy";
 /**
  * transition probability from one district state to another that controls the markov chain. This is depended on the stats of each district. If stats are worse the, probability of district being in worse state increases.
  */
-type TransitionMatrix = Record<DistrictState, Record<DistrictState, number>>;
+export type TransitionMatrix = Record<DistrictState, Record<DistrictState, number>>;
 
 export class MarkovEngine {
 	// depends on the stats of given district

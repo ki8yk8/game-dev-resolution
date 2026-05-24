@@ -41,4 +41,4 @@ clock.subscribe(canvas.handleClockChange);
 districts.forEach((district) => clock.subscribe(district.handleClockTick));
 
 // start the game
-clock.start();
+// clock.start();

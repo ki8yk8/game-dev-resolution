@@ -74,6 +74,10 @@ export class District {
 		return this.markovEngine.steadyState();
 	};
 
+	public transitionMatrix = () => {
+		return this.markovEngine.calculateTransitionMatrix(this.stats);
+	};
+
 	calculateEventRate(): number {
 		/**
 		 * number of k independent events in one tick
