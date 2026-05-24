@@ -1,6 +1,9 @@
 import { type GameState } from "../components/clock";
 import { DistrictForUser } from "../components/districts";
+import Dashboard from "./dashboard";
 import HUD, { type HUDProps } from "./hud/hud";
+
+import "./style.css";
 
 interface CanvasProps {
 	root: HTMLElement;
@@ -14,10 +17,12 @@ interface CanvasProps {
 export default class Canvas {
 	private root: HTMLElement;
 	private hudProps: HUDProps;
+	private districts: DistrictForUser[];
 
 	constructor(props: CanvasProps) {
 		this.root = props.root;
 		this.hudProps = props.hudProps;
+		this.districts = props.district;
 
 		this.render();
 	}
@@ -28,8 +33,10 @@ export default class Canvas {
 
 		// render the component
 		const main = document.createElement("main");
+		const dashboard = Dashboard({ districts: this.districts });
 
 		main.appendChild(HUD(this.hudProps));
+		main.appendChild(dashboard);
 
 		this.root.appendChild(main);
 	};

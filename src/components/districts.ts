@@ -20,7 +20,6 @@ export interface DistrictStats {
 export interface DistrictForUser {
 	id: number;
 	name: string;
-	color: string;
 	state: DistrictState;
 }
 
@@ -28,7 +27,6 @@ export class District {
 	// identity variables (public to user)
 	public id: number;
 	public name: string;
-	public color: string;
 	public state: DistrictState;
 
 	// hidden variable; stats is what stores the state of different elements of society and controls the evolution of the district
@@ -48,7 +46,6 @@ export class District {
 	) {
 		this.id = id;
 		this.name = name;
-		this.color = color;
 		this.state = state;
 
 		/* TODO: use a random number generator to decide on the stats */
@@ -67,7 +64,6 @@ export class District {
 		return {
 			id: this.id,
 			name: this.name,
-			color: this.color,
 			state: this.state,
 		};
 	}
