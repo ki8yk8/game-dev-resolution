@@ -1,4 +1,4 @@
-import { MarkovEngine } from "../engines/markov";
+import { MarkovEngine } from "../engines/markov/engine";
 import { GAME_STATES, GameState } from "./clock";
 
 export type DistrictState = "Stable" | "Tense" | "Riot" | "Recovery";

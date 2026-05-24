@@ -14,3 +14,26 @@
 	padding: 1rem 2rem;
 	border-right: 1px solid var(--dark-torquise);
 }
+
+.dashboard .tools {
+	border-right: 1px solid var(--dark-torquise);
+	padding: 1rem;
+}
+
+.dashboard .tools__p {
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+.dashboard .tools__nav {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.dashboard .tools_canvas {
+	flex-grow: 1;
+	padding: 1rem 2rem;
+}

@@ -1,4 +1,4 @@
-import type { DistrictState, DistrictStats } from "../components/districts";
+import type { DistrictState, DistrictStats } from "../../components/districts";
 
 /**
  * transition probability from one district state to another that controls the markov chain. This is depended on the stats of each district. If stats are worse the, probability of district being in worse state increases.
