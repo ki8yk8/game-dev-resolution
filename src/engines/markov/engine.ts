@@ -24,8 +24,28 @@ export class MarkovEngine {
 	}
 
 	nextState(currentState: DistrictState): DistrictState {
-		// TODO: compute the next state based on the transition matrix
-		return "Recovery";
+		const currentStateTransition = this.transitionMatrix[currentState];
+		const [states, statesProb] = [
+			Object.keys(currentStateTransition),
+			Object.values(currentStateTransition),
+		];
+
+		// calculate cumulative probability
+		let sumProb = 0;
+		const cumProb = statesProb.map((p) => {
+			sumProb += p;
+			return sumProb;
+		});
+
+		const rnd = Math.random(); // between 0 and 1
+		for (let i = 0; i < cumProb.length; i++) {
+			if (rnd < cumProb[i]) {
+				return states[i] as DistrictState;
+			}
+		}
+
+		// if last item
+		return states[cumProb.length - 1] as DistrictState;
 	}
 
 	steadyState(): Record<DistrictState, number> {
