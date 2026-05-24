@@ -29,11 +29,7 @@ export function matMul(a: number[][], b: number[][]) {
 
 export function isSquare(a: number[][]): number {
 	const [ma, na] = [a.length, a[0].length];
-
-	if (ma !== na || Number.isInteger(Math.sqrt(ma))) {
-		return -1;
-	}
-	return ma;
+	return ma == na ? ma : -1;
 }
 
 export function partitionSquareMatrix(
@@ -52,8 +48,8 @@ export function partitionSquareMatrix(
 
 	const a11 = a1x.map((row) => row.slice(0, n / 2));
 	const a12 = a1x.map((row) => row.slice(n / 2));
-	const a21 = a1x.map((row) => row.slice(0, n / 2));
-	const a22 = a1x.map((row) => row.slice(n / 2));
+	const a21 = a2x.map((row) => row.slice(0, n / 2));
+	const a22 = a2x.map((row) => row.slice(n / 2));
 
 	return [a11, a12, a21, a22];
 }

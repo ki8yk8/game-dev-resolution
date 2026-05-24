@@ -29,14 +29,14 @@ describe("Matrix can be partitioned and joined", () => {
 
 	test("A square matrix can be partitioned", () => {
 		const [b11, b12, b21, b22] = partitionSquareMatrix(matrix);
-		expect(b11).toBe(a11);
-		expect(b12).toBe(a12);
-		expect(b21).toBe(a21);
-		expect(b22).toBe(a22);
+		expect(b11).toStrictEqual(a11);
+		expect(b12).toStrictEqual(a12);
+		expect(b21).toStrictEqual(a21);
+		expect(b22).toStrictEqual(a22);
 	});
 
 	test("Four matrix of same dimension can be joined", () => {
 		const b = gatherFourHalves(a11, a12, a21, a22);
-		expect(b).toBe(matrix);
+		expect(b).toStrictEqual(matrix);
 	});
 });
