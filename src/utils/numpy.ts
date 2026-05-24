@@ -1,14 +1,14 @@
-export function matMul(a: number[][], b: number[][]) {
+export function matMul(a: number[][], b: number[][]): number[][] {
 	const m = isSquare(a);
 	const n = isSquare(b);
 
 	// check for errors
-	if (!m) {
+	if (!m || !Number.isInteger(m)) {
 		throw new Error(
 			`matMul only accepts square (nxn) matrix where n is exact power of 2, got (${a.length}x${a[0].length})`,
 		);
 	}
-	if (!n) {
+	if (!n || !Number.isInteger(n)) {
 		throw new Error(
 			`matMul only accepts square (nxn) matrix where n is exact power of 2, got (${a.length}x${a[0].length})`,
 		);
@@ -21,10 +21,29 @@ export function matMul(a: number[][], b: number[][]) {
 
 	// use recursive matrix multiplication technique
 	if (n === 1) {
-		return [a[0][0] * b[0][0]];
+		return [[a[0][0] * b[0][0]]];
 	}
 
 	// partition matrix to 4 equal parts
+	const [a11, a12, a21, a22] = partitionSquareMatrix(a);
+	const [b11, b12, b21, b22] = partitionSquareMatrix(b);
+
+	const c11 = add(matMul(a11, b11), matMul(a12, b21));
+	const c12 = add(matMul(a11, b12), matMul(a12, b22));
+	const c21 = add(matMul(a21, b11), matMul(a22, b21));
+	const c22 = add(matMul(a21, b12), matMul(a22, b22));
+
+	return gatherFourHalves(c11, c12, c21, c22);
+}
+
+export function add(a: number[][], b: number[][]): number[][] {
+	if (a.length !== b.length || a[0].length !== b[0].length) {
+		throw new Error(
+			`Two matrix should be of same shape for addition, got ${a.length}x${a[0].length} and ${b.length}x${b[0].length}`,
+		);
+	}
+
+	return a.map((row, i) => row.map((val, j) => val + b[i][j]));
 }
 
 export function isSquare(a: number[][]): number {

@@ -1,5 +1,9 @@
 import { describe, expect, test } from "vitest";
-import { gatherFourHalves, partitionSquareMatrix } from "../utils/numpy";
+import {
+	gatherFourHalves,
+	matMul,
+	partitionSquareMatrix,
+} from "../utils/numpy";
 
 describe("Matrix can be partitioned and joined", () => {
 	const matrix = [
@@ -38,5 +42,30 @@ describe("Matrix can be partitioned and joined", () => {
 	test("Four matrix of same dimension can be joined", () => {
 		const b = gatherFourHalves(a11, a12, a21, a22);
 		expect(b).toStrictEqual(matrix);
+	});
+});
+
+describe("Square matrix can be multiplied", () => {
+	test("Square matrix can be multiplied", () => {
+		const a = [
+			[1, 2, 0, 1],
+			[0, 1, 3, 2],
+			[2, 0, 1, 1],
+			[1, 1, 1, 0],
+		];
+		const b = [
+			[2, 1, 0, 3],
+			[1, 0, 2, 1],
+			[3, 1, 1, 0],
+			[0, 2, 1, 1],
+		];
+		const c = [
+			[4, 3, 5, 6],
+			[10, 7, 7, 3],
+			[7, 5, 2, 7],
+			[6, 2, 3, 4],
+		];
+
+		expect(matMul(a, b)).toStrictEqual(c);
 	});
 });
