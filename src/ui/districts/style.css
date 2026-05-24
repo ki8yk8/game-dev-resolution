@@ -1,0 +1,21 @@
+.district_card {
+	display: block;
+	background-color: #F97793;
+	border: 0;
+	text-align: left;
+	padding: 0.75rem 1.5rem;
+	transform: scale(1);
+	transition: transform 100ms ease-out;
+}
+
+.district_card:hover {
+	transform: scale(1.05);
+	transition: transform 100ms ease-in;
+}
+
+.district_card .district_card__state {
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	font-weight: 300;
+	margin-top: 0.2rem;
+}

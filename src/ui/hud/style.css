@@ -2,6 +2,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
+	border-bottom: 1px solid var(--dark-torquise);
+	padding-bottom: 1rem;
 }
 
 .hud__logo_div__main {
@@ -44,7 +46,7 @@
 	outline: None;
 	padding: 0.5rem;
 	border: 1px solid var(--torquise);
-	color: var(--torquise-light);
+	color: var(--light-torquise);
 	font-size: 1rem;
 	font-weight: 300;
 	cursor: pointer;
@@ -53,8 +55,8 @@
 }
 
 .button--control:disabled {
-	color: var(--torquise-light-dark);
-	border-color: var(--torquise-light-dark);
+	color: var(--dark-torquise);
+	border-color: var(--dark-torquise);
 	cursor: not-allowed;
 }
 

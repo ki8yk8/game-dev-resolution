@@ -41,7 +41,6 @@ export class District {
 	constructor(
 		id: number,
 		name: string,
-		color: string,
 		state: DistrictState = "Stable",
 	) {
 		this.id = id;

@@ -9,21 +9,48 @@
 	font-family: "JetBrains Mono", monospace;
 
 	/*COLORS*/
-	--torquise-dark: #091413;
-	--torquise-light-dark: #285a48;
+	--dark: #091413;
+	--dark-torquise: #285a48;
 	--torquise: #408a71;
-	--torquise-light: #b0e4cc;
+	--light-torquise: #b0e4cc;
+
+	--dark-green: #315927;
+	--green: #4c8a3f;
+	--light-green: #bee3af;
+
+	--dark-blue: #275459;
+	--blue: #3f808a;
+	--light-blue: #afe2e3;
+
+	--dark-indigo: #273a59;
+	--indigo: #3f588a;
+	--light-indigo: #afc6e3;
+
+	--dark-red: #6c1327;
+	--red: #a81f36;
+	--light-red: #f1a2b8;
+
+	--dark-olive: #6e6311;
+	--olive: #aba11c;
+	--light-olive: #f2e2a0;
 }
 
 body {
-	background-color: var(--torquise-dark);
-	color: var(--torquise-light);
+	background-color: var(--dark);
+	color: var(--light-torquise);
 
 	font-family: "JetBrains Mono", monospace;
 	font-size: 1rem;
 	font-weight: 200;
 
 	max-width: 100vw;
+}
+
+button {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 1rem;
+	font-weight: 200;
+	cursor: pointer;
 }
 
 #app {

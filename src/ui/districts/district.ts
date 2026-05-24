@@ -1,5 +1,16 @@
 import "./style.css";
-import type { DistrictForUser } from "../../components/districts";
+
+import type {
+	DistrictForUser,
+	DistrictState,
+} from "../../components/districts";
+
+const COLORMAP: Record<DistrictState, string> = {
+	Stable: "var(--light-blue)",
+	Tense: "var(--light-olive)",
+	Riot: "var(--light-red)",
+	Recovery: "var(--light-green)",
+};
 
 interface DistrictProps {
 	district: DistrictForUser;
@@ -9,6 +20,7 @@ interface DistrictProps {
 export default function District(props: DistrictProps): HTMLButtonElement {
 	const districtButton = document.createElement("button");
 	districtButton.className = "district_card";
+	districtButton.style.backgroundColor = COLORMAP[props.district.state];
 	districtButton.onclick = () => props.onClick(props.district.id);
 
 	const districtTitle = document.createElement("p");
