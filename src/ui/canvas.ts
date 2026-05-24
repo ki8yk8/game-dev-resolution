@@ -1,9 +1,11 @@
 import { type GameState } from "../components/clock";
+import { DistrictForUser } from "../components/districts";
 import HUD, { type HUDProps } from "./hud/hud";
 
 interface CanvasProps {
 	root: HTMLElement;
 	hudProps: HUDProps;
+	district: DistrictForUser[];
 }
 
 /**

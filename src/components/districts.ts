@@ -1,5 +1,5 @@
 import { MarkovEngine } from "../engines/markov";
-import { GameState } from "./clock";
+import { GAME_STATES, GameState } from "./clock";
 
 export type DistrictState = "Stable" | "Tense" | "Riot" | "Recovery";
 
@@ -17,7 +17,7 @@ export interface DistrictStats {
 	socialTension: number;
 }
 
-interface DistrictForUser {
+export interface DistrictForUser {
 	id: number;
 	name: string;
 	color: string;
@@ -40,11 +40,16 @@ export class District {
 	// engines; responsible to implement different probability and mathematical concept that determines the next state of system
 	private markovEngine: MarkovEngine;
 
-	constructor() {
-		this.id = 0;
-		this.name = "district name";
-		this.color = "#fff";
-		this.state = "Stable";
+	constructor(
+		id: number,
+		name: string,
+		color: string,
+		state: DistrictState = "Stable",
+	) {
+		this.id = id;
+		this.name = name;
+		this.color = color;
+		this.state = state;
 
 		/* TODO: use a random number generator to decide on the stats */
 		this.stats = {

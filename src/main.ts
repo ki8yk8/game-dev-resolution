@@ -3,6 +3,8 @@ import "remixicon/fonts/remixicon.css";
 
 import Clock from "./components/clock";
 import Canvas from "./ui/canvas";
+import { District } from "./components/districts";
+import { getDistricts } from "./data/districts";
 
 // global time management
 const clock = new Clock();
@@ -14,6 +16,9 @@ if (!root) {
 		"Couldn't find the root element, document.getElementById('app') is null ",
 	);
 }
+
+// create districts
+const districts = getDistricts();
 
 const canvas = new Canvas({
 	root,
@@ -29,6 +34,7 @@ const canvas = new Canvas({
 		onPause: clock.pause,
 		onChangeSpeed: clock.changeSpeed,
 	},
+	district: districts,
 });
 
 // synchronize UI with the clock ticks
