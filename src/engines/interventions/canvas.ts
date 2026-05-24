@@ -3,7 +3,7 @@ export default function InterventionCanvas(): HTMLElement {
 	canvas.className = "dashboard__canvas";
 
 	const title = document.createElement("p");
-	title.className = "dashboard__canvas__p";
+	title.className = "dashboard__canvas__title";
 	title.textContent = "Intervention Panel";
 
 	canvas.appendChild(title);

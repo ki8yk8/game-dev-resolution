@@ -37,3 +37,9 @@
 	flex-grow: 1;
 	padding: 1rem 2rem;
 }
+
+.dashboard__canvas__title {
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	color: var(--torquise);
+}

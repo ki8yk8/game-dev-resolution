@@ -1,0 +1,16 @@
+.markov__status {
+	margin-top: 0.25rem;
+}
+
+.markov__steady {
+	margin-top: 1rem;
+}
+
+.markov__steady__title {
+	font-size: 0.8rem;
+	color: var(--torquise)
+}
+
+.markov__steady__content {
+	margin-top: 0.25rem;
+}

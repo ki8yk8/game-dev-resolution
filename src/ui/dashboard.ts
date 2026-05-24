@@ -1,26 +1,22 @@
-import { DistrictForUser } from "../components/districts";
-import InterventionCanvas from "../engines/interventions/canvas";
+import { District } from "../components/districts";
 import MarkovCanvas from "../engines/markov/canvas";
-import District from "./districts/district";
+import DistrictUI from "./districts/district";
 import ControlButton from "./generic/control-btn";
 
 type Canvas = "markov" | "intervention";
 
-const CANVAS_MAP: Record<Canvas, () => HTMLElement> = {
-	markov: MarkovCanvas,
-	intervention: InterventionCanvas,
-};
-
 interface DashboardProps {
-	districts: DistrictForUser[];
+	districts: District[];
 }
 
 interface DashboardState {
 	openCanvas: Canvas;
+	activeDistrict: number;
 }
 
 const dashboardState: DashboardState = {
 	openCanvas: "markov",
+	activeDistrict: 0,
 };
 
 export default function Dashboard(props: DashboardProps) {
@@ -33,9 +29,12 @@ export default function Dashboard(props: DashboardProps) {
 
 	props.districts.forEach((district) => {
 		districtSection.appendChild(
-			District({
+			DistrictUI({
 				district,
-				onClick: () => {},
+				onClick: () => {
+					dashboardState.activeDistrict = district.id;
+					renderToolsCanvas(dashboardState.openCanvas);
+				},
 			}),
 		);
 	});
@@ -83,7 +82,12 @@ export default function Dashboard(props: DashboardProps) {
 
 		// clear and re-render the canvas
 		toolsCanvasSection.innerHTML = "";
-		toolsCanvasSection.appendChild(CANVAS_MAP[dashboardState.openCanvas]());
+		if (dashboardState.openCanvas === "markov") {
+			const markovCanvas = MarkovCanvas({
+				district: props.districts[dashboardState.activeDistrict],
+			});
+			toolsCanvasSection.appendChild(markovCanvas);
+		}
 	}
 
 	// adding all the elements to dashboard

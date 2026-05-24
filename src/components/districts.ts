@@ -1,5 +1,5 @@
 import { MarkovEngine } from "../engines/markov/engine";
-import { GAME_STATES, GameState } from "./clock";
+import { GameState } from "./clock";
 
 export type DistrictState = "Stable" | "Tense" | "Riot" | "Recovery";
 
@@ -68,6 +68,10 @@ export class District {
 
 		// update the state of the system
 		this.state = this.markovEngine.nextState(this.state);
+	};
+
+	public longForecast = () => {
+		return this.markovEngine.steadyState();
 	};
 
 	calculateEventRate(): number {

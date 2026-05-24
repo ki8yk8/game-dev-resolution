@@ -1,5 +1,5 @@
 import { type GameState } from "../components/clock";
-import { DistrictForUser } from "../components/districts";
+import { District } from "../components/districts";
 import Dashboard from "./dashboard";
 import HUD, { type HUDProps } from "./hud/hud";
 
@@ -8,7 +8,7 @@ import "./style.css";
 interface CanvasProps {
 	root: HTMLElement;
 	hudProps: HUDProps;
-	district: DistrictForUser[];
+	district: District[];
 }
 
 /**
@@ -17,7 +17,7 @@ interface CanvasProps {
 export default class Canvas {
 	private root: HTMLElement;
 	private hudProps: HUDProps;
-	private districts: DistrictForUser[];
+	private districts: District[];
 
 	constructor(props: CanvasProps) {
 		this.root = props.root;
