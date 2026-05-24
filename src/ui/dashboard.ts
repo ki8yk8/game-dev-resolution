@@ -49,25 +49,9 @@ export default function Dashboard(props: DashboardProps) {
 	toolsParagraph.textContent = "tools";
 	toolsSection.appendChild(toolsParagraph);
 
+	// holds all the tools
 	const toolsNav = document.createElement("nav");
 	toolsNav.className = "tools__nav";
-
-	toolsNav.appendChild(
-		ControlButton({
-			icon: "swap-2-line",
-			onClick: () => renderToolsCanvas("markov"),
-			active: dashboardState["openCanvas"] === "markov",
-		}),
-	);
-
-	toolsNav.appendChild(
-		ControlButton({
-			icon: "chat-poll-line",
-			onClick: () => renderToolsCanvas("intervention"),
-			active: dashboardState["openCanvas"] === "intervention",
-		}),
-	);
-
 	toolsSection.appendChild(toolsNav);
 
 	// tools viewer
@@ -76,8 +60,29 @@ export default function Dashboard(props: DashboardProps) {
 	renderToolsCanvas(dashboardState.openCanvas);
 
 	function renderToolsCanvas(canvas: Canvas) {
-		toolsCanvasSection.innerHTML = "";
 		dashboardState.openCanvas = canvas;
+
+		// clear all the tools from the menu
+		toolsNav.innerHTML = "";
+
+		toolsNav.appendChild(
+			ControlButton({
+				icon: "swap-2-line",
+				onClick: () => renderToolsCanvas("markov"),
+				active: dashboardState.openCanvas === "markov",
+			}),
+		);
+
+		toolsNav.appendChild(
+			ControlButton({
+				icon: "chat-poll-line",
+				onClick: () => renderToolsCanvas("intervention"),
+				active: dashboardState.openCanvas === "intervention",
+			}),
+		);
+
+		// clear and re-render the canvas
+		toolsCanvasSection.innerHTML = "";
 		toolsCanvasSection.appendChild(CANVAS_MAP[dashboardState.openCanvas]());
 	}
 
