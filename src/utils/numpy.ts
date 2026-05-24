@@ -84,3 +84,7 @@ export function gatherFourHalves(
 
 	return a1x.concat(a2x);
 }
+
+export function transpose(a: number[][]): number[][] {
+	return a[0].map((_, colIndex) => a.map((row) => row[colIndex]));
+}

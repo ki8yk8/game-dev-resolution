@@ -3,7 +3,6 @@ import "remixicon/fonts/remixicon.css";
 
 import Clock from "./components/clock";
 import Canvas from "./ui/canvas";
-import { District } from "./components/districts";
 import { getDistricts } from "./data/districts";
 
 // global time management
