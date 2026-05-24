@@ -2,7 +2,7 @@
 Ticks is the time of the system, where 1 tick spent is considered as 1 day. It also manages the state of game namely; MENU, PLAYING, PAUSED, GAMEOVER
 */
 
-type GAME_STATES = "MENU" | "PLAYING" | "PAUSED" | "GAMEOVER";
+export type GAME_STATES = "MENU" | "PLAYING" | "PAUSED" | "GAMEOVER";
 type SubscriberCallback = (gameState: GameState) => void;
 
 export interface GameState {

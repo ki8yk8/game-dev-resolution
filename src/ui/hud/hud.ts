@@ -1,4 +1,7 @@
+import HUDControls from "./hud-controls";
 import MiniItem from "./mini-item";
+
+import type { GAME_STATES } from "../../components/clock";
 
 import "./style.css";
 
@@ -8,6 +11,7 @@ export interface HUDProps {
 	budget: number;
 	credibility: number;
 	cityEntropy: number;
+	state: GAME_STATES;
 }
 
 export default function HUD(props: HUDProps): HTMLElement {
@@ -31,7 +35,7 @@ export default function HUD(props: HUDProps): HTMLElement {
 
 	// game items
 	const itemsDiv = document.createElement("div");
-	itemsDiv.className = "hud__mini_items"
+	itemsDiv.className = "hud__mini_items";
 	itemsDiv.appendChild(
 		MiniItem({ title: "day", content: `${props.day}/${props.maxDay}` }),
 	);
@@ -51,9 +55,18 @@ export default function HUD(props: HUDProps): HTMLElement {
 		}),
 	);
 
+	// hud controls
+	const hudControls = HUDControls({
+		state: props.state,
+		onPlay: () => {},
+		onPause: () => {},
+		onChangeSpeedFactor: () => {},
+	});
+
 	// appending the componets to nav
 	nav.appendChild(logoDiv);
 	nav.appendChild(itemsDiv);
+	nav.appendChild(hudControls);
 
 	return nav;
 }

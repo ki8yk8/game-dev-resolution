@@ -1,4 +1,5 @@
 import "./style.css";
+import 'remixicon/fonts/remixicon.css'
 
 import Clock from "./components/clock";
 import Canvas from "./ui/canvas";
@@ -17,6 +18,7 @@ if (!root) {
 const canvas = new Canvas({
 	root,
 	hudProps: {
+		state: clock.state,
 		day: clock.tick,
 		maxDay: clock.maxTick,
 		budget: 0,
