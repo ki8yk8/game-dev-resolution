@@ -1,4 +1,4 @@
-function matMul(a: number[][], b: number[][]) {
+export function matMul(a: number[][], b: number[][]) {
 	const m = isSquare(a);
 	const n = isSquare(b);
 
@@ -27,7 +27,7 @@ function matMul(a: number[][], b: number[][]) {
 	// partition matrix to 4 equal parts
 }
 
-function isSquare(a: number[][]): number {
+export function isSquare(a: number[][]): number {
 	const [ma, na] = [a.length, a[0].length];
 
 	if (ma !== na || Number.isInteger(Math.sqrt(ma))) {
@@ -36,7 +36,7 @@ function isSquare(a: number[][]): number {
 	return ma;
 }
 
-function partitionSquareMatrix(
+export function partitionSquareMatrix(
 	a: number[][],
 ): [number[][], number[][], number[][], number[][]] {
 	const n = isSquare(a);
@@ -58,7 +58,7 @@ function partitionSquareMatrix(
 	return [a11, a12, a21, a22];
 }
 
-function gatherFourHalves(
+export function gatherFourHalves(
 	a11: number[][],
 	a12: number[][],
 	a21: number[][],
