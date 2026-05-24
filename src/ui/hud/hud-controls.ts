@@ -3,20 +3,21 @@ import Icon from "../generic/icon";
 
 interface HUDControlsProps {
 	state: GAME_STATES;
+	speedFactor: number;
 	onPause: () => void;
 	onPlay: () => void;
-	onChangeSpeedFactor: () => void;
+	onChangeSpeed: () => void;
 }
 
 export default function HUDControls(props: HUDControlsProps): HTMLElement {
 	const hudControlDiv = document.createElement("div");
-	hudControlDiv.className = "hud__control_div"
+	hudControlDiv.className = "hud__control_div";
 
 	// buttons
 	const speedButton = ControlButton({
-		status: "1x",
+		status: `${props.speedFactor}x`,
 		icon: "play-fill",
-		onClick: props.onPlay,
+		onClick: props.state === "PAUSED" ? props.onPlay : props.onChangeSpeed,
 	});
 
 	const pauseButton = ControlButton({

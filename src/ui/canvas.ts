@@ -34,6 +34,8 @@ export default class Canvas {
 
 	public onChange = (gameState: GameState) => {
 		this.hudProps.day = gameState.tick;
+		this.hudProps.state = gameState.state;
+		this.hudProps.speedFactor = gameState.speedFactor,
 		this.render();
 	};
 }

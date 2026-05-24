@@ -1,5 +1,5 @@
 import "./style.css";
-import 'remixicon/fonts/remixicon.css'
+import "remixicon/fonts/remixicon.css";
 
 import Clock from "./components/clock";
 import Canvas from "./ui/canvas";
@@ -24,6 +24,10 @@ const canvas = new Canvas({
 		budget: 0,
 		credibility: 0,
 		cityEntropy: 0,
+		speedFactor: clock.speedFactor,
+		onPlay: clock.play,
+		onPause: clock.pause,
+		onChangeSpeed: clock.changeSpeed,
 	},
 });
 
@@ -31,4 +35,4 @@ const canvas = new Canvas({
 clock.subscribe(canvas.onChange);
 
 // start the game
-// clock.start()
+clock.start();

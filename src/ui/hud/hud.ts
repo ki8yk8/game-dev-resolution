@@ -12,6 +12,10 @@ export interface HUDProps {
 	credibility: number;
 	cityEntropy: number;
 	state: GAME_STATES;
+	speedFactor: number;
+	onPlay: () => void;
+	onPause: () => void;
+	onChangeSpeed: () => void;
 }
 
 export default function HUD(props: HUDProps): HTMLElement {
@@ -58,9 +62,10 @@ export default function HUD(props: HUDProps): HTMLElement {
 	// hud controls
 	const hudControls = HUDControls({
 		state: props.state,
-		onPlay: () => {},
-		onPause: () => {},
-		onChangeSpeedFactor: () => {},
+		onPlay: props.onPlay,
+		onPause: props.onPause,
+		onChangeSpeed: props.onChangeSpeed,
+		speedFactor: props.speedFactor,
 	});
 
 	// appending the componets to nav

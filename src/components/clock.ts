@@ -9,12 +9,14 @@ export interface GameState {
 	state: GAME_STATES;
 	tick: number;
 	maxTick: number;
+	speedFactor: number;
 }
 
 export default class Clock {
 	public tick: number;
 	public maxTick: number;
 	public speedFactor: number;
+	public speedFactors: number[];
 	public state: GAME_STATES;
 
 	private tickDuration: number;
@@ -29,6 +31,7 @@ export default class Clock {
 		this.tick = tick;
 		this.tickDuration = tickDuration;
 		this.speedFactor = 1.0;
+		this.speedFactors = [1.0, 1.5, 2.0, 4.0, 0.25];
 		this.maxTick = maxTick;
 		this.state = "MENU";
 
@@ -50,6 +53,9 @@ export default class Clock {
 			this.updateTick,
 			this.tickDuration * this.speedFactor,
 		);
+
+		// publish the change
+		this.publishChange();
 	};
 
 	public play = (): void => {
@@ -64,6 +70,9 @@ export default class Clock {
 			this.updateTick,
 			this.tickDuration * this.speedFactor,
 		);
+
+		// publish the change
+		this.publishChange();
 	};
 
 	public pause = (): void => {
@@ -77,14 +86,17 @@ export default class Clock {
 
 		clearInterval(this.tickChangeInterval);
 		this.tickChangeInterval = null;
+
+		// publish the change
+		this.publishChange();
 	};
 
-	public changeSpeed = (speed: number = 1.0): void => {
-		// speed cannot be negeative
-		if (speed < 0.0) {
-			console.error(`Spee factor cannot be negative, ${speed} < 0.0`);
-			return;
-		}
+	public changeSpeed = (): void => {
+		const speedIndex = this.speedFactors.findIndex(
+			(item) => item == this.speedFactor,
+		);
+		const updatedSpeedIndex = (speedIndex + 1) % this.speedFactors.length;
+		const speed = this.speedFactors[updatedSpeedIndex];
 
 		// remove the earlier interval
 		if (this.tickChangeInterval) {
@@ -97,6 +109,9 @@ export default class Clock {
 			this.updateTick,
 			this.tickDuration / this.speedFactor,
 		);
+
+		// publish the change
+		this.publishChange();
 	};
 
 	public updateTick = (increment = 1) => {
@@ -113,15 +128,21 @@ export default class Clock {
 			}
 		}
 
+		// publish the change
+		this.publishChange();
+	};
+
+	private publishChange() {
 		// call all the subscribers
 		this.onChangeCallbacks.forEach((callback) => {
 			callback({
 				tick: this.tick,
 				state: this.state,
 				maxTick: this.maxTick,
+				speedFactor: this.speedFactor,
 			});
 		});
-	};
+	}
 
 	public subscribe = (callback: SubscriberCallback) => {
 		this.onChangeCallbacks.push(callback);
