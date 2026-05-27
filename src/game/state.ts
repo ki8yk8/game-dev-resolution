@@ -4,9 +4,9 @@ import { District } from "./districts";
 
 import type { GAME_STATUS, Purchase } from "./type";
 
-const INITAL_TOKENS = 100
-const INITAL_ENTROPY = 4.0
-const INITIAL_CREDIBILITY = 0
+const INITAL_TOKENS = 100;
+const INITAL_ENTROPY = 4.0;
+const INITIAL_CREDIBILITY = 0;
 
 export default class GameState {
 	tokens: number;
@@ -20,14 +20,11 @@ export default class GameState {
 	canvas: Canvas;
 	districts: District[];
 
-	constructor(
-		canvas: Canvas,
-		districts: District[],
-	) {
+	constructor(canvas: Canvas, districts: District[]) {
 		this.tokens = INITAL_TOKENS;
 		this.entropy = INITAL_ENTROPY;
 		this.credibility = INITIAL_CREDIBILITY;
-		
+
 		this.purchase_history = [];
 		this.status = "MENU";
 
@@ -64,21 +61,21 @@ export default class GameState {
 		if (this.entropy < 2.0) this._render_end_screen("win");
 	};
 
-	_onTick() {
+	_onTick = () => {
 		if (this.status !== "PLAYING") return;
 
 		// update all the districts
-		this.districts.forEach(district => district.update(this))
+		this.districts.forEach((district) => district.update(this));
 
 		// check win or loss
-		this._checkWinLoss()
+		this._checkWinLoss();
 
 		// render the canvas
 		this._render();
-	}
+	};
 
 	_render() {
-
+		this.canvas._render(this);
 	}
 
 	_render_end_screen(state: string) {}
