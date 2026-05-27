@@ -1,4 +1,5 @@
 import { MarkovEngine } from "../engine/markov";
+import { PoissionEngine } from "./poisson";
 import GameState from "./state";
 import type { DistrictState, DistrictStats } from "./type";
 
@@ -21,11 +22,9 @@ export class District {
 	// hidden variable; stats is what stores the state of different elements of society and controls the evolution of the district
 	private stats: DistrictStats;
 
-	// dependednt variables; not visible to user and is depended on the district stats
-	private eventRate: number; // poisson's event rate that determines probability of event being fired on each tick
-
 	// engines; responsible to implement different probability and mathematical concept that determines the next state of system
 	private markovEngine: MarkovEngine;
+	private poissionEngine: PoissionEngine;
 
 	constructor(id: number, name: string) {
 		this.id = id;
@@ -38,14 +37,17 @@ export class District {
 			socialTension: Math.random(),
 		};
 
-		this.eventRate = this.calculateEventRate();
+		// initializing markov engine
 		this.markovEngine = new MarkovEngine(this.stats);
 		this.state = this.markovEngine.nextState("Stable");
+
+		// iniitalizign the poission engine
+		this.poissionEngine = new PoissionEngine(this.stats);
 	}
 
 	public update = (gameState: GameState) => {
-		// TODO: stats will be affected
 		this.markovEngine.calculateTransitionMatrix(this.stats);
+		this.poissionEngine.calculateEventRate(this.stats);
 
 		// update the state of the system
 		this.state = this.markovEngine.nextState(this.state);
