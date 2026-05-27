@@ -16,5 +16,10 @@ export function normalize(arr: number[]) {
 }
 
 export function cumulative(arr: number[]) {
-	return arr.map((item, index, arr) => item + sum(arr.slice(0, index)));
+	let total = 0;
+
+	return arr.map(item => {
+		total += item;
+		return total;
+	})
 }

@@ -53,7 +53,7 @@ export class EventEngine {
 		const u = Math.max(Math.random(), EPSILON);
 
 		const waitingTime = -Math.log(u) / lambda;
-		return today + waitingTime;
+		this.nextEventDay = today + waitingTime;
 	};
 
 	public sampleEvent = (stats: DistrictStats) => {

@@ -21,8 +21,8 @@ export class PoissionEngine {
 		const lambda =
 			0.2 +
 			stats.infectionRate * 1.2 +
-			stats.crimeIndex * 0.9 -
-			stats.infraHealth * 0.2 +
+			stats.crimeIndex * 0.9 +
+			(1 - stats.infraHealth) * 0.8 +
 			stats.socialTension * 0.6;
 
 		this.eventRate = clamp(lambda, MIN_EVENT_RATE, MAX_EVENT_RATE);
