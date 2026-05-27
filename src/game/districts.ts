@@ -51,6 +51,11 @@ export class District {
 	}
 
 	public update = (gameState: GameState) => {
+		// fire the event if today is the event date
+		if (gameState.clock.tick >= this.eventEngine.nextEventDay) {
+			const event = this.eventEngine.sampleEvent(this.stats);
+		}
+
 		this.markovEngine.calculateTransitionMatrix(this.stats);
 		this.poissionEngine.calculateEventRate(this.stats);
 
