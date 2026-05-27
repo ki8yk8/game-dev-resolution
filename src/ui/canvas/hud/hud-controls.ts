@@ -1,8 +1,8 @@
-import type { GAME_STATES } from "@/game/clock";
+import { GAME_STATUS } from "@/game/type";
 import ControlButton from "@/ui/components/control-btn";
 
 interface HUDControlsProps {
-	state: GAME_STATES;
+	status: GAME_STATUS;
 	speedFactor: number;
 	onPause: () => void;
 	onPlay: () => void;
@@ -17,13 +17,13 @@ export default function HUDControls(props: HUDControlsProps): HTMLElement {
 	const speedButton = ControlButton({
 		status: `${props.speedFactor}x`,
 		icon: "play-fill",
-		onClick: props.state === "PAUSED" ? props.onPlay : props.onChangeSpeed,
+		onClick: props.status === "PAUSED" ? props.onPlay : props.onChangeSpeed,
 	});
 
 	const pauseButton = ControlButton({
 		icon: "pause-fill",
 		onClick: props.onPause,
-		disabled: props.state !== "PLAYING",
+		disabled: props.status !== "PLAYING",
 	});
 
 	// if game is paused then append paused control

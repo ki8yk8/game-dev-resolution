@@ -2,64 +2,39 @@
 Ticks is the time of the system, where 1 tick spent is considered as 1 day. It also manages the state of game namely; MENU, PLAYING, PAUSED, GAMEOVER
 */
 
-export type GAME_STATES = "MENU" | "PLAYING" | "PAUSED" | "GAMEOVER";
-type SubscriberCallback = (gameState: GameState) => void;
+import type { SubscriberCallback } from "./type";
 
-export interface GameState {
-	state: GAME_STATES;
-	tick: number;
-	maxTick: number;
-	speedFactor: number;
-}
+const TICK_DURATION = 1 * 1000;
+const MAX_TICKS = 30;
 
 export default class Clock {
 	public tick: number;
 	public maxTick: number;
 	public speedFactor: number;
 	public speedFactors: number[];
-	public state: GAME_STATES;
+	public running: boolean;
+	private onTick: () => void;
 
 	private tickDuration: number;
 	private onChangeCallbacks: SubscriberCallback[];
 	private tickChangeInterval: null | ReturnType<typeof setInterval>;
 
-	constructor(
-		tick: number = 0,
-		tickDuration: number = 1 * 1000,
-		maxTick: number = 30,
-	) {
-		this.tick = tick;
-		this.tickDuration = tickDuration;
+	constructor(callback: () => void) {
+		// clock states and parameters
+		this.running = false;
+		this.tick = 0;
+		this.tickDuration = TICK_DURATION;
 		this.speedFactor = 1.0;
 		this.speedFactors = [1.0, 1.5, 2.0, 4.0, 0.25];
-		this.maxTick = maxTick;
-		this.state = "MENU";
+		this.maxTick = MAX_TICKS;
+		this.onTick = callback;
 
 		this.onChangeCallbacks = [];
 		this.tickChangeInterval = null;
 	}
 
-	public start = (): void => {
-		if (this.state !== "MENU") {
-			console.error(
-				`The game has already started and is in the state ${this.state}.`,
-			);
-			return;
-		}
-
-		// start the tick counter
-		this.state = "PLAYING";
-		this.tickChangeInterval = setInterval(
-			this.updateTick,
-			this.tickDuration * this.speedFactor,
-		);
-
-		// publish the change
-		this.publishChange();
-	};
-
 	public play = (): void => {
-		this.state = "PLAYING";
+		this.running = true;
 
 		if (this.tickChangeInterval) {
 			console.error("The game has tick interval already defined.");
@@ -70,13 +45,10 @@ export default class Clock {
 			this.updateTick,
 			this.tickDuration * this.speedFactor,
 		);
-
-		// publish the change
-		this.publishChange();
 	};
 
 	public pause = (): void => {
-		this.state = "PAUSED";
+		this.running = false;
 		if (!this.tickChangeInterval) {
 			console.error(
 				"Could not pause the game as tickChangeInterval was not set",
@@ -86,9 +58,6 @@ export default class Clock {
 
 		clearInterval(this.tickChangeInterval);
 		this.tickChangeInterval = null;
-
-		// publish the change
-		this.publishChange();
 	};
 
 	public changeSpeed = (): void => {
@@ -109,9 +78,6 @@ export default class Clock {
 			this.updateTick,
 			this.tickDuration / this.speedFactor,
 		);
-
-		// publish the change
-		this.publishChange();
 	};
 
 	public updateTick = (increment = 1) => {
@@ -119,7 +85,7 @@ export default class Clock {
 
 		// if the game has finished
 		if (this.tick >= this.maxTick) {
-			this.state = "GAMEOVER";
+			this.running = false;
 
 			// stop the ticks
 			if (this.tickChangeInterval) {
@@ -128,23 +94,7 @@ export default class Clock {
 			}
 		}
 
-		// publish the change
-		this.publishChange();
-	};
-
-	private publishChange() {
-		// call all the subscribers
-		this.onChangeCallbacks.forEach((callback) => {
-			callback({
-				tick: this.tick,
-				state: this.state,
-				maxTick: this.maxTick,
-				speedFactor: this.speedFactor,
-			});
-		});
-	}
-
-	public subscribe = (callback: SubscriberCallback) => {
-		this.onChangeCallbacks.push(callback);
+		// callback
+		this.onTick();
 	};
 }

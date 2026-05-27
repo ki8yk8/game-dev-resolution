@@ -1,17 +1,17 @@
 import HUDControls from "./hud-controls";
 import MiniItem from "./mini-item";
 
-import type { GAME_STATES } from "@/game/clock";
+import type { GAME_STATUS } from "@/game/type";
 
 import "./style.css";
 
 export interface HUDProps {
+	status: GAME_STATUS;
 	day: number;
 	maxDay: number;
 	budget: number;
 	credibility: number;
 	cityEntropy: number;
-	state: GAME_STATES;
 	speedFactor: number;
 	onPlay: () => void;
 	onPause: () => void;
@@ -61,7 +61,7 @@ export default function HUD(props: HUDProps): HTMLElement {
 
 	// hud controls
 	const hudControls = HUDControls({
-		state: props.state,
+		status: props.status,
 		onPlay: props.onPlay,
 		onPause: props.onPause,
 		onChangeSpeed: props.onChangeSpeed,

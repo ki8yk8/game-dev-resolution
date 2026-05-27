@@ -1,7 +1,8 @@
 import { MarkovEngine } from "../engine/markov";
-import { GameState } from "./clock";
+import GameState from "./state";
+import type { DistrictState, DistrictStats } from "./type";
 
-export type DistrictState = "Stable" | "Tense" | "Riot" | "Recovery";
+const districtConfig: string[] = ["Eastwood", "Northgate", "Midtown", "Harbor"];
 
 /**
  * DistricStats are the hidden variables about a district that decides the transition or the evolution of the distict to chaos. Each hidden variable signfies different concpets;
@@ -10,18 +11,6 @@ export type DistrictState = "Stable" | "Tense" | "Riot" | "Recovery";
  * - infraHealth: how degraded the infrastructures are
  * - socialTension: public unrest or inequality pressure
  */
-export interface DistrictStats {
-	infectionRate: number;
-	crimeIndex: number;
-	infraHealth: number;
-	socialTension: number;
-}
-
-export interface DistrictForUser {
-	id: number;
-	name: string;
-	state: DistrictState;
-}
 
 export class District {
 	// identity variables (public to user)
@@ -54,15 +43,7 @@ export class District {
 		this.state = this.markovEngine.nextState("Stable");
 	}
 
-	get(): DistrictForUser {
-		return {
-			id: this.id,
-			name: this.name,
-			state: this.state,
-		};
-	}
-
-	public handleClockTick = (gameState: GameState) => {
+	public update = (gameState: GameState) => {
 		// TODO: stats will be affected
 		this.markovEngine.calculateTransitionMatrix(this.stats);
 
@@ -85,8 +66,6 @@ export class District {
 		return 2.85;
 	}
 }
-
-const districtConfig: string[] = ["Eastwood", "Northgate", "Midtown", "Harbor"];
 
 export function getDistricts(): District[] {
 	const districts: District[] = districtConfig.map(
