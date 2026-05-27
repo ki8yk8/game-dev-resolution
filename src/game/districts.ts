@@ -54,6 +54,10 @@ export class District {
 		this.eventEngine = new EventEngine(this.poissionEngine.eventRate);
 	}
 
+	get eventRate() {
+		return this.poissionEngine.eventRate;
+	}
+
 	public update = (gameState: GameState) => {
 		let event_fired = false;
 		// fire the event if today is the event date

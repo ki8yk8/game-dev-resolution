@@ -1,0 +1,31 @@
+.dashboard__canvas__district_info {
+	margin-top: 1rem;
+}
+
+.poisson_canvas__table {
+	margin-top: 1rem;
+	margin-left: 2rem;
+	border-collapse: collapse;
+}
+
+.poisson_canvas__table th {
+	border-right: 1px solid var(--torquise);
+	padding-left: 1rem;
+	padding-right: 4rem;
+	text-align: left;
+	font-weight: 400;
+}
+
+.poisson_canvas__table tr:not(:last-child) {
+	border-bottom: 1px solid var(--torquise);
+}
+
+.poisson_canvas__table td {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+.poisson_canvas__table_title {
+	margin-top: 2rem;
+	font-weight: 400;
+}

@@ -3,6 +3,7 @@ import DistrictUI from "@/ui/canvas/districts";
 import ControlButton from "@/ui/components/control-btn";
 
 import type { Canvas, DashboardProps, DashboardState } from "../type";
+import PoissonCanvas from "../panels/poisson";
 
 const dashboardState: DashboardState = {
 	openCanvas: "markov",
@@ -85,6 +86,11 @@ export default function Dashboard(props: DashboardProps) {
 				district: props.districts[dashboardState.activeDistrict],
 			});
 			toolsCanvasSection.appendChild(markovCanvas);
+		} else if (dashboardState.openCanvas === "poisson") {
+			const poissionCanvas = PoissonCanvas({
+				districts: props.districts,
+			});
+			toolsCanvasSection.appendChild(poissionCanvas);
 		}
 	}
 
