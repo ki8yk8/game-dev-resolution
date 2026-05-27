@@ -1,4 +1,5 @@
-import type { Event } from "./type";
+import { EPSILON } from "@/utils/number";
+import type { DistrictStats, Event } from "./type";
 
 // weight of event refers to the weight given to the event type based on which occurence will be determined
 export const EVENT_TYPES: Event[] = [
@@ -35,3 +36,23 @@ export const EVENT_TYPES: Event[] = [
 		},
 	},
 ];
+
+export class EventEngine {
+	nextEventDay: number
+
+	constructor(lambda: number) {
+		this.nextEventDay = Infinity;
+		this.computeNextEventDay(lambda, 0);
+	}
+
+	computeNextEventDay = (lambda: number, today: number) => {
+		/**
+		 * computes when the next event is to be fired. This should be ran during initialization of district and after a event have been fired.
+		 */
+		// uniform distribution preventing value of 0
+		const u = Math.max(Math.random(), EPSILON)
+
+		const waitingTime = -Math.log(u)/lambda
+		return today+waitingTime;
+	}
+}

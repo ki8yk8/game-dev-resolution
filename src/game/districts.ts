@@ -1,4 +1,5 @@
 import { MarkovEngine } from "../engine/markov";
+import { EventEngine } from "./events";
 import { PoissionEngine } from "./poisson";
 import GameState from "./state";
 import type { DistrictState, DistrictStats } from "./type";
@@ -25,6 +26,7 @@ export class District {
 	// engines; responsible to implement different probability and mathematical concept that determines the next state of system
 	private markovEngine: MarkovEngine;
 	private poissionEngine: PoissionEngine;
+	private eventEngine: EventEngine;
 
 	constructor(id: number, name: string) {
 		this.id = id;
@@ -43,6 +45,9 @@ export class District {
 
 		// iniitalizign the poission engine
 		this.poissionEngine = new PoissionEngine(this.stats);
+
+		// initializing the event engine
+		this.eventEngine = new EventEngine(this.poissionEngine.eventRate);
 	}
 
 	public update = (gameState: GameState) => {
