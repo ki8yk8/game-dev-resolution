@@ -1,7 +1,7 @@
 import HUDControls from "./hud-controls";
 import MiniItem from "./mini-item";
 
-import type { GAME_STATES } from "../../components/clock";
+import type { GAME_STATES } from "@/game/clock";
 
 import "./style.css";
 

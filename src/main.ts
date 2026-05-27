@@ -1,9 +1,9 @@
 import "./style.css";
 import "remixicon/fonts/remixicon.css";
 
-import Clock from "./components/clock";
-import Canvas from "./ui/canvas";
-import { getDistricts } from "./data/districts";
+import Clock from "@/game/clock";
+import Canvas from "@/ui/canvas";
+import { getDistricts } from "@/game/districts";
 
 // global time management
 const clock = new Clock();

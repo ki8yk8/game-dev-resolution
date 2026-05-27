@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
-import { DistrictStats } from "../components/districts";
-import { MarkovEngine } from "../engines/markov/engine";
+import { DistrictStats } from "@/game/districts";
+import { MarkovEngine } from "@/engine/markov";
 
 describe("Markov engine should handle all the state transitions", () => {
 	const dummystats: DistrictStats = {

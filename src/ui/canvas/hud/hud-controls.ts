@@ -1,5 +1,5 @@
-import { type GAME_STATES } from "../../components/clock";
-import ControlButton from "../generic/control-btn";
+import type { GAME_STATES } from "@/game/clock";
+import ControlButton from "@/ui/components/control-btn";
 
 interface HUDControlsProps {
 	state: GAME_STATES;

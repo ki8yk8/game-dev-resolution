@@ -1,6 +1,6 @@
 import "./style.css";
-import { District } from "../../components/districts";
-import TransitionMatrixTableUI from "./table";
+import { District } from "../../../../game/districts";
+import TransitionMatrixTableUI from "../../../../engine/markov/table";
 
 interface MarkovCanvasProps {
 	district: District;

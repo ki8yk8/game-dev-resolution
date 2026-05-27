@@ -1,7 +1,7 @@
-import { District } from "../components/districts";
-import MarkovCanvas from "../engines/markov/canvas";
-import DistrictUI from "./districts/district";
-import ControlButton from "./generic/control-btn";
+import { District } from "@/game/districts";
+import MarkovCanvas from "@/ui/canvas/panels/markov";
+import DistrictUI from "@/ui/canvas/districts";
+import ControlButton from "@/ui/components/control-btn";
 
 type Canvas = "markov" | "intervention";
 

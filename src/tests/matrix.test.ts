@@ -3,7 +3,7 @@ import {
 	gatherFourHalves,
 	matMul,
 	partitionSquareMatrix,
-} from "../utils/numpy";
+} from "@/utils/matrix";
 
 describe("Matrix can be partitioned and joined", () => {
 	const matrix = [

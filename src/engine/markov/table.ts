@@ -1,4 +1,4 @@
-import { TransitionMatrix } from "./engine";
+import { TransitionMatrix } from ".";
 
 interface TransitionMatrixTableProps {
 	matrix: TransitionMatrix;

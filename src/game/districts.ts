@@ -1,4 +1,4 @@
-import { MarkovEngine } from "../engines/markov/engine";
+import { MarkovEngine } from "../engine/markov";
 import { GameState } from "./clock";
 
 export type DistrictState = "Stable" | "Tense" | "Riot" | "Recovery";
@@ -84,4 +84,14 @@ export class District {
 		 */
 		return 2.85;
 	}
+}
+
+const districtConfig: string[] = ["Eastwood", "Northgate", "Midtown", "Harbor"];
+
+export function getDistricts(): District[] {
+	const districts: District[] = districtConfig.map(
+		(name, index) => new District(index, name),
+	);
+
+	return districts;
 }

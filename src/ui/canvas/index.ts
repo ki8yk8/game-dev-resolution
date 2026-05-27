@@ -1,7 +1,7 @@
-import { type GameState } from "../components/clock";
-import { District } from "../components/districts";
-import Dashboard from "./dashboard";
-import HUD, { type HUDProps } from "./hud/hud";
+import { District } from "@/game/districts";
+import Dashboard from "@/ui/canvas/dashboard";
+import HUD, { type HUDProps } from "./hud";
+import type { GameState } from "@/game/clock";
 
 import "./style.css";
 

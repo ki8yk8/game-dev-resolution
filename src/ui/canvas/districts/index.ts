@@ -3,7 +3,7 @@ import "./style.css";
 import type {
 	DistrictForUser,
 	DistrictState,
-} from "../../components/districts";
+} from "@/game/districts";
 
 const COLORMAP: Record<DistrictState, string> = {
 	Stable: "var(--light-blue)",
