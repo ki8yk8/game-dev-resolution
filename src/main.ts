@@ -4,9 +4,11 @@ import "remixicon/fonts/remixicon.css";
 import Clock from "@/game/clock";
 import Canvas from "@/ui/canvas";
 import { getDistricts } from "@/game/districts";
+import { GameState } from "./game/state";
 
-// global time management
+// global time and game management
 const clock = new Clock();
+const gameState = new GameState();
 
 // render the UI
 const root = document.getElementById("app");
@@ -25,7 +27,7 @@ const canvas = new Canvas({
 		state: clock.state,
 		day: clock.tick,
 		maxDay: clock.maxTick,
-		budget: 0,
+		budget: gameState.tokens,
 		credibility: 0,
 		cityEntropy: 0,
 		speedFactor: clock.speedFactor,

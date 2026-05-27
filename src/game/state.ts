@@ -2,7 +2,7 @@ import type { Purchase } from "./type";
 
 const INITIAL_TOKEN = 100;
 
-class GameState {
+export class GameState {
 	tokens: number;
 	private purchase_history: Purchase[];
 
