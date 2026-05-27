@@ -2,7 +2,7 @@ import { MarkovEngine } from "../engine/markov";
 import { EventEngine } from "./events";
 import { PoissionEngine } from "./poisson";
 import GameState from "./state";
-import type { DistrictState, DistrictStats } from "./type";
+import type { DistrictState, DistrictStats, OccuredEvent } from "./type";
 
 const districtConfig: string[] = ["Eastwood", "Northgate", "Midtown", "Harbor"];
 
@@ -28,6 +28,9 @@ export class District {
 	private poissionEngine: PoissionEngine;
 	private eventEngine: EventEngine;
 
+	// event history is used to show the user when did the event occured and to also keep all the event's status managed
+	public eventHistory: OccuredEvent[];
+
 	constructor(id: number, name: string) {
 		this.id = id;
 		this.name = name;
@@ -38,6 +41,7 @@ export class District {
 			infraHealth: Math.random(),
 			socialTension: Math.random(),
 		};
+		this.eventHistory = [];
 
 		// initializing markov engine
 		this.markovEngine = new MarkovEngine(this.stats);
@@ -57,6 +61,14 @@ export class District {
 			const event = this.eventEngine.sampleEvent(this.stats);
 			this.stats = this.eventEngine.applyEvent(this.stats, event);
 			event_fired = true;
+
+			// save the event in the history
+			this.eventHistory.push({
+				id: crypto.randomUUID(),
+				name: event.name,
+				day: gameState.clock.tick,
+				handled: false,
+			});
 		}
 
 		this.markovEngine.calculateTransitionMatrix(this.stats);
@@ -80,13 +92,6 @@ export class District {
 	public transitionMatrix = () => {
 		return this.markovEngine.calculateTransitionMatrix(this.stats);
 	};
-
-	calculateEventRate(): number {
-		/**
-		 * number of k independent events in one tick
-		 */
-		return 2.85;
-	}
 }
 
 export function getDistricts(): District[] {

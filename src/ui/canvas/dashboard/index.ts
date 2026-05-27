@@ -1,18 +1,8 @@
-import { District } from "@/game/districts";
 import MarkovCanvas from "@/ui/canvas/panels/markov";
 import DistrictUI from "@/ui/canvas/districts";
 import ControlButton from "@/ui/components/control-btn";
 
-type Canvas = "markov" | "intervention";
-
-interface DashboardProps {
-	districts: District[];
-}
-
-interface DashboardState {
-	openCanvas: Canvas;
-	activeDistrict: number;
-}
+import type { Canvas, DashboardProps, DashboardState } from "../type";
 
 const dashboardState: DashboardState = {
 	openCanvas: "markov",
@@ -77,6 +67,14 @@ export default function Dashboard(props: DashboardProps) {
 				icon: "chat-poll-line",
 				onClick: () => renderToolsCanvas("intervention"),
 				active: dashboardState.openCanvas === "intervention",
+			}),
+		);
+
+		toolsNav.appendChild(
+			ControlButton({
+				icon: "flask-line",
+				onClick: () => renderToolsCanvas("poisson"),
+				active: dashboardState.openCanvas === "poisson",
 			}),
 		);
 

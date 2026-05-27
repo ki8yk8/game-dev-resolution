@@ -24,3 +24,10 @@ export interface Event {
 	raiseDelta: number;
 	weight: (stats: DistrictStats) => number;
 }
+
+export interface OccuredEvent {
+	id: string;
+	name: string;
+	day: number;
+	handled: boolean;
+}
