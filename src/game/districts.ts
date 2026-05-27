@@ -51,13 +51,23 @@ export class District {
 	}
 
 	public update = (gameState: GameState) => {
+		let event_fired = false;
 		// fire the event if today is the event date
 		if (gameState.clock.tick >= this.eventEngine.nextEventDay) {
 			const event = this.eventEngine.sampleEvent(this.stats);
+			this.stats = this.eventEngine.applyEvent(this.stats, event);
+			event_fired = true;
 		}
 
 		this.markovEngine.calculateTransitionMatrix(this.stats);
 		this.poissionEngine.calculateEventRate(this.stats);
+		// if the event was fired then, compute when next event shall be fired
+		if (event_fired) {
+			this.eventEngine.computeNextEventDay(
+				this.poissionEngine.eventRate,
+				gameState.clock.tick,
+			);
+		}
 
 		// update the state of the system
 		this.state = this.markovEngine.nextState(this.state);

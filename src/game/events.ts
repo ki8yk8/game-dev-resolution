@@ -69,4 +69,9 @@ export class EventEngine {
 
 		return EVENT_TYPES[index];
 	};
+
+	public applyEvent = (stats: DistrictStats, event: Event): DistrictStats => {
+		stats[event.raises] += event.raiseDelta;
+		return { ...stats };
+	};
 }
