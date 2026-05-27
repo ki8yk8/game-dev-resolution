@@ -17,3 +17,10 @@ export interface DistrictStats {
 	infraHealth: number;
 	socialTension: number;
 }
+
+export interface Event {
+	name: string;
+	raises: keyof DistrictStats;
+	raiseDelta: number;
+	weight: (stats: DistrictStats) => number;
+}
