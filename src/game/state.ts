@@ -33,15 +33,19 @@ export default class GameState {
 		this.districts = districts;
 	}
 
-	start() {
+	public start = () => {
 		this.status = "PLAYING";
 		this.clock.play();
-	}
+		
+		this._render();
+	};
 
-	pause() {
+	public pause = () => {
 		this.status = "PAUSED";
 		this.clock.pause();
-	}
+		
+		this._render();
+	};
 
 	public purchase = (particular: string, tokens: number) => {
 		this.purchase_history.push({
@@ -50,18 +54,20 @@ export default class GameState {
 		});
 
 		this.tokens -= tokens;
+		
+		this._render();
 	};
 
 	public getPurchaseHistory = () => {
 		return this.purchase_history;
 	};
 
-	_checkWinLoss = () => {
+	protected _checkWinLoss = () => {
 		if (this.tokens < 0) this._render_end_screen("loss");
 		if (this.entropy < 2.0) this._render_end_screen("win");
 	};
 
-	_onTick = () => {
+	public _onTick = () => {
 		if (this.status !== "PLAYING") return;
 
 		// update all the districts
@@ -74,9 +80,9 @@ export default class GameState {
 		this._render();
 	};
 
-	_render() {
+	protected _render() {
 		this.canvas._render(this);
 	}
 
-	_render_end_screen(state: string) {}
+	protected _render_end_screen(state: string) {}
 }
