@@ -41,7 +41,7 @@ export class MarkovEngine {
 		const tenseToOther: Record<DistrictState, number> = {
 			Stable: 0.25 - stat.crimeIndex * 0.2 - stat.socialTension * 0.15,
 			Tense: 0.4 - stat.infraHealth * 0.05 + stat.socialTension * 0.1,
-			Riot: 0.2 + stat.crimeIndex * 0.45 + stat.socialTension * 0.3,
+			Riot: 0.08 + stat.crimeIndex * 0.45 + stat.socialTension * 0.3,
 			Recovery: 0.15 + stat.infraHealth * 0.1 - stat.crimeIndex * 0.05,
 		};
 
@@ -82,12 +82,17 @@ export class MarkovEngine {
 		const values = Object.values(transition);
 		const keys = Object.keys(transition);
 
-		const z = values.map((v) => Math.exp(v));
-		const sum_z = z.reduce((prev, cur) => prev + cur);
-		const p = z.map((v) => v / sum_z);
+		const clamped = values.map((v) => Math.max(0, v));
+		const sum = clamped.reduce((a, b) => a + b, 0);
 
-		const entries = p.map((item, index) => [keys[index], item]);
+		// prevent divide by 0
+		if (sum === 0) {
+			const entries = clamped.map((item, index) => [keys[index], item]);
+			return Object.fromEntries(entries);
+		}
 
+		const normalized = clamped.map((item) => item / sum);
+		const entries = normalized.map((item, index) => [keys[index], item]);
 		return Object.fromEntries(entries);
 	}
 
