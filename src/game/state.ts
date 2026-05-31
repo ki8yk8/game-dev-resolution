@@ -7,6 +7,7 @@ import type { GAME_STATUS, OccuredEvent, Purchase } from "./type";
 const INITAL_TOKENS = 100;
 const INITAL_ENTROPY = 4.0;
 const INITIAL_CREDIBILITY = 0;
+const UNHANDLED_EVENT_PENALTY = 2;
 
 export default class GameState {
 	tokens: number;
@@ -38,14 +39,14 @@ export default class GameState {
 	public start = () => {
 		this.status = "PLAYING";
 		this.clock.play();
-		
+
 		this._render();
 	};
 
 	public pause = () => {
 		this.status = "PAUSED";
 		this.clock.pause();
-		
+
 		this._render();
 	};
 
@@ -56,7 +57,7 @@ export default class GameState {
 		});
 
 		this.tokens -= tokens;
-		
+
 		this._render();
 	};
 
@@ -75,11 +76,37 @@ export default class GameState {
 		// update all the districts
 		this.districts.forEach((district) => district.update(this));
 
+		// check for unhandle events and change the budget accordingly
+		const unhandledEvents = this.checkUnhandledEvents();
+		if (unhandledEvents.length > 0) {
+			this.tokens -= unhandledEvents.length * UNHANDLED_EVENT_PENALTY;
+		}
+
 		// check win or loss
 		this._checkWinLoss();
 
 		// render the canvas
 		this._render();
+	};
+
+	public addAlert = (alert: OccuredEvent) => {
+		this.alerts.push(alert);
+	};
+
+	public handleAlert = (alertId: string) => {
+		/**
+		 * changes the state of alert to handled and give the credibility to the user
+		 */
+		const alertIndex = this.alerts.findIndex((item) => item.id === alertId);
+		this.alerts[alertIndex].handled = true;
+		this.credibility += 1;
+	};
+
+	protected checkUnhandledEvents = () => {
+		/**
+		 * when a event goes unhandled then, it decreases the budget
+		 */
+		return this.alerts.filter((item) => !item.handled);
 	};
 
 	protected _render() {

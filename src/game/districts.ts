@@ -63,7 +63,7 @@ export class District {
 			event_fired = true;
 
 			// save the event in the history
-			gameState.alerts.push({
+			gameState.addAlert({
 				id: crypto.randomUUID(),
 				name: event.name,
 				day: gameState.clock.tick,
