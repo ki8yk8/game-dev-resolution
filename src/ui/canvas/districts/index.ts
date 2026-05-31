@@ -1,9 +1,7 @@
+import type { District as DistrictType } from "@/game/districts";
 import "./style.css";
 
-import type {
-	DistrictForUser,
-	DistrictState,
-} from "@/game/districts";
+import type { DistrictState } from "@/game/type";
 
 const COLORMAP: Record<DistrictState, string> = {
 	Stable: "var(--light-blue)",
@@ -13,7 +11,7 @@ const COLORMAP: Record<DistrictState, string> = {
 };
 
 interface DistrictProps {
-	district: DistrictForUser;
+	district: DistrictType;
 	onClick: (id: number) => void;
 }
 

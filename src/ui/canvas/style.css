@@ -8,11 +8,10 @@
 
 .dashboard__districts {
 	display: flex;
-	flex-wrap: wrap;
-	max-width: 350px;
+	flex-direction: column;
+	width: 350px;
 	padding: 1rem 2rem;
 	border-right: 1px solid var(--dark-torquise);
-	align-items: flex-start;
 	gap: 1rem;
 }
 
