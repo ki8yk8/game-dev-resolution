@@ -138,7 +138,7 @@ export default function Dashboard(props: DashboardProps) {
 				district: props.districts[dashboardState.activeDistrict],
 				canStabilize: props.day >= 3,
 				onInterventionPurchase: handleInterventionPurchase,
-				responders: props.responders,
+				fireDepartment: props.fireDepartment,
 			});
 			toolsCanvasSection.appendChild(interventionCanvas);
 		}
