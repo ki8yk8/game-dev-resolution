@@ -32,6 +32,7 @@ export default class Canvas {
 		const dashboard = Dashboard({
 			districts: gameState.districts,
 			onPurchase: gameState.purchase,
+			day: gameState.clock.tick,
 		});
 		const alerts = Alerts({
 			alerts: gameState.districts.map((item) => item.eventLogs).flat(),

@@ -1,8 +1,11 @@
 import type { District } from "@/game/districts";
 import "./style.css";
 
+const STABILIZE_COST = 25;
+
 interface InterventionCanvasProps {
 	district: District;
+	canStabilize: boolean;
 }
 
 export default function InterventionCanvas(
@@ -23,10 +26,37 @@ export default function InterventionCanvas(
 	districtName.className = "intervention__district";
 	canvas.appendChild(districtName);
 
+	const stabilizeTitle = document.createElement("p");
+	stabilizeTitle.className = "intervention__stabilize__title";
+	canvas.appendChild(stabilizeTitle);
+
+	const stabilizeDescription = document.createElement("p");
+	stabilizeDescription.className = "intervention__stabilize__description";
+	canvas.appendChild(stabilizeDescription);
+
+	const stabilizeWrapper = document.createElement("div");
+	stabilizeWrapper.className = "intervention__stabilize__wrapper";
+	canvas.appendChild(stabilizeWrapper);
+
+	const stabilizeButton = document.createElement("button");
+	stabilizeWrapper.appendChild(stabilizeButton);
+
+	const stabilizeImpact = document.createElement("p");
+	stabilizeWrapper.appendChild(stabilizeImpact);
+
 	// content
 	title.textContent = "Intervention Panel";
 	description.textContent =
 		"You can perform various actions to stabilize the chaos of individual districts.";
+	stabilizeTitle.textContent = "Stabilize the District";
+	stabilizeDescription.textContent =
+		"After day 3, you can use your tokens to stabilize the city that would decreases the negative statistics of a district.";
+	stabilizeButton.textContent = `Stabilize (-${STABILIZE_COST} Token)`;
+	if (props.canStabilize) {
+		stabilizeImpact.textContent = "Riot -> This";
+	} else {
+		stabilizeButton.disabled = true;
+	}
 
 	const steadyState = props.district.longForecast();
 	const maxState = (

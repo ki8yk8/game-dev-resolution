@@ -2,3 +2,29 @@
 	margin-top: 1rem;
 	font-weight: 400;
 }
+
+.intervention__stabilize__title {
+	margin-top: 2rem;
+	font-weight: 500;
+}
+.intervention__stabilize__description {
+	margin-top: 0.25rem;
+	font-size: 0.9rem;
+}
+.intervention__stabilize__wrapper {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 2rem;
+	margin-top: 1rem;
+}
+.intervention__stabilize__wrapper > button {
+	background-color: var(--blue);
+	border: none;
+	padding: 0.5rem 1.25rem;
+	font-weight: 300;
+}
+.intervention__stabilize__wrapper > button:disabled {
+	cursor: not-allowed;
+	background-color: var(--dark-indigo);
+	color: var(--indigo);
+}

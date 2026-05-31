@@ -5,6 +5,7 @@ export type Canvas = "markov" | "intervention" | "poisson";
 
 export interface DashboardProps {
 	districts: District[];
+	day: number;
 	onPurchase: (item: Purchase) => void;
 }
 

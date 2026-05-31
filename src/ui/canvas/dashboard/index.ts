@@ -112,6 +112,7 @@ export default function Dashboard(props: DashboardProps) {
 		} else if (dashboardState.openCanvas === "intervention") {
 			const interventionCanvas = InterventionCanvas({
 				district: props.districts[dashboardState.activeDistrict],
+				canStabilize: props.day >= 3,
 			});
 			toolsCanvasSection.appendChild(interventionCanvas);
 		}
