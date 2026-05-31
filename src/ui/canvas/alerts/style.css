@@ -23,7 +23,7 @@
 }
 
 .alert {
-	background-color: var(--dark-torquise);
+	border: 1px solid var(--dark-torquise);
 	padding: 0.25rem 0.75rem;
 	font-size: 0.9rem;
 }
