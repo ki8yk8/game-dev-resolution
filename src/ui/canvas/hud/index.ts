@@ -5,6 +5,8 @@ import type { GAME_STATUS } from "@/game/type";
 
 import "./style.css";
 
+const LOW_BUDGET_THRESHOLD = 20;
+
 export interface HUDProps {
 	status: GAME_STATUS;
 	day: number;
@@ -44,7 +46,14 @@ export default function HUD(props: HUDProps): HTMLElement {
 		MiniItem({ title: "day", content: `${props.day}/${props.maxDay}` }),
 	);
 	itemsDiv.appendChild(
-		MiniItem({ title: "budget", content: `${props.budget} tokens` }),
+		MiniItem({
+			title: "budget",
+			content: `${props.budget} tokens`,
+			color:
+				props.budget < LOW_BUDGET_THRESHOLD
+					? "var(--light-red)"
+					: "var(--torquise)",
+		}),
 	);
 	itemsDiv.appendChild(
 		MiniItem({
