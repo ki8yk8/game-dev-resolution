@@ -1,5 +1,6 @@
 import type { District } from "@/game/districts";
 import "./style.css";
+import { MarkovEngine } from "../markov";
 
 const STABILIZE_COST = 25;
 
@@ -53,7 +54,20 @@ export default function InterventionCanvas(
 		"After day 3, you can use your tokens to stabilize the city that would decreases the negative statistics of a district.";
 	stabilizeButton.textContent = `Stabilize (-${STABILIZE_COST} Token)`;
 	if (props.canStabilize) {
-		stabilizeImpact.textContent = "Riot -> This";
+		const propsedStats = Object.fromEntries(
+			(
+				Object.entries(props.district.stats) as [
+					keyof typeof props.district.stats,
+					number,
+				][]
+			).map(([key, value]) => [key, Math.max(0, value - 0.15)]),
+		) as Record<keyof typeof props.district.stats, number>;
+
+		const tempMarkovEngine = new MarkovEngine(propsedStats);
+		const { Riot: futureRiot } = tempMarkovEngine.steadyState();
+		const { Riot: curretnRiot } = props.district.longForecast();
+
+		stabilizeImpact.textContent = `Riot risk: reduces from ${(curretnRiot * 100).toFixed(2)}% to ${(futureRiot * 100).toFixed(2)}%`;
 	} else {
 		stabilizeButton.disabled = true;
 	}

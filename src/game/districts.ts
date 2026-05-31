@@ -22,7 +22,7 @@ export class District {
 	public eventLogs: OccuredEvent[];
 
 	// hidden variable; stats is what stores the state of different elements of society and controls the evolution of the district
-	private stats: DistrictStats;
+	public stats: DistrictStats;
 
 	// engines; responsible to implement different probability and mathematical concept that determines the next state of system
 	private markovEngine: MarkovEngine;
