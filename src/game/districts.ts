@@ -80,7 +80,9 @@ export class District {
 			this.id,
 		);
 		if (respondersAssigned > 0) {
-			const unhandledEvents = this.eventLogs.filter((event) => !event.handled);
+			const unhandledEvents = this.eventLogs
+				.filter((event) => !event.handled)
+				.sort((item) => item.day);
 
 			unhandledEvents.forEach((item, index) => {
 				if (index < respondersAssigned) item.handled = true;
