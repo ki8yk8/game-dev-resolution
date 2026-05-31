@@ -1,6 +1,7 @@
 import Canvas from "@/ui/canvas";
 import Clock from "./clock";
 import { District } from "./districts";
+import { FireDepartment } from "./fire-department";
 
 import type {
 	GAME_STATUS,

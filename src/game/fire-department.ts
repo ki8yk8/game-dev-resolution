@@ -1,6 +1,6 @@
 const MAX_RESPONDERS = 4;
 
-class FireDepartment {
+export class FireDepartment {
 	public maxResponders: number;
 
 	// assignment will have the district id to which the responder is assigned
