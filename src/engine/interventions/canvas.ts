@@ -60,13 +60,18 @@ export default function InterventionCanvas(
 					keyof typeof props.district.stats,
 					number,
 				][]
-			).map(([key, value]) => [key, Math.max(0, value - 0.15)]),
+			).map(([key, value]) =>
+				key === "infraHealth"
+					? [key, value + 0.15]
+					: [key, Math.max(0, value - 0.15)],
+			),
 		) as Record<keyof typeof props.district.stats, number>;
 
 		const tempMarkovEngine = new MarkovEngine(propsedStats);
 		const { Riot: futureRiot } = tempMarkovEngine.steadyState();
 		const { Riot: curretnRiot } = props.district.longForecast();
-		const projectedImpact = (curretnRiot - futureRiot) * 100;
+		console.log(futureRiot, curretnRiot);
+		const projectedImpact = (futureRiot - curretnRiot) * 100;
 
 		stabilizeImpact.textContent = `Riot risk will be ${projectedImpact > 0 ? "+" : ""}${projectedImpact.toFixed(2)}%`;
 	} else {
