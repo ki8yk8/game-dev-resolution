@@ -30,4 +30,5 @@ export interface OccuredEvent {
 	name: string;
 	day: number;
 	handled: boolean;
+	districtId: number;
 }

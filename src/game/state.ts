@@ -2,7 +2,7 @@ import Canvas from "@/ui/canvas";
 import Clock from "./clock";
 import { District } from "./districts";
 
-import type { GAME_STATUS, Purchase } from "./type";
+import type { GAME_STATUS, OccuredEvent, Purchase } from "./type";
 
 const INITAL_TOKENS = 100;
 const INITAL_ENTROPY = 4.0;
@@ -15,6 +15,7 @@ export default class GameState {
 
 	status: GAME_STATUS;
 	purchase_history: Purchase[];
+	alerts: OccuredEvent[];
 
 	clock: Clock;
 	canvas: Canvas;
@@ -26,6 +27,7 @@ export default class GameState {
 		this.credibility = INITIAL_CREDIBILITY;
 
 		this.purchase_history = [];
+		this.alerts = [];
 		this.status = "MENU";
 
 		this.clock = new Clock(this._onTick);

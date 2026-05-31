@@ -3,6 +3,7 @@ import Dashboard from "@/ui/canvas/dashboard";
 import HUD from "./hud";
 
 import "./style.css";
+import Alerts from "./alerts";
 
 /**
  * Renders the web ui of the game
@@ -29,6 +30,7 @@ export default class Canvas {
 		const main = document.createElement("main");
 		main.className = "app";
 		const dashboard = Dashboard({ districts: gameState.districts });
+		const alerts = Alerts({ alerts: gameState.alerts });
 
 		main.appendChild(
 			HUD({
@@ -45,6 +47,7 @@ export default class Canvas {
 			}),
 		);
 		main.appendChild(dashboard);
+		main.appendChild(alerts);
 
 		this.root.appendChild(main);
 	};

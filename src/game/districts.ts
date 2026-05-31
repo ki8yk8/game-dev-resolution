@@ -28,9 +28,6 @@ export class District {
 	private poissionEngine: PoissionEngine;
 	private eventEngine: EventEngine;
 
-	// event history is used to show the user when did the event occured and to also keep all the event's status managed
-	public eventHistory: OccuredEvent[];
-
 	constructor(id: number, name: string) {
 		this.id = id;
 		this.name = name;
@@ -41,7 +38,6 @@ export class District {
 			infraHealth: Math.random(),
 			socialTension: Math.random(),
 		};
-		this.eventHistory = [];
 
 		// initializing markov engine
 		this.markovEngine = new MarkovEngine(this.stats);
@@ -67,11 +63,12 @@ export class District {
 			event_fired = true;
 
 			// save the event in the history
-			this.eventHistory.push({
+			gameState.alerts.push({
 				id: crypto.randomUUID(),
 				name: event.name,
 				day: gameState.clock.tick,
 				handled: false,
+				districtId: this.id,
 			});
 		}
 
