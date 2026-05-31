@@ -65,12 +65,15 @@ export class MarkovEngine {
 			Recovery: 0.43 - stat.infraHealth * 0.1 + stat.crimeIndex * 0.05,
 		};
 
-		return {
+		const newTransition = {
 			Stable: this.normalizeTransition(stableToOther),
 			Tense: this.normalizeTransition(tenseToOther),
 			Riot: this.normalizeTransition(riotToOther),
 			Recovery: this.normalizeTransition(recoveryToOther),
 		};
+
+		this.transitionMatrix = newTransition;
+		return newTransition;
 	}
 
 	normalizeTransition(
