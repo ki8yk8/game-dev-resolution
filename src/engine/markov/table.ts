@@ -13,12 +13,17 @@ export default function TransitionMatrixTableUI(
 ): HTMLElement {
 	// if fog is not revelead then, for the curent state transition hide the values with xx
 	if (!props.fogRevaled) {
-		props.matrix[props.state] = Object.fromEntries(
-			Object.entries(props.matrix[props.state]).map(([key, value]) => [
-				key,
-				Infinity,
-			]),
-		);
+		props.matrix = { ...props.matrix };
+		const keys = Object.keys(props.matrix[props.state]);
+		const values = [Infinity, Infinity, Infinity];
+
+		const foggedTransitionEntries = values.map((item, index) => [
+			keys[index],
+			item,
+		]);
+		const foggedTransition = Object.fromEntries(foggedTransitionEntries);
+
+		props.matrix[props.state] = foggedTransition;
 	}
 
 	const table = document.createElement("table");
