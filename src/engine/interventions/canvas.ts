@@ -70,7 +70,6 @@ export default function InterventionCanvas(
 		const tempMarkovEngine = new MarkovEngine(propsedStats);
 		const { Riot: futureRiot } = tempMarkovEngine.steadyState();
 		const { Riot: curretnRiot } = props.district.longForecast();
-		console.log(futureRiot, curretnRiot);
 		const projectedImpact = (futureRiot - curretnRiot) * 100;
 
 		stabilizeImpact.textContent = `Riot risk will be ${projectedImpact > 0 ? "+" : ""}${projectedImpact.toFixed(2)}%`;

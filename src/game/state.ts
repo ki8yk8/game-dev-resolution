@@ -12,7 +12,7 @@ import type {
 const INITAL_TOKENS = 100;
 const INITAL_ENTROPY = 4.0;
 const INITIAL_CREDIBILITY = 0;
-const UNHANDLED_EVENT_PENALTY = 2;
+const UNHANDLED_EVENT_PENALTY = 1;
 
 export default class GameState {
 	tokens: number;
@@ -72,7 +72,7 @@ export default class GameState {
 	};
 
 	protected _checkWinLoss = () => {
-		if (this.tokens < 0) this._render_end_screen("loss");
+		if (this.tokens <= 0) this._render_end_screen("loss");
 		if (this.entropy < 2.0) this._render_end_screen("win");
 	};
 
