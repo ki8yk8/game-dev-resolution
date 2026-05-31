@@ -69,6 +69,7 @@ export class District {
 				day: gameState.clock.tick,
 				handled: false,
 				districtId: this.id,
+				districtName: this.name,
 			});
 		}
 

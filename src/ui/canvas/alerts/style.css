@@ -1,0 +1,39 @@
+.alerts {
+	padding: 1rem 2rem;
+	border-top: 1px solid var(--dark-torquise);
+}
+
+.alerts__title {
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	font-weight: 400;
+	margin-bottom: 0.5rem;
+}
+
+.alerts__body__none {
+	text-align: center;
+	color: var(--dark-torquise);
+}
+
+.alerts__body {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+}
+
+.alert {
+	background-color: var(--dark-torquise);
+	padding: 0.25rem 0.75rem;
+	font-size: 0.9rem;
+}
+
+.alert__district {
+	font-weight: 400;
+}
+.alert__handled {
+	color: var(--light-green);
+}
+.alert__unhandled {
+	color: var(--light-red);
+}
