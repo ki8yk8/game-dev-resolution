@@ -8,12 +8,15 @@
 .markov__table__buy_button {
 	font-size: 0.8rem;
 	padding: 0.1rem 0.8rem;
-	/* background-color: transparent; */
-	/* color: var(--light-torquise);
-	border: 1px solid var(--light-torquise); */
 	background-color: var(--torquise);
 	color: #fff;
 	border: none;
+}
+
+.markov__table__buy_button:disabled {
+	cursor: not-allowed;
+	background-color: var(--dark-indigo);
+	color: var(--indigo);
 }
 
 .markov__status {

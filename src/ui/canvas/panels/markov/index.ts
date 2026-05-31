@@ -5,8 +5,8 @@ import type { District } from "@/game/districts";
 
 interface MarkovCanvasProps {
 	district: District;
-	onPurchase: (item: Purchase) => void;
-	fogRevaled: boolean;
+	onRevealPurchase: (item: Purchase) => void;
+	fogRevealed: boolean;
 }
 
 export default function MarkovCanvas(props: MarkovCanvasProps): HTMLElement {
@@ -42,7 +42,7 @@ export default function MarkovCanvas(props: MarkovCanvasProps): HTMLElement {
 
 	const markovTable = TransitionMatrixTableUI({
 		matrix: props.district.transitionMatrix(),
-		fogRevaled: props.fogRevaled,
+		fogRevaled: props.fogRevealed,
 		state: props.district.state,
 	});
 	markovSection.appendChild(markovTable);
@@ -68,10 +68,12 @@ export default function MarkovCanvas(props: MarkovCanvasProps): HTMLElement {
 
 	// prepare buy section
 	buyButton.textContent = "Reveal Probabilities (-10 Token)";
-	buyButton.onclick = props.onPurchase.bind(null, {
-		particular: "Markov Reveal",
-		tokens: 10,
-	});
+	buyButton.onclick = () =>
+		props.onRevealPurchase({
+			particular: "Markov Reveal",
+			tokens: 10,
+		});
+	buyButton.disabled = props.fogRevealed;
 
 	const forecast = props.district.longForecast();
 	longForecastBody.textContent = `Stable: ${Math.floor(forecast.Stable * 100)}%, Tense: ${Math.floor(forecast.Tense * 100)}%, Riot: ${Math.floor(forecast.Riot * 100)}%, Recover: ${Math.floor(forecast.Recovery * 100)}%`;

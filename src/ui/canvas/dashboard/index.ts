@@ -4,14 +4,22 @@ import ControlButton from "@/ui/components/control-btn";
 
 import type { Canvas, DashboardProps, DashboardState } from "../type";
 import PoissonCanvas from "../panels/poisson";
+import { Purchase } from "@/game/type";
 
 const dashboardState: DashboardState = {
 	openCanvas: "markov",
 	activeDistrict: 0,
-	fogRevelaed: [],
+	fogRevealed: [],
 };
 
 export default function Dashboard(props: DashboardProps) {
+	function handleRevealPurchase(item: Purchase) {
+		props.onPurchase(item);
+		dashboardState.fogRevealed.push(
+			props.districts[dashboardState.activeDistrict].name,
+		);
+	}
+
 	const dashboardMain = document.createElement("main");
 	dashboardMain.className = "dashboard";
 
@@ -85,11 +93,13 @@ export default function Dashboard(props: DashboardProps) {
 		if (dashboardState.openCanvas === "markov") {
 			const markovCanvas = MarkovCanvas({
 				district: props.districts[dashboardState.activeDistrict],
-				onPurchase: props.onPurchase,
-				fogRevelaed: dashboardState.fogRevelaed.find(
+				onRevealPurchase: handleRevealPurchase,
+				fogRevealed: dashboardState.fogRevealed.find(
 					(item) =>
 						item === props.districts[dashboardState.activeDistrict].name,
-				),
+				)
+					? true
+					: false,
 			});
 			toolsCanvasSection.appendChild(markovCanvas);
 		} else if (dashboardState.openCanvas === "poisson") {
