@@ -84,6 +84,7 @@ export default function Dashboard(props: DashboardProps) {
 		if (dashboardState.openCanvas === "markov") {
 			const markovCanvas = MarkovCanvas({
 				district: props.districts[dashboardState.activeDistrict],
+				onPurchase: props.onPurchase,
 			});
 			toolsCanvasSection.appendChild(markovCanvas);
 		} else if (dashboardState.openCanvas === "poisson") {

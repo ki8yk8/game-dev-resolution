@@ -1,9 +1,11 @@
 import "./style.css";
-import { District } from "../../../../game/districts";
-import TransitionMatrixTableUI from "../../../../engine/markov/table";
+import TransitionMatrixTableUI from "@/engine/markov/table";
+import type { Purchase } from "@/game/type";
+import type { District } from "@/game/districts";
 
 interface MarkovCanvasProps {
 	district: District;
+	onPurchase: (item: Purchase) => void;
 }
 
 export default function MarkovCanvas(props: MarkovCanvasProps): HTMLElement {
@@ -25,9 +27,17 @@ export default function MarkovCanvas(props: MarkovCanvasProps): HTMLElement {
 	markovSection.className = "markov__table";
 	canvas.appendChild(markovSection);
 
+	const markovSectionTitleWrapper = document.createElement("div");
+	markovSectionTitleWrapper.className = "markov__table__title__wrapper";
+	markovSection.appendChild(markovSectionTitleWrapper);
+
 	const markovSectionTtitle = document.createElement("p");
 	markovSectionTtitle.className = "markov__table__title";
-	markovSection.appendChild(markovSectionTtitle);
+	markovSectionTitleWrapper.appendChild(markovSectionTtitle);
+
+	const buyButton = document.createElement("button");
+	buyButton.className = "markov__table__buy_button";
+	markovSectionTitleWrapper.appendChild(buyButton);
 
 	const markovTable = TransitionMatrixTableUI({
 		matrix: props.district.transitionMatrix(),
@@ -52,6 +62,13 @@ export default function MarkovCanvas(props: MarkovCanvasProps): HTMLElement {
 	districtStatus.textContent = `${props.district.name} - Current State: ${props.district.state}`;
 	longForecastTitle.textContent = "Long-run Forecast";
 	markovSectionTtitle.textContent = "Transition Probabilities";
+
+	// prepare buy section
+	buyButton.textContent = "Reveal Probabilities (-10 Token)";
+	buyButton.onclick = props.onPurchase.bind(null, {
+		particular: "Markov Reveal",
+		tokens: 10,
+	});
 
 	const forecast = props.district.longForecast();
 	longForecastBody.textContent = `Stable: ${Math.floor(forecast.Stable * 100)}%, Tense: ${Math.floor(forecast.Tense * 100)}%, Riot: ${Math.floor(forecast.Riot * 100)}%, Recover: ${Math.floor(forecast.Recovery * 100)}%`;

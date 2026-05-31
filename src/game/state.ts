@@ -2,7 +2,12 @@ import Canvas from "@/ui/canvas";
 import Clock from "./clock";
 import { District } from "./districts";
 
-import type { GAME_STATUS, OccuredEvent, Purchase } from "./type";
+import type {
+	GAME_STATUS,
+	OccuredEvent,
+	PurcahseWithTick,
+	Purchase,
+} from "./type";
 
 const INITAL_TOKENS = 100;
 const INITAL_ENTROPY = 4.0;
@@ -15,7 +20,7 @@ export default class GameState {
 	credibility: number;
 
 	status: GAME_STATUS;
-	purchase_history: Purchase[];
+	purchase_history: PurcahseWithTick[];
 	alerts: OccuredEvent[];
 
 	clock: Clock;
@@ -50,13 +55,13 @@ export default class GameState {
 		this._render();
 	};
 
-	public purchase = (particular: string, tokens: number) => {
+	public purchase = (item: Purchase) => {
 		this.purchase_history.push({
-			particular,
-			tokens,
+			...item,
+			day: this.clock.tick,
 		});
 
-		this.tokens -= tokens;
+		this.tokens -= item.tokens;
 
 		this._render();
 	};
@@ -113,5 +118,11 @@ export default class GameState {
 		this.canvas._render(this);
 	}
 
-	protected _render_end_screen(state: string) {}
+	protected _render_end_screen(state: string) {
+		if (state == "loss") {
+			console.log("You lost");
+		} else {
+			console.log("You won");
+		}
+	}
 }

@@ -9,6 +9,10 @@ export interface Purchase {
 	particular: string;
 }
 
+export interface PurcahseWithTick extends Purchase {
+	day: number;
+}
+
 export type DistrictState = "Stable" | "Tense" | "Riot" | "Recovery";
 
 export interface DistrictStats {

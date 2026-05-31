@@ -29,7 +29,10 @@ export default class Canvas {
 		// render the component
 		const main = document.createElement("main");
 		main.className = "app";
-		const dashboard = Dashboard({ districts: gameState.districts });
+		const dashboard = Dashboard({
+			districts: gameState.districts,
+			onPurchase: gameState.purchase,
+		});
 		const alerts = Alerts({ alerts: gameState.alerts });
 
 		main.appendChild(
