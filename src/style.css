@@ -76,7 +76,8 @@ button {
 	background-color: var(--dark-torquise);
 }
 
-button.button--control:disabled {
+.button--control:disabled {
+	background-color: transparent;
 	color: var(--dark-torquise);
 	border-color: var(--dark-torquise);
 	cursor: not-allowed;
