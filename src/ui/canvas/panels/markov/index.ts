@@ -6,6 +6,7 @@ import type { District } from "@/game/districts";
 interface MarkovCanvasProps {
 	district: District;
 	onPurchase: (item: Purchase) => void;
+	fogRevaled: boolean;
 }
 
 export default function MarkovCanvas(props: MarkovCanvasProps): HTMLElement {
@@ -41,6 +42,8 @@ export default function MarkovCanvas(props: MarkovCanvasProps): HTMLElement {
 
 	const markovTable = TransitionMatrixTableUI({
 		matrix: props.district.transitionMatrix(),
+		fogRevaled: props.fogRevaled,
+		state: props.district.state,
 	});
 	markovSection.appendChild(markovTable);
 

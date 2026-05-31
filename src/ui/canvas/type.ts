@@ -11,4 +11,5 @@ export interface DashboardProps {
 export interface DashboardState {
 	openCanvas: Canvas;
 	activeDistrict: number;
+	fogRevelaed: string[];
 }

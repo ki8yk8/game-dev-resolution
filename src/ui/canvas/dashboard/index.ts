@@ -8,6 +8,7 @@ import PoissonCanvas from "../panels/poisson";
 const dashboardState: DashboardState = {
 	openCanvas: "markov",
 	activeDistrict: 0,
+	fogRevelaed: [],
 };
 
 export default function Dashboard(props: DashboardProps) {
@@ -85,6 +86,10 @@ export default function Dashboard(props: DashboardProps) {
 			const markovCanvas = MarkovCanvas({
 				district: props.districts[dashboardState.activeDistrict],
 				onPurchase: props.onPurchase,
+				fogRevelaed: dashboardState.fogRevelaed.find(
+					(item) =>
+						item === props.districts[dashboardState.activeDistrict].name,
+				),
 			});
 			toolsCanvasSection.appendChild(markovCanvas);
 		} else if (dashboardState.openCanvas === "poisson") {

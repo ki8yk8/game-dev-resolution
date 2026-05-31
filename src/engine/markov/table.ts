@@ -1,12 +1,26 @@
 import { TransitionMatrix } from ".";
 
+import type { DistrictState } from "@/game/type";
+
 interface TransitionMatrixTableProps {
 	matrix: TransitionMatrix;
+	fogRevaled: boolean;
+	state: DistrictState;
 }
 
 export default function TransitionMatrixTableUI(
 	props: TransitionMatrixTableProps,
 ): HTMLElement {
+	// if fog is not revelead then, for the curent state transition hide the values with xx
+	if (!props.fogRevaled) {
+		props.matrix[props.state] = Object.fromEntries(
+			Object.entries(props.matrix[props.state]).map(([key, value]) => [
+				key,
+				Infinity,
+			]),
+		);
+	}
+
 	const table = document.createElement("table");
 	table.className = "markov_table";
 
@@ -55,7 +69,11 @@ function createTableRow(
 		const td = document.createElement("td");
 		tr.appendChild(td);
 
-		td.textContent = `${Math.floor(value * 100)}%`;
+		if (isFinite(value)) {
+			td.textContent = `${Math.floor(value * 100)}%`;
+		} else {
+			td.textContent = "xxx";
+		}
 	});
 
 	return tr;
