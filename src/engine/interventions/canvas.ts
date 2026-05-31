@@ -114,18 +114,27 @@ export default function InterventionCanvas(
 
 	districtName.textContent = `${props.district.name} - Current State: ${props.district.state}, Can stabilize at: ${maxState}`;
 
-	respondersTitle.textContent = `Responders (${props.fireDepartment.freeResponders}/${props.fireDepartment.maxResponders} available, ${props.fireDepartment.districtHasResponders(props.district.id)} assign to ${props.district.name})`;
-
 	respondersDescription.textContent =
 		"Responders at every day work to handle one issue. There are 4 responders available so, allocate them wisely.";
 	responderButtonUp.textContent = "Assign 1 responder";
 	responderButtomDown.textContent = "Relinquish 1 responder";
 
-	if (props.fireDepartment.freeResponders === 0) {
-		responderButtonUp.disabled = true;
-	}
-	if (props.fireDepartment.districtHasResponders(props.district.id) === 0) {
-		responderButtomDown.disabled = true;
+	responderButtonUp.onclick = () => {
+		props.fireDepartment.assignResponder(props.district.id);
+		handleResponderChange();
+	};
+	responderButtomDown.onclick = () => {
+		props.fireDepartment.relinquishResponder(props.district.id);
+		handleResponderChange();
+	};
+	handleResponderChange();
+
+	function handleResponderChange() {
+		respondersTitle.textContent = `Responders (${props.fireDepartment.freeResponders}/${props.fireDepartment.maxResponders} available, ${props.fireDepartment.districtHasResponders(props.district.id)} assign to ${props.district.name})`;
+
+		responderButtonUp.disabled = props.fireDepartment.freeResponders === 0;
+		responderButtomDown.disabled =
+			props.fireDepartment.districtHasResponders(props.district.id) === 0;
 	}
 
 	return canvas;
