@@ -33,7 +33,9 @@ export default class Canvas {
 			districts: gameState.districts,
 			onPurchase: gameState.purchase,
 		});
-		const alerts = Alerts({ alerts: gameState.alerts });
+		const alerts = Alerts({
+			alerts: gameState.districts.map((item) => item.eventLogs).flat(),
+		});
 
 		main.appendChild(
 			HUD({

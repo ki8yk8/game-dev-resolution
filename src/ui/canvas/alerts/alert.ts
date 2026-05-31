@@ -3,7 +3,7 @@ import { OccuredEvent } from "@/game/type";
 interface AlertProps {
 	district: string;
 	handledEvents: OccuredEvent[];
-	undhandledEvents: OccuredEvent[];
+	unhandledEvents: OccuredEvent[];
 }
 
 export default function Alert(props: AlertProps): HTMLElement {
@@ -20,12 +20,12 @@ export default function Alert(props: AlertProps): HTMLElement {
 
 	const undhandledEvents = document.createElement("span");
 	undhandledEvents.className = "alert__unhandled";
-	if (props.undhandledEvents.length > 0) alert.appendChild(undhandledEvents);
+	if (props.unhandledEvents.length > 0) alert.appendChild(undhandledEvents);
 
 	// content
 	alertDistrict.textContent = `${props.district}: `;
 	handledEvents.textContent = `${props.handledEvents.length} handled events`
-	undhandledEvents.textContent = `${props.undhandledEvents.length} unhandled events`
+	undhandledEvents.textContent = `${props.unhandledEvents.length} unhandled events`
 
 	return alert;
 }

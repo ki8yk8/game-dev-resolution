@@ -19,6 +19,7 @@ export class District {
 	public id: number;
 	public name: string;
 	public state: DistrictState;
+	public eventLogs: OccuredEvent[];
 
 	// hidden variable; stats is what stores the state of different elements of society and controls the evolution of the district
 	private stats: DistrictStats;
@@ -42,6 +43,7 @@ export class District {
 		// initializing markov engine
 		this.markovEngine = new MarkovEngine(this.stats);
 		this.state = this.markovEngine.nextState("Stable");
+		this.eventLogs = [];
 
 		// iniitalizign the poission engine
 		this.poissionEngine = new PoissionEngine(this.stats);
@@ -63,7 +65,7 @@ export class District {
 			event_fired = true;
 
 			// save the event in the history
-			gameState.addAlert({
+			this.eventLogs.push({
 				id: crypto.randomUUID(),
 				name: event.name,
 				day: gameState.clock.tick,

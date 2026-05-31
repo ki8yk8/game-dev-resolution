@@ -94,24 +94,25 @@ export default class GameState {
 		this._render();
 	};
 
-	public addAlert = (alert: OccuredEvent) => {
-		this.alerts.push(alert);
-	};
-
-	public handleAlert = (alertId: string) => {
+	public handleEvent = (eventId: string) => {
 		/**
 		 * changes the state of alert to handled and give the credibility to the user
 		 */
-		const alertIndex = this.alerts.findIndex((item) => item.id === alertId);
-		this.alerts[alertIndex].handled = true;
-		this.credibility += 1;
+		const unhandledEvents = this.checkUnhandledEvents();
+		const event = unhandledEvents.find((item) => item.id === eventId);
+
+		if (event) {
+			event.handled = true;
+		}
 	};
 
-	protected checkUnhandledEvents = () => {
+	protected checkUnhandledEvents = (): OccuredEvent[] => {
 		/**
 		 * when a event goes unhandled then, it decreases the budget
 		 */
-		return this.alerts.filter((item) => !item.handled);
+		return this.districts
+			.flatMap((item) => item.eventLogs)
+			.filter((item) => !item.handled);
 	};
 
 	protected _render() {
@@ -119,6 +120,8 @@ export default class GameState {
 	}
 
 	protected _render_end_screen(state: string) {
+		this.pause();
+
 		if (state == "loss") {
 			console.log("You lost");
 		} else {

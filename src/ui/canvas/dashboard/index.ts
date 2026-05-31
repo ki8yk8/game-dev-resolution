@@ -105,6 +105,8 @@ export default function Dashboard(props: DashboardProps) {
 		} else if (dashboardState.openCanvas === "poisson") {
 			const poissionCanvas = PoissonCanvas({
 				districts: props.districts,
+				activeIndex: dashboardState.activeDistrict,
+				eventLog: [],
 			});
 			toolsCanvasSection.appendChild(poissionCanvas);
 		}

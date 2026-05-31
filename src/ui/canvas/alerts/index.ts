@@ -38,13 +38,13 @@ export default function Alerts(props: AlertsProps) {
 			(item) => item.districtName == distictName,
 		);
 		const handledEvents = districtEvents.filter((item) => item.handled);
-		const undhandledEvents = districtEvents.filter((item) => !item.handled);
+		const unhandledEvents = districtEvents.filter((item) => !item.handled);
 
 		alerts.appendChild(
 			Alert({
 				district: distictName,
 				handledEvents,
-				undhandledEvents,
+				unhandledEvents,
 			}),
 		);
 	});

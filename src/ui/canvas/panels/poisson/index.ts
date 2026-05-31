@@ -1,8 +1,11 @@
 import { District } from "@/game/districts";
 import "./style.css";
+import { Event } from "@/game/type";
 
 interface PoissonCanvasProps {
 	districts: District[];
+	eventLog: Event[];
+	activeIndex: number;
 }
 
 export default function PoissonCanvas(props: PoissonCanvasProps): HTMLElement {
