@@ -15,7 +15,7 @@ export default function TransitionMatrixTableUI(
 	if (!props.fogRevaled) {
 		props.matrix = { ...props.matrix };
 		const keys = Object.keys(props.matrix[props.state]);
-		const values = [Infinity, Infinity, Infinity];
+		const values = [Infinity, Infinity, Infinity, Infinity];
 
 		const foggedTransitionEntries = values.map((item, index) => [
 			keys[index],

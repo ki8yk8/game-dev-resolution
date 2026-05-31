@@ -1,9 +1,12 @@
+import { randn } from "@/utils/number";
 import { MarkovEngine } from "../engine/markov";
 import { EventEngine } from "./events";
 import { PoissionEngine } from "./poisson";
 import GameState from "./state";
 import type { DistrictState, DistrictStats, OccuredEvent } from "./type";
 
+type Drivers = "infection" | "crime" | "infra";
+const drivers: Drivers[] = ["infection", "crime", "infra"];
 const districtConfig: string[] = ["Eastwood", "Northgate", "Midtown", "Harbor"];
 
 /**
@@ -28,15 +31,18 @@ export class District {
 	private markovEngine: MarkovEngine;
 	private poissionEngine: PoissionEngine;
 	private eventEngine: EventEngine;
+	private driver: Drivers;
 
 	constructor(id: number, name: string) {
 		this.id = id;
 		this.name = name;
 
+		this.driver = drivers[randn(0, 2)];
+
 		this.stats = {
-			infectionRate: Math.random(),
-			crimeIndex: Math.random(),
-			infraHealth: Math.random(),
+			infectionRate: this.driver === "infection" ? 0.15 : 0.02,
+			crimeIndex: this.driver === "crime" ? 0.15 : 0.02,
+			infraHealth: this.driver === "infra" ? 0.15 : 0.5,
 			socialTension: Math.random(),
 		};
 
