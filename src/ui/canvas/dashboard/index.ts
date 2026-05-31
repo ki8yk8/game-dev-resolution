@@ -5,9 +5,10 @@ import ControlButton from "@/ui/components/control-btn";
 import type { Canvas, DashboardProps, DashboardState } from "../type";
 import PoissonCanvas from "../panels/poisson";
 import { Purchase } from "@/game/type";
+import InterventionCanvas from "@/engine/interventions/canvas";
 
 const dashboardState: DashboardState = {
-	openCanvas: "poisson",
+	openCanvas: "intervention",
 	activeDistrict: 0,
 	fogRevealed: [],
 };
@@ -108,6 +109,11 @@ export default function Dashboard(props: DashboardProps) {
 				eventLog: props.districts[dashboardState.activeDistrict].eventLogs,
 			});
 			toolsCanvasSection.appendChild(poissionCanvas);
+		} else if (dashboardState.openCanvas === "intervention") {
+			const interventionCanvas = InterventionCanvas({
+				district: props.districts[dashboardState.activeDistrict],
+			});
+			toolsCanvasSection.appendChild(interventionCanvas);
 		}
 	}
 
