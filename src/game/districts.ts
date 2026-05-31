@@ -75,6 +75,22 @@ export class District {
 			});
 		}
 
+		// check if there is responder and if yes, then handle the event
+		const respondersAssigned = gameState.fireDepartment.districtHasResponders(
+			this.id,
+		);
+		if (respondersAssigned > 0) {
+			const unhandledEvents = this.eventLogs.filter((event) => !event.handled);
+
+			unhandledEvents.forEach((item, index) => {
+				if (index < respondersAssigned) item.handled = true;
+			});
+
+			// increase the credibility
+			gameState.credibility +=
+				Math.min(respondersAssigned, unhandledEvents.length) * 1.0;
+		}
+
 		this.markovEngine.calculateTransitionMatrix(this.stats);
 		this.poissionEngine.calculateEventRate(this.stats);
 		// if the event was fired then, compute when next event shall be fired

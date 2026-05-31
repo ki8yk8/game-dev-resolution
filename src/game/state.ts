@@ -21,7 +21,7 @@ export default class GameState {
 
 	status: GAME_STATUS;
 	purchase_history: PurcahseWithTick[];
-	alerts: OccuredEvent[];
+	fireDepartment: FireDepartment;
 
 	clock: Clock;
 	canvas: Canvas;
@@ -33,12 +33,12 @@ export default class GameState {
 		this.credibility = INITIAL_CREDIBILITY;
 
 		this.purchase_history = [];
-		this.alerts = [];
 		this.status = "MENU";
 
 		this.clock = new Clock(this._onTick);
 		this.canvas = canvas;
 		this.districts = districts;
+		this.fireDepartment = new FireDepartment();
 	}
 
 	public start = () => {
@@ -94,18 +94,6 @@ export default class GameState {
 
 		// render the canvas
 		this._render();
-	};
-
-	public handleEvent = (eventId: string) => {
-		/**
-		 * changes the state of alert to handled and give the credibility to the user
-		 */
-		const unhandledEvents = this.checkUnhandledEvents();
-		const event = unhandledEvents.find((item) => item.id === eventId);
-
-		if (event) {
-			event.handled = true;
-		}
 	};
 
 	protected checkUnhandledEvents = (): OccuredEvent[] => {

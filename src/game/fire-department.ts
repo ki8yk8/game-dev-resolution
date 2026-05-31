@@ -15,6 +15,14 @@ class FireDepartment {
 		return this.maxResponders - this.assignment.length;
 	}
 
+	districtHasResponders = (districtId: number) => {
+		const districtResponders = this.assignment.filter(
+			(id) => id === districtId,
+		);
+
+		return districtResponders.length;
+	};
+
 	assignResponder = (districtId: number) => {
 		if (this.freeResponders <= 0) {
 			throw new Error(
