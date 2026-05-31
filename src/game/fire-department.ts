@@ -40,6 +40,11 @@ export class FireDepartment {
 			);
 		}
 
-		this.assignment = this.assignment.filter((id) => id !== districtId);
+		let removed = false;
+		this.assignment = this.assignment.filter((id) => {
+			if (removed) return true;
+			removed = true;
+			return id !== districtId;
+		});
 	};
 }
