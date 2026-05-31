@@ -29,3 +29,18 @@
 	background-color: var(--dark-indigo);
 	color: var(--indigo);
 }
+
+.intervention__responders__title {
+	margin-top: 2rem;
+	font-weight: 500;
+}
+.intervention__responders__description {
+	margin-top: 0.25rem;
+	font-size: 0.9rem;
+}
+.intervention__responders__buttons {
+	display: flex;
+	gap: 1rem;
+	margin-left: 2rem;
+	margin-top: 1rem;
+}

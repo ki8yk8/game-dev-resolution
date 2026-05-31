@@ -3,6 +3,7 @@ import { MarkovEngine } from "../markov";
 
 import type { Purchase } from "@/game/type";
 import type { District } from "@/game/districts";
+import type { RespondersInfo } from "@/ui/canvas/type";
 
 const STABILIZE_COST = 5;
 
@@ -10,6 +11,7 @@ interface InterventionCanvasProps {
 	district: District;
 	canStabilize: boolean;
 	onInterventionPurchase: (item: Purchase) => void;
+	responders: RespondersInfo;
 }
 
 export default function InterventionCanvas(
@@ -47,6 +49,24 @@ export default function InterventionCanvas(
 
 	const stabilizeImpact = document.createElement("p");
 	stabilizeWrapper.appendChild(stabilizeImpact);
+
+	const respondersTitle = document.createElement("p");
+	respondersTitle.className = "intervention__responders__title";
+	canvas.appendChild(respondersTitle);
+
+	const respondersDescription = document.createElement("p");
+	respondersDescription.className = "intervention__responders__description";
+	canvas.appendChild(respondersDescription);
+
+	const responderButtons = document.createElement("div");
+	responderButtons.className = "intervention__responders__buttons";
+	canvas.appendChild(responderButtons);
+
+	const responderButtonUp = document.createElement("button");
+	responderButtons.appendChild(responderButtonUp);
+
+	const responderButtomDown = document.createElement("button");
+	responderButtons.appendChild(responderButtomDown);
 
 	// content
 	title.textContent = "Intervention Panel";
@@ -93,6 +113,12 @@ export default function InterventionCanvas(
 	);
 
 	districtName.textContent = `${props.district.name} - Current State: ${props.district.state}, Can stabilize at: ${maxState}`;
+
+	respondersTitle.textContent = `Responders (${props.responders.free}/${props.responders.max} available, ${props.responders.hasResponders(props.district.id)} assign to ${props.district.name})`;
+	respondersDescription.textContent =
+		"Responders at every day work to handle one issue. There are 4 responders available so, allocate them wisely.";
+	responderButtonUp.textContent = "Assign 1 responder";
+	responderButtomDown.textContent = "Relinquish 1 responder";
 
 	return canvas;
 }

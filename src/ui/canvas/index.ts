@@ -33,6 +33,12 @@ export default class Canvas {
 			districts: gameState.districts,
 			onPurchase: gameState.purchase,
 			day: gameState.clock.tick,
+			responders: {
+				free: gameState.fireDepartment.freeResponders,
+				max: gameState.fireDepartment.maxResponders,
+				hasResponders: gameState.fireDepartment.districtHasResponders,
+				relinquish: gameState.fireDepartment.relinquishResponder,
+			},
 		});
 		const alerts = Alerts({
 			alerts: gameState.districts.map((item) => item.eventLogs).flat(),

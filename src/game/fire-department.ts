@@ -33,7 +33,7 @@ export class FireDepartment {
 		this.assignment.push(districtId);
 	};
 
-	freeResponder = (districtId: number) => {
+	relinquishResponder = (districtId: number) => {
 		if (!this.assignment.includes(districtId)) {
 			throw new Error(
 				`No responders are assigned to district id, ${districtId} not in ${this.assignment}`,

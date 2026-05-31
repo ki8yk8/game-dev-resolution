@@ -76,7 +76,7 @@ button {
 	background-color: var(--dark-torquise);
 }
 
-.button--control:disabled {
+button.button--control:disabled {
 	color: var(--dark-torquise);
 	border-color: var(--dark-torquise);
 	cursor: not-allowed;
@@ -107,4 +107,16 @@ button {
 * {
 	scrollbar-width: thin;
 	scrollbar-color: var(--dark-torquise) transparent;
+}
+
+button {
+	background-color: var(--blue);
+	border: none;
+	padding: 0.5rem 1.25rem;
+	font-weight: 300;
+}
+button:disabled {
+	cursor: not-allowed;
+	background-color: var(--dark-indigo);
+	color: var(--indigo);
 }
