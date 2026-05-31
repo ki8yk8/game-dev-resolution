@@ -62,6 +62,7 @@ export default class GameState {
 		});
 
 		this.tokens -= item.tokens;
+		this.tokens = Math.max(this.tokens, 0);
 
 		this._render();
 	};
@@ -85,6 +86,7 @@ export default class GameState {
 		const unhandledEvents = this.checkUnhandledEvents();
 		if (unhandledEvents.length > 0) {
 			this.tokens -= unhandledEvents.length * UNHANDLED_EVENT_PENALTY;
+			this.tokens = Math.max(this.tokens, 0);
 		}
 
 		// check win or loss
