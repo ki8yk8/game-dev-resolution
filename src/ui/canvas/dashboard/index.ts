@@ -21,6 +21,30 @@ export default function Dashboard(props: DashboardProps) {
 		);
 	}
 
+	function handleInterventionPurchase(item: Purchase) {
+		props.onPurchase(item);
+
+		// execute the intervention accordingly
+		if (item.particular === "Stabilization") {
+			const currentStats = {
+				...props.districts[dashboardState.activeDistrict].stats,
+			};
+			const propsedStats = Object.fromEntries(
+				(
+					Object.entries(currentStats) as [keyof typeof currentStats, number][]
+				).map(([key, value]) =>
+					key === "infraHealth"
+						? [key, value + 0.15]
+						: [key, Math.max(0, value - 0.15)],
+				),
+			) as Record<keyof typeof currentStats, number>;
+
+			props.districts[dashboardState.activeDistrict].stats = {
+				...propsedStats,
+			};
+		}
+	}
+
 	const dashboardMain = document.createElement("main");
 	dashboardMain.className = "dashboard";
 
@@ -113,6 +137,7 @@ export default function Dashboard(props: DashboardProps) {
 			const interventionCanvas = InterventionCanvas({
 				district: props.districts[dashboardState.activeDistrict],
 				canStabilize: props.day >= 3,
+				onInterventionPurchase: handleInterventionPurchase,
 			});
 			toolsCanvasSection.appendChild(interventionCanvas);
 		}

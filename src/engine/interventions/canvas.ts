@@ -1,12 +1,15 @@
-import type { District } from "@/game/districts";
 import "./style.css";
 import { MarkovEngine } from "../markov";
 
-const STABILIZE_COST = 25;
+import type { Purchase } from "@/game/type";
+import type { District } from "@/game/districts";
+
+const STABILIZE_COST = 5;
 
 interface InterventionCanvasProps {
 	district: District;
 	canStabilize: boolean;
+	onInterventionPurchase: (item: Purchase) => void;
 }
 
 export default function InterventionCanvas(
@@ -73,6 +76,11 @@ export default function InterventionCanvas(
 		const projectedImpact = (futureRiot - curretnRiot) * 100;
 
 		stabilizeImpact.textContent = `Riot risk will be ${projectedImpact > 0 ? "+" : ""}${projectedImpact.toFixed(2)}%`;
+		stabilizeButton.onclick = () =>
+			props.onInterventionPurchase({
+				particular: "Stabilization",
+				tokens: STABILIZE_COST,
+			});
 	} else {
 		stabilizeButton.disabled = true;
 	}
