@@ -7,7 +7,7 @@ import PoissonCanvas from "../panels/poisson";
 import { Purchase } from "@/game/type";
 
 const dashboardState: DashboardState = {
-	openCanvas: "markov",
+	openCanvas: "poisson",
 	activeDistrict: 0,
 	fogRevealed: [],
 };
@@ -105,8 +105,7 @@ export default function Dashboard(props: DashboardProps) {
 		} else if (dashboardState.openCanvas === "poisson") {
 			const poissionCanvas = PoissonCanvas({
 				districts: props.districts,
-				activeIndex: dashboardState.activeDistrict,
-				eventLog: [],
+				eventLog: props.districts[dashboardState.activeDistrict].eventLogs,
 			});
 			toolsCanvasSection.appendChild(poissionCanvas);
 		}
