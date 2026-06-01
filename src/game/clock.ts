@@ -4,7 +4,7 @@ Ticks is the time of the system, where 1 tick spent is considered as 1 day. It a
 
 import type { SubscriberCallback } from "./type";
 
-const TICK_DURATION = 1 * 1000;
+const TICK_DURATION = 10 * 1000;
 const MAX_TICKS = 30;
 
 export default class Clock {
