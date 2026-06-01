@@ -57,6 +57,25 @@ export default function BayesPanel(props: BayesPanelProps): HTMLElement {
 	const noClues = document.createElement("p");
 	cluesActionWrapper.appendChild(noClues);
 
+	const arrestTitle = document.createElement("p");
+	arrestTitle.className = "bayes__arrest__title";
+	canvas.appendChild(arrestTitle);
+
+	const arrestDescription = document.createElement("p");
+	arrestDescription.className = "bayes__arrest__description";
+	canvas.appendChild(arrestDescription);
+
+	const arrestOptions = document.createElement("div");
+	arrestOptions.className = "bayes__arrest__options";
+	canvas.appendChild(arrestOptions);
+
+	Object.keys(props.district.getBelief()).forEach((item) => {
+		const button = document.createElement("button");
+		arrestOptions.appendChild(button);
+
+		button.textContent = item;
+	});
+
 	// content
 	title.textContent = "Bayes Panel";
 	districtName.textContent = props.district.name;
@@ -102,6 +121,10 @@ export default function BayesPanel(props: BayesPanelProps): HTMLElement {
 			button.textContent = `${item} (-${CLUE_COST} token)`;
 		});
 	}
+
+	arrestTitle.textContent = "Arrest the Driver";
+	arrestDescription.textContent =
+		"If you are confident about the chaotic driver of the district, you can arrest it, or you can buy the clue to be more confident. Successfull arrest will increase your credibility and responders efficiency for the district, while unsuccessfull arrest will decrease your credibility.";
 
 	return canvas;
 }
