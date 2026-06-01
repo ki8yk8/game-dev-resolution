@@ -2,6 +2,8 @@ import type { District } from "@/game/districts";
 
 import "./style.css";
 
+const CLUE_COST = 10;
+
 interface BayesPanelProps {
 	district: District;
 }
@@ -85,6 +87,21 @@ export default function BayesPanel(props: BayesPanelProps): HTMLElement {
 		"You can buy the clues for higher confidence in your beliefs. Note that, the clues are generated based on events in each district.";
 
 	noClues.textContent = "No event generated to give a clue.";
+	const districtClues = props.district.getClues();
+	if (districtClues.length > 0) {
+		// clear the no clue coz here is a clue
+		cluesActionWrapper.innerHTML = "";
+
+		// add the action button for each clue
+		districtClues.forEach((item) => {
+			const button = document.createElement("button");
+			cluesActionWrapper.appendChild(button);
+
+			// disable if the clue is already purcahsed
+			button.disabled = props.district.purchasedClues().includes(item);
+			button.textContent = `${item} (-${CLUE_COST} token)`;
+		});
+	}
 
 	return canvas;
 }

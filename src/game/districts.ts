@@ -122,6 +122,10 @@ export class District {
 	public getClues = () => {
 		return this.bayesEngine.getClue(this.eventLogs);
 	};
+
+	public purchasedClues = () => {
+		return this.bayesEngine.purchasedClues;
+	};
 }
 
 export function getDistricts(): District[] {

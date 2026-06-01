@@ -13,7 +13,7 @@ export class BayesEngine {
 	public belief: Belief;
 
 	// records the purchase of clues, a single clue can only impact the belief once
-	protected purchasedClues: Clue[];
+	public purchasedClues: Clue[];
 
 	// likelihood represents the probability of the clue given the driver
 	protected likelihood: Record<Clue, Record<Driver, number>>;
