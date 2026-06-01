@@ -1,8 +1,8 @@
-export type Driver = "infection" | "crime" | "infra";
+export type Driver = "infection" | "crime" | "infra. failure";
 
 export type Clue =
-	| "disease_outbreak"
-	| "criminal_activity"
-	| "infrastrucure_failure";
+	| "disease outbreak"
+	| "criminal activity"
+	| "infrastrucure failure";
 
 export type Belief = Record<Driver, number>;

@@ -3,7 +3,7 @@ import { randn } from "@/utils/number";
 import type { Belief, Clue, Driver } from "./type";
 import type { DistrictStats, OccuredEvent } from "@/game/type";
 
-const drivers: Driver[] = ["infection", "crime", "infra"];
+const drivers: Driver[] = ["infection", "crime", "infra. failure"];
 
 export class BayesEngine {
 	// the culprit behind the chaos of the system. User is rewarded if he finds the culprit
@@ -29,20 +29,20 @@ export class BayesEngine {
 
 		// assigning likelihood manual
 		this.likelihood = {
-			disease_outbreak: {
+			"disease outbreak": {
 				crime: 0.1,
 				infection: 0.85,
-				infra: 0.3,
+				"infra. failure": 0.3,
 			},
-			criminal_activity: {
+			"criminal activity": {
 				crime: 0.85,
 				infection: 0.05,
-				infra: 0.15,
+				"infra. failure": 0.15,
 			},
-			infrastrucure_failure: {
+			"infrastrucure failure": {
 				crime: 0.15,
 				infection: 0.05,
-				infra: 0.85,
+				"infra. failure": 0.85,
 			},
 		};
 	}
@@ -51,7 +51,7 @@ export class BayesEngine {
 		return {
 			infectionRate: this.driver === "infection" ? 0.15 : 0.02,
 			crimeIndex: this.driver === "crime" ? 0.15 : 0.02,
-			infraHealth: this.driver === "infra" ? 0.15 : 0.5,
+			infraHealth: this.driver === "infra. failure" ? 0.15 : 0.5,
 			socialTension: Math.random(),
 		};
 	};
@@ -73,7 +73,8 @@ export class BayesEngine {
 		const updatedBelief: Belief = {
 			crime: this.belief.crime * this.likelihood[clue].crime,
 			infection: this.belief.infection * this.likelihood[clue].infection,
-			infra: this.belief.infra * this.likelihood[clue].infra,
+			"infra. failure":
+				this.belief["infra. failure"] * this.likelihood[clue]["infra. failure"],
 		};
 
 		// normmalizign the belief

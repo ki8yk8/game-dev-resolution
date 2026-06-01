@@ -7,7 +7,7 @@ export const EVENT_TYPES: Event[] = [
 		name: "Diseases Outbreak",
 		raises: "infectionRate",
 		raiseDelta: 0.06,
-		clue: "disease_outbreak",
+		clue: "disease outbreak",
 
 		weight(stats) {
 			return 0.25 + stats.infectionRate * 1.5 - stats.infraHealth * 0.2;
@@ -17,7 +17,7 @@ export const EVENT_TYPES: Event[] = [
 		name: "Crime",
 		raises: "crimeIndex",
 		raiseDelta: 0.08,
-		clue: "criminal_activity",
+		clue: "criminal activity",
 
 		weight(stats) {
 			return (
@@ -32,7 +32,7 @@ export const EVENT_TYPES: Event[] = [
 		name: "Infrastructure Failure",
 		raises: "infraHealth",
 		raiseDelta: -0.08,
-		clue: "infrastrucure_failure",
+		clue: "infrastrucure failure",
 
 		weight(stats) {
 			return 0.2 + (1 - stats.infraHealth) * 1.2 + stats.socialTension * 0.3;

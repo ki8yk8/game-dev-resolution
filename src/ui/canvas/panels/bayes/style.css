@@ -11,7 +11,7 @@
 }
 
 .beliefs {
-	min-width: 300px;
+	min-width: 400px;
 }
 
 .beliefs table {
@@ -40,6 +40,10 @@
 	margin-top: 1rem;
 }
 
+.clues button {
+	text-transform: capitalize;
+}
+
 .bayes__clues__title,
 .bayes__belief__title,
 .bayes__arrest__title {
@@ -59,4 +63,8 @@
 	justify-content: center;
 	gap: 2rem;
 	margin-top: 1rem;
+}
+
+.bayes__arrest__options button {
+	text-transform: capitalize;
 }
