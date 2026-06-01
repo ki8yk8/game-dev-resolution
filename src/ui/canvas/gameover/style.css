@@ -1,0 +1,15 @@
+.gameover__canvas {
+	padding: 4rem;
+	text-align: center;
+}
+
+.gameover__canvas h1 {
+	margin-bottom: 1rem;
+}
+
+.gameover__canvas h1.lost {
+	color: var(--red);
+}
+.gameover__canvas h1.won {
+	color: var(--green);
+}

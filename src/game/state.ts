@@ -22,6 +22,7 @@ export default class GameState {
 	entropy: Entropy;
 
 	status: GAME_STATUS;
+	hasWon: boolean;
 	purchase_history: PurcahseWithTick[];
 	fireDepartment: FireDepartment;
 
@@ -36,6 +37,7 @@ export default class GameState {
 
 		this.purchase_history = [];
 		this.status = "MENU";
+		this.hasWon = false;
 
 		this.clock = new Clock(this._onTick);
 		this.canvas = canvas;
@@ -79,8 +81,15 @@ export default class GameState {
 	};
 
 	protected _checkWinLoss = () => {
-		if (this.tokens <= 0) this._render_end_screen("loss");
-		if (this.entropy.value < 1.0) this._render_end_screen("win");
+		if (this.tokens <= 0) {
+			this.status = "GAMEOVER";
+			this._render_end_screen();
+		}
+
+		if (this.entropy.value < 1.0) {
+			this.status = "GAMEOVER";
+			this._render_end_screen();
+		}
 	};
 
 	public _onTick = () => {
@@ -119,13 +128,7 @@ export default class GameState {
 		this.canvas._render(this);
 	}
 
-	protected _render_end_screen(state: string) {
-		this.pause();
-
-		if (state == "loss") {
-			console.log("You lost");
-		} else {
-			console.log("You won");
-		}
+	protected _render_end_screen() {
+		this._render();
 	}
 }

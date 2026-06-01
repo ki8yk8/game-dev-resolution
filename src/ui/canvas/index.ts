@@ -4,6 +4,7 @@ import HUD from "./hud";
 
 import "./style.css";
 import Alerts from "./alerts";
+import GameOver from "./gameover";
 
 /**
  * Renders the web ui of the game
@@ -55,8 +56,17 @@ export default class Canvas {
 				onChangeSpeed: gameState.clock.changeSpeed,
 			}),
 		);
-		main.appendChild(dashboard);
-		main.appendChild(alerts);
+
+		if (gameState.status !== "GAMEOVER") {
+			main.appendChild(dashboard);
+			main.appendChild(alerts);
+		} else {
+			main.appendChild(
+				GameOver({
+					hasWon: gameState.hasWon,
+				}),
+			);
+		}
 
 		this.root.appendChild(main);
 	};
