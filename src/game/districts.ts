@@ -4,9 +4,8 @@ import { EventEngine } from "./events";
 import { PoissionEngine } from "./poisson";
 import GameState from "./state";
 import type { DistrictState, DistrictStats, OccuredEvent } from "./type";
+import { BayesEngine } from "@/engine/bayes";
 
-type Drivers = "infection" | "crime" | "infra";
-const drivers: Drivers[] = ["infection", "crime", "infra"];
 const districtConfig: string[] = ["Eastwood", "Northgate", "Midtown", "Harbor"];
 
 /**
@@ -31,20 +30,15 @@ export class District {
 	private markovEngine: MarkovEngine;
 	private poissionEngine: PoissionEngine;
 	private eventEngine: EventEngine;
-	private driver: Drivers;
+	private bayesEngine: BayesEngine;
 
 	constructor(id: number, name: string) {
 		this.id = id;
 		this.name = name;
 
-		this.driver = drivers[randn(0, 2)];
-
-		this.stats = {
-			infectionRate: this.driver === "infection" ? 0.15 : 0.02,
-			crimeIndex: this.driver === "crime" ? 0.15 : 0.02,
-			infraHealth: this.driver === "infra" ? 0.15 : 0.5,
-			socialTension: Math.random(),
-		};
+		// creating the bayes engine and district stats based on the driver
+		this.bayesEngine = new BayesEngine();
+		this.stats = this.bayesEngine.driverBasedStats();
 
 		// initializing markov engine
 		this.markovEngine = new MarkovEngine(this.stats);
