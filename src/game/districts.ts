@@ -1,4 +1,3 @@
-import { randn } from "@/utils/number";
 import { MarkovEngine } from "../engine/markov";
 import { EventEngine } from "./events";
 import { PoissionEngine } from "./poisson";
@@ -68,6 +67,7 @@ export class District {
 			this.eventLogs.push({
 				id: crypto.randomUUID(),
 				name: event.name,
+				clue: event.clue,
 				day: gameState.clock.tick,
 				handled: false,
 				districtId: this.id,

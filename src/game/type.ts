@@ -24,7 +24,7 @@ export interface DistrictStats {
 }
 
 export interface Event {
-	clue: Clue,
+	clue: Clue;
 	name: string;
 	raises: keyof DistrictStats;
 	raiseDelta: number;
@@ -34,6 +34,7 @@ export interface Event {
 export interface OccuredEvent {
 	id: string;
 	name: string;
+	clue: Clue;
 	day: number;
 	handled: boolean;
 	districtId: number;
