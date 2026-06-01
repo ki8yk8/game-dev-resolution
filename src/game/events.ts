@@ -32,7 +32,7 @@ export const EVENT_TYPES: Event[] = [
 		raiseDelta: -0.08,
 
 		weight(stats) {
-			return 0.2 + stats.infraHealth * 1.2 + stats.socialTension * 0.3;
+			return 0.2 + (1 - stats.infraHealth) * 1.2 + stats.socialTension * 0.3;
 		},
 	},
 ];
