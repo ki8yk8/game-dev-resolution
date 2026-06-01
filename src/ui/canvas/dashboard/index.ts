@@ -9,6 +9,9 @@ import InterventionCanvas from "@/engine/interventions/canvas";
 import BayesPanel from "../panels/bayes";
 import { Clue, Driver } from "@/engine/bayes/type";
 
+const WRONG_ARREST_PENALTY = -0.1;
+const CORRECT_ARREST_REWARD = 0.1;
+
 const dashboardState: DashboardState = {
 	openCanvas: "bayes",
 	activeDistrict: 0,
@@ -55,6 +58,22 @@ export default function Dashboard(props: DashboardProps) {
 			particular: `Clue: ${clue}`,
 			tokens: token,
 		});
+	}
+
+	function handleArrest(driver: Driver) {
+		const district = props.districts[dashboardState.activeDistrict];
+
+		// check if the arrest is correct or not
+		const realDriver = district.getDriver();
+
+		// if not match than decrease the credibility
+		if (driver !== realDriver) {
+			district.arrest = driver;
+			props.changeCredibility(WRONG_ARREST_PENALTY);
+			return;
+		}
+
+		props.changeCredibility(CORRECT_ARREST_REWARD);
 	}
 
 	const dashboardMain = document.createElement("main");
@@ -165,7 +184,8 @@ export default function Dashboard(props: DashboardProps) {
 			const bayesCanvas = BayesPanel({
 				district: props.districts[dashboardState.activeDistrict],
 				onPurcahseClue: handleCluesPruchased,
-				onArrest: (driver: Driver) => {},
+				onArrest: handleArrest,
+				arrest: props.districts[dashboardState.activeDistrict].arrest,
 			});
 			toolsCanvasSection.appendChild(bayesCanvas);
 		}

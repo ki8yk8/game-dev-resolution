@@ -7,7 +7,7 @@ const drivers: Driver[] = ["infection", "crime", "infra. failure"];
 
 export class BayesEngine {
 	// the culprit behind the chaos of the system. User is rewarded if he finds the culprit
-	protected driver: Driver;
+	public driver: Driver;
 
 	// prior or the belief of the user
 	public belief: Belief;

@@ -34,6 +34,7 @@ export default class Canvas {
 			onPurchase: gameState.purchase,
 			day: gameState.clock.tick,
 			fireDepartment: gameState.fireDepartment,
+			changeCredibility: gameState.changeCredibility,
 		});
 
 		const alerts = Alerts({

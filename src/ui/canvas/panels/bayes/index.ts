@@ -9,7 +9,7 @@ interface BayesPanelProps {
 	district: District;
 	onArrest: (driver: Driver) => void;
 	onPurcahseClue: (clue: Clue, token: number) => void;
-	arrest?: Driver;
+	arrest: Driver | null;
 }
 
 export default function BayesPanel(props: BayesPanelProps): HTMLElement {

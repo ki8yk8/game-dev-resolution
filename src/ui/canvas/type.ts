@@ -9,6 +9,7 @@ export interface DashboardProps {
 	day: number;
 	onPurchase: (item: Purchase) => void;
 	fireDepartment: FireDepartment;
+	changeCredibility: (delta: number) => void;
 }
 
 export interface DashboardState {

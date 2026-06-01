@@ -68,6 +68,11 @@ export default class GameState {
 		this._render();
 	};
 
+	public changeCredibility = (delta: number) => {
+		this.credibility += delta;
+		this._render();
+	};
+
 	public getPurchaseHistory = () => {
 		return this.purchase_history;
 	};

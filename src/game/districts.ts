@@ -1,4 +1,4 @@
-import { Clue } from "@/engine/bayes/type";
+import { Clue, Driver } from "@/engine/bayes/type";
 import { MarkovEngine } from "../engine/markov";
 import { EventEngine } from "./events";
 import { PoissionEngine } from "./poisson";
@@ -26,6 +26,9 @@ export class District {
 	// hidden variable; stats is what stores the state of different elements of society and controls the evolution of the district
 	public stats: DistrictStats;
 
+	// if any arrest has been performed in this district or not
+	public arrest: Driver | null;
+
 	// engines; responsible to implement different probability and mathematical concept that determines the next state of system
 	private markovEngine: MarkovEngine;
 	private poissionEngine: PoissionEngine;
@@ -44,6 +47,7 @@ export class District {
 		this.markovEngine = new MarkovEngine(this.stats);
 		this.state = this.markovEngine.nextState("Stable");
 		this.eventLogs = [];
+		this.arrest = null;
 
 		// iniitalizign the poission engine
 		this.poissionEngine = new PoissionEngine(this.stats);
@@ -85,9 +89,16 @@ export class District {
 				.filter((event) => !event.handled)
 				.sort((item) => item.day);
 
-			unhandledEvents.forEach((item, index) => {
-				if (index < respondersAssigned) item.handled = true;
-			});
+			// if arrest was good then, one responder can handle all the events in the district
+			if (this.arrest === this.bayesEngine.driver) {
+				unhandledEvents.forEach((item) => {
+					item.handled = true;
+				});
+			} else {
+				unhandledEvents.forEach((item, index) => {
+					if (index < respondersAssigned) item.handled = true;
+				});
+			}
 
 			// increase the credibility
 			gameState.credibility +=
@@ -130,6 +141,9 @@ export class District {
 
 	public updateWithClue = (clue: Clue) => {
 		return this.bayesEngine.updateWithClue(clue);
+	};
+	public getDriver = () => {
+		return this.bayesEngine.driver;
 	};
 }
 
