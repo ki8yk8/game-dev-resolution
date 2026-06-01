@@ -1,11 +1,15 @@
 import type { District } from "@/game/districts";
 
 import "./style.css";
+import { Driver } from "@/engine/bayes/type";
 
 const CLUE_COST = 10;
 
 interface BayesPanelProps {
 	district: District;
+	onArrest: (driver: Driver) => void;
+	onPurcahseClue: (clue: string, token: number) => void;
+	arrest?: Driver;
 }
 
 export default function BayesPanel(props: BayesPanelProps): HTMLElement {
@@ -73,11 +77,20 @@ export default function BayesPanel(props: BayesPanelProps): HTMLElement {
 	arrestOptions.className = "bayes__arrest__options";
 	canvas.appendChild(arrestOptions);
 
-	Object.keys(props.district.getBelief()).forEach((item) => {
+	const belief = props.district.getBelief();
+	const drivers = Object.keys(belief) as Array<keyof typeof belief>;
+
+	drivers.forEach((item) => {
 		const button = document.createElement("button");
 		arrestOptions.appendChild(button);
 
 		button.textContent = item;
+
+		if (props.arrest) {
+			button.disabled = item !== props.arrest;
+		} else {
+			button.onclick = () => props.onArrest(item);
+		}
 	});
 
 	// content
@@ -123,6 +136,7 @@ export default function BayesPanel(props: BayesPanelProps): HTMLElement {
 			// disable if the clue is already purcahsed
 			button.disabled = props.district.purchasedClues().includes(item);
 			button.textContent = `${item} (-${CLUE_COST} token)`;
+			button.onclick = () => props.onPurcahseClue(item, CLUE_COST);
 		});
 	}
 
