@@ -114,6 +114,14 @@ export class District {
 	public transitionMatrix = () => {
 		return this.markovEngine.calculateTransitionMatrix(this.stats);
 	};
+
+	public getBelief = () => {
+		return this.bayesEngine.belief;
+	};
+
+	public getClues = () => {
+		return this.bayesEngine.getClue(this.eventLogs);
+	};
 }
 
 export function getDistricts(): District[] {

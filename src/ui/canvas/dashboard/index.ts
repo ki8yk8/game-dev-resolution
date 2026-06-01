@@ -151,7 +151,9 @@ export default function Dashboard(props: DashboardProps) {
 			});
 			toolsCanvasSection.appendChild(interventionCanvas);
 		} else if (dashboardState.openCanvas === "bayes") {
-			const bayesCanvas = BayesPanel();
+			const bayesCanvas = BayesPanel({
+				district: props.districts[dashboardState.activeDistrict],
+			});
 			toolsCanvasSection.appendChild(bayesCanvas);
 		}
 	}

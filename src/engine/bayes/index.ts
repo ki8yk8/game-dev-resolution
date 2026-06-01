@@ -9,8 +9,8 @@ export class BayesEngine {
 	// the culprit behind the chaos of the system. User is rewarded if he finds the culprit
 	protected driver: Driver;
 
-	// priod or the belief of the user
-	protected belief: Belief;
+	// prior or the belief of the user
+	public belief: Belief;
 
 	// records the purchase of clues, a single clue can only impact the belief once
 	protected purchasedClues: Clue[];
