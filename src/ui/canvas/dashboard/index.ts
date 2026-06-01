@@ -9,8 +9,9 @@ import InterventionCanvas from "@/engine/interventions/canvas";
 import BayesPanel from "../panels/bayes";
 import { Clue, Driver } from "@/engine/bayes/type";
 
-const WRONG_ARREST_PENALTY = -0.1;
-const CORRECT_ARREST_REWARD = 0.1;
+const WRONG_ARREST_PENALTY = -0.2;
+const CORRECT_ARREST_REWARD = 0.15;
+const CORRECT_ARREST_BUDGET_REWARD = 10;
 
 const dashboardState: DashboardState = {
 	openCanvas: "bayes",
@@ -74,6 +75,10 @@ export default function Dashboard(props: DashboardProps) {
 		}
 
 		props.changeCredibility(CORRECT_ARREST_REWARD);
+		props.onPurchase({
+			particular: "Arrest Reward",
+			tokens: -CORRECT_ARREST_BUDGET_REWARD,
+		});
 	}
 
 	const dashboardMain = document.createElement("main");
