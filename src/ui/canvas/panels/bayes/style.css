@@ -1,0 +1,62 @@
+.belief__district {
+	font-weight: 400;
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+}
+
+.belief__main__wrapper {
+	display: flex;
+	gap: 2rem;
+	margin: 1rem 0;
+}
+
+.beliefs {
+	min-width: 300px;
+}
+
+.beliefs table {
+	border-collapse: collapse;
+}
+
+.beliefs table tr:not(tr:last-child) {
+	border-bottom: 1px solid var(--torquise);
+}
+.beliefs table tr th {
+	border-right: 1px solid var(--torquise);
+	padding-left: 2rem;
+	padding-right: 3rem;
+	text-align: left;
+	font-weight: 400;
+	text-transform: capitalize;
+}
+.beliefs table tr td {
+	text-align: right;
+}
+
+.clues > div {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-top: 1rem;
+}
+
+.bayes__clues__title,
+.bayes__belief__title,
+.bayes__arrest__title {
+	font-weight: 400;
+	margin-bottom: 0.25rem;
+}
+
+.bayes__clues__description,
+.bayes__belief__description,
+.bayes__arrest__description {
+	font-size: 0.9rem;
+	margin-bottom: 0.5rem;
+}
+
+.bayes__arrest__options {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	margin-top: 1rem;
+}

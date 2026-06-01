@@ -37,18 +37,22 @@ export default function BayesPanel(props: BayesPanelProps): HTMLElement {
 	beliefCluesWrapper.appendChild(clues);
 
 	const beliefTitle = document.createElement("p");
+	beliefTitle.className = "bayes__belief__title";
 	beliefs.appendChild(beliefTitle);
 
 	const beliefDescription = document.createElement("p");
+	beliefDescription.className = "bayes__belief__description";
 	beliefs.appendChild(beliefDescription);
 
 	const beliefTable = document.createElement("table");
 	beliefs.appendChild(beliefTable);
 
 	const cluesTitle = document.createElement("p");
+	cluesTitle.className = "bayes__clues__title";
 	clues.appendChild(cluesTitle);
 
 	const cluesDescription = document.createElement("p");
+	cluesDescription.className = "bayes__clues__description";
 	clues.appendChild(cluesDescription);
 
 	const cluesActionWrapper = document.createElement("div");
@@ -78,7 +82,7 @@ export default function BayesPanel(props: BayesPanelProps): HTMLElement {
 
 	// content
 	title.textContent = "Bayes Panel";
-	districtName.textContent = props.district.name;
+	districtName.textContent = `For district: ${props.district.name}`;
 	description.textContent =
 		"Each of your district is in chaos because of a driver. Use this panel to identify the driver and reduce the chaos of the system.";
 	beliefTitle.textContent = "Your Belief";
@@ -90,14 +94,14 @@ export default function BayesPanel(props: BayesPanelProps): HTMLElement {
 		const tr = document.createElement("tr");
 		beliefTable.appendChild(tr);
 
-		const driver_td = document.createElement("td");
-		tr.appendChild(driver_td);
+		const driver_th = document.createElement("th");
+		tr.appendChild(driver_th);
 
 		const belief_td = document.createElement("td");
 		tr.appendChild(belief_td);
 
 		// text content
-		driver_td.textContent = driver;
+		driver_th.textContent = driver;
 		belief_td.textContent = `${(belief * 100).toFixed(2)}%`;
 	});
 
