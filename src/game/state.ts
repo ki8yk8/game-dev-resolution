@@ -9,6 +9,7 @@ import type {
 	PurcahseWithTick,
 	Purchase,
 } from "./type";
+import { Entropy } from "./entropy";
 
 const INITAL_TOKENS = 100;
 const INITAL_ENTROPY = 4.0;
@@ -17,8 +18,8 @@ const UNHANDLED_EVENT_PENALTY = 1;
 
 export default class GameState {
 	tokens: number;
-	entropy: number;
 	credibility: number;
+	entropy: Entropy;
 
 	status: GAME_STATUS;
 	purchase_history: PurcahseWithTick[];
@@ -30,7 +31,7 @@ export default class GameState {
 
 	constructor(canvas: Canvas, districts: District[]) {
 		this.tokens = INITAL_TOKENS;
-		this.entropy = INITAL_ENTROPY;
+		this.entropy = new Entropy(INITAL_ENTROPY);
 		this.credibility = INITIAL_CREDIBILITY;
 
 		this.purchase_history = [];
@@ -79,7 +80,7 @@ export default class GameState {
 
 	protected _checkWinLoss = () => {
 		if (this.tokens <= 0) this._render_end_screen("loss");
-		if (this.entropy < 2.0) this._render_end_screen("win");
+		if (this.entropy.value < 2.0) this._render_end_screen("win");
 	};
 
 	public _onTick = () => {
@@ -94,6 +95,9 @@ export default class GameState {
 			this.tokens -= unhandledEvents.length * UNHANDLED_EVENT_PENALTY;
 			this.tokens = Math.max(this.tokens, 0);
 		}
+
+		// update the entropy of the system
+		this.entropy.updateEntropy(this.districts);
 
 		// check win or loss
 		this._checkWinLoss();

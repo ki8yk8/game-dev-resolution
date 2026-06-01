@@ -48,7 +48,7 @@ export default class Canvas {
 				maxDay: gameState.clock.maxTick,
 				budget: gameState.tokens,
 				credibility: gameState.credibility,
-				cityEntropy: gameState.entropy,
+				cityEntropy: gameState.entropy.value,
 				speedFactor: gameState.clock.speedFactor,
 				onPlay: gameState.start,
 				onPause: gameState.pause,
