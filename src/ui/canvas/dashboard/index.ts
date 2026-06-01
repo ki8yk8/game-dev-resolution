@@ -6,9 +6,10 @@ import type { Canvas, DashboardProps, DashboardState } from "../type";
 import PoissonCanvas from "../panels/poisson";
 import { Purchase } from "@/game/type";
 import InterventionCanvas from "@/engine/interventions/canvas";
+import BayesPanel from "../panels/bayes";
 
 const dashboardState: DashboardState = {
-	openCanvas: "intervention",
+	openCanvas: "bayes",
 	activeDistrict: 0,
 	fogRevealed: [],
 };
@@ -113,6 +114,14 @@ export default function Dashboard(props: DashboardProps) {
 			}),
 		);
 
+		toolsNav.appendChild(
+			ControlButton({
+				icon: "safe-line",
+				onClick: () => renderToolsCanvas("bayes"),
+				active: dashboardState.openCanvas === "bayes",
+			}),
+		);
+
 		// clear and re-render the canvas
 		toolsCanvasSection.innerHTML = "";
 		if (dashboardState.openCanvas === "markov") {
@@ -141,6 +150,9 @@ export default function Dashboard(props: DashboardProps) {
 				fireDepartment: props.fireDepartment,
 			});
 			toolsCanvasSection.appendChild(interventionCanvas);
+		} else if (dashboardState.openCanvas === "bayes") {
+			const bayesCanvas = BayesPanel();
+			toolsCanvasSection.appendChild(bayesCanvas);
 		}
 	}
 
