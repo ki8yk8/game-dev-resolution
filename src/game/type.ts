@@ -1,3 +1,4 @@
+import type { Clue } from "@/engine/bayes/type";
 import type Clock from "./clock";
 
 export type GAME_STATUS = "MENU" | "PLAYING" | "PAUSED" | "GAMEOVER";
@@ -23,6 +24,7 @@ export interface DistrictStats {
 }
 
 export interface Event {
+	clue: Clue,
 	name: string;
 	raises: keyof DistrictStats;
 	raiseDelta: number;
