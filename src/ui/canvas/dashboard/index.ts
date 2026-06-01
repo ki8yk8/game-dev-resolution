@@ -14,7 +14,7 @@ const CORRECT_ARREST_REWARD = 0.15;
 const CORRECT_ARREST_BUDGET_REWARD = 10;
 
 const dashboardState: DashboardState = {
-	openCanvas: "bayes",
+	openCanvas: "markov",
 	activeDistrict: 0,
 	fogRevealed: [],
 };
