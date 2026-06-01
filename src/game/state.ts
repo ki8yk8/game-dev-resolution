@@ -80,7 +80,7 @@ export default class GameState {
 
 	protected _checkWinLoss = () => {
 		if (this.tokens <= 0) this._render_end_screen("loss");
-		if (this.entropy.value < 2.0) this._render_end_screen("win");
+		if (this.entropy.value < 1.0) this._render_end_screen("win");
 	};
 
 	public _onTick = () => {

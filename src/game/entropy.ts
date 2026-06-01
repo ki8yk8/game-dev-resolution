@@ -1,3 +1,4 @@
+import { EPSILON } from "@/utils/number";
 import { District } from "./districts";
 
 export class Entropy {
@@ -19,7 +20,7 @@ export class Entropy {
 
 		// compute shanon entropy
 		this.entropy = -probablityCurrentToStable.reduce(
-			(prev_p, p) => prev_p + p * Math.log2(p),
+			(prev_p, p) => prev_p + p * Math.log2(p+EPSILON),
 			0,
 		);
 	}
