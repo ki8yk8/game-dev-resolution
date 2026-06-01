@@ -1,3 +1,4 @@
+import { Clue } from "@/engine/bayes/type";
 import { MarkovEngine } from "../engine/markov";
 import { EventEngine } from "./events";
 import { PoissionEngine } from "./poisson";
@@ -125,6 +126,10 @@ export class District {
 
 	public purchasedClues = () => {
 		return this.bayesEngine.purchasedClues;
+	};
+
+	public updateWithClue = (clue: Clue) => {
+		return this.bayesEngine.updateWithClue(clue);
 	};
 }
 

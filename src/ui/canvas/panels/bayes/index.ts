@@ -1,14 +1,14 @@
 import type { District } from "@/game/districts";
 
 import "./style.css";
-import { Driver } from "@/engine/bayes/type";
+import { Clue, Driver } from "@/engine/bayes/type";
 
 const CLUE_COST = 10;
 
 interface BayesPanelProps {
 	district: District;
 	onArrest: (driver: Driver) => void;
-	onPurcahseClue: (clue: string, token: number) => void;
+	onPurcahseClue: (clue: Clue, token: number) => void;
 	arrest?: Driver;
 }
 

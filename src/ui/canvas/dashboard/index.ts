@@ -7,6 +7,7 @@ import PoissonCanvas from "../panels/poisson";
 import { Purchase } from "@/game/type";
 import InterventionCanvas from "@/engine/interventions/canvas";
 import BayesPanel from "../panels/bayes";
+import { Clue, Driver } from "@/engine/bayes/type";
 
 const dashboardState: DashboardState = {
 	openCanvas: "bayes",
@@ -44,6 +45,16 @@ export default function Dashboard(props: DashboardProps) {
 				...propsedStats,
 			};
 		}
+	}
+
+	function handleCluesPruchased(clue: Clue, token: number) {
+		props.districts[dashboardState.activeDistrict].updateWithClue(clue);
+
+		// call the purcahse that trigger re-render
+		props.onPurchase({
+			particular: `Clue: ${clue}`,
+			tokens: token,
+		});
 	}
 
 	const dashboardMain = document.createElement("main");
@@ -153,6 +164,8 @@ export default function Dashboard(props: DashboardProps) {
 		} else if (dashboardState.openCanvas === "bayes") {
 			const bayesCanvas = BayesPanel({
 				district: props.districts[dashboardState.activeDistrict],
+				onPurcahseClue: handleCluesPruchased,
+				onArrest: (driver: Driver) => {},
 			});
 			toolsCanvasSection.appendChild(bayesCanvas);
 		}
