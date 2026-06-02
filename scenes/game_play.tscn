@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://smq6abtp8ei0" path="res://scripts/game_play.gd" id="1_c7ik0"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="2_swo0f"]
 [ext_resource type="PackedScene" uid="uid://bj7s53bjk6avb" path="res://scenes/treasure.tscn" id="4_hm83i"]
+[ext_resource type="Script" uid="uid://clcsdh8vq0qxv" path="res://scripts/ghost_path.gd" id="5_8ik6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6it1n"]
 texture = ExtResource("1_6it1n")
@@ -509,6 +510,16 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_c7ik0")
 
+[sub_resource type="Curve2D" id="Curve2D_hm83i"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -51, -153, 0, 0, 0, 0, -132, -154, 0, 0, 0, 0, -138, -137, 0, 0, 0, 0, -181, -136, 0, 0, 0, 0, -184, -133, 0, 0, 0, 0, -184, 53, 0, 0, 0, 0, -180, 55, 0, 0, 0, 0, 602, 56)
+}
+point_count = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm83i"]
+atlas = ExtResource("1_6it1n")
+region = Rect2(51, 153, 16, 16)
+
 [node name="GamePlay" type="Node2D" unique_id=986538663]
 script = ExtResource("1_c7ik0")
 
@@ -568,3 +579,17 @@ position = Vector2(-193, 133)
 [node name="Treasure2" parent="Treasures" unique_id=923851755 instance=ExtResource("4_hm83i")]
 position = Vector2(578, -3)
 rotation = 1.5707964
+
+[node name="GhostPath" type="Path2D" parent="." unique_id=138881730]
+curve = SubResource("Curve2D_hm83i")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="GhostPath" unique_id=844383710]
+position = Vector2(-51, -153)
+rotation = -3.1292477
+rotates = false
+loop = false
+script = ExtResource("5_8ik6i")
+
+[node name="Sprite2D" type="Sprite2D" parent="GhostPath/PathFollow2D" unique_id=1322476265]
+rotation = 3.1415927
+texture = SubResource("AtlasTexture_hm83i")
