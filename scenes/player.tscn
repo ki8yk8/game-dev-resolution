@@ -2,6 +2,32 @@
 
 [ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_3vyb7"]
 
+[sub_resource type="GDScript" id="GDScript_3vyb7"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 50.0
+
+func _physics_process(delta: float) -> void:
+	var horizontalDir = Input.get_axis(\"left\", \"right\")
+	var verticalDir = Input.get_axis(\"up\", \"down\")
+	
+	# control the vertical movement i.e. in y axis
+	if verticalDir:
+		velocity.y = verticalDir * SPEED
+	else:
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+		
+	# control the horizontal movement i.e. in x axis
+	if horizontalDir:
+		velocity.x = horizontalDir * SPEED
+	else:
+		# reset the horizontal spped to 0
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vyb7"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(34, 136, 16, 16)
@@ -61,6 +87,7 @@ animations = [{
 size = Vector2(16, 15)
 
 [node name="Player" type="CharacterBody2D" unique_id=1116653195]
+script = SubResource("GDScript_3vyb7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1627868931]
 sprite_frames = SubResource("SpriteFrames_qlg0r")
