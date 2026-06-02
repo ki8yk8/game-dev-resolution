@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="2_swo0f"]
 [ext_resource type="PackedScene" uid="uid://bj7s53bjk6avb" path="res://scenes/treasure.tscn" id="4_hm83i"]
 [ext_resource type="Script" uid="uid://clcsdh8vq0qxv" path="res://scripts/ghost_path.gd" id="5_8ik6i"]
+[ext_resource type="PackedScene" uid="uid://dm2lfii4ja50u" path="res://scenes/ghost.tscn" id="6_coaa0"]
+[ext_resource type="PackedScene" uid="uid://t4tpidtg80m6" path="res://scenes/aatma.tscn" id="7_0daha"]
+[ext_resource type="Script" uid="uid://cxrfyp1xa6geh" path="res://scripts/aatam_follow.gd" id="7_x4ub6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6it1n"]
 texture = ExtResource("1_6it1n")
@@ -516,9 +519,11 @@ _data = {
 }
 point_count = 8
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hm83i"]
-atlas = ExtResource("1_6it1n")
-region = Rect2(51, 153, 16, 16)
+[sub_resource type="Curve2D" id="Curve2D_x4ub6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 440, -27, 0, 0, 0, 0, 420, -27, 0, 0, 0, 0, 378, -40, 0, 0, 0, 0, 375, -9, 0, 0, 0, 0, 424, -5, 0, 0, 0, 0, 440, -28, 0, 0, 0, 0, 459, -73, 0, 0, 0, 0, 500, -75, 0, 0, 0, 0, 503, -44, 0, 0, 0, 0, 441, -29, 0, 0, 0, 0, 421, -41, 0, 0, 0, 0, 379, -41, 0, 0, 0, 0, 378, -71, 0, 0, 0, 0, 421, -73, 0, 0, 0, 0, 420, -41, 0, 0, 0, 0, 458, -11, 0, 0, 0, 0, 501, -5, 0, 0, 0, 0, 502, -45, 0, 0, 0, 0, 441, -30, 0, 0, 0, 0, 438, -45, 0, 0, 0, 0, 420, -32, 0, 0, 0, 0, 432, -9, 0, 0, 0, 0, 453, -13)
+}
+point_count = 23
 
 [node name="GamePlay" type="Node2D" unique_id=986538663]
 script = ExtResource("1_c7ik0")
@@ -580,16 +585,27 @@ position = Vector2(-193, 133)
 position = Vector2(578, -3)
 rotation = 1.5707964
 
-[node name="GhostPath" type="Path2D" parent="." unique_id=138881730]
+[node name="PathFollowers" type="Node2D" parent="." unique_id=268137617]
+
+[node name="GhostPath" type="Path2D" parent="PathFollowers" unique_id=138881730]
 curve = SubResource("Curve2D_hm83i")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="GhostPath" unique_id=844383710]
+[node name="PathFollow2D" type="PathFollow2D" parent="PathFollowers/GhostPath" unique_id=844383710]
 position = Vector2(-51, -153)
 rotation = -3.1292477
 rotates = false
 loop = false
 script = ExtResource("5_8ik6i")
 
-[node name="Sprite2D" type="Sprite2D" parent="GhostPath/PathFollow2D" unique_id=1322476265]
+[node name="Ghost" parent="PathFollowers/GhostPath/PathFollow2D" unique_id=162614005 instance=ExtResource("6_coaa0")]
+
+[node name="CementryGhostPath" type="Path2D" parent="PathFollowers" unique_id=648319698]
+curve = SubResource("Curve2D_x4ub6")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathFollowers/CementryGhostPath" unique_id=1783448756]
+position = Vector2(440, -27)
 rotation = 3.1415927
-texture = SubResource("AtlasTexture_hm83i")
+rotates = false
+script = ExtResource("7_x4ub6")
+
+[node name="Aatma" parent="PathFollowers/CementryGhostPath/PathFollow2D" unique_id=817781038 instance=ExtResource("7_0daha")]
