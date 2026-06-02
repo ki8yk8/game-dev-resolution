@@ -539,5 +539,32 @@ position = Vector2(-237, -189)
 [node name="BottomRight" type="Marker2D" parent="CameraLimitMarkers" unique_id=261282787]
 position = Vector2(632, 283)
 
-[node name="Treasure" parent="." unique_id=968018651 instance=ExtResource("4_hm83i")]
-position = Vector2(-92, 6)
+[node name="Treasures" type="Node2D" parent="." unique_id=52360752]
+
+[node name="Treasure1" parent="Treasures" unique_id=968018651 instance=ExtResource("4_hm83i")]
+position = Vector2(78, -103)
+
+[node name="Treasure3" parent="Treasures" unique_id=158204513 instance=ExtResource("4_hm83i")]
+position = Vector2(-155, 139)
+
+[node name="Treasure4" parent="Treasures" unique_id=215849626 instance=ExtResource("4_hm83i")]
+position = Vector2(147, 153)
+
+[node name="Treasure5" parent="Treasures" unique_id=504673616 instance=ExtResource("4_hm83i")]
+position = Vector2(527, 122)
+
+[node name="Treasure6" parent="Treasures" unique_id=1310780396 instance=ExtResource("4_hm83i")]
+position = Vector2(440, -31)
+
+[node name="Treasure7" parent="Treasures" unique_id=1917240637 instance=ExtResource("4_hm83i")]
+position = Vector2(147, -82)
+
+[node name="Treasure8" parent="Treasures" unique_id=928732547 instance=ExtResource("4_hm83i")]
+position = Vector2(-217, -178)
+
+[node name="Treasure9" parent="Treasures" unique_id=2120464410 instance=ExtResource("4_hm83i")]
+position = Vector2(-193, 133)
+
+[node name="Treasure2" parent="Treasures" unique_id=923851755 instance=ExtResource("4_hm83i")]
+position = Vector2(578, -3)
+rotation = 1.5707964
