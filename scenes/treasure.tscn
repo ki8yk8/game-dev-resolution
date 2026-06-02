@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bj7s53bjk6avb"]
+
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_86quu"]
+[ext_resource type="Script" uid="uid://bu3mkubu8olwc" path="res://scripts/treasure.gd" id="1_it12x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86quu"]
+size = Vector2(16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it12x"]
+atlas = ExtResource("1_86quu")
+region = Rect2(85, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g4qu"]
+atlas = ExtResource("1_86quu")
+region = Rect2(102, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqbho"]
+atlas = ExtResource("1_86quu")
+region = Rect2(119, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsoap"]
+atlas = ExtResource("1_86quu")
+region = Rect2(136, 119, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h5oxq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it12x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g4qu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqbho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsoap")
+}],
+"loop": false,
+"name": &"open",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it12x"]
+size = Vector2(26, 19)
+
+[node name="Treasure" type="StaticBody2D" unique_id=158204513]
+script = ExtResource("1_it12x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=795566775]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_86quu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=404669270]
+sprite_frames = SubResource("SpriteFrames_h5oxq")
+animation = &"open"
+
+[node name="CollisionMat" type="Area2D" parent="." unique_id=869053125]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionMat" unique_id=1902304829]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_it12x")
+
+[connection signal="body_entered" from="CollisionMat" to="." method="_on_collision_mat_body_entered"]

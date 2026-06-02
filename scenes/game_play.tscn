@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_6it1n"]
 [ext_resource type="Script" uid="uid://smq6abtp8ei0" path="res://scripts/game_play.gd" id="1_c7ik0"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="2_swo0f"]
+[ext_resource type="PackedScene" uid="uid://bj7s53bjk6avb" path="res://scenes/treasure.tscn" id="4_hm83i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6it1n"]
 texture = ExtResource("1_6it1n")
@@ -525,7 +526,7 @@ tile_map_data = PackedByteArray("AAAYAPz/AAAFAAUAAAAZAPz/AAAFAAUAAAAYAP7/AAAEAAU
 tile_set = SubResource("TileSet_hm83i")
 
 [node name="Player" parent="." unique_id=1116653195 instance=ExtResource("2_swo0f")]
-position = Vector2(-30, -17)
+position = Vector2(-84, -17)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1878565070]
 zoom = Vector2(3.5, 3.5)
@@ -537,3 +538,6 @@ position = Vector2(-237, -189)
 
 [node name="BottomRight" type="Marker2D" parent="CameraLimitMarkers" unique_id=261282787]
 position = Vector2(632, 283)
+
+[node name="Treasure" parent="." unique_id=968018651 instance=ExtResource("4_hm83i")]
+position = Vector2(-92, 6)
