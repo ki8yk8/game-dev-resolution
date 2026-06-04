@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bufa3b3inpvk7" path="res://scenes/push_trap.tscn" id="14_gdvef"]
 [ext_resource type="PackedScene" uid="uid://b5xvrvslahdf4" path="res://scenes/push_trap_trigger.tscn" id="15_audy8"]
 [ext_resource type="PackedScene" uid="uid://2onfchwgh6oa" path="res://scenes/push_trap_shooter.tscn" id="16_0dypk"]
+[ext_resource type="PackedScene" uid="uid://bic82kkd6qhri" path="res://scenes/spider.tscn" id="17_audy8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6it1n"]
 texture = ExtResource("1_6it1n")
@@ -533,6 +534,18 @@ _data = {
 }
 point_count = 23
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0dypk"]
+distance = -290.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o3xhr"]
+distance = 193.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_audy8"]
+distance = -188.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lftnw"]
+distance = -1374.0
+
 [node name="GamePlay" type="Node2D" unique_id=986538663]
 script = ExtResource("1_c7ik0")
 
@@ -550,7 +563,7 @@ tile_set = SubResource("TileSet_hm83i")
 
 [node name="Player" parent="." unique_id=1116653195 instance=ExtResource("2_swo0f")]
 z_index = 2
-position = Vector2(-39, 146)
+position = Vector2(1183, 108)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1878565070]
 zoom = Vector2(3.5, 3.5)
@@ -723,3 +736,23 @@ position = Vector2(647, 275)
 [node name="PushTrapShooter2" parent="PushTraps/PushTrap4" unique_id=1346121545 instance=ExtResource("16_0dypk")]
 position = Vector2(792, 236)
 rotation = -1.5707964
+
+[node name="Spider" parent="." unique_id=1181848635 instance=ExtResource("17_audy8")]
+position = Vector2(1208, -4)
+
+[node name="GameBoundary" type="Area2D" parent="." unique_id=138308111]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoundary" unique_id=764888082]
+shape = SubResource("WorldBoundaryShape2D_0dypk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GameBoundary" unique_id=132295437]
+shape = SubResource("WorldBoundaryShape2D_o3xhr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GameBoundary" unique_id=1069351322]
+position = Vector2(-55, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_audy8")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="GameBoundary" unique_id=1717801852]
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_lftnw")
