@@ -551,7 +551,7 @@ tile_set = SubResource("TileSet_hm83i")
 
 [node name="Player" parent="." unique_id=1116653195 instance=ExtResource("2_swo0f")]
 z_index = 2
-position = Vector2(341, 95)
+position = Vector2(-39, 146)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1878565070]
 zoom = Vector2(3.5, 3.5)
@@ -676,11 +676,36 @@ position = Vector2(130, -132)
 [node name="PushTrap" parent="PushTraps" unique_id=1038269714 instance=ExtResource("14_gdvef")]
 
 [node name="PushTrapTrigger" parent="PushTraps/PushTrap" unique_id=113358798 instance=ExtResource("15_audy8")]
-position = Vector2(313, 96)
+position = Vector2(200, 72)
 
 [node name="PushTrapShooter" parent="PushTraps/PushTrap" unique_id=1883478500 instance=ExtResource("16_0dypk")]
-position = Vector2(214, 106)
+position = Vector2(120, 103)
 
 [node name="PushTrapShooter2" parent="PushTraps/PushTrap" unique_id=1854659101 instance=ExtResource("16_0dypk")]
-position = Vector2(245, 73)
+position = Vector2(104, 73)
 rotation = 1.5707964
+
+[node name="PushTrap2" parent="PushTraps" unique_id=1428728778 instance=ExtResource("14_gdvef")]
+
+[node name="PushTrapTrigger" parent="PushTraps/PushTrap2" unique_id=455758554 instance=ExtResource("15_audy8")]
+position = Vector2(-18, 131)
+
+[node name="PushTrapShooter" parent="PushTraps/PushTrap2" unique_id=69226995 instance=ExtResource("16_0dypk")]
+position = Vector2(-130, 133)
+rotation = 1.5707964
+
+[node name="PushTrapShooter2" parent="PushTraps/PushTrap2" unique_id=813686928 instance=ExtResource("16_0dypk")]
+position = Vector2(22, 144)
+rotation = -1.5707964
+
+[node name="PushTrapShooter3" parent="PushTraps/PushTrap2" unique_id=810676849 instance=ExtResource("16_0dypk")]
+position = Vector2(-19, 165)
+
+[node name="PushTrap3" parent="PushTraps" unique_id=2005190644 instance=ExtResource("14_gdvef")]
+
+[node name="PushTrapTrigger" parent="PushTraps/PushTrap3" unique_id=1494608127 instance=ExtResource("15_audy8")]
+position = Vector2(409, -116)
+
+[node name="PushTrapShooter" parent="PushTraps/PushTrap3" unique_id=1157790674 instance=ExtResource("16_0dypk")]
+position = Vector2(575, -117)
+rotation = -1.5707964

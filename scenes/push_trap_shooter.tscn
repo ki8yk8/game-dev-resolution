@@ -12,3 +12,6 @@ script = ExtResource("1_y5l64")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=722798416]
 texture = SubResource("AtlasTexture_y5l64")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2147317436]
+target_position = Vector2(0, -13)
