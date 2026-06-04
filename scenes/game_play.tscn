@@ -660,4 +660,10 @@ position = Vector2(319, 135)
 [node name="Shooters" type="Node2D" parent="." unique_id=393014520]
 
 [node name="Shooter" parent="Shooters" unique_id=1020735068 instance=ExtResource("13_yksfn")]
-position = Vector2(275, 85)
+position = Vector2(558, 120)
+
+[node name="Shooter2" parent="Shooters" unique_id=1018358896 instance=ExtResource("13_yksfn")]
+position = Vector2(-182, 79)
+
+[node name="Shooter3" parent="Shooters" unique_id=250027420 instance=ExtResource("13_yksfn")]
+position = Vector2(130, -132)
