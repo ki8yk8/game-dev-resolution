@@ -708,3 +708,18 @@ position = Vector2(409, -116)
 [node name="PushTrapShooter" parent="PushTraps/PushTrap3" unique_id=1157790674 instance=ExtResource("16_0dypk")]
 position = Vector2(575, -117)
 rotation = -1.5707964
+
+[node name="PushTrap4" parent="PushTraps" unique_id=1366351996 instance=ExtResource("14_gdvef")]
+
+[node name="PushTrapTrigger" parent="PushTraps/PushTrap4" unique_id=2027212878 instance=ExtResource("15_audy8")]
+position = Vector2(663, 234)
+
+[node name="PushTrapTrigger2" parent="PushTraps/PushTrap4" unique_id=1982557077 instance=ExtResource("15_audy8")]
+position = Vector2(649, 218)
+
+[node name="PushTrapShooter" parent="PushTraps/PushTrap4" unique_id=549819343 instance=ExtResource("16_0dypk")]
+position = Vector2(647, 275)
+
+[node name="PushTrapShooter2" parent="PushTraps/PushTrap4" unique_id=1346121545 instance=ExtResource("16_0dypk")]
+position = Vector2(792, 236)
+rotation = -1.5707964

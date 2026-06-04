@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bic82kkd6qhri"]
+
+[ext_resource type="Script" uid="uid://cwhjqmxhlydth" path="res://scripts/spider.gd" id="1_algeo"]
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_c7em6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_algeo"]
+atlas = ExtResource("1_c7em6")
+region = Rect2(34, 170, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5hg5"]
+radius = 52.63079
+
+[node name="Spider" type="Node2D" unique_id=1181848635]
+script = ExtResource("1_algeo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=629842910]
+texture = SubResource("AtlasTexture_algeo")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1784298672]
+target_position = Vector2(0, 17)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1917940691]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1848921985]
+shape = SubResource("CircleShape2D_k5hg5")
