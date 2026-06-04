@@ -3,12 +3,10 @@ class_name SmallDoor
 
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cooldownTimer: Timer = $CoolDownTimer
-@onready var marker: Marker2D = $Marker2D
 
 var partner: Node2D = null
 var isCooldown: bool = false
 
-# TODO: add some cooldown peroid here
 func _on_body_entered(body: Node2D) -> void:
 	# if on cooldown nothing happens
 	if isCooldown:

@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cxrfyp1xa6geh" path="res://scripts/aatam_follow.gd" id="7_x4ub6"]
 [ext_resource type="PackedScene" uid="uid://gas7vqg8t0ei" path="res://scenes/door_portal.tscn" id="9_k38ww"]
 [ext_resource type="PackedScene" uid="uid://bcrnwq0xyc6al" path="res://scenes/small_door.tscn" id="10_r1jqb"]
+[ext_resource type="PackedScene" uid="uid://cr8hytm6wx04p" path="res://scenes/big_door.tscn" id="11_r1jqb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6it1n"]
 texture = ExtResource("1_6it1n")
@@ -544,7 +545,8 @@ tile_map_data = PackedByteArray("AAAYAPz/AAAFAAUAAAAZAPz/AAAFAAUAAAAYAP7/AAAEAAU
 tile_set = SubResource("TileSet_hm83i")
 
 [node name="Player" parent="." unique_id=1116653195 instance=ExtResource("2_swo0f")]
-position = Vector2(114, -29)
+z_index = 2
+position = Vector2(556, 196)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1878565070]
 zoom = Vector2(3.5, 3.5)
@@ -612,10 +614,36 @@ script = ExtResource("7_x4ub6")
 
 [node name="Aatma" parent="PathFollowers/CementryGhostPath/PathFollow2D" unique_id=817781038 instance=ExtResource("7_0daha")]
 
-[node name="DoorPortal" parent="." unique_id=648481751 instance=ExtResource("9_k38ww")]
+[node name="Doors" type="Node2D" parent="." unique_id=2011547860]
 
-[node name="SmallDoor" parent="DoorPortal" unique_id=798793256 instance=ExtResource("10_r1jqb")]
-position = Vector2(138, -39)
+[node name="DoorPortal" parent="Doors" unique_id=648481751 instance=ExtResource("9_k38ww")]
 
-[node name="SmallDoor2" parent="DoorPortal" unique_id=913765217 instance=ExtResource("10_r1jqb")]
+[node name="SmallDoor" parent="Doors/DoorPortal" unique_id=798793256 instance=ExtResource("10_r1jqb")]
+position = Vector2(175, -8)
+
+[node name="SmallDoor2" parent="Doors/DoorPortal" unique_id=913765217 instance=ExtResource("10_r1jqb")]
 position = Vector2(120, -4)
+
+[node name="DoorPortal2" parent="Doors" unique_id=1922790533 instance=ExtResource("9_k38ww")]
+
+[node name="SmallDoor" parent="Doors/DoorPortal2" unique_id=1809001040 instance=ExtResource("10_r1jqb")]
+position = Vector2(500, -101)
+
+[node name="SmallDoor2" parent="Doors/DoorPortal2" unique_id=599429848 instance=ExtResource("10_r1jqb")]
+position = Vector2(527, -75)
+
+[node name="DoorPortal3" parent="Doors" unique_id=2018431902 instance=ExtResource("9_k38ww")]
+
+[node name="BigDoor" parent="Doors/DoorPortal3" unique_id=1314238884 instance=ExtResource("11_r1jqb")]
+position = Vector2(512, 171)
+
+[node name="SmallDoor" parent="Doors/DoorPortal3" unique_id=1988501293 instance=ExtResource("10_r1jqb")]
+position = Vector2(483, 141)
+
+[node name="DoorPortal4" parent="Doors" unique_id=1753526583 instance=ExtResource("9_k38ww")]
+
+[node name="BigDoor" parent="Doors/DoorPortal4" unique_id=1067315336 instance=ExtResource("11_r1jqb")]
+position = Vector2(-112, 235)
+
+[node name="SmallDoor" parent="Doors/DoorPortal4" unique_id=1421649051 instance=ExtResource("10_r1jqb")]
+position = Vector2(-162, 202)

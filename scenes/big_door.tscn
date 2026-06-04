@@ -40,14 +40,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42v4m"]
-size = Vector2(30, 27)
+size = Vector2(30, 19)
 
 [node name="BigDoor" type="Area2D" unique_id=1314238884]
+collision_mask = 2
 script = ExtResource("1_dan0d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1225451255]
 sprite_frames = SubResource("SpriteFrames_7w5vy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1779131815]
-position = Vector2(0, 6.5)
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_42v4m")
+
+[node name="Timer" type="Timer" parent="." unique_id=1854843250]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

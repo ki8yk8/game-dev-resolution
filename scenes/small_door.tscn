@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0uhg"]
-size = Vector2(16, 24)
+size = Vector2(16, 18)
 
 [node name="SmallDoor" type="Area2D" unique_id=798793256]
 collision_mask = 2
@@ -50,11 +50,8 @@ script = ExtResource("1_uu7dd")
 sprite_frames = SubResource("SpriteFrames_sx5dh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=494526226]
-position = Vector2(0, 4)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_k0uhg")
-
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1120489288]
-position = Vector2(0, 12)
 
 [node name="CoolDownTimer" type="Timer" parent="." unique_id=1173560930]
 wait_time = 3.0
