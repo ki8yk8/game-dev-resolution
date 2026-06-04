@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bwdaoopxsj67y"]
+
+[ext_resource type="Script" uid="uid://1fl5y1d1tfxp" path="res://scripts/invisible_door.gd" id="1_mwded"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vug22"]
+size = Vector2(48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mwded"]
+
+[node name="InvisibleDoor" type="Area2D" unique_id=1171188095]
+collision_mask = 2
+script = ExtResource("1_mwded")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1700983096]
+shape = SubResource("RectangleShape2D_vug22")
+
+[node name="Timer" type="Timer" parent="." unique_id=1652743433]
+wait_time = 2.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1922963068]
+sprite_frames = SubResource("SpriteFrames_mwded")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

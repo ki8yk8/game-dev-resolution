@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://gas7vqg8t0ei" path="res://scenes/door_portal.tscn" id="9_k38ww"]
 [ext_resource type="PackedScene" uid="uid://bcrnwq0xyc6al" path="res://scenes/small_door.tscn" id="10_r1jqb"]
 [ext_resource type="PackedScene" uid="uid://cr8hytm6wx04p" path="res://scenes/big_door.tscn" id="11_r1jqb"]
+[ext_resource type="PackedScene" uid="uid://bwdaoopxsj67y" path="res://scenes/invisible_door.tscn" id="12_5p4h6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6it1n"]
 texture = ExtResource("1_6it1n")
@@ -646,3 +647,11 @@ position = Vector2(-112, 235)
 
 [node name="SmallDoor" parent="Doors/DoorPortal4" unique_id=1421649051 instance=ExtResource("10_r1jqb")]
 position = Vector2(-162, 202)
+
+[node name="DoorPortal5" parent="Doors" unique_id=503300388 instance=ExtResource("9_k38ww")]
+
+[node name="InvisibleDoor" parent="Doors/DoorPortal5" unique_id=1171188095 instance=ExtResource("12_5p4h6")]
+position = Vector2(153, 208)
+
+[node name="SmallDoor" parent="Doors/DoorPortal5" unique_id=1667459504 instance=ExtResource("10_r1jqb")]
+position = Vector2(319, 135)

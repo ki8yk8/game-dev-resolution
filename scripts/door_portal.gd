@@ -5,7 +5,7 @@ var doors = []
 func _ready() -> void:
 	var childrens = get_children()
 	doors = childrens.filter(func (child):
-		return child is SmallDoor or child is BigDoor
+		return child is SmallDoor or child is BigDoor or child is InvisibleDoor
 	)
 	# there should be always two doors. One to enter another to leave while viceversa also shall work
 	assert(doors.size() == 2)
