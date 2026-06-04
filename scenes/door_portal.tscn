@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://gas7vqg8t0ei"]
+
+[ext_resource type="Script" uid="uid://x4j1rx483pfk" path="res://scripts/door_portal.gd" id="1_x13d4"]
+
+[node name="DoorPortal" type="Node2D" unique_id=648481751]
+script = ExtResource("1_x13d4")

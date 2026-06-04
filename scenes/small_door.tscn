@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bcrnwq0xyc6al"]
+
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_vja81"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu7dd"]
+atlas = ExtResource("1_vja81")
+region = Rect2(153, 51, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oase3"]
+atlas = ExtResource("1_vja81")
+region = Rect2(153, 34, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cli2"]
+atlas = ExtResource("1_vja81")
+region = Rect2(153, 17, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4e2c"]
+atlas = ExtResource("1_vja81")
+region = Rect2(153, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sx5dh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu7dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oase3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cli2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4e2c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0uhg"]
+size = Vector2(16, 24)
+
+[node name="SmallDoor" type="Area2D" unique_id=798793256]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=43603348]
+sprite_frames = SubResource("SpriteFrames_sx5dh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=494526226]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_k0uhg")
