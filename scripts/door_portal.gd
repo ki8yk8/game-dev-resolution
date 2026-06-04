@@ -1,6 +1,6 @@
 extends Node2D
 
-var doors = null
+var doors = []
 
 func _ready() -> void:
 	var childrens = get_children()
@@ -9,3 +9,7 @@ func _ready() -> void:
 	)
 	# there should be always two doors. One to enter another to leave while viceversa also shall work
 	assert(doors.size() == 2)
+	
+	# assign partner to one another
+	doors[0].partner = doors[1]
+	doors[1].partner = doors[0]	
