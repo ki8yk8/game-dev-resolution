@@ -680,3 +680,7 @@ position = Vector2(313, 96)
 
 [node name="PushTrapShooter" parent="PushTraps/PushTrap" unique_id=1883478500 instance=ExtResource("16_0dypk")]
 position = Vector2(214, 106)
+
+[node name="PushTrapShooter2" parent="PushTraps/PushTrap" unique_id=1854659101 instance=ExtResource("16_0dypk")]
+position = Vector2(245, 73)
+rotation = 1.5707964
