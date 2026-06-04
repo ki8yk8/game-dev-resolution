@@ -23,8 +23,12 @@ func _on_body_entered(body: Node2D) -> void:
 	animatedSprite.play("default")
 	await animatedSprite.animation_finished
 	# move the player from one poistion to another
-	body.global_position = partner.global_position
-
+	var tween = create_tween()
+	tween.tween_property(body, "global_position", partner.global_position, 1)
+	# play the animation for the partner as well
+	partner.animatedSprite.play("default")
+	await tween.finished	
+	
 func _on_body_exited(body: Node2D) -> void:
 	animatedSprite.play_backwards("default")
 
