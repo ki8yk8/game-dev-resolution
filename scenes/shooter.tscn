@@ -17,11 +17,11 @@ texture = SubResource("AtlasTexture_mger4")
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Raycast" unique_id=536900942]
-polygon = PackedVector2Array(56, -16, 56, 16, 0, 0)
+polygon = PackedVector2Array(80, -24, 80, 25, 0, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="Raycast" unique_id=695490298]
 color = Color(1, 0.06999999, 0.06999999, 0.50980395)
-polygon = PackedVector2Array(0, 0, 56, -16, 56, 16)
+polygon = PackedVector2Array(0, 0, 80, -24, 80, 25)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=2090923217]
 

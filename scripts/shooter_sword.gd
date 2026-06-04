@@ -1,6 +1,6 @@
 extends Area2D
 
-const VELOCITY = 100
+const VELOCITY = 50
 @onready var timer:Timer = $Timer
 
 func _ready() -> void:
@@ -13,4 +13,8 @@ func _process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	# remove the sword on timeout
 	timer.stop()
+	queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	# clear the bulelt as it has hit the body
 	queue_free()
