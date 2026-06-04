@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dunwxb2fuucr2"]
+
+[ext_resource type="Script" uid="uid://brxq187ees1wl" path="res://scripts/shooter.gd" id="1_1e8ai"]
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="2_lynhg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mger4"]
+atlas = ExtResource("2_lynhg")
+region = Rect2(84, 51, 17, 16)
+
+[node name="Shooter" type="Node2D" unique_id=1020735068]
+script = ExtResource("1_1e8ai")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=827135998]
+texture = SubResource("AtlasTexture_mger4")
+
+[node name="Raycast" type="Area2D" parent="." unique_id=1275783266]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Raycast" unique_id=536900942]
+polygon = PackedVector2Array(56, -16, 56, 16, 0, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Raycast" unique_id=695490298]
+color = Color(1, 0.06999999, 0.06999999, 0.50980395)
+polygon = PackedVector2Array(0, 0, 56, -16, 56, 16)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=2090923217]
+
+[connection signal="body_entered" from="Raycast" to="." method="_on_raycast_body_entered"]

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bhvd0l0c6pkij"]
+
+[ext_resource type="Script" uid="uid://xkupv3vokp7m" path="res://scripts/shooter_sword.gd" id="1_54bpb"]
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_a156c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a156c"]
+size = Vector2(8, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54bpb"]
+atlas = ExtResource("1_a156c")
+region = Rect2(153, 136, 16, 16)
+
+[node name="ShooterSword" type="Area2D" unique_id=134457507]
+rotation = 1.5707964
+script = ExtResource("1_54bpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=789576386]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_a156c")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=156375624]
+texture = SubResource("AtlasTexture_54bpb")
+
+[node name="Timer" type="Timer" parent="." unique_id=1339796776]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

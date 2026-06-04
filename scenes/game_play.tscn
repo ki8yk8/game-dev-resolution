@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bcrnwq0xyc6al" path="res://scenes/small_door.tscn" id="10_r1jqb"]
 [ext_resource type="PackedScene" uid="uid://cr8hytm6wx04p" path="res://scenes/big_door.tscn" id="11_r1jqb"]
 [ext_resource type="PackedScene" uid="uid://bwdaoopxsj67y" path="res://scenes/invisible_door.tscn" id="12_5p4h6"]
+[ext_resource type="PackedScene" uid="uid://dunwxb2fuucr2" path="res://scenes/shooter.tscn" id="13_yksfn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6it1n"]
 texture = ExtResource("1_6it1n")
@@ -547,7 +548,7 @@ tile_set = SubResource("TileSet_hm83i")
 
 [node name="Player" parent="." unique_id=1116653195 instance=ExtResource("2_swo0f")]
 z_index = 2
-position = Vector2(556, 196)
+position = Vector2(341, 95)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1878565070]
 zoom = Vector2(3.5, 3.5)
@@ -655,3 +656,8 @@ position = Vector2(153, 208)
 
 [node name="SmallDoor" parent="Doors/DoorPortal5" unique_id=1667459504 instance=ExtResource("10_r1jqb")]
 position = Vector2(319, 135)
+
+[node name="Shooters" type="Node2D" parent="." unique_id=393014520]
+
+[node name="Shooter" parent="Shooters" unique_id=1020735068 instance=ExtResource("13_yksfn")]
+position = Vector2(275, 85)
