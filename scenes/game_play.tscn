@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cr8hytm6wx04p" path="res://scenes/big_door.tscn" id="11_r1jqb"]
 [ext_resource type="PackedScene" uid="uid://bwdaoopxsj67y" path="res://scenes/invisible_door.tscn" id="12_5p4h6"]
 [ext_resource type="PackedScene" uid="uid://dunwxb2fuucr2" path="res://scenes/shooter.tscn" id="13_yksfn"]
+[ext_resource type="PackedScene" uid="uid://bufa3b3inpvk7" path="res://scenes/push_trap.tscn" id="14_gdvef"]
+[ext_resource type="PackedScene" uid="uid://b5xvrvslahdf4" path="res://scenes/push_trap_trigger.tscn" id="15_audy8"]
+[ext_resource type="PackedScene" uid="uid://2onfchwgh6oa" path="res://scenes/push_trap_shooter.tscn" id="16_0dypk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6it1n"]
 texture = ExtResource("1_6it1n")
@@ -667,3 +670,13 @@ position = Vector2(-182, 79)
 
 [node name="Shooter3" parent="Shooters" unique_id=250027420 instance=ExtResource("13_yksfn")]
 position = Vector2(130, -132)
+
+[node name="PushTraps" type="Node2D" parent="." unique_id=31426630]
+
+[node name="PushTrap" parent="PushTraps" unique_id=1038269714 instance=ExtResource("14_gdvef")]
+
+[node name="PushTrapTrigger" parent="PushTraps/PushTrap" unique_id=113358798 instance=ExtResource("15_audy8")]
+position = Vector2(313, 96)
+
+[node name="PushTrapShooter" parent="PushTraps/PushTrap" unique_id=1883478500 instance=ExtResource("16_0dypk")]
+position = Vector2(214, 106)
