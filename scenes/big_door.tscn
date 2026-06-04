@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cr8hytm6wx04p"]
 
+[ext_resource type="Script" uid="uid://b4hgh1g5h4vju" path="res://scripts/big_door.gd" id="1_dan0d"]
 [ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_qlmng"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dan0d"]
@@ -42,6 +43,7 @@ animations = [{
 size = Vector2(30, 27)
 
 [node name="BigDoor" type="Area2D" unique_id=1314238884]
+script = ExtResource("1_dan0d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1225451255]
 sprite_frames = SubResource("SpriteFrames_7w5vy")
