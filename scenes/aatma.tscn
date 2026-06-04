@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://t4tpidtg80m6"]
 
 [ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_d2jyd"]
+[ext_resource type="Script" uid="uid://car7dd1qa154v" path="res://scripts/aatma.gd" id="1_ib81w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ib81w"]
 size = Vector2(16, 17)
@@ -10,6 +11,7 @@ atlas = ExtResource("1_d2jyd")
 region = Rect2(17, 170, 16, 16)
 
 [node name="Aatma" type="Area2D" unique_id=817781038]
+script = ExtResource("1_ib81w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=709277041]
 position = Vector2(0, -0.5)
