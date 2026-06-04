@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bufa3b3inpvk7"]
+
+[ext_resource type="Script" uid="uid://chuugce7xp7p5" path="res://scripts/push_trap.gd" id="1_xqo2q"]
+
+[node name="PushTrap" type="Node2D" unique_id=1038269714]
+script = ExtResource("1_xqo2q")

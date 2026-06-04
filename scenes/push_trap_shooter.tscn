@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://2onfchwgh6oa"]
+
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_lsu1b"]
+[ext_resource type="Script" uid="uid://db8pw7pl7gdl" path="res://scripts/push_trap_shooter.gd" id="1_y5l64"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5l64"]
+atlas = ExtResource("1_lsu1b")
+region = Rect2(85, 136, 16, 16)
+
+[node name="PushTrapShooter" type="Node2D" unique_id=1883478500]
+script = ExtResource("1_y5l64")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=722798416]
+texture = SubResource("AtlasTexture_y5l64")

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b5xvrvslahdf4"]
+
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_jshjs"]
+[ext_resource type="Script" uid="uid://cosdk2olrwxud" path="res://scripts/push_trap_trigger.gd" id="1_sc8l5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc8l5"]
+size = Vector2(14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plaav"]
+atlas = ExtResource("1_jshjs")
+region = Rect2(0, 85, 16, 16)
+
+[node name="PushTrapTrigger" type="Area2D" unique_id=113358798]
+script = ExtResource("1_sc8l5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1699187112]
+shape = SubResource("RectangleShape2D_sc8l5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=8238708]
+texture = SubResource("AtlasTexture_plaav")
