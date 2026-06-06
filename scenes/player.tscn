@@ -51,7 +51,25 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y  = move_toward(velocity.y, 0, SPEED)
 		animatedSprite.play(\"idle-\"+lastDir)
-
+	elif verticalDir:
+		velocity.y = verticalDir * SPEED
+		if verticalDir > 0:
+			animatedSprite.play(\"walk-down\")
+			lastDir = \"down\"
+		else:
+			animatedSprite.play(\"walk-up\")
+			lastDir = \"up\"
+			
+	elif horizontalDir:
+		velocity.x = horizontalDir * SPEED
+		
+		if horizontalDir>0:
+			animatedSprite.play(\"walk-right\")
+			lastDir = \"right\"
+		else:
+			animatedSprite.play(\"walk-left\")
+			lastDir = \"left\"
+	
 	move_and_slide()
 "
 
