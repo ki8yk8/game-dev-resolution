@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://2yvq6yiiep7y"]
 
+[ext_resource type="Script" uid="uid://diogpnw6nc1vc" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="FontFile" uid="uid://cl0lsa2i5yuru" path="res://assets/font/Kenney Future.ttf" id="1_l6cm7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ekxnf")
 
 [node name="Panel" type="Panel" parent="." unique_id=1685256940]
 layout_mode = 1
@@ -76,7 +78,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=515398858]
+[node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=515398858]
 custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -85,7 +87,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_l6cm7")
 text = "Start the Game"
 
-[node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=1666326144]
+[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=1666326144]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -93,3 +95,6 @@ theme_override_fonts/font = ExtResource("1_l6cm7")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_ekxnf")
 text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
