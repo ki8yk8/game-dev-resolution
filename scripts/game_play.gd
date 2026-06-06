@@ -4,6 +4,8 @@ extends Node2D
 @onready var topLeftMarker = $CameraLimitMarkers/TopLeft
 @onready var bottomRightMarker = $CameraLimitMarkers/BottomRight
 
+@onready var player = %Player
+
 # ui elements
 @onready var coinsLabel = $UI/MarginContainer/HBoxContainer/Coins
 @onready var heartsLabel = $UI/MarginContainer/HBoxContainer/Hearts
@@ -16,15 +18,7 @@ func _ready() -> void:
 	camera.limit_top = topLeftMarker.position.y
 	camera.limit_bottom = bottomRightMarker.position.y
 	camera.limit_right = bottomRightMarker.position.x
-
 	_render()
-
-# TODO: add the scene change logic here
-func _on_game_over_timer_timeout() -> void:
-	pass # Replace with function body.
-
-func _death():
-	gameOverTime.start()
 
 func _render():		
 	# adapt the ui according to the game stats
@@ -33,6 +27,6 @@ func _render():
 	
 func _process(delta: float) -> void:
 	if GameManager.state.hearts <= 0:
-		_death()
-	
+		player.die()
+	# render each time
 	_render()

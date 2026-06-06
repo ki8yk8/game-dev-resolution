@@ -8,8 +8,12 @@ const SPEED = 40.0
 var lastDir = "down"
 var hasGun:bool = false
 var isAttacking:bool = false
+var alive: bool = true
 
 func _physics_process(delta: float) -> void:
+	if not alive:
+		return;
+
 	var horizontalDir = Input.get_axis("left", "right")
 	var verticalDir = Input.get_axis("up", "down")
 	var action = Input.is_action_just_pressed("action")
@@ -73,8 +77,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	if not alive:
+		GameManager.die()
+		
 	if isAttacking:
 		isAttacking = false
 
-func _on_animated_sprite_2d_animation_looped() -> void:
-	pass # Replace with function body.
+func die():
+	alive = false
+	animatedSprite.play("death")

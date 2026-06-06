@@ -15,3 +15,6 @@ func update_coins(coin: int):
 
 func update_hearts(hearts: int = -1):
 	state.hearts += hearts
+
+func die():
+	pass
