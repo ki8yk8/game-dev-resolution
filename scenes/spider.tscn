@@ -10,16 +10,21 @@ region = Rect2(34, 170, 16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_k5hg5"]
 radius = 52.63079
 
-[node name="Spider" type="Node2D" unique_id=1181848635]
+[node name="Spider" type="Area2D" unique_id=1294105786]
+collision_mask = 2
 script = ExtResource("1_algeo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=629842910]
+rotation = -1.5707964
 texture = SubResource("AtlasTexture_algeo")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1784298672]
-target_position = Vector2(0, 17)
+rotation = -1.5707964
+target_position = Vector2(-6.119594e-07, 14)
+collision_mask = 5
+collide_with_areas = true
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1917940691]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1848921985]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1848921985]
 shape = SubResource("CircleShape2D_k5hg5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
