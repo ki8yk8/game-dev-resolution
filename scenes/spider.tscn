@@ -78,5 +78,6 @@ shape = SubResource("CircleShape2D_algeo")
 libraries/ = SubResource("AnimationLibrary_d613k")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]
