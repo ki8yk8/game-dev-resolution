@@ -84,12 +84,14 @@
 [ext_resource type="Texture2D" uid="uid://b4cpu86os5wap" path="res://assets/png/character/gun/walk/walk up2.png" id="66_770dr"]
 [ext_resource type="Texture2D" uid="uid://cq7q5hmd1q0ov" path="res://assets/png/character/gun/walk/walk up3.png" id="67_8f1cb"]
 [ext_resource type="Texture2D" uid="uid://bk4iw5rw1ge4l" path="res://assets/png/character/gun/walk/walk up4.png" id="68_vdulj"]
+[ext_resource type="AudioStream" uid="uid://0xrp47lwifi0" path="res://assets/sounds/footstep.mp3" id="85_vx63k"]
 
 [sub_resource type="GDScript" id="GDScript_3vyb7"]
 script/source = "extends CharacterBody2D
 
 const SPEED = 40.0
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var footstepSfx = $footstepSfx
 
 var lastDir = \"down\"
 var hasGun:bool = false
@@ -146,6 +148,12 @@ func _physics_process(delta: float) -> void:
 			else:
 				animatedSprite.play(\"walk-left\")
 			lastDir = \"left\"
+	
+	if verticalDir || horizontalDir:
+		if not footstepSfx.playing:
+			footstepSfx.play()
+	else:
+		footstepSfx.stop()
 	
 	if action:
 		animatedSprite.play(\"attack-\"+lastDir)
@@ -871,6 +879,9 @@ autoplay = "idle-down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=506243414]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_jx8is")
+
+[node name="footstepSfx" type="AudioStreamPlayer2D" parent="." unique_id=985345235]
+stream = ExtResource("85_vx63k")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
