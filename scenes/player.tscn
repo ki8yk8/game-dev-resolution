@@ -92,66 +92,72 @@ const SPEED = 40.0
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var lastDir = \"down\"
-var hasGun:bool = true
+var hasGun:bool = false
+var isAttacking:bool = false
 
 func _physics_process(delta: float) -> void:
 	var horizontalDir = Input.get_axis(\"left\", \"right\")
 	var verticalDir = Input.get_axis(\"up\", \"down\")
 	var action = Input.is_action_just_pressed(\"action\")
 	
+	if action and not isAttacking:
+		animatedSprite.play(\"attack-\"+lastDir)
+		isAttacking = true
+		
+	if isAttacking:
+		move_and_slide()
+		return;
+	
 	# if both axis movement exists then, do nothing. And same if nothing received
 	if (verticalDir and horizontalDir) or (not verticalDir and not horizontalDir):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y  = move_toward(velocity.y, 0, SPEED)
 		
-		if not action:
-			if not hasGun:
-				animatedSprite.play(\"idle-\"+lastDir)
-			else:
-				animatedSprite.play(\"idle-\"+lastDir+\"-gun\")
+		if not hasGun:
+			animatedSprite.play(\"idle-\"+lastDir)
+		else:
+			animatedSprite.play(\"idle-\"+lastDir+\"-gun\")
 	elif verticalDir:
 		velocity.y = verticalDir * SPEED
 		if verticalDir > 0:
-			if not action:
-				if hasGun:
-					animatedSprite.play(\"walk-down-gun\")
-				else:
-					animatedSprite.play(\"walk-down\")
+			if hasGun:
+				animatedSprite.play(\"walk-down-gun\")
 			else:
-				animatedSprite.play(\"attack-down\")
+				animatedSprite.play(\"walk-down\")
 			lastDir = \"down\"
 		else:
-			if not action:
-				if hasGun:
-					animatedSprite.play(\"walk-up-gun\")
-				else:
-					animatedSprite.play(\"walk-up\")
+			if hasGun:
+				animatedSprite.play(\"walk-up-gun\")
 			else:
-				animatedSprite.play(\"attack-up\")
+				animatedSprite.play(\"walk-up\")
 			lastDir = \"up\"
 	elif horizontalDir:
 		velocity.x = horizontalDir * SPEED
 		
 		if horizontalDir>0:
-			if not action:
-				if hasGun:
-					animatedSprite.play(\"walk-right-gun\")
-				else:
-					animatedSprite.play(\"walk-right\")
+			if hasGun:
+				animatedSprite.play(\"walk-right\")
 			else:
 				animatedSprite.play(\"action-right\")
 			lastDir = \"right\"
 		else:
-			if not action:
-				if hasGun:
-					animatedSprite.play(\"walk-left-gun\")
-				else:
-					animatedSprite.play(\"walk-left\")
+			if hasGun:
+				animatedSprite.play(\"walk-left-gun\")
 			else:
-				animatedSprite.play(\"attack-left\")
+				animatedSprite.play(\"walk-left\")
 			lastDir = \"left\"
 	
+	if action:
+		animatedSprite.play(\"attack-\"+lastDir)
+		
 	move_and_slide()
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if isAttacking:
+		isAttacking = false
+
+func _on_animated_sprite_2d_animation_looped() -> void:
+	pass # Replace with function body.
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jlll7"]
@@ -505,7 +511,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1da1t")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack-down",
 "speed": 5.0
 }, {
@@ -522,7 +528,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4vfid")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack-left",
 "speed": 5.0
 }, {
@@ -539,7 +545,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fcu33")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack-right",
 "speed": 5.0
 }, {
@@ -556,7 +562,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b5l0c")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack-up",
 "speed": 5.0
 }, {
@@ -859,9 +865,12 @@ script = SubResource("GDScript_3vyb7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1627868931]
 sprite_frames = SubResource("SpriteFrames_qlg0r")
-animation = &"attack-up"
+animation = &"attack-down"
 autoplay = "idle-down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=506243414]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_3vyb7")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
