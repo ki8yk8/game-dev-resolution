@@ -20,6 +20,9 @@ func _ready() -> void:
 	)
 	# the number of creates and the crate seat should always be equal
 	assert(len(crates) == len(crateSeats))
+	# assing crateId to each crates
+	for i in range(len(crates)):
+		crates[i].id = i
 	
 	var sokobanPrizes = filteredChildrens.filter(func (item):
 		return item is SokobanPrize
@@ -29,6 +32,14 @@ func _ready() -> void:
 	sokobanPrize = sokobanPrizes[0]
 
 func _process(delta: float) -> void:
+	var accountedCrates = []
+	
+	for crateSeat in crateSeats:
+		if crateSeat.crateId in accountedCrates:
+			return
+		else:
+			accountedCrates.append(crateSeat.crateId)
+
 	# check if all the crates has been fulfilled or not
 	var allCratesAreInPlace = crateSeats.all(func (item):
 		return item.crateId != -1
