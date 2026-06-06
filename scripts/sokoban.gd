@@ -14,7 +14,7 @@ func _ready() -> void:
 	# the childrens should be only the crate and crate seat
 	assert(len(childrens) == len(filteredChildrens))
 	crateSeats = filteredChildrens.filter(func (item):
-		return item is Crate
+		return item is CrateSeat
 	)
 	crates = filteredChildrens.filter(func (item):
 		return item is Crate

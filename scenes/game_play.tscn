@@ -587,7 +587,7 @@ tile_set = SubResource("TileSet_hm83i")
 [node name="Player" parent="." unique_id=1116653195 instance=ExtResource("2_swo0f")]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(948, -50)
+position = Vector2(896, -25)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1878565070]
 zoom = Vector2(3.5, 3.5)
@@ -843,13 +843,58 @@ position = Vector2(614, -31)
 [node name="Sokoban" parent="Sokobans" unique_id=1327824032 instance=ExtResource("18_o3xhr")]
 
 [node name="Crate" parent="Sokobans/Sokoban" unique_id=569581491 instance=ExtResource("18_0dypk")]
-position = Vector2(957, -11)
+position = Vector2(991, -22)
 
 [node name="CrateSeat" parent="Sokobans/Sokoban" unique_id=1978873266 instance=ExtResource("20_lftnw")]
-position = Vector2(989, -40)
+position = Vector2(1010, -22)
 
 [node name="SokobanWalls" parent="Sokobans/Sokoban" unique_id=1709963496 instance=ExtResource("21_0em6x")]
-position = Vector2(938, -25)
+position = Vector2(991, -41)
 
 [node name="SokobanPrize" parent="Sokobans/Sokoban" unique_id=1862052936 instance=ExtResource("22_r1sdi")]
 position = Vector2(902, -55)
+
+[node name="SokobanWalls2" parent="Sokobans/Sokoban" unique_id=656515852 instance=ExtResource("21_0em6x")]
+position = Vector2(1009, -41)
+
+[node name="SokobanWalls3" parent="Sokobans/Sokoban" unique_id=1191835875 instance=ExtResource("21_0em6x")]
+position = Vector2(991, -3)
+
+[node name="SokobanWalls4" parent="Sokobans/Sokoban" unique_id=1747137963 instance=ExtResource("21_0em6x")]
+position = Vector2(1009, -3)
+
+[node name="SokobanWalls5" parent="Sokobans/Sokoban" unique_id=1420282166 instance=ExtResource("21_0em6x")]
+position = Vector2(991, 15)
+
+[node name="SokobanWalls6" parent="Sokobans/Sokoban" unique_id=1108731127 instance=ExtResource("21_0em6x")]
+position = Vector2(1009, 15)
+
+[node name="SokobanWalls7" parent="Sokobans/Sokoban" unique_id=2141550368 instance=ExtResource("21_0em6x")]
+position = Vector2(991, -59)
+
+[node name="SokobanWalls8" parent="Sokobans/Sokoban" unique_id=524146525 instance=ExtResource("21_0em6x")]
+position = Vector2(1009, -59)
+
+[node name="SokobanWalls9" parent="Sokobans/Sokoban" unique_id=547482033 instance=ExtResource("21_0em6x")]
+position = Vector2(955, 16)
+
+[node name="CrateSeat2" parent="Sokobans/Sokoban" unique_id=743041155 instance=ExtResource("20_lftnw")]
+position = Vector2(973, 17)
+
+[node name="Crate2" parent="Sokobans/Sokoban" unique_id=1350525233 instance=ExtResource("18_0dypk")]
+position = Vector2(973, -1)
+
+[node name="Crate3" parent="Sokobans/Sokoban" unique_id=901473421 instance=ExtResource("18_0dypk")]
+position = Vector2(974, -40)
+
+[node name="CrateSeat3" parent="Sokobans/Sokoban" unique_id=125583705 instance=ExtResource("20_lftnw")]
+position = Vector2(974, -59)
+
+[node name="SokobanWalls10" parent="Sokobans/Sokoban" unique_id=170230489 instance=ExtResource("21_0em6x")]
+position = Vector2(955, -1)
+
+[node name="SokobanWalls11" parent="Sokobans/Sokoban" unique_id=579094273 instance=ExtResource("21_0em6x")]
+position = Vector2(958, -59)
+
+[node name="SokobanWalls12" parent="Sokobans/Sokoban" unique_id=1686450346 instance=ExtResource("21_0em6x")]
+position = Vector2(957, -40)

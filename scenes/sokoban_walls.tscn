@@ -5,10 +5,10 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bj2nh"]
 atlas = ExtResource("2_t11th")
-region = Rect2(170, 102, 16, 16)
+region = Rect2(51, 85, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r80ie"]
-size = Vector2(16, 16)
+size = Vector2(14, 15)
 
 [node name="SokobanWalls" type="StaticBody2D" unique_id=1709963496]
 collision_mask = 15
@@ -18,4 +18,5 @@ script = ExtResource("1_qr218")
 texture = SubResource("AtlasTexture_bj2nh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=681807629]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_r80ie")
