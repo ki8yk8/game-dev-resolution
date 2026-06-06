@@ -4,6 +4,7 @@ class_name Player
 const SPEED = 40.0
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var footstepSfx = $footstepSfx
+@onready var deathSfx = $deathSfx
 
 var lastDir = "down"
 var hasGun:bool = false
@@ -86,3 +87,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func die():
 	alive = false
 	animatedSprite.play("death")
+	# play the death sound, when the player dies
+	deathSfx.play()

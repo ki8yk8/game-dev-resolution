@@ -86,6 +86,7 @@
 [ext_resource type="Texture2D" uid="uid://cq7q5hmd1q0ov" path="res://assets/png/character/gun/walk/walk up3.png" id="67_8f1cb"]
 [ext_resource type="Texture2D" uid="uid://bk4iw5rw1ge4l" path="res://assets/png/character/gun/walk/walk up4.png" id="68_vdulj"]
 [ext_resource type="AudioStream" uid="uid://0xrp47lwifi0" path="res://assets/sounds/footstep.mp3" id="85_vx63k"]
+[ext_resource type="AudioStream" uid="uid://barggqjybfreh" path="res://assets/sounds/death.mp3" id="87_ry8ed"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jlll7"]
 atlas = ExtResource("1_vau08")
@@ -801,6 +802,9 @@ shape = SubResource("CircleShape2D_jx8is")
 
 [node name="footstepSfx" type="AudioStreamPlayer2D" parent="." unique_id=985345235]
 stream = ExtResource("85_vx63k")
+
+[node name="deathSfx" type="AudioStreamPlayer2D" parent="." unique_id=891137268]
+stream = ExtResource("87_ry8ed")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

@@ -17,4 +17,4 @@ func update_hearts(hearts: int = -1):
 	state.hearts += hearts
 
 func die():
-	pass
+	get_tree().change_scene_to_file("res://scenes/death_scene.tscn")

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://ma5f3xswh53w"]
+
+[ext_resource type="FontFile" uid="uid://cl0lsa2i5yuru" path="res://assets/font/Kenney Future.ttf" id="1_3idvb"]
+[ext_resource type="Script" uid="uid://c5yq2kv2kq8fb" path="res://scripts/death_scene.gd" id="1_vcjmr"]
+[ext_resource type="FontFile" uid="uid://dmdc7debkvp6t" path="res://assets/font/Kenney Future Narrow.ttf" id="2_o2qfb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7c2v"]
+bg_color = Color(0.72268414, 0.5807881, 0.19709304, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2qfb"]
+bg_color = Color(0, 0.45, 0.26249996, 1)
+
+[node name="DeathScene" type="Control" unique_id=904493101]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vcjmr")
+
+[node name="Panel" type="Panel" parent="." unique_id=1641951493]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m7c2v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2002309972]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1757582622]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer" unique_id=1282387595]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3idvb")
+theme_override_font_sizes/font_size = 48
+text = "Coins: 0"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer" unique_id=1981167722]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0, 0.15833363, 1)
+theme_override_fonts/font = ExtResource("2_o2qfb")
+theme_override_font_sizes/font_size = 64
+text = "You Died !!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=2075577209]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_3idvb")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_o2qfb")
+text = "Main Menu"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
