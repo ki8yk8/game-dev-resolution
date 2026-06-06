@@ -588,7 +588,7 @@ tile_set = SubResource("TileSet_hm83i")
 [node name="Player" parent="." unique_id=1116653195 instance=ExtResource("2_swo0f")]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(615, -115)
+position = Vector2(-145, 11)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1878565070]
 zoom = Vector2(3.5, 3.5)
@@ -1191,3 +1191,109 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("23_xaioq")
 theme_override_font_sizes/font_size = 32
 text = "Hearts: 3"
+
+[node name="UIHints" type="Node2D" parent="." unique_id=74088583]
+position = Vector2(314, 101)
+
+[node name="Welcome" type="Label" parent="UIHints" unique_id=757817762]
+offset_left = -484.0
+offset_top = -102.0
+offset_right = 412.0
+offset_bottom = 195.0
+scale = Vector2(0.125, 0.125)
+theme_override_colors/font_color = Color(0.92, 0.84410006, 0.78200006, 1)
+theme_override_fonts/font = ExtResource("23_xaioq")
+theme_override_font_sizes/font_size = 64
+text = "You are in dungeon. Collect the treasure and survive."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Welcome2" type="Label" parent="UIHints" unique_id=1667285944]
+offset_left = -466.0
+offset_top = -31.0
+offset_right = 414.0
+offset_bottom = 266.0
+scale = Vector2(0.125, 0.125)
+theme_override_colors/font_color = Color(0.92, 0.84410006, 0.78200006, 1)
+theme_override_fonts/font = ExtResource("23_xaioq")
+theme_override_font_sizes/font_size = 64
+text = "Watch out for this shooter. If they see you, you get hit by sword."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Treasure" type="Label" parent="UIHints" unique_id=1094725335]
+offset_left = -289.0
+offset_top = -190.0
+offset_right = -228.0
+offset_bottom = -145.0
+theme_override_colors/font_color = Color(0.92, 0.84410006, 0.78200006, 1)
+theme_override_fonts/font = ExtResource("23_xaioq")
+theme_override_font_sizes/font_size = 8
+text = "You can find coins in the chest"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Track" type="Label" parent="UIHints" unique_id=2030030688]
+offset_left = -93.0
+offset_top = -103.0
+offset_right = 731.0
+offset_bottom = 194.0
+scale = Vector2(0.125, 0.125)
+theme_override_colors/font_color = Color(0.92, 0.84410006, 0.78200006, 1)
+theme_override_fonts/font = ExtResource("23_xaioq")
+theme_override_font_sizes/font_size = 64
+text = "Watch out for the ghost. They love to roam in these tracks."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Spider" type="Label" parent="UIHints" unique_id=216839389]
+offset_left = 67.0
+offset_top = -36.0
+offset_right = 1635.0
+offset_bottom = 186.0
+scale = Vector2(0.125, 0.125)
+theme_override_colors/font_color = Color(0.92, 0.84410006, 0.78200006, 1)
+theme_override_fonts/font = ExtResource("23_xaioq")
+theme_override_font_sizes/font_size = 64
+text = "Spiders are silent, but if you come close to them, they can chase you and hurt you."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Spider2" type="Label" parent="UIHints" unique_id=244050908]
+offset_left = 312.0
+offset_top = -40.0
+offset_right = 1512.0
+offset_bottom = 182.0
+scale = Vector2(0.125, 0.125)
+theme_override_colors/font_color = Color(0.92, 0.84410006, 0.78200006, 1)
+theme_override_fonts/font = ExtResource("23_xaioq")
+theme_override_font_sizes/font_size = 64
+text = "There may be some push traps lying around. Be aware of them."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="door" type="Label" parent="UIHints" unique_id=640399922]
+offset_left = -302.0
+offset_top = -96.0
+offset_right = 514.0
+offset_bottom = 201.0
+scale = Vector2(0.125, 0.125)
+theme_override_colors/font_color = Color(0.92, 0.84410006, 0.78200006, 1)
+theme_override_fonts/font = ExtResource("23_xaioq")
+theme_override_font_sizes/font_size = 64
+text = "Stay near the door to get teleported to its another end"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="door2" type="Label" parent="UIHints" unique_id=1816132477]
+offset_left = 496.0
+offset_top = -138.0
+offset_right = 1592.0
+offset_bottom = 110.0
+scale = Vector2(0.125, 0.125)
+theme_override_colors/font_color = Color(0.92, 0.84410006, 0.78200006, 1)
+theme_override_fonts/font = ExtResource("23_xaioq")
+theme_override_font_sizes/font_size = 64
+text = "Sokoban. Complete each block to unlock the chest"
+horizontal_alignment = 1
+autowrap_mode = 2
