@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://djqqeftttab6f"]
+
+[ext_resource type="Script" uid="uid://jpn8c25qr4ok" path="res://scenes/sokoban_walls.gd" id="1_qr218"]
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="2_t11th"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj2nh"]
+atlas = ExtResource("2_t11th")
+region = Rect2(170, 102, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r80ie"]
+size = Vector2(16, 16)
+
+[node name="SokobanWalls" type="StaticBody2D" unique_id=1709963496]
+collision_mask = 15
+script = ExtResource("1_qr218")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1931032086]
+texture = SubResource("AtlasTexture_bj2nh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=681807629]
+shape = SubResource("RectangleShape2D_r80ie")

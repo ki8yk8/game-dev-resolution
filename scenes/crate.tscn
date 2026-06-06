@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://djq4ikpiifqs4"]
+
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_b66cd"]
+[ext_resource type="Script" uid="uid://2h52tqmvcoqk" path="res://scripts/crate.gd" id="1_dwt0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b66cd"]
+size = Vector2(14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwt0d"]
+atlas = ExtResource("1_b66cd")
+region = Rect2(17, 85, 16, 16)
+
+[node name="Crate" type="RigidBody2D" unique_id=569581491]
+collision_layer = 8
+collision_mask = 2
+gravity_scale = 0.0
+linear_damp = 18.08
+angular_damp_mode = 1
+angular_damp = 55.488
+script = ExtResource("1_dwt0d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=277611390]
+shape = SubResource("RectangleShape2D_b66cd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=536737020]
+texture = SubResource("AtlasTexture_dwt0d")

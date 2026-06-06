@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b7ox3ci61xpw2"]
+
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_1xxl2"]
+[ext_resource type="Script" uid="uid://ccpchjxhoxvqd" path="res://scripts/sokoban_prize.gd" id="1_j5hs3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xxl2"]
+size = Vector2(24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5hs3"]
+atlas = ExtResource("1_1xxl2")
+region = Rect2(85, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y20cp"]
+atlas = ExtResource("1_1xxl2")
+region = Rect2(102, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ggbd"]
+atlas = ExtResource("1_1xxl2")
+region = Rect2(119, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw1pp"]
+atlas = ExtResource("1_1xxl2")
+region = Rect2(136, 119, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02hno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5hs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y20cp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ggbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw1pp")
+}],
+"loop": false,
+"name": &"open",
+"speed": 4.0
+}]
+
+[node name="SokobanPrize" type="Area2D" unique_id=1862052936]
+collision_mask = 2
+script = ExtResource("1_j5hs3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1410008772]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_1xxl2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=788474650]
+sprite_frames = SubResource("SpriteFrames_02hno")
+animation = &"open"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

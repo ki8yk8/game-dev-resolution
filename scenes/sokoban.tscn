@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b7jkt7f7u31ai"]
+
+[ext_resource type="Script" uid="uid://blnokqhxy5rsq" path="res://scripts/sokoban.gd" id="1_t68se"]
+
+[node name="Sokoban" type="Node2D" unique_id=1327824032]
+script = ExtResource("1_t68se")
