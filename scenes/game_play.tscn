@@ -559,6 +559,7 @@ tile_map_data = PackedByteArray("AAAYAPz/AAAFAAUAAAAZAPz/AAAFAAUAAAAYAP7/AAAEAAU
 tile_set = SubResource("TileSet_hm83i")
 
 [node name="Player" parent="." unique_id=1116653195 instance=ExtResource("2_swo0f")]
+unique_name_in_owner = true
 z_index = 2
 position = Vector2(1251, 107)
 

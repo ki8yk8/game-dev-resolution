@@ -7,12 +7,17 @@ const SPEED = 50
 @onready var cooldownTimer: Timer = $CooldownTimer
 @onready var sprite2d:Sprite2D =  $Sprite2D
 @onready var animationPlayer:AnimationPlayer = $AnimationPlayer
+@onready var player: CharacterBody2D = %Player
 
 # when enraged the things becomes enlarged and starts to follow the person to kill
 var enraged: bool = false
 
 func _process(delta: float) -> void:
-	position += Vector2(SPEED, 0).rotated(rotation)*delta
+	if not enraged:
+		position += Vector2(SPEED, 0).rotated(rotation)*delta
+	else:
+		rotation = position.direction_to(player.position).angle()
+		position += Vector2(SPEED*0.75, 0).rotated(rotation)*delta
 	
 	if raycast.is_colliding():
 		rotate_randomly()
@@ -27,6 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 	# the thing gets enraged
 	cooldownTimer.start()
 	animationPlayer.play("scale")
+	enraged = true
 
 # for the kill collision
 # TODO: add the player die thing here
@@ -35,3 +41,6 @@ func _on_kill_area_body_entered(body: Node2D) -> void:
 
 func _on_cooldown_timer_timeout() -> void:
 	animationPlayer.stop()
+	enraged=false
+	# reset the player rotation
+	rotation = 0
