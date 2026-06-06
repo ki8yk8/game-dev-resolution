@@ -20,3 +20,5 @@ shape = SubResource("RectangleShape2D_ib81w")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=354111626]
 rotation = 3.1415927
 texture = SubResource("AtlasTexture_5f1n7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brxq187ees1wl" path="res://scripts/shooter.gd" id="1_1e8ai"]
 [ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="2_lynhg"]
-[ext_resource type="AudioStream" uid="uid://bxy2wwrd4ylln" path="res://assets/sounds/press.mp3" id="3_lynhg"]
+[ext_resource type="AudioStream" uid="uid://kaeia37ll83w" path="res://assets/sounds/fire_in_the_hole.mp3" id="3_lynhg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mger4"]
 atlas = ExtResource("2_lynhg")
@@ -26,7 +26,7 @@ polygon = PackedVector2Array(0, 0, 80, -24, 80, 25)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=2090923217]
 
-[node name="pressSfx" type="AudioStreamPlayer2D" parent="." unique_id=887624061]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1195851864]
 stream = ExtResource("3_lynhg")
 
 [connection signal="body_entered" from="Raycast" to="." method="_on_raycast_body_entered"]
