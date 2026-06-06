@@ -16,5 +16,7 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	# clear the bulelt as it has hit the body
+	# clear the bullet as it has hit the body
+	if body is Player:
+		body.hit()
 	queue_free()

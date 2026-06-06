@@ -5,11 +5,14 @@ const SPEED = 40.0
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var footstepSfx = $footstepSfx
 @onready var deathSfx = $deathSfx
+@onready var timer: Timer = $Timer
+@onready var animationPLayer: AnimationPlayer = $AnimationPlayer
 
 var lastDir = "down"
 var hasGun:bool = false
 var isAttacking:bool = false
 var alive: bool = true
+var invincible: bool = false
 
 func _physics_process(delta: float) -> void:
 	if not alive:
@@ -89,3 +92,19 @@ func die():
 	animatedSprite.play("death")
 	# play the death sound, when the player dies
 	deathSfx.play()
+
+func hit(heart: int = -1):
+	if invincible or not alive:
+		return
+	# update the heart
+	GameManager.update_hearts(heart)
+	if GameManager.state.hearts <= 0:
+		die()
+	else:
+		timer.start()
+		invincible = true
+		animationPLayer.play("invincible")
+
+func _on_timer_timeout() -> void:
+	invincible = false
+	animationPLayer.play("RESET")
