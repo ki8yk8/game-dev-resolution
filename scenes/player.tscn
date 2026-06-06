@@ -87,6 +87,7 @@
 [ext_resource type="Texture2D" uid="uid://bk4iw5rw1ge4l" path="res://assets/png/character/gun/walk/walk up4.png" id="68_vdulj"]
 [ext_resource type="AudioStream" uid="uid://0xrp47lwifi0" path="res://assets/sounds/footstep.mp3" id="85_vx63k"]
 [ext_resource type="AudioStream" uid="uid://barggqjybfreh" path="res://assets/sounds/death.mp3" id="87_ry8ed"]
+[ext_resource type="AudioStream" uid="uid://ecf0jl3mkhvy" path="res://assets/sounds/hurt.mp3" id="88_au8ao"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jlll7"]
 atlas = ExtResource("1_vau08")
@@ -843,6 +844,9 @@ stream = ExtResource("85_vx63k")
 
 [node name="deathSfx" type="AudioStreamPlayer2D" parent="." unique_id=891137268]
 stream = ExtResource("87_ry8ed")
+
+[node name="hurtSfx" type="AudioStreamPlayer2D" parent="." unique_id=755057296]
+stream = ExtResource("88_au8ao")
 
 [node name="Timer" type="Timer" parent="." unique_id=2087780082]
 wait_time = 5.0

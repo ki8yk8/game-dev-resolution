@@ -1,14 +1,15 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED = 40.0
+const SPEED:float = 40.0
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var footstepSfx = $footstepSfx
-@onready var deathSfx = $deathSfx
+@onready var footstepSfx:AudioStreamPlayer2D = $footstepSfx
+@onready var deathSfx:AudioStreamPlayer2D = $deathSfx
+@onready var hurtSfx:AudioStreamPlayer2D = $hurtSfx
 @onready var timer: Timer = $Timer
 @onready var animationPLayer: AnimationPlayer = $AnimationPlayer
 
-var lastDir = "down"
+var lastDir:String = "down"
 var hasGun:bool = false
 var isAttacking:bool = false
 var alive: bool = true
@@ -98,6 +99,7 @@ func hit(heart: int = -1):
 		return
 	# update the heart
 	GameManager.update_hearts(heart)
+	hurtSfx.play()
 	if GameManager.state.hearts <= 0:
 		die()
 	else:
