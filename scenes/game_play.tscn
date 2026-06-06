@@ -533,9 +533,9 @@ sources/0 = SubResource("TileSetAtlasSource_c7ik0")
 
 [sub_resource type="Curve2D" id="Curve2D_hm83i"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -51, -153, 0, 0, 0, 0, -132, -154, 0, 0, 0, 0, -138, -137, 0, 0, 0, 0, -181, -136, 0, 0, 0, 0, -184, -133, 0, 0, 0, 0, -184, 53, 0, 0, 0, 0, -180, 55, 0, 0, 0, 0, 602, 56, 0, 0, 0, 0, 603.0038, 244, 0, 0, 0, 0, 1354.8735, 246, 0, 0, 0, 0, 1356.8811, -168, 0, 0, 0, 0, 90.045975, -168, 0, 0, 0, 0, 88.03831, -154, 0, 0, 0, 0, -51.49426, -153, 0, 0, 0, 0, 571.885, 310)
+"points": PackedVector2Array(0, 0, 0, 0, -51.49426, -153, 0, 0, 0, 0, -134.81227, -152, 0, 0, 0, 0, -137.82376, -138, 0, 0, 0, 0, -182.99617, -135, 0, 0, 0, 0, -182.99617, 53, 0, 0, 0, 0, 601.99994, 57, 0, 0, 0, 0, 604.0076, 245, 0, 0, 0, 0, 1354.8735, 246, 0, 0, 0, 0, 1355.8773, -167, 0, 0, 0, 0, 90.045975, -168, 0, 0, 0, 0, 88.03831, -154, 0, 0, 0, 0, -48.48276, -153)
 }
-point_count = 15
+point_count = 12
 
 [sub_resource type="Curve2D" id="Curve2D_x4ub6"]
 _data = {
@@ -632,13 +632,14 @@ scale = Vector2(0.9961832, 1)
 curve = SubResource("Curve2D_hm83i")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PathFollowers/GhostPath" unique_id=844383710]
-position = Vector2(-51, -153)
+position = Vector2(-51.49426, -153)
 rotation = -3.1292477
 rotates = false
 loop = false
 script = ExtResource("5_8ik6i")
 
 [node name="Ghost" parent="PathFollowers/GhostPath/PathFollow2D" unique_id=162614005 instance=ExtResource("6_coaa0")]
+position = Vector2(-0.49719086, 1.0062144)
 
 [node name="CementryGhostPath" type="Path2D" parent="PathFollowers" unique_id=648319698]
 curve = SubResource("Curve2D_x4ub6")
