@@ -1,25 +1,80 @@
 extends CharacterBody2D
+class_name Player
 
+const SPEED = 40.0
+@onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var footstepSfx = $footstepSfx
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
+var lastDir = "down"
+var hasGun:bool = false
+var isAttacking:bool = false
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
+	var horizontalDir = Input.get_axis("left", "right")
+	var verticalDir = Input.get_axis("up", "down")
+	var action = Input.is_action_just_pressed("action")
+	
+	if action and not isAttacking:
+		animatedSprite.play("attack-"+lastDir)
+		isAttacking = true
+		
+	if isAttacking:
+		move_and_slide()
+		return;
+	
+	# if both axis movement exists then, do nothing. And same if nothing received
+	if (verticalDir and horizontalDir) or (not verticalDir and not horizontalDir):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		velocity.y  = move_toward(velocity.y, 0, SPEED)
+		
+		if not hasGun:
+			animatedSprite.play("idle-"+lastDir)
+		else:
+			animatedSprite.play("idle-"+lastDir+"-gun")
+	elif verticalDir:
+		velocity.y = verticalDir * SPEED
+		if verticalDir > 0:
+			if hasGun:
+				animatedSprite.play("walk-down-gun")
+			else:
+				animatedSprite.play("walk-down")
+			lastDir = "down"
+		else:
+			if hasGun:
+				animatedSprite.play("walk-up-gun")
+			else:
+				animatedSprite.play("walk-up")
+			lastDir = "up"
+	elif horizontalDir:
+		velocity.x = horizontalDir * SPEED
+		
+		if horizontalDir>0:
+			if hasGun:
+				animatedSprite.play("walk-right-gun")
+			else:
+				animatedSprite.play("walk-right")
+			lastDir = "right"
+		else:
+			if hasGun:
+				animatedSprite.play("walk-left-gun")
+			else:
+				animatedSprite.play("walk-left")
+			lastDir = "left"
+	
+	if verticalDir || horizontalDir:
+		if not footstepSfx.playing:
+			footstepSfx.play()
+	else:
+		footstepSfx.stop()
+	
+	if action:
+		animatedSprite.play("attack-"+lastDir)
+		
 	move_and_slide()
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if isAttacking:
+		isAttacking = false
+
+func _on_animated_sprite_2d_animation_looped() -> void:
+	pass # Replace with function body.

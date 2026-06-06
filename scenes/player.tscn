@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://be8qbmt0fe144"]
 
 [ext_resource type="Texture2D" uid="uid://d4hq3sxo77ill" path="res://assets/png/character/death/death1.png" id="1_jc3p3"]
+[ext_resource type="Script" uid="uid://c3ubxpp10k6x6" path="res://scripts/player.gd" id="1_lw0jh"]
 [ext_resource type="Texture2D" uid="uid://bivrhss5458o3" path="res://assets/png/character/attack/attack down1.png" id="1_vau08"]
 [ext_resource type="Texture2D" uid="uid://b4cf4eenv8obh" path="res://assets/png/character/death/death2.png" id="2_hax0n"]
 [ext_resource type="Texture2D" uid="uid://bbmpgdt6dhmwa" path="res://assets/png/character/idle/idle down1.png" id="2_qlg0r"]
@@ -85,88 +86,6 @@
 [ext_resource type="Texture2D" uid="uid://cq7q5hmd1q0ov" path="res://assets/png/character/gun/walk/walk up3.png" id="67_8f1cb"]
 [ext_resource type="Texture2D" uid="uid://bk4iw5rw1ge4l" path="res://assets/png/character/gun/walk/walk up4.png" id="68_vdulj"]
 [ext_resource type="AudioStream" uid="uid://0xrp47lwifi0" path="res://assets/sounds/footstep.mp3" id="85_vx63k"]
-
-[sub_resource type="GDScript" id="GDScript_3vyb7"]
-script/source = "extends CharacterBody2D
-
-const SPEED = 40.0
-@onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var footstepSfx = $footstepSfx
-
-var lastDir = \"down\"
-var hasGun:bool = false
-var isAttacking:bool = false
-
-func _physics_process(delta: float) -> void:
-	var horizontalDir = Input.get_axis(\"left\", \"right\")
-	var verticalDir = Input.get_axis(\"up\", \"down\")
-	var action = Input.is_action_just_pressed(\"action\")
-	
-	if action and not isAttacking:
-		animatedSprite.play(\"attack-\"+lastDir)
-		isAttacking = true
-		
-	if isAttacking:
-		move_and_slide()
-		return;
-	
-	# if both axis movement exists then, do nothing. And same if nothing received
-	if (verticalDir and horizontalDir) or (not verticalDir and not horizontalDir):
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y  = move_toward(velocity.y, 0, SPEED)
-		
-		if not hasGun:
-			animatedSprite.play(\"idle-\"+lastDir)
-		else:
-			animatedSprite.play(\"idle-\"+lastDir+\"-gun\")
-	elif verticalDir:
-		velocity.y = verticalDir * SPEED
-		if verticalDir > 0:
-			if hasGun:
-				animatedSprite.play(\"walk-down-gun\")
-			else:
-				animatedSprite.play(\"walk-down\")
-			lastDir = \"down\"
-		else:
-			if hasGun:
-				animatedSprite.play(\"walk-up-gun\")
-			else:
-				animatedSprite.play(\"walk-up\")
-			lastDir = \"up\"
-	elif horizontalDir:
-		velocity.x = horizontalDir * SPEED
-		
-		if horizontalDir>0:
-			if hasGun:
-				animatedSprite.play(\"walk-right-gun\")
-			else:
-				animatedSprite.play(\"walk-right\")
-			lastDir = \"right\"
-		else:
-			if hasGun:
-				animatedSprite.play(\"walk-left-gun\")
-			else:
-				animatedSprite.play(\"walk-left\")
-			lastDir = \"left\"
-	
-	if verticalDir || horizontalDir:
-		if not footstepSfx.playing:
-			footstepSfx.play()
-	else:
-		footstepSfx.stop()
-	
-	if action:
-		animatedSprite.play(\"attack-\"+lastDir)
-		
-	move_and_slide()
-
-func _on_animated_sprite_2d_animation_finished() -> void:
-	if isAttacking:
-		isAttacking = false
-
-func _on_animated_sprite_2d_animation_looped() -> void:
-	pass # Replace with function body.
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jlll7"]
 atlas = ExtResource("1_vau08")
@@ -869,7 +788,7 @@ radius = 4.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1116653195]
 collision_layer = 2
-script = SubResource("GDScript_3vyb7")
+script = ExtResource("1_lw0jh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1627868931]
 sprite_frames = SubResource("SpriteFrames_qlg0r")

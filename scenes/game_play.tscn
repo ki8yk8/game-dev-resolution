@@ -1191,3 +1191,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("23_xaioq")
 theme_override_font_sizes/font_size = 32
 text = "Hearts: 3"
+
+[node name="GameOverTimer" type="Timer" parent="." unique_id=740414998]
+
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]

@@ -51,7 +51,8 @@ func _on_body_entered(body: Node2D) -> void:
 # for the kill collision
 # TODO: add the player die thing here
 func _on_kill_area_body_entered(body: Node2D) -> void:
-	print("You died")
+	if body is Player:
+		print("You died")
 
 func _on_cooldown_timer_timeout() -> void:
 	animationPlayer.stop()
