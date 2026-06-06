@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_jshjs"]
 [ext_resource type="Script" uid="uid://cosdk2olrwxud" path="res://scripts/push_trap_trigger.gd" id="1_sc8l5"]
+[ext_resource type="AudioStream" uid="uid://bxy2wwrd4ylln" path="res://assets/sounds/press.mp3" id="3_plaav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc8l5"]
 size = Vector2(14, 14)
@@ -22,6 +23,9 @@ texture = SubResource("AtlasTexture_plaav")
 
 [node name="Timer" type="Timer" parent="." unique_id=1139120617]
 wait_time = 2.0
+
+[node name="pressSfx" type="AudioStreamPlayer2D" parent="." unique_id=1003638287]
+stream = ExtResource("3_plaav")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

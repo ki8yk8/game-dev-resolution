@@ -4,6 +4,8 @@ const ROTATION_SPEED = 30
 
 @onready var raycast:Area2D = $Raycast
 @onready var shootingOrigin: Marker2D = $Marker2D
+@onready var pressSfx:AudioStreamPlayer2D = $pressSfx
+
 @export var shooter_scene: PackedScene = preload("res://scenes/shooter_sword.tscn")
 
 func _process(delta: float) -> void:
@@ -13,6 +15,8 @@ func _process(delta: float) -> void:
 		raycast.rotation_degrees = raycast.rotation_degrees-360
 
 func _on_raycast_body_entered(body: Node2D) -> void:
+	pressSfx.play()
+	await pressSfx.finished
 	var bullet:Area2D = shooter_scene.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = shootingOrigin.global_position

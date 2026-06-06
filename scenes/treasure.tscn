@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_86quu"]
 [ext_resource type="Script" uid="uid://bu3mkubu8olwc" path="res://scripts/treasure.gd" id="1_it12x"]
+[ext_resource type="AudioStream" uid="uid://b1wjd4mi36ewb" path="res://assets/sounds/chest.mp3" id="3_0g4qu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86quu"]
 size = Vector2(16, 14)
@@ -62,5 +63,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionMat" unique_id=1902304829]
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_it12x")
+
+[node name="traasureSfx" type="AudioStreamPlayer2D" parent="." unique_id=1783727491]
+stream = ExtResource("3_0g4qu")
 
 [connection signal="body_entered" from="CollisionMat" to="." method="_on_collision_mat_body_entered"]

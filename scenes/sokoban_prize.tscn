@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_1xxl2"]
 [ext_resource type="Script" uid="uid://ccpchjxhoxvqd" path="res://scripts/sokoban_prize.gd" id="1_j5hs3"]
+[ext_resource type="AudioStream" uid="uid://b1wjd4mi36ewb" path="res://assets/sounds/chest.mp3" id="3_y20cp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5hs3"]
 size = Vector2(14, 13)
@@ -61,3 +62,6 @@ animation = &"open"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1410008772]
 position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_1xxl2")
+
+[node name="chestSfx" type="AudioStreamPlayer2D" parent="." unique_id=1862999348]
+stream = ExtResource("3_y20cp")
