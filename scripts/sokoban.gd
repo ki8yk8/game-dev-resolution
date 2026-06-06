@@ -1,9 +1,8 @@
 extends Node2D
 
 var crateSeats:Array[Node] = []
-var crates = []
-var sokobanPrize
-var allCratesAreInPlace: bool = false
+var crates:Array[Node] = []
+var sokobanPrize: Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,8 +30,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# check if all the crates has been fulfilled or not
-	allCratesAreInPlace = crateSeats.all(func (item):
-		return item.hasCrate
+	var allCratesAreInPlace = crateSeats.all(func (item):
+		return item.crateId != -1
 	)
 	
 	if allCratesAreInPlace:
