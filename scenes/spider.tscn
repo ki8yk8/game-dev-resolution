@@ -71,6 +71,7 @@ shape = SubResource("CircleShape2D_k5hg5")
 wait_time = 5.0
 
 [node name="KillArea" type="Area2D" parent="." unique_id=2045086908]
+collision_mask = 2
 
 [node name="KillCollisionArea" type="CollisionShape2D" parent="KillArea" unique_id=1868983065]
 shape = SubResource("CircleShape2D_algeo")

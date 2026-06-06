@@ -34,6 +34,10 @@ func rotate_randomly():
 	
 # for the trigger collision
 func _on_body_entered(body: Node2D) -> void:
+	if body is not Player:
+		return
+	if body.invincible:
+		return
 	# the thing gets enraged
 	animationPlayer.play("scale")
 	enraged = true
@@ -49,10 +53,12 @@ func _on_body_entered(body: Node2D) -> void:
 	rotation = ANGLES[index]
 
 # for the kill collision
-# TODO: add the player die thing here
 func _on_kill_area_body_entered(body: Node2D) -> void:
-	if body is Player:
-		print("You died")
+	if body is not Player:
+		return
+	body.hit()
+	_on_cooldown_timer_timeout()
+	cooldownTimer.stop()
 
 func _on_cooldown_timer_timeout() -> void:
 	animationPlayer.stop()
@@ -61,5 +67,7 @@ func _on_cooldown_timer_timeout() -> void:
 	rotation = 0
 
 func _on_body_exited(body: Node2D) -> void:
+	if body is not Player:
+		return
 	# when the player moves outside the spider then, cooldown timer starts else it remains enraged
 	cooldownTimer.start()
