@@ -3,6 +3,7 @@ class_name InvisibleDoor
 
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var cooldownTimer: Timer = $Timer
+@onready var invisibleDoorSfx = $invisibleDoorSfx
 
 var partner: Node2D = null
 var isCooldown: bool = false
@@ -17,6 +18,7 @@ func _on_body_entered(body: Node2D) -> void:
 	partner.isCooldown = true
 	cooldownTimer.start()
 	partner.cooldownTimer.start()
+	invisibleDoorSfx.play()
 	
 	# move the player from one poistion to another
 	var tween = create_tween()
@@ -29,3 +31,4 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	cooldownTimer.stop()
 	isCooldown = false
+	invisibleDoorSfx.play()

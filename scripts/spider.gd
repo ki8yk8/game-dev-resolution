@@ -10,6 +10,7 @@ const ANGLES = [0, 90, 180, 270]
 @onready var sprite2d:Sprite2D =  $Sprite2D
 @onready var animationPlayer:AnimationPlayer = $AnimationPlayer
 @onready var player: CharacterBody2D = %Player
+@onready var growlSfx = $growlSfx
 
 # when enraged the things becomes enlarged and starts to follow the person to kill
 var enraged: bool = false
@@ -36,6 +37,7 @@ func _on_body_entered(body: Node2D) -> void:
 	# the thing gets enraged
 	animationPlayer.play("scale")
 	enraged = true
+	growlSfx.play()
 	
 	# find the nearest value and use that rotation
 	var diffAngle = ANGLES.map(func (item):

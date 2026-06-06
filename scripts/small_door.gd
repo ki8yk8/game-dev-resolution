@@ -3,6 +3,8 @@ class_name SmallDoor
 
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cooldownTimer: Timer = $CoolDownTimer
+@onready var doorOpenSfx = $doorOpenSfx
+@onready var doorCloseSfx = $doorCloseSfx
 
 var partner: Node2D = null
 var isCooldown: bool = false
@@ -19,6 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 	partner.cooldownTimer.start()
 	
 	animatedSprite.play("default")
+	doorOpenSfx.play()
 	await animatedSprite.animation_finished
 	# move the player from one poistion to another
 	var tween = create_tween()
@@ -29,6 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 	
 func _on_body_exited(body: Node2D) -> void:
 	animatedSprite.play_backwards("default")
+	doorCloseSfx.play()
 
 func _on_cool_down_timer_timeout() -> void:
 	cooldownTimer.stop()

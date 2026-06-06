@@ -138,9 +138,9 @@ func _physics_process(delta: float) -> void:
 		
 		if horizontalDir>0:
 			if hasGun:
-				animatedSprite.play(\"walk-right\")
+				animatedSprite.play(\"walk-right-gun\")
 			else:
-				animatedSprite.play(\"action-right\")
+				animatedSprite.play(\"walk-right\")
 			lastDir = \"right\"
 		else:
 			if hasGun:

@@ -20,6 +20,8 @@ wait_time = 2.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1922963068]
 sprite_frames = SubResource("SpriteFrames_mwded")
 
+[node name="invisibleDoorSfx" type="AudioStreamPlayer2D" parent="." unique_id=1706432935]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

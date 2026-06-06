@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b4hgh1g5h4vju" path="res://scripts/big_door.gd" id="1_dan0d"]
 [ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_qlmng"]
+[ext_resource type="AudioStream" uid="uid://djsnrdid8bf3c" path="res://assets/sounds/door-open.mp3" id="3_owjas"]
+[ext_resource type="AudioStream" uid="uid://h8hco7vl1nlf" path="res://assets/sounds/door-close.mp3" id="4_j3cpr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dan0d"]
 atlas = ExtResource("1_qlmng")
@@ -55,6 +57,12 @@ shape = SubResource("RectangleShape2D_42v4m")
 
 [node name="Timer" type="Timer" parent="." unique_id=1854843250]
 wait_time = 2.0
+
+[node name="doorOpenSfx" type="AudioStreamPlayer2D" parent="." unique_id=1493781519]
+stream = ExtResource("3_owjas")
+
+[node name="doorCloseSfx" type="AudioStreamPlayer2D" parent="." unique_id=682365270]
+stream = ExtResource("4_j3cpr")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
