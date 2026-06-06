@@ -1,43 +1,59 @@
 [gd_scene format=3 uid="uid://be8qbmt0fe144"]
 
 [ext_resource type="Texture2D" uid="uid://d4hq3sxo77ill" path="res://assets/png/character/death/death1.png" id="1_jc3p3"]
+[ext_resource type="Texture2D" uid="uid://bivrhss5458o3" path="res://assets/png/character/attack/attack down1.png" id="1_vau08"]
 [ext_resource type="Texture2D" uid="uid://b4cf4eenv8obh" path="res://assets/png/character/death/death2.png" id="2_hax0n"]
 [ext_resource type="Texture2D" uid="uid://bbmpgdt6dhmwa" path="res://assets/png/character/idle/idle down1.png" id="2_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://dpf2botn7gbk6" path="res://assets/png/character/attack/attack down2.png" id="2_qsb7e"]
+[ext_resource type="Texture2D" uid="uid://ctxjpyb0cj0e5" path="res://assets/png/character/attack/attack down3.png" id="3_qjsmb"]
 [ext_resource type="Texture2D" uid="uid://dcjsjaq1bb" path="res://assets/png/character/death/death3.png" id="3_t4otl"]
 [ext_resource type="Texture2D" uid="uid://dfh5wes22htuc" path="res://assets/png/character/idle/idle down2.png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dnf0l6qrqg72" path="res://assets/png/character/idle/idle down3.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://dpllbheipx28d" path="res://assets/png/character/death/death4.png" id="4_j2b1d"]
+[ext_resource type="Texture2D" uid="uid://co1k7relbtn8" path="res://assets/png/character/attack/attack down4.png" id="4_mwp2n"]
+[ext_resource type="Texture2D" uid="uid://doq0jef1v3i8s" path="res://assets/png/character/attack/attack left1.png" id="5_1da1t"]
 [ext_resource type="Texture2D" uid="uid://6h85xwrdsrt" path="res://assets/png/character/idle/idle down4.png" id="5_smehm"]
 [ext_resource type="Texture2D" uid="uid://oqheg38f8fgo" path="res://assets/png/character/idle/idle left1.png" id="6_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://kldk1o1q84m4" path="res://assets/png/character/idle/idle right1.png" id="6_ke2ow"]
+[ext_resource type="Texture2D" uid="uid://c0guy68ab11k7" path="res://assets/png/character/attack/attack left2.png" id="6_p21yu"]
 [ext_resource type="Texture2D" uid="uid://dchtr2o7sqswg" path="res://assets/png/character/walk/walk down1.png" id="6_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://5soxy42dqc5b" path="res://assets/png/character/attack/attack left3.png" id="7_irpag"]
 [ext_resource type="Texture2D" uid="uid://cv4tfbl51famo" path="res://assets/png/character/idle/idle right2.png" id="7_ujl30"]
 [ext_resource type="Texture2D" uid="uid://fliechf08gop" path="res://assets/png/character/idle/idle left2.png" id="7_wqfne"]
 [ext_resource type="Texture2D" uid="uid://du6xl7v447st5" path="res://assets/png/character/walk/walk down2.png" id="7_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://584qaxkswf3r" path="res://assets/png/character/idle/idle right3.png" id="8_31cv2"]
+[ext_resource type="Texture2D" uid="uid://p1tuateptv4k" path="res://assets/png/character/attack/attack left4.png" id="8_bpsgo"]
 [ext_resource type="Texture2D" uid="uid://rdd11sbtg3na" path="res://assets/png/character/walk/walk down3.png" id="8_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://dglljlxo8bhp5" path="res://assets/png/character/idle/idle left3.png" id="8_wnwbv"]
 [ext_resource type="Texture2D" uid="uid://bvpmmd3fwpf3f" path="res://assets/png/character/walk/walk down4.png" id="9_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://bc4lm2vbaov1w" path="res://assets/png/character/idle/idle left4.png" id="9_gl8cc"]
+[ext_resource type="Texture2D" uid="uid://di8f7g0axk175" path="res://assets/png/character/attack/attack right1.png" id="9_jx8is"]
 [ext_resource type="Texture2D" uid="uid://ouc4ijlxdksa" path="res://assets/png/character/idle/idle right4.png" id="9_pf23h"]
 [ext_resource type="Texture2D" uid="uid://vkkmhbhaxqbj" path="res://assets/png/character/walk/walk left1.png" id="10_jej6c"]
+[ext_resource type="Texture2D" uid="uid://b28qdnhy4pgto" path="res://assets/png/character/attack/attack right2.png" id="10_vx63k"]
 [ext_resource type="Texture2D" uid="uid://d3d8xfx5vxeaq" path="res://assets/png/character/walk/walk left2.png" id="11_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://bksu5eycx7kmp" path="res://assets/png/character/attack/attack right3.png" id="11_lw0jh"]
 [ext_resource type="Texture2D" uid="uid://ccl7e0bkg1qwg" path="res://assets/png/character/walk/walk left3.png" id="12_oprun"]
+[ext_resource type="Texture2D" uid="uid://chemwlso85ite" path="res://assets/png/character/attack/attack right4.png" id="12_ry8ed"]
 [ext_resource type="Texture2D" uid="uid://c4cgi3qb5gudy" path="res://assets/png/character/walk/walk left4.png" id="13_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://ucxl18ir46jt" path="res://assets/png/character/gun/idle/idle down1.png" id="13_cs1tg"]
 [ext_resource type="Texture2D" uid="uid://d3q80np1pu6fp" path="res://assets/png/character/idle/idle up1.png" id="13_gl8cc"]
+[ext_resource type="Texture2D" uid="uid://bgol8v7p6jguh" path="res://assets/png/character/attack/attack up1.png" id="13_jx8is"]
 [ext_resource type="Texture2D" uid="uid://dnekawjft8a0r" path="res://assets/png/character/gun/idle/idle down2.png" id="14_2dvfe"]
 [ext_resource type="Texture2D" uid="uid://dnyd45ydm2g23" path="res://assets/png/character/idle/idle up2.png" id="14_487ah"]
 [ext_resource type="Texture2D" uid="uid://clrvbs7kxxu12" path="res://assets/png/character/walk/walk right1.png" id="14_i4ail"]
 [ext_resource type="Texture2D" uid="uid://wx7vtqgll3ly" path="res://assets/png/character/walk/walk up1.png" id="14_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://dl1ei8mq1m35" path="res://assets/png/character/attack/attack up2.png" id="14_vx63k"]
 [ext_resource type="Texture2D" uid="uid://bdm2h3bd2sc3l" path="res://assets/png/character/walk/walk right2.png" id="15_a38lo"]
 [ext_resource type="Texture2D" uid="uid://ovo1qhr43q42" path="res://assets/png/character/walk/walk up2.png" id="15_fulsm"]
 [ext_resource type="Texture2D" uid="uid://d2s4at4vgejau" path="res://assets/png/character/gun/idle/idle down3.png" id="15_giy8y"]
+[ext_resource type="Texture2D" uid="uid://bcesqdc2h8ubi" path="res://assets/png/character/attack/attack up3.png" id="15_lw0jh"]
 [ext_resource type="Texture2D" uid="uid://cifbqa00dcdrb" path="res://assets/png/character/idle/idle up3.png" id="15_md1ol"]
 [ext_resource type="Texture2D" uid="uid://s414and680on" path="res://assets/png/character/walk/walk right3.png" id="16_4ni07"]
 [ext_resource type="Texture2D" uid="uid://o32p7iy2onqf" path="res://assets/png/character/walk/walk up3.png" id="16_4r5pv"]
 [ext_resource type="Texture2D" uid="uid://dchspmpxrb1ha" path="res://assets/png/character/idle/idle up4.png" id="16_bj30b"]
 [ext_resource type="Texture2D" uid="uid://buvwiqrl534s5" path="res://assets/png/character/gun/idle/idle down4.png" id="16_fdfoy"]
+[ext_resource type="Texture2D" uid="uid://bas6jer6y6lpg" path="res://assets/png/character/attack/attack up4.png" id="16_ry8ed"]
 [ext_resource type="Texture2D" uid="uid://bsw1s0m4k3d2e" path="res://assets/png/character/gun/idle/idle left1.png" id="17_4gjji"]
 [ext_resource type="Texture2D" uid="uid://b4hptg5wt4mnv" path="res://assets/png/character/walk/walk up4.png" id="17_60mlk"]
 [ext_resource type="Texture2D" uid="uid://303ujp2j76ks" path="res://assets/png/character/walk/walk right4.png" id="17_l71n6"]
@@ -81,48 +97,126 @@ var hasGun:bool = true
 func _physics_process(delta: float) -> void:
 	var horizontalDir = Input.get_axis(\"left\", \"right\")
 	var verticalDir = Input.get_axis(\"up\", \"down\")
+	var action = Input.is_action_just_pressed(\"action\")
 	
 	# if both axis movement exists then, do nothing. And same if nothing received
 	if (verticalDir and horizontalDir) or (not verticalDir and not horizontalDir):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y  = move_toward(velocity.y, 0, SPEED)
 		
-		if not hasGun:
-			animatedSprite.play(\"idle-\"+lastDir)
-		else:
-			animatedSprite.play(\"idle-\"+lastDir+\"-gun\")
+		if not action:
+			if not hasGun:
+				animatedSprite.play(\"idle-\"+lastDir)
+			else:
+				animatedSprite.play(\"idle-\"+lastDir+\"-gun\")
 	elif verticalDir:
 		velocity.y = verticalDir * SPEED
 		if verticalDir > 0:
-			if hasGun:
-				animatedSprite.play(\"walk-down-gun\")
+			if not action:
+				if hasGun:
+					animatedSprite.play(\"walk-down-gun\")
+				else:
+					animatedSprite.play(\"walk-down\")
 			else:
-				animatedSprite.play(\"walk-down\")
+				animatedSprite.play(\"attack-down\")
 			lastDir = \"down\"
 		else:
-			if hasGun:
-				animatedSprite.play(\"walk-up-gun\")
+			if not action:
+				if hasGun:
+					animatedSprite.play(\"walk-up-gun\")
+				else:
+					animatedSprite.play(\"walk-up\")
 			else:
-				animatedSprite.play(\"walk-up\")
+				animatedSprite.play(\"attack-up\")
 			lastDir = \"up\"
 	elif horizontalDir:
 		velocity.x = horizontalDir * SPEED
 		
 		if horizontalDir>0:
-			if hasGun:
-				animatedSprite.play(\"walk-right-gun\")
+			if not action:
+				if hasGun:
+					animatedSprite.play(\"walk-right-gun\")
+				else:
+					animatedSprite.play(\"walk-right\")
 			else:
-				animatedSprite.play(\"walk-right\")
+				animatedSprite.play(\"action-right\")
 			lastDir = \"right\"
 		else:
-			if hasGun:
-				animatedSprite.play(\"walk-left-gun\")
+			if not action:
+				if hasGun:
+					animatedSprite.play(\"walk-left-gun\")
+				else:
+					animatedSprite.play(\"walk-left\")
 			else:
-				animatedSprite.play(\"walk-left\")
+				animatedSprite.play(\"attack-left\")
 			lastDir = \"left\"
 	
 	move_and_slide()
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlll7"]
+atlas = ExtResource("1_vau08")
+region = Rect2(24, 24, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk6i7"]
+atlas = ExtResource("2_qsb7e")
+region = Rect2(24, 24, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c3st"]
+atlas = ExtResource("3_qjsmb")
+region = Rect2(24, 24, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1da1t"]
+atlas = ExtResource("4_mwp2n")
+region = Rect2(24, 24, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au8ao"]
+atlas = ExtResource("5_1da1t")
+region = Rect2(24, 24, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5j5w"]
+atlas = ExtResource("6_p21yu")
+region = Rect2(24, 24, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbf1i"]
+atlas = ExtResource("7_irpag")
+region = Rect2(22, 24, 15, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vfid"]
+atlas = ExtResource("8_bpsgo")
+region = Rect2(24, 24, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljgr3"]
+atlas = ExtResource("9_jx8is")
+region = Rect2(24, 24, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr8ja"]
+atlas = ExtResource("10_vx63k")
+region = Rect2(24, 24, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvmy4"]
+atlas = ExtResource("11_lw0jh")
+region = Rect2(26, 24, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcu33"]
+atlas = ExtResource("12_ry8ed")
+region = Rect2(24, 24, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmsq4"]
+atlas = ExtResource("13_jx8is")
+region = Rect2(24, 24, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vs2b"]
+atlas = ExtResource("14_vx63k")
+region = Rect2(24, 22, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7i4v"]
+atlas = ExtResource("15_lw0jh")
+region = Rect2(24, 19, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5l0c"]
+atlas = ExtResource("16_ry8ed")
+region = Rect2(24, 22, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dvfe"]
 atlas = ExtResource("1_jc3p3")
@@ -398,6 +492,74 @@ region = Rect2(24, 24, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qlg0r"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlll7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk6i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c3st")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1da1t")
+}],
+"loop": true,
+"name": &"attack-down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au8ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5j5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbf1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vfid")
+}],
+"loop": true,
+"name": &"attack-left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljgr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr8ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvmy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcu33")
+}],
+"loop": true,
+"name": &"attack-right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmsq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vs2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7i4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5l0c")
+}],
+"loop": true,
+"name": &"attack-up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2dvfe")
@@ -697,7 +859,7 @@ script = SubResource("GDScript_3vyb7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1627868931]
 sprite_frames = SubResource("SpriteFrames_qlg0r")
-animation = &"walk-up-gun"
+animation = &"attack-up"
 autoplay = "idle-down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=506243414]
