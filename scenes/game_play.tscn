@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cj01e1wm7g8ki" path="res://scenes/crate_seat.tscn" id="20_lftnw"]
 [ext_resource type="PackedScene" uid="uid://djqqeftttab6f" path="res://scenes/sokoban_walls.tscn" id="21_0em6x"]
 [ext_resource type="PackedScene" uid="uid://b7ox3ci61xpw2" path="res://scenes/sokoban_prize.tscn" id="22_r1sdi"]
+[ext_resource type="FontFile" uid="uid://cl0lsa2i5yuru" path="res://assets/font/Kenney Future.ttf" id="23_xaioq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0dypk"]
 distance = -290.0
@@ -1151,3 +1152,42 @@ position = Vector2(751, 180)
 
 [node name="SokobanPrize" parent="Sokobans/Sokoban4" unique_id=552028466 instance=ExtResource("22_r1sdi")]
 position = Vector2(781, 117)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=44343334]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=1654527431]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 52.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer" unique_id=1064263868]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Coins" type="Label" parent="UI/MarginContainer/HBoxContainer" unique_id=928304517]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7066667, 0.120000005, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("23_xaioq")
+theme_override_font_sizes/font_size = 32
+text = "Coins: 0"
+
+[node name="Control" type="Control" parent="UI/MarginContainer/HBoxContainer" unique_id=1713352105]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hearts" type="Label" parent="UI/MarginContainer/HBoxContainer" unique_id=541005308]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92611015, 0.22984171, 0.36393434, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("23_xaioq")
+theme_override_font_sizes/font_size = 32
+text = "Hearts: 3"
