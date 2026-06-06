@@ -7,6 +7,11 @@ var cooldown: bool = false
 @onready var timer = $Timer
 
 func _on_body_entered(body: Node2D) -> void:
+	if body is not Player:
+		return
+	# invincible player doesn't triggers the push trap
+	if body.invincible:
+		return
 	# if this is cooldown then, donot do anythng
 	if cooldown:
 		return
