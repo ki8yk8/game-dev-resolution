@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dm2lfii4ja50u" path="res://scenes/ghost.tscn" id="6_coaa0"]
 [ext_resource type="PackedScene" uid="uid://t4tpidtg80m6" path="res://scenes/aatma.tscn" id="7_0daha"]
 [ext_resource type="Script" uid="uid://cxrfyp1xa6geh" path="res://scripts/aatam_follow.gd" id="7_x4ub6"]
+[ext_resource type="Script" uid="uid://bn6yjj37pittj" path="res://scripts/photon_ghost.gd" id="9_gq8oc"]
 [ext_resource type="PackedScene" uid="uid://gas7vqg8t0ei" path="res://scenes/door_portal.tscn" id="9_k38ww"]
 [ext_resource type="PackedScene" uid="uid://bcrnwq0xyc6al" path="res://scenes/small_door.tscn" id="10_r1jqb"]
 [ext_resource type="PackedScene" uid="uid://cr8hytm6wx04p" path="res://scenes/big_door.tscn" id="11_r1jqb"]
@@ -555,6 +556,12 @@ _data = {
 }
 point_count = 23
 
+[sub_resource type="Curve2D" id="Curve2D_pmwe5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 922, 370, 0, 0, 0, 0, 897, 371, 0, 0, 0, 0, 829, 347, 0, 0, 0, 0, 827, 412, 0, 0, 0, 0, 871, 429, 0, 0, 0, 0, 936, 453, 0, 0, 0, 0, 992, 455, 0, 0, 0, 0, 921, 405, 0, 0, 0, 0, 971, 407, 0, 0, 0, 0, 959, 365, 0, 0, 0, 0, 1007, 352, 0, 0, 0, 0, 1102, 346, 0, 0, 0, 0, 1141, 363, 0, 0, 0, 0, 1167, 353, 0, 0, 0, 0, 1221, 351, 0, 0, 0, 0, 1250, 368, 0, 0, 0, 0, 1260, 445, 0, 0, 0, 0, 1187, 460, 0, 0, 0, 0, 1135, 453, 0, 0, 0, 0, 1023, 446, 0, 0, 0, 0, 1024, 393, 0, 0, 0, 0, 1066, 391, 0, 0, 0, 0, 1111, 412, 0, 0, 0, 0, 1174, 401, 0, 0, 0, 0, 1214, 417)
+}
+point_count = 25
+
 [node name="GamePlay" type="Node2D" unique_id=986538663]
 script = ExtResource("1_c7ik0")
 
@@ -681,6 +688,15 @@ position = Vector2(646, 343)
 [node name="Treasure23" parent="Treasures" unique_id=1650894523 instance=ExtResource("4_hm83i")]
 position = Vector2(-132, 404)
 
+[node name="Treasure24" parent="Treasures" unique_id=306858195 instance=ExtResource("4_hm83i")]
+position = Vector2(936, 342)
+
+[node name="Treasure25" parent="Treasures" unique_id=1477169986 instance=ExtResource("4_hm83i")]
+position = Vector2(1255, 343)
+
+[node name="Treasure26" parent="Treasures" unique_id=547347935 instance=ExtResource("4_hm83i")]
+position = Vector2(1122, 341)
+
 [node name="PathFollowers" type="Node2D" parent="." unique_id=268137617]
 
 [node name="GhostPath" type="Path2D" parent="PathFollowers" unique_id=138881730]
@@ -708,6 +724,17 @@ rotates = false
 script = ExtResource("7_x4ub6")
 
 [node name="Aatma" parent="PathFollowers/CementryGhostPath/PathFollow2D" unique_id=817781038 instance=ExtResource("7_0daha")]
+
+[node name="PhotonGhostPath" type="Path2D" parent="PathFollowers" unique_id=650326576]
+curve = SubResource("Curve2D_pmwe5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathFollowers/PhotonGhostPath" unique_id=757327515]
+position = Vector2(922, 370)
+rotation = 3.101614
+rotates = false
+script = ExtResource("9_gq8oc")
+
+[node name="Aatma" parent="PathFollowers/PhotonGhostPath/PathFollow2D" unique_id=1946900222 instance=ExtResource("7_0daha")]
 
 [node name="Doors" type="Node2D" parent="." unique_id=2011547860]
 
@@ -783,6 +810,14 @@ position = Vector2(73, 488)
 
 [node name="SmallDoor" parent="Doors/DoorPortal8" unique_id=461324228 instance=ExtResource("10_r1jqb")]
 position = Vector2(5, 448)
+
+[node name="DoorPortal9" parent="Doors" unique_id=1162596969 instance=ExtResource("9_k38ww")]
+
+[node name="SmallDoor" parent="Doors/DoorPortal9" unique_id=409523107 instance=ExtResource("10_r1jqb")]
+position = Vector2(878, 455)
+
+[node name="BigDoor" parent="Doors/DoorPortal9" unique_id=1735814527 instance=ExtResource("11_r1jqb")]
+position = Vector2(983, 488)
 
 [node name="Shooters" type="Node2D" parent="." unique_id=393014520]
 
@@ -950,6 +985,44 @@ position = Vector2(439, 374)
 
 [node name="PushTrapTrigger4" parent="PushTraps/PushTrap6" unique_id=1368905193 instance=ExtResource("15_audy8")]
 position = Vector2(493, 414)
+
+[node name="PushTrap7" parent="PushTraps" unique_id=1581494505 instance=ExtResource("14_gdvef")]
+
+[node name="PushTrapTrigger" parent="PushTraps/PushTrap7" unique_id=1977843888 instance=ExtResource("15_audy8")]
+position = Vector2(910, 396)
+
+[node name="PushTrapTrigger2" parent="PushTraps/PushTrap7" unique_id=1030740103 instance=ExtResource("15_audy8")]
+position = Vector2(999, 459)
+
+[node name="PushTrapTrigger3" parent="PushTraps/PushTrap7" unique_id=1418461174 instance=ExtResource("15_audy8")]
+position = Vector2(1016, 362)
+
+[node name="PushTrapTrigger4" parent="PushTraps/PushTrap7" unique_id=963944549 instance=ExtResource("15_audy8")]
+position = Vector2(1062, 415)
+
+[node name="PushTrapTrigger5" parent="PushTraps/PushTrap7" unique_id=1249745057 instance=ExtResource("15_audy8")]
+position = Vector2(1143, 381)
+
+[node name="PushTrapTrigger6" parent="PushTraps/PushTrap7" unique_id=582973164 instance=ExtResource("15_audy8")]
+position = Vector2(1211, 429)
+
+[node name="PushTrapShooter" parent="PushTraps/PushTrap7" unique_id=1936665976 instance=ExtResource("16_0dypk")]
+position = Vector2(1211, 465)
+
+[node name="PushTrapShooter2" parent="PushTraps/PushTrap7" unique_id=1976103543 instance=ExtResource("16_0dypk")]
+position = Vector2(1146, 465)
+
+[node name="PushTrapShooter3" parent="PushTraps/PushTrap7" unique_id=1831015644 instance=ExtResource("16_0dypk")]
+position = Vector2(1062, 465)
+
+[node name="PushTrapShooter4" parent="PushTraps/PushTrap7" unique_id=64973647 instance=ExtResource("16_0dypk")]
+position = Vector2(998, 466)
+
+[node name="PushTrapShooter5" parent="PushTraps/PushTrap7" unique_id=1140277695 instance=ExtResource("16_0dypk")]
+position = Vector2(1012, 466)
+
+[node name="PushTrapShooter6" parent="PushTraps/PushTrap7" unique_id=189626693 instance=ExtResource("16_0dypk")]
+position = Vector2(909, 465)
 
 [node name="Spiders" type="Node2D" parent="." unique_id=712004032]
 
@@ -1444,6 +1517,19 @@ theme_override_colors/font_color = Color(0.92, 0.84410006, 0.78200006, 1)
 theme_override_fonts/font = ExtResource("23_xaioq")
 theme_override_font_sizes/font_size = 64
 text = "Sokoban. Complete each block to unlock the chest"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="door4" type="Label" parent="UIHints" unique_id=1218790392]
+offset_left = 564.0
+offset_top = 306.0
+offset_right = 1660.0
+offset_bottom = 554.0
+scale = Vector2(0.125, 0.125)
+theme_override_colors/font_color = Color(0.92, 0.84410006, 0.78200006, 1)
+theme_override_fonts/font = ExtResource("23_xaioq")
+theme_override_font_sizes/font_size = 64
+text = "This was to be a photon game but, I couldn't impelment that..."
 horizontal_alignment = 1
 autowrap_mode = 2
 
