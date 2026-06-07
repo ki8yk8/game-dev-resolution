@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://b7ox3ci61xpw2" path="res://scenes/sokoban_prize.tscn" id="22_r1sdi"]
 [ext_resource type="FontFile" uid="uid://cl0lsa2i5yuru" path="res://assets/font/Kenney Future.ttf" id="23_xaioq"]
 [ext_resource type="PackedScene" uid="uid://bwrlwfb8e4drp" path="res://scenes/survive_attack.tscn" id="24_rygmw"]
+[ext_resource type="PackedScene" uid="uid://omj1cdwyqirn" path="res://scenes/scorpion_trap.tscn" id="25_jcoka"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0dypk"]
 distance = -290.0
@@ -589,7 +590,7 @@ tile_set = SubResource("TileSet_hm83i")
 [node name="Player" parent="." unique_id=1116653195 instance=ExtResource("2_swo0f")]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(1316, 89)
+position = Vector2(-150, 397)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1878565070]
 zoom = Vector2(3.5, 3.5)
@@ -779,6 +780,18 @@ position = Vector2(-182, 79)
 [node name="Shooter3" parent="Shooters" unique_id=250027420 instance=ExtResource("13_yksfn")]
 position = Vector2(130, -132)
 
+[node name="Shooter4" parent="Shooters" unique_id=396063104 instance=ExtResource("13_yksfn")]
+position = Vector2(1129, 208)
+
+[node name="Shooter5" parent="Shooters" unique_id=1163425840 instance=ExtResource("13_yksfn")]
+position = Vector2(546, 394)
+
+[node name="Shooter6" parent="Shooters" unique_id=506639012 instance=ExtResource("13_yksfn")]
+position = Vector2(669, 344)
+
+[node name="Shooter7" parent="Shooters" unique_id=2069622028 instance=ExtResource("13_yksfn")]
+position = Vector2(215, 458)
+
 [node name="PushTraps" type="Node2D" parent="." unique_id=31426630]
 
 [node name="PushTrap" parent="PushTraps" unique_id=1038269714 instance=ExtResource("14_gdvef")]
@@ -940,6 +953,15 @@ position = Vector2(1050, 67)
 
 [node name="Spider5" parent="Spiders" unique_id=1159352095 instance=ExtResource("17_audy8")]
 position = Vector2(614, -31)
+
+[node name="Spider6" parent="Spiders" unique_id=993891071 instance=ExtResource("17_audy8")]
+position = Vector2(740, 416)
+
+[node name="Spider7" parent="Spiders" unique_id=199965760 instance=ExtResource("17_audy8")]
+position = Vector2(151, 543)
+
+[node name="Spider8" parent="Spiders" unique_id=8847076 instance=ExtResource("17_audy8")]
+position = Vector2(1242, 533)
 
 [node name="Sokobans" type="Node2D" parent="." unique_id=905536637]
 
@@ -1400,23 +1422,5 @@ autowrap_mode = 2
 [node name="SurviveAttack" parent="." unique_id=603188585 instance=ExtResource("24_rygmw")]
 position = Vector2(1212, 47)
 
-[node name="Shooter" parent="." unique_id=1195562907 instance=ExtResource("13_yksfn")]
-position = Vector2(1129, 208)
-
-[node name="Shooter2" parent="." unique_id=1053983207 instance=ExtResource("13_yksfn")]
-position = Vector2(546, 394)
-
-[node name="Shooter3" parent="." unique_id=1184385060 instance=ExtResource("13_yksfn")]
-position = Vector2(669, 344)
-
-[node name="Shooter4" parent="." unique_id=1863107451 instance=ExtResource("13_yksfn")]
-position = Vector2(215, 458)
-
-[node name="Spider" parent="." unique_id=1205814972 instance=ExtResource("17_audy8")]
-position = Vector2(740, 416)
-
-[node name="Spider2" parent="." unique_id=63185825 instance=ExtResource("17_audy8")]
-position = Vector2(52, 536)
-
-[node name="Spider3" parent="." unique_id=1690464846 instance=ExtResource("17_audy8")]
-position = Vector2(1242, 533)
+[node name="ScorpionTrap" parent="." unique_id=1253077298 instance=ExtResource("25_jcoka")]
+position = Vector2(-116, 350)

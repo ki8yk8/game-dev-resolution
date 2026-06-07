@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://xlg1sbpbo6nk"]
+
+[ext_resource type="Script" uid="uid://ue3hurb8vrro" path="res://scripts/glass.gd" id="1_6cmal"]
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_gtrt1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cmal"]
+atlas = ExtResource("1_gtrt1")
+region = Rect2(17, 85, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtrt1"]
+atlas = ExtResource("1_gtrt1")
+region = Rect2(34, 85, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaf02"]
+size = Vector2(14, 14)
+
+[node name="Glass" type="StaticBody2D" unique_id=1356654985]
+collision_mask = 6
+script = ExtResource("1_6cmal")
+
+[node name="GlassSprite" type="Sprite2D" parent="." unique_id=174371886]
+texture = SubResource("AtlasTexture_6cmal")
+
+[node name="GlassShattered" type="Sprite2D" parent="." unique_id=451147603]
+texture = SubResource("AtlasTexture_gtrt1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1411727651]
+shape = SubResource("RectangleShape2D_yaf02")

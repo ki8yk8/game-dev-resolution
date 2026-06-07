@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://omj1cdwyqirn"]
+
+[ext_resource type="PackedScene" uid="uid://xlg1sbpbo6nk" path="res://scenes/glass.tscn" id="1_nxhl3"]
+[ext_resource type="Script" uid="uid://c1b7k651ufok0" path="res://scripts/scorpion_trap.gd" id="1_xhclf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxhl3"]
+size = Vector2(64, 64)
+
+[node name="ScorpionTrap" type="Area2D" unique_id=1253077298]
+collision_mask = 2
+script = ExtResource("1_xhclf")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1290835049]
+color = Color(1, 0.13999999, 0.13999999, 0.4)
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
+[node name="Glasses" type="Node2D" parent="." unique_id=2046716743]
+
+[node name="Glass2" parent="Glasses" unique_id=1356654985 instance=ExtResource("1_nxhl3")]
+position = Vector2(0, 15)
+
+[node name="Glass3" parent="Glasses" unique_id=407672448 instance=ExtResource("1_nxhl3")]
+position = Vector2(15, 0)
+
+[node name="Glass4" parent="Glasses" unique_id=1482442528 instance=ExtResource("1_nxhl3")]
+position = Vector2(0, -15)
+
+[node name="Glass5" parent="Glasses" unique_id=576488017 instance=ExtResource("1_nxhl3")]
+position = Vector2(-15, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=111446990]
+shape = SubResource("RectangleShape2D_nxhl3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
