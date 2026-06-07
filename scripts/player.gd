@@ -9,6 +9,7 @@ const SPEED:float = 40.0
 @onready var timer: Timer = $Timer
 @onready var animationPLayer: AnimationPlayer = $AnimationPlayer
 @onready var gunShootSfx: AudioStreamPlayer2D = $GunShootSfx
+@onready var bulletScene: PackedScene = preload("res://scenes/bullet.tscn")
 
 var lastDir:String = "down"
 var hasGun:bool = false
@@ -28,9 +29,7 @@ func _physics_process(delta: float) -> void:
 		var animationName = "attack-"+lastDir+"-"+"gun" if hasGun else ""
 		animatedSprite.play(animationName)
 		isAttacking = true
-		
-		if not gunShootSfx.playing:
-			gunShootSfx.play()
+		shoot_bullet()
 		
 	if isAttacking:
 		move_and_slide()
@@ -115,3 +114,16 @@ func hit(heart: int = -1):
 func _on_timer_timeout() -> void:
 	invincible = false
 	animationPLayer.play("RESET")
+
+func shoot_bullet():
+	if not gunShootSfx.playing:
+		gunShootSfx.play()
+	var b = bulletScene.instantiate()
+	
+	match lastDir:
+		"up": b.rotation_degrees = -90
+		"down": b.rotation_degrees = 90
+		"left": b.rotation_degrees = 180
+		"right": b.rotation_degrees = 0
+		
+	add_child(b)

@@ -19,6 +19,6 @@ color = Color(0.9434528, 0.23599228, 0, 1)
 polygon = PackedVector2Array(0, 0, 0, 0.99317074, 0, 2, 6, 2, 8, 1, 6, 0)
 
 [node name="BulletTimer" type="Timer" parent="." unique_id=1469916726]
-wait_time = 3.0
+wait_time = 2.0
 
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
