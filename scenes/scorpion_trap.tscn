@@ -3,9 +3,48 @@
 [ext_resource type="PackedScene" uid="uid://xlg1sbpbo6nk" path="res://scenes/glass.tscn" id="1_nxhl3"]
 [ext_resource type="Script" uid="uid://c1b7k651ufok0" path="res://scripts/scorpion_trap.gd" id="1_xhclf"]
 [ext_resource type="AudioStream" uid="uid://0v5xr61tewia" path="res://assets/sounds/shatter.mp3" id="3_7wxsm"]
+[ext_resource type="PackedScene" uid="uid://be6c50fygmnyv" path="res://scenes/scorpion.tscn" id="4_yegrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxhl3"]
 size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_nqfpo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.4]
+}
+
+[sub_resource type="Animation" id="Animation_yegrk"]
+resource_name = "blink"
+length = 0.53333336
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.5803922, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nqfpo"]
+_data = {
+&"RESET": SubResource("Animation_nqfpo"),
+&"blink": SubResource("Animation_yegrk")
+}
 
 [node name="ScorpionTrap" type="Area2D" unique_id=1253077298]
 collision_mask = 2
@@ -13,7 +52,7 @@ script = ExtResource("1_xhclf")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1290835049]
 color = Color(1, 0.13999999, 0.13999999, 0.4)
-polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+polygon = PackedVector2Array(32, -32, -32, -32, -32, 32, 32, 32)
 
 [node name="Glasses" type="Node2D" parent="." unique_id=2046716743]
 
@@ -34,6 +73,12 @@ shape = SubResource("RectangleShape2D_nxhl3")
 
 [node name="glassShatter" type="AudioStreamPlayer2D" parent="." unique_id=2111218498]
 stream = ExtResource("3_7wxsm")
+
+[node name="Scorpion" parent="." unique_id=239631876 instance=ExtResource("4_yegrk")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1596952904]
+libraries/ = SubResource("AnimationLibrary_nqfpo")
+autoplay = &"blink"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
