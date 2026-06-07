@@ -6,6 +6,7 @@ extends Area2D
 @onready var glass4 = $Glasses/Glass5
 @onready var stayTimer:Timer = $StayTimer
 @onready var glassShatterSfx: AudioStreamPlayer2D = $glassShatter
+@onready var scorpion: Node = $Scorpion
 
 const THRESHOLD = 3.0
 
@@ -26,6 +27,7 @@ func _shatter_and_release():
 	var glasses = [glass1, glass2, glass3, glass4]
 	for glass in glasses:
 		glass.shatter()
+	scorpion.scorpionActive = true
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
