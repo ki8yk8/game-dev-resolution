@@ -7,4 +7,6 @@ func _ready() -> void:
 	coinLabel.text = "Coins: "+str(GameManager.state.coins)
 
 func _on_button_pressed() -> void:
+	GameManager.state.coins = 0
+	GameManager.state.hearts = 0
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
