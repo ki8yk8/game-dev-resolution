@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://djqqeftttab6f" path="res://scenes/sokoban_walls.tscn" id="21_0em6x"]
 [ext_resource type="PackedScene" uid="uid://b7ox3ci61xpw2" path="res://scenes/sokoban_prize.tscn" id="22_r1sdi"]
 [ext_resource type="FontFile" uid="uid://cl0lsa2i5yuru" path="res://assets/font/Kenney Future.ttf" id="23_xaioq"]
+[ext_resource type="PackedScene" uid="uid://brcagfkd3itd6" path="res://scenes/survive_attack_row.tscn" id="24_rygmw"]
+[ext_resource type="PackedScene" uid="uid://bci2ilq8d6sl4" path="res://scenes/survive_attach_shooter.tscn" id="25_jcoka"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0dypk"]
 distance = -290.0
@@ -1297,3 +1299,51 @@ theme_override_font_sizes/font_size = 64
 text = "Sokoban. Complete each block to unlock the chest"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="SurviveAttack" type="Node2D" parent="." unique_id=159883730]
+
+[node name="SurviveAttackRow" parent="SurviveAttack" unique_id=655324091 instance=ExtResource("24_rygmw")]
+
+[node name="PushTrapShooter" parent="SurviveAttack/SurviveAttackRow" unique_id=1793184516 instance=ExtResource("16_0dypk")]
+position = Vector2(1109, -61)
+
+[node name="PushTrapShooter2" parent="SurviveAttack/SurviveAttackRow" unique_id=1914789553 instance=ExtResource("16_0dypk")]
+position = Vector2(1121, -61)
+
+[node name="PushTrapShooter3" parent="SurviveAttack/SurviveAttackRow" unique_id=291742362 instance=ExtResource("16_0dypk")]
+position = Vector2(1133, -61)
+
+[node name="PushTrapShooter4" parent="SurviveAttack/SurviveAttackRow" unique_id=1370036533 instance=ExtResource("16_0dypk")]
+position = Vector2(1145, -61)
+
+[node name="PushTrapShooter5" parent="SurviveAttack/SurviveAttackRow" unique_id=1635592970 instance=ExtResource("16_0dypk")]
+position = Vector2(1157, -61)
+
+[node name="PushTrapShooter6" parent="SurviveAttack/SurviveAttackRow" unique_id=2070708733 instance=ExtResource("16_0dypk")]
+position = Vector2(1169, -61)
+
+[node name="PushTrapShooter7" parent="SurviveAttack/SurviveAttackRow" unique_id=1741807887 instance=ExtResource("16_0dypk")]
+position = Vector2(1181, -61)
+
+[node name="PushTrapShooter8" parent="SurviveAttack/SurviveAttackRow" unique_id=2018101998 instance=ExtResource("16_0dypk")]
+position = Vector2(1193, -61)
+
+[node name="PushTrapShooter9" parent="SurviveAttack/SurviveAttackRow" unique_id=1977769951 instance=ExtResource("16_0dypk")]
+position = Vector2(1205, -61)
+
+[node name="PushTrapShooter10" parent="SurviveAttack/SurviveAttackRow" unique_id=468269005 instance=ExtResource("16_0dypk")]
+position = Vector2(1217, -61)
+
+[node name="SurviveAttackRow4" parent="SurviveAttack" unique_id=279849481 instance=ExtResource("24_rygmw")]
+anchors_preset = -1
+rotation = 6.2831855
+theme_override_constants/separation = 10
+
+[node name="Control" parent="SurviveAttack/SurviveAttackRow4" unique_id=2079031369 instance=ExtResource("25_jcoka")]
+layout_mode = 2
+
+[node name="Control2" parent="SurviveAttack/SurviveAttackRow4" unique_id=1739228946 instance=ExtResource("25_jcoka")]
+layout_mode = 2
+
+[node name="Control3" parent="SurviveAttack/SurviveAttackRow4" unique_id=2113671355 instance=ExtResource("25_jcoka")]
+layout_mode = 2

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bci2ilq8d6sl4"]
+
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_h61ro"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0bda"]
+atlas = ExtResource("1_h61ro")
+region = Rect2(102, 136, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h61ro"]
+size = Vector2(16, 16)
+
+[node name="Control" type="Control" unique_id=2079031369]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1504125857]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=937302330]
+texture = SubResource("AtlasTexture_o0bda")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=15429572]
+shape = SubResource("RectangleShape2D_h61ro")

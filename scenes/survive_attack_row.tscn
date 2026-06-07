@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://brcagfkd3itd6"]
+
+[ext_resource type="Script" uid="uid://cico5tnvajkba" path="res://scripts/survive_attack_row.gd" id="1_ajnsk"]
+
+[node name="SurviveAttackRow" type="HBoxContainer" unique_id=653471881]
+script = ExtResource("1_ajnsk")
