@@ -25,6 +25,14 @@ func _ready() -> void:
 			2: s.position = Vector2(0, half_size+4)
 			3: s.position = Vector2(-half_size, 0)
 		
+		# the blink thingy for warning
+		var colorRect = ColorRect.new()
+		colorRect.color = Color(0.151, 0.001, 0.0, 1.0)
+		colorRect.size = Vector2(half_size*2, 5)
+		colorRect.position = Vector2(-half_size, -8)
+		s.warningRect = colorRect
+		s.add_child(colorRect)
+		
 		var actualShooters: Array[Node] = []
 		for j in range(SHOOTERS_IN_A_ROW):
 			var sword = shooter.instantiate()

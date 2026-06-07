@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cico5tnvajkba" path="res://scripts/survive_attack_row.gd" id="1_ajnsk"]
 [ext_resource type="AudioStream" uid="uid://jikl7nufh1ri" path="res://assets/sounds/shoot.mp3" id="2_sf3ew"]
+[ext_resource type="AudioStream" uid="uid://dnrxijy67m0yw" path="res://assets/sounds/watchout.mp3" id="3_7ubcs"]
 
 [node name="SurviveAttackRow" type="Node2D" unique_id=2080059518]
 script = ExtResource("1_ajnsk")
@@ -9,4 +10,5 @@ script = ExtResource("1_ajnsk")
 [node name="shootSfx" type="AudioStreamPlayer2D" parent="." unique_id=109155953]
 stream = ExtResource("2_sf3ew")
 
-[node name="delayTimer" type="Timer" parent="." unique_id=606413955]
+[node name="warningSfx" type="AudioStreamPlayer2D" parent="." unique_id=2079790501]
+stream = ExtResource("3_7ubcs")
