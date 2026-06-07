@@ -9,11 +9,7 @@ region = Rect2(102, 136, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h61ro"]
 size = Vector2(16, 16)
 
-[node name="Control" type="Control" unique_id=2079031369]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Control" type="Node2D" unique_id=1745834487]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1504125857]
 
@@ -22,3 +18,6 @@ texture = SubResource("AtlasTexture_o0bda")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=15429572]
 shape = SubResource("RectangleShape2D_h61ro")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=839381428]
+target_position = Vector2(0, 16)

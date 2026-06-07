@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c0stufwbm7un3"]
+
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_mi71e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72n8s"]
+atlas = ExtResource("1_mi71e")
+region = Rect2(170, 153, 16, 16)
+
+[sub_resource type="Animation" id="Animation_72n8s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mi71e"]
+resource_name = "rotation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.1415927, 6.265732014659643]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_72n8s"]
+_data = {
+&"RESET": SubResource("Animation_72n8s"),
+&"rotation": SubResource("Animation_mi71e")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mi71e"]
+
+[node name="SurviveAttackSword" type="Area2D" unique_id=1638623568]
+rotation = 6.2831855
+collision_mask = 18
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=715355923]
+texture = SubResource("AtlasTexture_72n8s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=414035153]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_72n8s")
+autoplay = &"rotation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1248011447]
+shape = SubResource("CircleShape2D_mi71e")

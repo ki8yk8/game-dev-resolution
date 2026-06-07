@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://cico5tnvajkba" path="res://scripts/survive_attack_row.gd" id="1_ajnsk"]
 
-[node name="SurviveAttackRow" type="HBoxContainer" unique_id=653471881]
+[node name="SurviveAttackRow" type="Node2D" unique_id=2080059518]
 script = ExtResource("1_ajnsk")

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bwrlwfb8e4drp"]
+
+[ext_resource type="Script" uid="uid://btfbytiyyttdy" path="res://scripts/survive_attack.gd" id="1_ej38g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej38g"]
+size = Vector2(168, 168)
+
+[node name="SurviveAttack" type="Area2D" unique_id=603188585]
+collision_mask = 2
+script = ExtResource("1_ej38g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2014561681]
+shape = SubResource("RectangleShape2D_ej38g")
