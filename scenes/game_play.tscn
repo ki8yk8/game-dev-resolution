@@ -25,6 +25,7 @@
 [ext_resource type="FontFile" uid="uid://cl0lsa2i5yuru" path="res://assets/font/Kenney Future.ttf" id="23_xaioq"]
 [ext_resource type="PackedScene" uid="uid://bwrlwfb8e4drp" path="res://scenes/survive_attack.tscn" id="24_rygmw"]
 [ext_resource type="PackedScene" uid="uid://omj1cdwyqirn" path="res://scenes/scorpion_trap.tscn" id="25_jcoka"]
+[ext_resource type="PackedScene" uid="uid://cmgl2ucndpj0h" path="res://scenes/breakable_wall.tscn" id="26_yqh82"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0dypk"]
 distance = -290.0
@@ -590,7 +591,7 @@ tile_set = SubResource("TileSet_hm83i")
 [node name="Player" parent="." unique_id=1116653195 instance=ExtResource("2_swo0f")]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(-150, 397)
+position = Vector2(6, 451)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1878565070]
 zoom = Vector2(3.5, 3.5)
@@ -1450,3 +1451,15 @@ position = Vector2(-133, 521)
 
 [node name="Treasure5" parent="ScorpionTraps" unique_id=982351544 instance=ExtResource("4_hm83i")]
 position = Vector2(-97, 522)
+
+[node name="ShootingRange" type="Area2D" parent="." unique_id=1882459381]
+collision_mask = 2
+
+[node name="BreakableWall" parent="ShootingRange" unique_id=1620579031 instance=ExtResource("26_yqh82")]
+position = Vector2(30, 454)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShootingRange" unique_id=1679947479]
+polygon = PackedVector2Array(-11, 471, -11, 329, 411, 330, 411, 473, 277, 473, 277, 392, 152, 392, 152, 471)
+
+[connection signal="body_entered" from="ShootingRange" to="." method="_on_shooting_range_body_entered"]
+[connection signal="body_exited" from="ShootingRange" to="." method="_on_shooting_range_body_exited"]

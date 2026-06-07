@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cmgl2ucndpj0h"]
 
+[ext_resource type="Script" uid="uid://dp8b26cehr8h3" path="res://scripts/breakable_wall.gd" id="1_ba5p1"]
 [ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_qx4r1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ba5p1"]
@@ -9,10 +10,23 @@ region = Rect2(102, 85, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odehn"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba5p1"]
+size = Vector2(16, 16)
+
 [node name="BreakableWall" type="StaticBody2D" unique_id=1620579031]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_ba5p1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1239691059]
 texture = SubResource("AtlasTexture_ba5p1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=992231989]
 shape = SubResource("RectangleShape2D_odehn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=957144945]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1250534896]
+shape = SubResource("RectangleShape2D_ba5p1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

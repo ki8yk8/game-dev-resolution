@@ -30,3 +30,11 @@ func _process(delta: float) -> void:
 		player.die()
 	# render each time
 	_render()
+
+func _on_shooting_range_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.hasGun = true
+
+func _on_shooting_range_body_exited(body: Node2D) -> void:
+	if body is Player:
+		body.hasGun = false
