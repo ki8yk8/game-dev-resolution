@@ -8,6 +8,7 @@ const SPEED:float = 40.0
 @onready var hurtSfx:AudioStreamPlayer2D = $hurtSfx
 @onready var timer: Timer = $Timer
 @onready var animationPLayer: AnimationPlayer = $AnimationPlayer
+@onready var gunShootSfx: AudioStreamPlayer2D = $GunShootSfx
 
 var lastDir:String = "down"
 var hasGun:bool = false
@@ -27,6 +28,9 @@ func _physics_process(delta: float) -> void:
 		var animationName = "attack-"+lastDir+"-"+"gun" if hasGun else ""
 		animatedSprite.play(animationName)
 		isAttacking = true
+		
+		if not gunShootSfx.playing:
+			gunShootSfx.play()
 		
 	if isAttacking:
 		move_and_slide()
