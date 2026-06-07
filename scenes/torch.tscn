@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bcvhs5rber5pa"]
+
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_d4v33"]
+[ext_resource type="Script" uid="uid://cm634m40cmh2t" path="res://scripts/torch.gd" id="1_my26j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my26j"]
+atlas = ExtResource("1_d4v33")
+region = Rect2(153, 170, 16, 16)
+
+[node name="Torch" type="Node2D" unique_id=589813498]
+script = ExtResource("1_my26j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=367436927]
+texture = SubResource("AtlasTexture_my26j")
+
+[node name="Timer" type="Timer" parent="." unique_id=1281415873]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

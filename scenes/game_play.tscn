@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bwrlwfb8e4drp" path="res://scenes/survive_attack.tscn" id="24_rygmw"]
 [ext_resource type="PackedScene" uid="uid://omj1cdwyqirn" path="res://scenes/scorpion_trap.tscn" id="25_jcoka"]
 [ext_resource type="PackedScene" uid="uid://cmgl2ucndpj0h" path="res://scenes/breakable_wall.tscn" id="26_yqh82"]
-[ext_resource type="PackedScene" uid="uid://b7yka1aor0yxt" path="res://scenes/rotating_glass.tscn" id="27_mmt7o"]
+[ext_resource type="PackedScene" uid="uid://bcvhs5rber5pa" path="res://scenes/torch.tscn" id="27_mmt7o"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0dypk"]
 distance = -290.0
@@ -1740,8 +1740,8 @@ position = Vector2(354, 412)
 
 [node name="LightGame" type="Node2D" parent="." unique_id=599954962]
 
-[node name="RotatingGlass" parent="." unique_id=946549622 instance=ExtResource("27_mmt7o")]
-position = Vector2(831, 433)
+[node name="Torch" parent="LightGame" unique_id=589813498 instance=ExtResource("27_mmt7o")]
+position = Vector2(823, 459)
 
 [connection signal="body_entered" from="ShootingRange" to="." method="_on_shooting_range_body_entered"]
 [connection signal="body_exited" from="ShootingRange" to="." method="_on_shooting_range_body_exited"]
