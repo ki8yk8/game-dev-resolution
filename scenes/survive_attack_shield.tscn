@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://shvkt8o60ra5"]
+
+[ext_resource type="Script" uid="uid://4h01rkoixrvk" path="res://scripts/survive_attack_shield.gd" id="1_4vr6k"]
+[ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_satvp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vr6k"]
+atlas = ExtResource("1_satvp")
+region = Rect2(51, 85, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pslq"]
+size = Vector2(16, 16)
+
+[node name="SurviveAttackShield" type="StaticBody2D" unique_id=1481387011]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_4vr6k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1647394150]
+texture = SubResource("AtlasTexture_4vr6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1537694116]
+shape = SubResource("RectangleShape2D_0pslq")

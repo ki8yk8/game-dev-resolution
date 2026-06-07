@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bwrlwfb8e4drp"]
 
 [ext_resource type="Script" uid="uid://btfbytiyyttdy" path="res://scripts/survive_attack.gd" id="1_ej38g"]
+[ext_resource type="PackedScene" uid="uid://shvkt8o60ra5" path="res://scenes/survive_attack_shield.tscn" id="2_7i5qo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ej38g"]
 size = Vector2(168, 168)
@@ -11,3 +12,45 @@ script = ExtResource("1_ej38g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2014561681]
 shape = SubResource("RectangleShape2D_ej38g")
+
+[node name="SurviveAttackShield" parent="." unique_id=1616526875 instance=ExtResource("2_7i5qo")]
+position = Vector2(-42, -43)
+
+[node name="SurviveAttackShield2" parent="." unique_id=1262501296 instance=ExtResource("2_7i5qo")]
+position = Vector2(-26, -43)
+
+[node name="SurviveAttackShield3" parent="." unique_id=1918279026 instance=ExtResource("2_7i5qo")]
+position = Vector2(-42, -27)
+
+[node name="SurviveAttackShield4" parent="." unique_id=2032242650 instance=ExtResource("2_7i5qo")]
+position = Vector2(-26, -27)
+
+[node name="SurviveAttackShield5" parent="." unique_id=1471910180 instance=ExtResource("2_7i5qo")]
+position = Vector2(65, -41)
+
+[node name="SurviveAttackShield6" parent="." unique_id=723079321 instance=ExtResource("2_7i5qo")]
+position = Vector2(65, -24)
+
+[node name="SurviveAttackShield7" parent="." unique_id=89436530 instance=ExtResource("2_7i5qo")]
+position = Vector2(48, -40)
+
+[node name="SurviveAttackShield8" parent="." unique_id=1029206939 instance=ExtResource("2_7i5qo")]
+position = Vector2(48, -24)
+
+[node name="SurviveAttackShield9" parent="." unique_id=1720759283 instance=ExtResource("2_7i5qo")]
+position = Vector2(-65, 65)
+
+[node name="SurviveAttackShield10" parent="." unique_id=1186574585 instance=ExtResource("2_7i5qo")]
+position = Vector2(-49, 65)
+
+[node name="SurviveAttackShield11" parent="." unique_id=2141440755 instance=ExtResource("2_7i5qo")]
+position = Vector2(-65, 49)
+
+[node name="SurviveAttackShield12" parent="." unique_id=794627705 instance=ExtResource("2_7i5qo")]
+position = Vector2(-50, 49)
+
+[node name="Timer" type="Timer" parent="." unique_id=867446738]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

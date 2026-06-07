@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bci2ilq8d6sl4"]
 
 [ext_resource type="Texture2D" uid="uid://6bw8exb71kll" path="res://assets/png/dungeon/tilemap.png" id="1_h61ro"]
+[ext_resource type="Script" uid="uid://btg7860nhuqab" path="res://scripts/survive_attach_shooter.gd" id="1_o0bda"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o0bda"]
 atlas = ExtResource("1_h61ro")
@@ -9,7 +10,8 @@ region = Rect2(102, 136, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h61ro"]
 size = Vector2(16, 16)
 
-[node name="Control" type="Node2D" unique_id=1745834487]
+[node name="SurviveAttackShooter" type="Node2D" unique_id=1745834487]
+script = ExtResource("1_o0bda")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1504125857]
 

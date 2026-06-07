@@ -6,7 +6,7 @@ const SHOOTER_SPACING: int = 14
 var shooterRows: Array[Node] = []
 @export var attackRow: PackedScene = preload("res://scenes/survive_attack_row.tscn")
 @export var shooter: PackedScene = preload("res://scenes/survive_attach_shooter.tscn")
-@onready var collisionShape: CollisionShape2D = $CollisionShape2D
+@onready var timer:Timer = $Timer
 
 func _ready() -> void:
 	var half_size: float = SHOOTERS_IN_A_ROW*SHOOTER_SPACING/2.0
@@ -29,4 +29,9 @@ func _ready() -> void:
 		for j in range(SHOOTERS_IN_A_ROW):
 			var sword = shooter.instantiate()
 			s.add_child(sword)
+			actualShooters.append(sword)
 			sword.position.x = (j*SHOOTER_SPACING) - half_size + (SHOOTER_SPACING/2.0)
+		s.shooters = actualShooters
+
+func _on_timer_timeout() -> void:
+	shooterRows.pick_random().shoot()
