@@ -11,3 +11,9 @@ func _process(delta: float) -> void:
 
 func _on_bullet_timer_timeout() -> void:
 	queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is BreakableWall:
+		bulletTimer.stop()
+		body.queue_free()
+		queue_free()
