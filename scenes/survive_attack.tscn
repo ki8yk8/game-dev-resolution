@@ -6,6 +6,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ej38g"]
 size = Vector2(168, 168)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7i5qo"]
+distance = -95.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3gcnq"]
+distance = -91.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e6hix"]
+distance = -89.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7sqd5"]
+distance = -90.0
+
 [node name="SurviveAttack" type="Area2D" unique_id=603188585]
 collision_mask = 2
 script = ExtResource("1_ej38g")
@@ -51,8 +63,29 @@ position = Vector2(-50, 49)
 
 [node name="Timer" type="Timer" parent="." unique_id=867446738]
 wait_time = 5.0
-one_shot = true
-autostart = true
+
+[node name="Boundary" type="Area2D" parent="." unique_id=9456597]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary" unique_id=124915927]
+position = Vector2(-1, 20)
+shape = SubResource("WorldBoundaryShape2D_7i5qo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary" unique_id=1457115150]
+position = Vector2(0, -20)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_3gcnq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary" unique_id=922573669]
+position = Vector2(-27, -1)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_e6hix")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary" unique_id=1446047894]
+position = Vector2(31, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_7sqd5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Boundary" to="." method="_on_boundary_area_entered"]

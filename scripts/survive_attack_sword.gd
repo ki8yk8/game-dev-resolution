@@ -1,4 +1,5 @@
 extends Area2D
+class_name SurviveAttackSword
 
 @onready var timer:Timer = $Timer
 var stuck: bool = false

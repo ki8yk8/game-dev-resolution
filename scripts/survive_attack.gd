@@ -47,4 +47,8 @@ func _on_timer_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		print("Player arrived in the game")
+		timer.start()
+
+func _on_boundary_area_entered(area: Area2D) -> void:
+	if area is SurviveAttackSword:
+		area.queue_free()
