@@ -18,6 +18,12 @@ Dungeon is an exploration based game where, you move around the medivel castle t
 2. Watch out, you are left in arena where random side will fire arrows, your target is to stay in shielded region to be protected from them
 3. Clear the maze, you can use your gun to clear the maze and get to the treasure
 
+## Wrapping the Learnings
+1. Audio Sfx (Added multiple effects throughout the entire game)
+2. Godot path follower and path follow node
+3. Static body 2d and rigid body 2d and their use cases
+4. Player movement animations
+5. Raycast 2d
 
 ## Sound Credits
 Sound Effect by <a href="https://pixabay.com/users/data_pion-49620193/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=323056">Diego Nasc</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=323056">Pixabay</a>
