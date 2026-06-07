@@ -11,6 +11,13 @@ region = Rect2(17, 85, 16, 16)
 size = Vector2(15, 15)
 
 [node name="RotatingGlass" type="RigidBody2D" unique_id=740186152]
+disable_mode = 1
+collision_layer = 8
+collision_mask = 11
+gravity_scale = 0.0
+can_sleep = false
+linear_damp = 4.0
+angular_damp = 4.0
 script = ExtResource("1_im8mm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1606591256]

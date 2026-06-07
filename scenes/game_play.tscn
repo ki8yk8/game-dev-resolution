@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://cmgl2ucndpj0h" path="res://scenes/breakable_wall.tscn" id="26_yqh82"]
 [ext_resource type="PackedScene" uid="uid://bcvhs5rber5pa" path="res://scenes/torch.tscn" id="27_mmt7o"]
 [ext_resource type="Script" uid="uid://bupc3xj8ryio1" path="res://scripts/boundary.gd" id="28_j35s1"]
+[ext_resource type="PackedScene" uid="uid://b7yka1aor0yxt" path="res://scenes/rotating_glass.tscn" id="29_pmwe5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0dypk"]
 distance = -290.0
@@ -1750,6 +1751,9 @@ script = ExtResource("28_j35s1")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LightGame/Boundary" unique_id=2141248265]
 polygon = PackedVector2Array(805, 471, 1274, 473, 1276, 327, 805, 328, 805, 467, 794, 467, 796, 319, 1286, 320, 1285, 479, 794, 478, 794, 469)
+
+[node name="RotatingGlass" parent="LightGame" unique_id=740186152 instance=ExtResource("29_pmwe5")]
+position = Vector2(847, 436)
 
 [connection signal="body_entered" from="ShootingRange" to="." method="_on_shooting_range_body_entered"]
 [connection signal="body_exited" from="ShootingRange" to="." method="_on_shooting_range_body_exited"]
