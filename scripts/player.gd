@@ -24,7 +24,8 @@ func _physics_process(delta: float) -> void:
 	var action = Input.is_action_just_pressed("action")
 	
 	if action and not isAttacking:
-		animatedSprite.play("attack-"+lastDir)
+		var animationName = "attack-"+lastDir+"-"+"gun" if hasGun else ""
+		animatedSprite.play(animationName)
 		isAttacking = true
 		
 	if isAttacking:
