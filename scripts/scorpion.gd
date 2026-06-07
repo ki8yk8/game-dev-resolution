@@ -2,9 +2,11 @@ extends CharacterBody2D
 class_name Scorpion
 
 var scorpionActive: bool = true
-const SPEED: float = 80.0
+const SPEED: float = 60.0
 
 @onready var player: CharacterBody2D = $"../../Player"
+@onready var raycast: RayCast2D = $RayCast2D
+@onready var noFollowTimer: Timer = $NoFollowTimer
 
 func _process(delta: float) -> void:
 	if not scorpionActive:
@@ -33,4 +35,16 @@ func _physics_process(delta: float) -> void:
 		else:
 			rotation_degrees = 90
 			
+	if raycast.is_colliding():
+		return
+	
 	move_and_slide()
+
+func _on_kill_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.hit()
+		noFollowTimer.start()
+		scorpionActive = false
+
+func _on_no_follow_timer_timeout() -> void:
+	scorpionActive = true
