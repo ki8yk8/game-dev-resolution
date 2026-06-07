@@ -10,31 +10,12 @@ region = Rect2(17, 85, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dipt"]
 size = Vector2(15, 15)
 
-[node name="RotatingGlass" type="Node2D" unique_id=946549622]
+[node name="RotatingGlass" type="RigidBody2D" unique_id=740186152]
 script = ExtResource("1_im8mm")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1186066764]
-collision_layer = 0
-collision_mask = 0
-
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1143787111]
-collision_layer = 64
-collision_mask = 2
-mass = 5.0
-gravity_scale = 0.0
-can_sleep = false
-freeze_mode = 1
-angular_damp = 1.5
-constant_torque = 1.0
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1899631203]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1606591256]
 texture = SubResource("AtlasTexture_im8mm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=114739487]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1746472906]
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_8dipt")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=908311435]
-node_a = NodePath("../StaticBody2D")
-node_b = NodePath("../RigidBody2D")
-bias = 0.3
