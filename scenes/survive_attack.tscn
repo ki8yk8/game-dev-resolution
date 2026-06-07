@@ -25,40 +25,42 @@ script = ExtResource("1_ej38g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2014561681]
 shape = SubResource("RectangleShape2D_ej38g")
 
-[node name="SurviveAttackShield" parent="." unique_id=1616526875 instance=ExtResource("2_7i5qo")]
+[node name="Shields" type="Node2D" parent="." unique_id=1510205784]
+
+[node name="SurviveAttackShield" parent="Shields" unique_id=1481387011 instance=ExtResource("2_7i5qo")]
 position = Vector2(-42, -43)
 
-[node name="SurviveAttackShield2" parent="." unique_id=1262501296 instance=ExtResource("2_7i5qo")]
+[node name="SurviveAttackShield2" parent="Shields" unique_id=1369244213 instance=ExtResource("2_7i5qo")]
 position = Vector2(-26, -43)
 
-[node name="SurviveAttackShield3" parent="." unique_id=1918279026 instance=ExtResource("2_7i5qo")]
+[node name="SurviveAttackShield3" parent="Shields" unique_id=1698710440 instance=ExtResource("2_7i5qo")]
 position = Vector2(-42, -27)
 
-[node name="SurviveAttackShield4" parent="." unique_id=2032242650 instance=ExtResource("2_7i5qo")]
+[node name="SurviveAttackShield4" parent="Shields" unique_id=2138084857 instance=ExtResource("2_7i5qo")]
 position = Vector2(-26, -27)
 
-[node name="SurviveAttackShield5" parent="." unique_id=1471910180 instance=ExtResource("2_7i5qo")]
+[node name="SurviveAttackShield5" parent="Shields" unique_id=747866694 instance=ExtResource("2_7i5qo")]
 position = Vector2(65, -41)
 
-[node name="SurviveAttackShield6" parent="." unique_id=723079321 instance=ExtResource("2_7i5qo")]
+[node name="SurviveAttackShield6" parent="Shields" unique_id=1697471798 instance=ExtResource("2_7i5qo")]
 position = Vector2(65, -24)
 
-[node name="SurviveAttackShield7" parent="." unique_id=89436530 instance=ExtResource("2_7i5qo")]
+[node name="SurviveAttackShield7" parent="Shields" unique_id=1510364610 instance=ExtResource("2_7i5qo")]
 position = Vector2(48, -40)
 
-[node name="SurviveAttackShield8" parent="." unique_id=1029206939 instance=ExtResource("2_7i5qo")]
+[node name="SurviveAttackShield8" parent="Shields" unique_id=2047680135 instance=ExtResource("2_7i5qo")]
 position = Vector2(48, -24)
 
-[node name="SurviveAttackShield9" parent="." unique_id=1720759283 instance=ExtResource("2_7i5qo")]
+[node name="SurviveAttackShield9" parent="Shields" unique_id=1375893364 instance=ExtResource("2_7i5qo")]
 position = Vector2(-65, 65)
 
-[node name="SurviveAttackShield10" parent="." unique_id=1186574585 instance=ExtResource("2_7i5qo")]
+[node name="SurviveAttackShield10" parent="Shields" unique_id=1609008555 instance=ExtResource("2_7i5qo")]
 position = Vector2(-49, 65)
 
-[node name="SurviveAttackShield11" parent="." unique_id=2141440755 instance=ExtResource("2_7i5qo")]
+[node name="SurviveAttackShield11" parent="Shields" unique_id=869607847 instance=ExtResource("2_7i5qo")]
 position = Vector2(-65, 49)
 
-[node name="SurviveAttackShield12" parent="." unique_id=794627705 instance=ExtResource("2_7i5qo")]
+[node name="SurviveAttackShield12" parent="Shields" unique_id=1052900452 instance=ExtResource("2_7i5qo")]
 position = Vector2(-50, 49)
 
 [node name="Timer" type="Timer" parent="." unique_id=867446738]
@@ -86,6 +88,10 @@ position = Vector2(31, 0)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_7sqd5")
 
+[node name="finishTimer" type="Timer" parent="." unique_id=419139379]
+wait_time = 30.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Boundary" to="." method="_on_boundary_area_entered"]
+[connection signal="timeout" from="finishTimer" to="." method="_on_finish_timer_timeout"]
