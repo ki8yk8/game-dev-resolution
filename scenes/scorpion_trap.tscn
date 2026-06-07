@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://xlg1sbpbo6nk" path="res://scenes/glass.tscn" id="1_nxhl3"]
 [ext_resource type="Script" uid="uid://c1b7k651ufok0" path="res://scripts/scorpion_trap.gd" id="1_xhclf"]
+[ext_resource type="AudioStream" uid="uid://0v5xr61tewia" path="res://assets/sounds/shatter.mp3" id="3_7wxsm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxhl3"]
 size = Vector2(64, 64)
@@ -30,6 +31,9 @@ position = Vector2(-15, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=111446990]
 shape = SubResource("RectangleShape2D_nxhl3")
+
+[node name="glassShatter" type="AudioStreamPlayer2D" parent="." unique_id=2111218498]
+stream = ExtResource("3_7wxsm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

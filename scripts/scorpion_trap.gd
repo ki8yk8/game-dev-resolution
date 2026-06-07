@@ -5,6 +5,7 @@ extends Area2D
 @onready var glass3 = $Glasses/Glass4
 @onready var glass4 = $Glasses/Glass5
 @onready var stayTimer:Timer = $StayTimer
+@onready var glassShatterSfx: AudioStreamPlayer2D = $glassShatter
 
 const THRESHOLD = 3.0
 
@@ -16,10 +17,12 @@ func _process(delta: float) -> void:
 	if playerInside and not shattered:
 		timeElpased += delta
 	
-	if timeElpased > THRESHOLD:
+	if timeElpased > THRESHOLD and not shattered:
+		glassShatterSfx.play()
 		_shatter_and_release()
 
 func _shatter_and_release():
+	shattered = true
 	var glasses = [glass1, glass2, glass3, glass4]
 	for glass in glasses:
 		glass.shatter()
