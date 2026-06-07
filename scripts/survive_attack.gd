@@ -35,3 +35,8 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 	shooterRows.pick_random().shoot()
+	timer.start()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		print("Player arrived in the game")

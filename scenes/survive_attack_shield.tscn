@@ -12,7 +12,7 @@ size = Vector2(16, 16)
 
 [node name="SurviveAttackShield" type="StaticBody2D" unique_id=1481387011]
 collision_layer = 16
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_4vr6k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1647394150]
