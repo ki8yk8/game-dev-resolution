@@ -674,6 +674,9 @@ position = Vector2(241, 431)
 [node name="Treasure22" parent="Treasures" unique_id=965325522 instance=ExtResource("4_hm83i")]
 position = Vector2(646, 343)
 
+[node name="Treasure23" parent="Treasures" unique_id=1650894523 instance=ExtResource("4_hm83i")]
+position = Vector2(-132, 404)
+
 [node name="PathFollowers" type="Node2D" parent="." unique_id=268137617]
 
 [node name="GhostPath" type="Path2D" parent="PathFollowers" unique_id=138881730]
@@ -1422,5 +1425,28 @@ autowrap_mode = 2
 [node name="SurviveAttack" parent="." unique_id=603188585 instance=ExtResource("24_rygmw")]
 position = Vector2(1212, 47)
 
-[node name="ScorpionTrap" parent="." unique_id=1253077298 instance=ExtResource("25_jcoka")]
+[node name="ScorpionTraps" type="Node2D" parent="." unique_id=2044118459]
+
+[node name="ScorpionTrap" parent="ScorpionTraps" unique_id=1253077298 instance=ExtResource("25_jcoka")]
 position = Vector2(-116, 350)
+
+[node name="ScorpionTrap2" parent="ScorpionTraps" unique_id=1962656000 instance=ExtResource("25_jcoka")]
+position = Vector2(-115, 427)
+
+[node name="ScorpionTrap3" parent="ScorpionTraps" unique_id=1357774751 instance=ExtResource("25_jcoka")]
+position = Vector2(-115, 506)
+
+[node name="Treasure" parent="ScorpionTraps" unique_id=406136994 instance=ExtResource("4_hm83i")]
+position = Vector2(-97, 442)
+
+[node name="Treasure2" parent="ScorpionTraps" unique_id=908983174 instance=ExtResource("4_hm83i")]
+position = Vector2(-136, 366)
+
+[node name="Treasure3" parent="ScorpionTraps" unique_id=164568785 instance=ExtResource("4_hm83i")]
+position = Vector2(-99, 366)
+
+[node name="Treasure4" parent="ScorpionTraps" unique_id=1177555764 instance=ExtResource("4_hm83i")]
+position = Vector2(-133, 521)
+
+[node name="Treasure5" parent="ScorpionTraps" unique_id=982351544 instance=ExtResource("4_hm83i")]
+position = Vector2(-97, 522)
