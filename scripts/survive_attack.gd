@@ -8,6 +8,7 @@ var shooterRows: Array[Node] = []
 @export var shooter: PackedScene = preload("res://scenes/survive_attach_shooter.tscn")
 @onready var timer:Timer = $Timer
 @onready var finishTimer: Timer = $finishTimer
+@onready var survivalGameDoor:Node2D = %SurvivalGameDoor
 
 func _ready() -> void:
 	var half_size: float = SHOOTERS_IN_A_ROW*SHOOTER_SPACING/2.0
@@ -48,6 +49,7 @@ func _on_timer_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
+		survivalGameDoor.visible = false
 		timer.start()
 		finishTimer.start()
 
@@ -58,4 +60,7 @@ func _on_boundary_area_entered(area: Area2D) -> void:
 func _on_finish_timer_timeout() -> void:
 	timer.stop()
 	finishTimer.stop()
-	shooterRows.pick_random().queue_free()
+	# remove all the shooterRows
+	for row in shooterRows:
+		row.queue_free()
+	survivalGameDoor.visible = true
