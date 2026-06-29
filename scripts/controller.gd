@@ -60,8 +60,8 @@ func _forget(item: String):
 
 # level metadata begins here
 const _LEVEL_START_CHECKPOINTS = {
-	#1: Vector2(117.0, 168.0),
-	1: Vector2(1290.0, 168.0),
+	1: Vector2(117.0, 168.0),
+	#1: Vector2(1290.0, 168.0),
 	2: Vector2(117.0, 168.0),
 }
 

@@ -68,7 +68,9 @@ func handle_portal(increment: int):
 
 func load_level(level: int):
 	if level_node:
-		level_node.queue_free()
+		LevelNode.remove_child(level_node)
+		#level_node.queue_free()
+		level_node.free()
 	
 	_state["level"] = level
 	# load the checkpoint 

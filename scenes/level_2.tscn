@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cjaua1ocrkt7q" path="res://scenes/exit_portal.tscn" id="5_g2hoc"]
 [ext_resource type="PackedScene" uid="uid://brxw4ofpi3c13" path="res://scenes/stackable_coins.tscn" id="6_fldb1"]
 [ext_resource type="PackedScene" uid="uid://vewbr0gpbed7" path="res://scenes/coin.tscn" id="7_guvtl"]
-[ext_resource type="PackedScene" uid="uid://c75dor88vfq6d" path="res://scenes/slime.tscn" id="8_igmy8"]
 [ext_resource type="PackedScene" uid="uid://citorwo4a65xv" path="res://scenes/checkpoint.tscn" id="9_wdtqu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rus8k"]
@@ -322,27 +321,18 @@ tile_map_data = PackedByteArray("AAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAE
 tile_set = SubResource("TileSet_rus8k")
 
 [node name="MysteryBox" parent="." unique_id=756012643 instance=ExtResource("3_hey2k")]
-visible = false
-position = Vector2(230, 102)
+position = Vector2(454, 144)
 
 [node name="MysteryBox2" parent="." unique_id=1178338420 instance=ExtResource("3_hey2k")]
-visible = false
-position = Vector2(294, 136)
-
-[node name="MysteryBox3" parent="." unique_id=891294950 instance=ExtResource("3_hey2k")]
-visible = false
-position = Vector2(326, 136)
+position = Vector2(500, 144)
 
 [node name="MysteryBox4" parent="." unique_id=1316417568 instance=ExtResource("3_hey2k")]
-visible = false
 position = Vector2(709, 91)
 
 [node name="MysteryBox5" parent="." unique_id=1012064522 instance=ExtResource("3_hey2k")]
-visible = false
-position = Vector2(311, 85)
+position = Vector2(477, 144)
 
 [node name="Killzone" parent="." unique_id=1504984906 instance=ExtResource("4_172wr")]
-visible = false
 position = Vector2(747, 295)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=681361943]
@@ -353,25 +343,9 @@ shape = SubResource("WorldBoundaryShape2D_4nkto")
 position = Vector2(1349, 168)
 
 [node name="Coins" type="Node2D" parent="." unique_id=1327117306]
-visible = false
 
 [node name="StackableCoins9" parent="Coins" unique_id=1717673600 instance=ExtResource("6_fldb1")]
 position = Vector2(597, 166)
-
-[node name="StackableCoins5" parent="Coins" unique_id=1334586820 instance=ExtResource("6_fldb1")]
-position = Vector2(136, 109)
-
-[node name="StackableCoins" parent="Coins" unique_id=231435064 instance=ExtResource("6_fldb1")]
-position = Vector2(151, 92)
-
-[node name="StackableCoins2" parent="Coins" unique_id=2026725373 instance=ExtResource("6_fldb1")]
-position = Vector2(168, 73)
-
-[node name="StackableCoins3" parent="Coins" unique_id=54776148 instance=ExtResource("6_fldb1")]
-position = Vector2(185, 53)
-
-[node name="StackableCoins4" parent="Coins" unique_id=1365428801 instance=ExtResource("6_fldb1")]
-position = Vector2(201, 31)
 
 [node name="StackableCoins6" parent="Coins" unique_id=988890749 instance=ExtResource("6_fldb1")]
 position = Vector2(457, 166)
@@ -395,9 +369,6 @@ position = Vector2(1079, 147)
 position = Vector2(1241, 166)
 
 [node name="Slimes" type="Node2D" parent="." unique_id=1457592662]
-
-[node name="Slime" parent="Slimes" unique_id=270155801 instance=ExtResource("8_igmy8")]
-position = Vector2(146, 160)
 
 [node name="Checkpoints" type="Node2D" parent="." unique_id=1368753272]
 
