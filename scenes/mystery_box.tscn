@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://mr786450rq4i" path="res://scripts/mystery_box.gd" id="1_71yyq"]
 [ext_resource type="Texture2D" uid="uid://cst25terc0lc2" path="res://assets/sprites/world_tileset.png" id="2_1r3pp"]
 [ext_resource type="PackedScene" uid="uid://brxw4ofpi3c13" path="res://scenes/stackable_coins.tscn" id="3_1r3pp"]
+[ext_resource type="AudioStream" uid="uid://c0shebiyach12" path="res://assets/sounds/coin-drop.mp3" id="4_e7qx1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7qx1"]
 size = Vector2(16, 16)
@@ -35,5 +36,8 @@ collision_mask = 2
 [node name="UnderHitCollisionShape" type="CollisionShape2D" parent="Area2D" unique_id=1518419522]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_aup8u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=531985486]
+stream = ExtResource("4_e7qx1")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

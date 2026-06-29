@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @export var coin_scene: PackedScene
+@onready var audioPlayer = $AudioStreamPlayer2D
 var coin_used = false
 
 func spawn_coin():
@@ -11,6 +12,8 @@ func spawn_coin():
 	
 	get_tree().current_scene.add_child(coin)
 	coin.global_position = global_position + Vector2(0, 0)
+	
+	audioPlayer.play()
 
 func _ready() -> void:
 	$NonMysterySprite.hide()

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dq656sghygedn" path="res://scripts/checkpoint.gd" id="1_vsimk"]
 [ext_resource type="Texture2D" uid="uid://bue5fhjrpo6lk" path="res://assets/sprites/fruit.png" id="2_yqsag"]
 [ext_resource type="Texture2D" uid="uid://cst25terc0lc2" path="res://assets/sprites/world_tileset.png" id="3_c45tw"]
+[ext_resource type="AudioStream" uid="uid://5rwpjcbm26n4" path="res://assets/sounds/checkpoint.mp3" id="4_yqsag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55jpe"]
 size = Vector2(11, 13)
@@ -24,5 +25,8 @@ region_rect = Rect2(0, 48, 16, 16)
 texture = ExtResource("3_c45tw")
 region_enabled = true
 region_rect = Rect2(128, 64, 16, 16)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1516862323]
+stream = ExtResource("4_yqsag")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

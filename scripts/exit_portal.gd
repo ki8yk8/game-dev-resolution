@@ -1,6 +1,11 @@
 extends Area2D
 @onready var timer = $Timer
 
+var publisher_callback;
+
+func _ready() -> void:
+	publisher_callback = Controller._register_publisher("portal")
+
 func _on_body_exited(body: Node2D) -> void:
 	var body_position = body.position.x
 	timer.start()
@@ -9,4 +14,4 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	timer.stop()
-	#GameManager._change_level(GameManager.LevelUpdateTypes.INCREMENT, 1)
+	publisher_callback.call(1)

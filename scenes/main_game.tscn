@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bptdmceciabc6" path="res://scripts/game_hud.gd" id="3_ipu61"]
 [ext_resource type="Texture2D" uid="uid://c6cfi0rxe1u4t" path="res://assets/sprites/hearts.png" id="5_70vka"]
 [ext_resource type="PackedScene" uid="uid://c75dor88vfq6d" path="res://scenes/slime.tscn" id="6_ygxny"]
+[ext_resource type="Script" uid="uid://dm53nym6kf3eb" path="res://scripts/level_manager.gd" id="9_2l77h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipu61"]
 atlas = ExtResource("3_0rdsr")
@@ -89,7 +90,9 @@ theme_override_fonts/font = ExtResource("3_d2op2")
 theme_override_font_sizes/font_size = 24
 text = "x0"
 
-[node name="Level1Root" parent="." unique_id=781923473 instance=ExtResource("1_s3esy")]
+[node name="LevelNode" type="Node2D" parent="." unique_id=878691378]
+
+[node name="Level1Root" parent="LevelNode" unique_id=781923473 instance=ExtResource("1_s3esy")]
 
 [node name="Slime" parent="." unique_id=270155801 instance=ExtResource("6_ygxny")]
 position = Vector2(793, 265)
@@ -99,3 +102,6 @@ position = Vector2(959, 266)
 
 [node name="GameManager" type="Node" parent="." unique_id=1620675042]
 script = ExtResource("1_wi4c7")
+
+[node name="LevelManager" type="Node" parent="." unique_id=635859135]
+script = ExtResource("9_2l77h")

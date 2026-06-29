@@ -2,7 +2,10 @@ extends Node
 
 var _publishers: Array[String] = [] 
 var _subscribers: Array[Dictionary] = []
-var _memory: Dictionary = {}
+var _memory: Dictionary = {
+	# TODO: the main menu is able to change the level to another
+	"level": 1,
+}
 var _cache: Dictionary = {}
 
 func _register_publisher(publisher: String) -> Callable:
@@ -54,3 +57,11 @@ func _memorize(item: String, value: Variant):
 	
 func _forget(item: String):
 	_memory.erase(item)
+
+# level metadata begins here
+const _LEVEL_START_CHECKPOINTS = {
+	1: Vector2(117.0, 168.0),
+}
+
+func _get_initial_checkpoint(level: int) -> Vector2:
+	return _LEVEL_START_CHECKPOINTS.get(level)

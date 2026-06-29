@@ -1,18 +1,13 @@
 extends Node
 
 const INITIAL_HEART = 3
-const LEVEL_START_CHECKPOINTS = {
-	1: Vector2(117.0, 168.0),
-}
-
-const level = 1
 
 # state of the gameplay
 var _state = {
 	"coins": 0,
 	"hearts": INITIAL_HEART,
-	"level": level,
-	"checkpoint": LEVEL_START_CHECKPOINTS.get(1),
+	"level": 0,
+	"checkpoint": 0,
 }
 
 # publisher callback
@@ -20,6 +15,9 @@ var publisher_callback
 
 func _ready() -> void:
 	_state.merge(Controller._memory, true)
+	# load the checkpoint 
+	_state["checkpoint"] = Controller._get_initial_checkpoint(_state["level"])
+	
 	publisher_callback = Controller._register_publisher("game-manager")
 	
 	# defining the subscriptions to game entities
@@ -27,6 +25,7 @@ func _ready() -> void:
 	Controller._subscribe("killzone", handle_killzone)
 	Controller._subscribe("checkpoint", handle_checkpoint)
 	Controller._subscribe("heart", update_heart)
+	Controller._subscribe("portal", handle_portal)
 	
 	# registering the last coin
 	publisher_callback.call.call_deferred(_state.duplicate())
@@ -36,6 +35,7 @@ func _exit_tree() -> void:
 	Controller._unsubscribe("coin", update_coin)
 	Controller._unsubscribe("killzone", handle_killzone)
 	Controller._unsubscribe("checkpoint", handle_checkpoint)
+	Controller._subscribe("portal", handle_portal)
 
 # callback functions to handle the game state updates
 func update_coin(increment):
@@ -53,9 +53,12 @@ func handle_killzone(ignore):
 		# TODO: memorize the coins as well
 		Controller._memorize("hearts", _state.get("hearts")-1)
 	else:
-		Controller._memorize("hearts", INITIAL_HEART)
-		Controller._memorize("checkpoint", LEVEL_START_CHECKPOINTS.get(level))
+		Controller._forget("hearts")
+		Controller._forget("checkpoint")   # removing the checkpoint
 		print("You died")
 	
 func handle_checkpoint(pos: Vector2):
 	Controller._memorize("checkpoint", pos)
+	
+func handle_portal(increment: int):
+	_state["level"] += increment
