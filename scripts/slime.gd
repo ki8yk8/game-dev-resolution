@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var audioPlayer = $AudioStreamPlayer2D
+
 const SPEED = 70
 var dead = false
 var direction = 1
@@ -24,6 +26,7 @@ func _physics_process(delta: float) -> void:
 func _on_head_collision_detect_body_entered(body: Node2D) -> void:
 	$Timer.start()
 	animated_sprite.play("death")
+	audioPlayer.play()
 	dead = true
 
 func _on_timer_timeout() -> void:

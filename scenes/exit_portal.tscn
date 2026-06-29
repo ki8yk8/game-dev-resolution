@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3sm0ik5ap1n8" path="res://scripts/exit_portal.gd" id="1_7ro5c"]
 [ext_resource type="Texture2D" uid="uid://cst25terc0lc2" path="res://assets/sprites/world_tileset.png" id="1_8vqmj"]
+[ext_resource type="AudioStream" uid="uid://dthhoux74aabr" path="res://assets/sounds/win.mp3" id="3_sdclj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw7rh"]
 size = Vector2(14, 14)
@@ -21,6 +22,9 @@ region_rect = Rect2(128, 64, 16, 16)
 
 [node name="Timer" type="Timer" parent="." unique_id=2136957511]
 wait_time = 0.6
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1736808695]
+stream = ExtResource("3_sdclj")
 
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

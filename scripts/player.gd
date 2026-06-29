@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var audioPlayer = $AudioStreamPlayer2D
+@onready var deathPlayer = $DeathAudioPlayer
+@onready var jumpPlayer = $JumpAudioPlayer
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -250.0
@@ -18,7 +19,7 @@ func handle_player_checkpoint(pos):
 
 func death():
 	if alive:
-		audioPlayer.play()
+		deathPlayer.play()
 		animated_sprite.play("death")
 	alive = false
 
@@ -32,6 +33,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		jumpPlayer.play()
 		velocity.y = JUMP_VELOCITY
 	
 	if !is_on_floor():

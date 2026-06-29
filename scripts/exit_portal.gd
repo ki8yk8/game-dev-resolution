@@ -1,5 +1,6 @@
 extends Area2D
 @onready var timer = $Timer
+@onready var audioPlayer = $AudioStreamPlayer2D
 
 var publisher_callback;
 
@@ -9,6 +10,7 @@ func _ready() -> void:
 func _on_body_exited(body: Node2D) -> void:
 	var body_position = body.position.x
 	timer.start()
+	audioPlayer.play()
 	var  tween = create_tween()
 	tween.tween_property(body, "position:x", 100, 0.8).as_relative()
 
