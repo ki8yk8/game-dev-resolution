@@ -18,9 +18,9 @@ var level_node = null
 
 func _ready() -> void:
 	_state.merge(Controller._memory, true)
-	load_level(1)
 	
 	publisher_callback = Controller._register_publisher("game-manager")
+	load_level(1)
 	
 	# defining the subscriptions to game entities
 	Controller._subscribe("coin", update_coin)
@@ -68,12 +68,15 @@ func handle_portal(increment: int):
 
 func load_level(level: int):
 	if level_node:
-		LevelNode.remove_child(level_node)
+		level_node.queue_free()
 	
 	_state["level"] = level
 	# load the checkpoint 
 	_state["checkpoint"] = Controller._get_initial_checkpoint(_state["level"])
+	handle_checkpoint(_state["checkpoint"])
+	
 	var level_scene: PackedScene = load(Controller._LEVEL_SCENES[_state["level"]])
 	level_node = level_scene.instantiate()
 	LevelNode.add_child(level_node)
 	
+	publisher_callback.call.call_deferred(_state.duplicate())
