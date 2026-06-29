@@ -65,5 +65,10 @@ const _LEVEL_START_CHECKPOINTS = {
 	2: Vector2(117.0, 168.0),
 }
 
+const _LEVEL_SCENES = {
+	1: "res://scenes/level_1.tscn",
+	2: "res://scenes/level_2.tscn",
+}
+
 func _get_initial_checkpoint(level: int) -> Vector2:
 	return _LEVEL_START_CHECKPOINTS.get(level)
